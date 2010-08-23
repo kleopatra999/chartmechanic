@@ -1,0 +1,188 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+<project name="ChartEngine Data Sources" default="all" basedir=".">
+  <description>
+	Build the DataSource(DS) layer of ChartEngine
+  </description>
+
+  <property environment="env"/>
+  <property file="build.properties"/>
+
+  <property name="src" value="src"/>
+  <property name="test" value="test"/>
+  <property name="dist" value="dist"/>
+  <property name="classes.dir" value="classes"/>
+
+  <property name="common.dir" value="${basedir}/../common"/>
+  <!-- commonly used properties (e.g. common-lib, junit.classpath, etc. are set here) -->
+  <import file="${common.dir}/common-imports.xml"/>
+
+  <property name="debug" value="true"/>
+  <property name="ds.jar" value="${dist}/chartengine-ds.jar"/>
+  <property name="ds-javadoc.zip" value="${dist}/chartengine-ds-javadoc.zip"/>
+
+  <path id="classpath">
+	<fileset dir="${common-lib}" includes="*.jar"/>
+    <fileset dir="lib" includes="*.jar"/>
+  </path>
+
+  <!-- for compilation/runtime of tests ONLY, NOT to be depended upon by product code -->
+  <path id="test.classpath">
+    <fileset dir="${common-compile-lib}" includes="*.jar"/>
+  </path>
+
+  <target name="compile">
+	<mkdir dir="${classes.dir}"/>
+    <javac srcdir="${src}" destdir="${classes.dir}" debug="${debug}">
+      <classpath refid="classpath"/>
+    </javac>
+  </target>
+
+  <target name="javadoc"
+		  description="create javadocs">
+   <mkdir dir="${dist}/doc"/>
+	<javadoc
+	   destdir="${dist}/doc"
+	   sourcepath="src"
+	   classpathref="classpath"
+	   use="true"
+	   windowtitle="ChartEngine DS API" >
+	  <bottom><![CDATA[<i>Copyright &#169; 2008-2010 <a href="http://www.bayareasoftware.com">Bay Area Software Inc.</a> </i>]]></bottom>
+	</javadoc>
+	<zip zipfile="${ds-javadoc.zip}">
+	  <zipfileset dir="${dist}/doc"
+				  prefix="chartengine-ds-javadocs"/>
+    </zip>
+  </target>
+
+
+  <target name="instrument-classes" unless="skip-instrument">
+        <mkdir dir="${instrumented.dir}"/>
+	<cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.ser}">
+          <fileset dir="${classes.dir}">
+		<include name="**/*.class"/>
+                <exclude name="**/*Test.class"/>
+          </fileset>
+        </cobertura-instrument>
+  </target>
+
+  <target name="compile-tests" depends="compile">
+    <javac srcdir="${test}" destdir="${classes.dir}" debug="${debug}">
+	<classpath>
+           <pathelement location="${classes.dir}"/>
+           <path refid="classpath"/>
+           <path refid="junit.classpath"/>
+           <path refid="test.classpath"/>
+        </classpath>
+        <include name="**/*Test.java"/>
+    </javac>
+  </target>
+
+  <target name="jar" 
+		  depends="clean,compile"
+		  description="build chartengine-ds.jar">
+	<mkdir dir="${dist}"/>
+	<jar destfile="${ds.jar}">
+      <fileset dir="${classes.dir}"/>
+    </jar>
+  </target>
+
+  <target name="clean">
+	<delete dir="${dist}"/>
+	<delete dir="${classes.dir}"/>
+	<delete dir="${instrumented.dir}"/>
+	<delete dir="${test.out}"/>
+	<delete dir="${coverage.dir}"/>
+	<delete file="${cobertura.ser}"/>
+  </target>
+
+  <target name="test" description="run unit tests"
+          depends="compile-tests,instrument-classes">
+	<mkdir dir="${test.out}"/>
+	<mkdir dir="${coverage.dir}"/>
+    <junit fork="yes" 
+		   dir="${basedir}" 
+		   haltonerror="false" 
+		   haltonfailure="false"
+                   failureproperty="junit.failed"
+		   showoutput="true">
+       <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser}"/>
+       <!-- run with -Ddisconnected=true to disable tests that try to connect to the internet -->
+       <sysproperty key="disconnected" value="${disconnected}"/>
+       <sysproperty key="chartengine.allowFileUrls" value="true"/>
+       <classpath location="${instrumented.dir}"/>
+       <classpath location="${classes.dir}"/>
+       <classpath refid="classpath"/>
+       <classpath refid="junit.classpath"/>
+       <classpath refid="test.classpath"/>
+       <classpath refid="cobertura.classpath"/>
+	   <formatter type="xml"/>
+	   <batchtest todir="${test.out}">
+            <fileset dir="${test}">
+                 <include name="**/*Test.java"/> 
+           </fileset>
+          </batchtest>
+    </junit>
+    <cobertura-report format="html" datafile="${cobertura.ser}" destdir="${coverage.dir}">
+       <fileset dir="${src}" includes="**/*.java"/>
+    </cobertura-report>
+    <cobertura-report format="xml" datafile="${cobertura.ser}" destdir="${coverage.dir}">
+       <fileset dir="${src}" includes="**/*.java"/>
+    </cobertura-report>
+    <echo>Coverage report is available at ${coverage.dir}/index.html</echo>
+    <junitreport todir="${test.out}">
+      <fileset dir="${test.out}">
+       <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="noframes" todir="${test.out}"/>
+    </junitreport>
+    <echo>JUnit report available at ${test.out}/junit-noframes.html</echo>
+    <fail if="junit.failed">JUnit failed, see test output for details</fail>
+  </target>
+
+  <target name="all" depends="clean,compile,test,jar"/> 
+
+  <target name="web-proxy"
+          description="run the web proxy on port 7007"
+          depends="compile,compile-tests">
+       <java classname="com.bayareasoftware.chartengine.ds.util.WebProxy" fork="true">
+         <classpath>
+           <pathelement path="${classes.dir}"/>
+           <path refid="classpath"/>
+         </classpath>
+         <arg value="7007"/>
+      </java>
+  </target>
+
+  <property name="type" value="csv"/>
+  <property name="out" value="csv"/>
+  <target name="DSFactory"
+		  description="run the DSFactory.main() - a cmd line tool to dump various data sources formats.  Use -Dtype=csv|excel|gss|html|jdbc|xls and -Dout=csv|html|json|gvis -Durl=URL to data source"
+		  depends="compile">
+<echo message="type = ${type} out=${out} url=${url}"/>
+	<java classname="com.bayareasoftware.chartengine.ds.DSFactory" fork="true">
+        <classpath>
+		  <pathelement path="${classes.dir}"/>
+		  <path refid="classpath"/>
+        </classpath>
+        <arg value="type=${type}"/>
+        <arg value="out=${out}"/>
+        <arg value="${url}"/>
+    </java>
+   </target>
+		  
+
+</project>

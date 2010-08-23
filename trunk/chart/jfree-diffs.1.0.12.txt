@@ -1,0 +1,33 @@
+Index: source/org/jfree/chart/renderer/xy/XYBarRenderer.java
+===================================================================
+--- source/org/jfree/chart/renderer/xy/XYBarRenderer.java	(revision 1769)
++++ source/org/jfree/chart/renderer/xy/XYBarRenderer.java	(working copy)
+@@ -567,6 +567,12 @@
+     public boolean getShadowsVisible() {
+         return this.shadowsVisible;
+     }
++    
++    // same as above, but match setter
++    public boolean getShadowVisible() {
++        return this.shadowsVisible;
++    }
++    
+ 
+     /**
+      * Sets the flag that controls whether or not the renderer
+Index: source/org/jfree/chart/renderer/category/BarRenderer.java
+===================================================================
+--- source/org/jfree/chart/renderer/category/BarRenderer.java	(revision 1769)
++++ source/org/jfree/chart/renderer/category/BarRenderer.java	(working copy)
+@@ -585,6 +585,11 @@
+         return this.shadowsVisible;
+     }
+ 
++    // same as above, but match setter 
++    public boolean getShadowVisible() {
++        return this.shadowsVisible;
++    }
++    
+     /**
+      * Sets the flag that controls whether or not shadows are
+      * drawn by the renderer.

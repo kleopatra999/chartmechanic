@@ -1,0 +1,74 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+
+<project name="common-imports" basedir="." default="bogus">
+  <description>
+	Commonly shared ant settings for all builds
+  </description>
+  <target name="bogus"> <!-- make eclipse happy, need a default target -->
+   <fail message="bogus target"/>
+  </target>
+  <!-- imported.basedir is the basedir of this file, regardless of what the importer's basedir was -->
+  <dirname property="imported.basedir" file="${ant.file.common-imports}"/>
+
+  <property name="common-lib" value="${imported.basedir}/lib"/>
+  <property name="common-compile-lib" value="${imported.basedir}/compile-lib"/>
+
+  <!-- ==== JUNIT settings ==== -->
+
+  <!-- Allows you to override the version of junit as long as you don't
+       put junit.jar and ant-junit.jar in ant's lib                      -->
+  <condition property="junit.jar" value="${junit.jar}" else="junit-4.4.jar">
+    <isset property="junit.jar"/>
+  </condition>
+
+  <path id="junit.classpath">
+	<pathelement location="${common-compile-lib}/${junit.jar}"/>
+  </path>
+
+  <!-- ==== TEST OUTPUT  settings ==== -->
+  <property name="test.out" value="test.out"/>
+
+  <!-- ==== CODE COVERAGE INSTRUMENTATION settings ==== -->
+  <property name="instrumented.dir" value="instrumented-classes"/>
+  <property name="coverage.dir" value="${test.out}/coverage"/>
+  <property name="cobertura.ser" value="${coverage.dir}/cobertura.ser"/>
+
+  <path id="cobertura.classpath">
+    <fileset dir="${common-compile-lib}/cobertura">
+       <include name="**/*.jar"/>
+    </fileset>
+  </path>
+
+  <taskdef classpathref="cobertura.classpath" resource="tasks.properties"/>
+
+
+</project>

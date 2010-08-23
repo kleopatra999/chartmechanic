@@ -1,0 +1,1338 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+<chart-types>
+  <chart classname="org.jfree.chart.JFreeChart" displayname="JFreeChart" isAbstract="false">
+    <props>
+      <prop type="boolean" defalt="true" name="antiAlias"/>
+      <prop type="java.awt.Image" name="backgroundImage"/>
+      <prop type="int" defalt="15" name="backgroundImageAlignment"/>
+      <prop type="float" defalt="0.5" name="backgroundImageAlpha"/>
+      <prop type="java.awt.Paint" name="backgroundPaint"/>
+      <prop type="java.awt.Paint" defalt="#000000" name="borderPaint"/>
+      <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="borderStroke"/>
+      <prop type="boolean" defalt="false" name="borderVisible"/>
+      <prop type="boolean" defalt="true" name="notify"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="0.0,0.0,0.0,0.0" name="padding"/>
+      <prop type="java.awt.RenderingHints" name="renderingHints"/>
+      <prop type="java.util.List" name="subtitles"/>
+      <prop type="java.lang.Object" name="textAntiAlias"/>
+      <prop type="org.jfree.chart.title.TextTitle" name="title"/>
+    </props>
+  </chart>
+  <textTitleBean classname="org.jfree.chart.title.TextTitle" supername="org.jfree.chart.title.Title" displayname="TextTitle" isAbstract="false">
+    <props>
+      <prop type="java.lang.String" name="URLText"/>
+      <prop type="java.awt.Paint" name="backgroundPaint"/>
+      <prop type="boolean" defalt="false" name="expandToFitSpace"/>
+      <prop type="java.awt.Font" defalt="SansSerif-12" name="font"/>
+      <prop type="int" defalt="2147483647" name="maximumLinesToDisplay"/>
+      <prop type="java.awt.Paint" defalt="#000000" name="paint"/>
+      <prop type="java.lang.String" name="text"/>
+      <prop type="org.jfree.ui.HorizontalAlignment" defalt="CENTER" name="textAlignment"/>
+      <prop type="java.lang.String" name="toolTipText"/>
+      <prop type="org.jfree.ui.HorizontalAlignment" defalt="CENTER" name="horizontalAlignment"/>
+      <prop type="boolean" defalt="true" name="notify"/>
+      <prop type="org.jfree.ui.RectangleEdge" defalt="TOP" name="position"/>
+      <prop type="org.jfree.ui.VerticalAlignment" defalt="CENTER" name="verticalAlignment"/>
+      <prop type="boolean" defalt="true" name="visible"/>
+      <prop type="java.lang.String" name="ID"/>
+      <prop type="org.jfree.chart.block.BlockBorder" name="border"/>
+      <prop type="java.awt.geom.Rectangle2D" name="bounds"/>
+      <prop type="org.jfree.chart.block.BlockFrame" name="frame"/>
+      <prop type="double" defalt="0.0" name="height"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="0.0,0.0,0.0,0.0" name="margin"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="1.0,1.0,1.0,1.0" name="padding"/>
+      <prop type="double" defalt="0.0" name="width"/>
+    </props>
+  </textTitleBean>
+  <markerBean classname="org.jfree.chart.plot.Marker" displayname="Marker" isAbstract="true">
+    <props>
+      <prop type="float" defalt="0.8" name="alpha"/>
+      <prop type="java.lang.String" name="label"/>
+      <prop type="org.jfree.ui.RectangleAnchor" name="labelAnchor"/>
+      <prop type="java.awt.Font" defalt="SansSerif-9" name="labelFont"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="3.0,3.0,3.0,3.0" name="labelOffset"/>
+      <prop type="org.jfree.ui.LengthAdjustmentType" name="labelOffsetType"/>
+      <prop type="java.awt.Paint" defalt="#000000" name="labelPaint"/>
+      <prop type="org.jfree.ui.TextAnchor" name="labelTextAnchor"/>
+      <prop type="java.awt.Paint" defalt="#808080" name="outlinePaint"/>
+      <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="outlineStroke"/>
+      <prop type="java.awt.Paint" defalt="#808080" name="paint"/>
+      <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="stroke"/>
+    </props>
+  </markerBean>
+  <legendBean classname="org.jfree.chart.title.LegendTitle" supername="org.jfree.chart.title.Title" displayname="LegendTitle" isAbstract="false">
+    <props>
+      <prop type="java.awt.Paint" defalt="#ffffff" name="backgroundPaint"/>
+      <prop type="java.awt.Font" defalt="SansSerif-12" name="itemFont"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="2.0,2.0,2.0,2.0" name="itemLabelPadding"/>
+      <prop type="java.awt.Paint" defalt="#000000" name="itemPaint"/>
+      <prop type="org.jfree.ui.RectangleAnchor" name="legendItemGraphicAnchor"/>
+      <prop type="org.jfree.ui.RectangleEdge" defalt="LEFT" name="legendItemGraphicEdge"/>
+      <prop type="org.jfree.ui.RectangleAnchor" name="legendItemGraphicLocation"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="2.0,2.0,2.0,2.0" name="legendItemGraphicPadding"/>
+      <prop type="[Lorg.jfree.chart.LegendItemSource;" name="sources"/>
+      <prop type="org.jfree.chart.block.BlockContainer" name="wrapper"/>
+      <prop type="org.jfree.ui.HorizontalAlignment" defalt="CENTER" name="horizontalAlignment"/>
+      <prop type="boolean" defalt="true" name="notify"/>
+      <prop type="org.jfree.ui.RectangleEdge" defalt="BOTTOM" name="position"/>
+      <prop type="org.jfree.ui.VerticalAlignment" defalt="CENTER" name="verticalAlignment"/>
+      <prop type="boolean" defalt="true" name="visible"/>
+      <prop type="java.lang.String" name="ID"/>
+      <prop type="org.jfree.chart.block.BlockBorder" name="border"/>
+      <prop type="java.awt.geom.Rectangle2D" name="bounds"/>
+      <prop type="org.jfree.chart.block.BlockFrame" name="frame"/>
+      <prop type="double" defalt="0.0" name="height"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="1.0,1.0,1.0,1.0" name="margin"/>
+      <prop type="org.jfree.ui.RectangleInsets" defalt="1.0,1.0,1.0,1.0" name="padding"/>
+      <prop type="double" defalt="0.0" name="width"/>
+    </props>
+  </legendBean>
+  <plots>
+    <bean classname="org.jfree.chart.plot.CombinedDomainCategoryPlot" supername="org.jfree.chart.plot.CategoryPlot" displayname="CombinedDomainCategoryPlot" isAbstract="false">
+      <props>
+        <prop type="double" defalt="5.0" name="gap"/>
+        <prop type="org.jfree.chart.plot.PlotOrientation" defalt="VERTICAL" name="orientation"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.CombinedRangeCategoryPlot" supername="org.jfree.chart.plot.CategoryPlot" displayname="CombinedRangeCategoryPlot" isAbstract="false">
+      <props>
+        <prop type="double" defalt="5.0" name="gap"/>
+        <prop type="org.jfree.chart.plot.PlotOrientation" defalt="VERTICAL" name="orientation"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.Plot" displayname="Plot" isAbstract="true">
+      <props>
+        <prop type="float" defalt="1.0" name="backgroundAlpha"/>
+        <prop type="java.awt.Image" name="backgroundImage"/>
+        <prop type="int" defalt="15" name="backgroundImageAlignment"/>
+        <prop type="float" defalt="0.5" name="backgroundImageAlpha"/>
+        <prop type="java.awt.Paint" defalt="#ffffff" name="backgroundPaint"/>
+        <prop type="org.jfree.chart.plot.DrawingSupplier" name="drawingSupplier"/>
+        <prop type="float" defalt="1.0" name="foregroundAlpha"/>
+        <prop type="org.jfree.ui.RectangleInsets" defalt="4.0,8.0,4.0,8.0" name="insets"/>
+        <prop type="java.lang.String" name="noDataMessage"/>
+        <prop type="java.awt.Font" defalt="SansSerif-12" name="noDataMessageFont"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="noDataMessagePaint"/>
+        <prop type="boolean" defalt="true" name="notify"/>
+        <prop type="java.awt.Paint" defalt="#808080" name="outlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="outlineStroke"/>
+        <prop type="boolean" defalt="true" name="outlineVisible"/>
+        <prop type="org.jfree.chart.plot.Plot" name="parent"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.CompassPlot" supername="org.jfree.chart.plot.Plot" displayname="CompassPlot" isAbstract="false">
+      <props>
+        <prop type="boolean" defalt="false" name="drawBorder"/>
+        <prop type="java.awt.Font" name="labelFont"/>
+        <prop type="int" defalt="0" name="labelType"/>
+        <prop type="double" defalt="360.0" name="revolutionDistance"/>
+        <prop type="java.awt.Paint" defalt="#ffffff" name="roseCenterPaint"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="roseHighlightPaint"/>
+        <prop type="java.awt.Paint" defalt="#ffff00" name="rosePaint"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.SpiderWebPlot" supername="org.jfree.chart.plot.Plot" displayname="SpiderWebPlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.chart.urls.CategoryURLGenerator" name="URLGenerator"/>
+        <prop type="double" defalt="0.1" name="axisLabelGap"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="axisLinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="axisLineStroke"/>
+        <prop type="java.awt.Paint" defalt="#808080" name="baseSeriesOutlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="baseSeriesOutlineStroke"/>
+        <prop type="java.awt.Paint" name="baseSeriesPaint"/>
+        <prop type="org.jfree.util.TableOrder" name="dataExtractOrder"/>
+        <prop type="org.jfree.data.category.CategoryDataset" name="dataset"/>
+        <prop type="org.jfree.util.Rotation" name="direction"/>
+        <prop type="double" defalt="0.01" name="headPercent"/>
+        <prop type="double" defalt="0.25" name="interiorGap"/>
+        <prop type="java.awt.Font" defalt="SansSerif-10" name="labelFont"/>
+        <prop type="org.jfree.chart.labels.CategoryItemLabelGenerator" name="labelGenerator"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="labelPaint"/>
+        <prop type="java.awt.Shape" name="legendItemShape"/>
+        <prop type="double" defalt="-1.0" name="maxValue"/>
+        <prop type="double" defalt="90.0" name="startAngle"/>
+        <prop type="org.jfree.chart.labels.CategoryToolTipGenerator" name="toolTipGenerator"/>
+        <prop type="boolean" defalt="true" name="webFilled"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.CombinedRangeXYPlot" supername="org.jfree.chart.plot.XYPlot" displayname="CombinedRangeXYPlot" isAbstract="false">
+      <props>
+        <prop type="double" defalt="5.0" name="gap"/>
+        <prop type="org.jfree.chart.plot.PlotOrientation" defalt="VERTICAL" name="orientation"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.RingPlot" supername="org.jfree.chart.plot.PiePlot" displayname="RingPlot" isAbstract="false">
+      <props>
+        <prop type="double" defalt="0.2" name="innerSeparatorExtension"/>
+        <prop type="double" defalt="0.2" name="outerSeparatorExtension"/>
+        <prop type="double" defalt="0.2" name="sectionDepth"/>
+        <prop type="java.awt.Paint" defalt="#808080" name="separatorPaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="separatorStroke"/>
+        <prop type="boolean" defalt="true" name="separatorsVisible"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.FastScatterPlot" supername="org.jfree.chart.plot.Plot" displayname="FastScatterPlot" isAbstract="false">
+      <props>
+        <prop type="[[F" name="data"/>
+        <prop type="org.jfree.chart.axis.ValueAxis" name="domainAxis"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="domainGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="domainGridlineStroke"/>
+        <prop type="boolean" defalt="true" name="domainGridlinesVisible"/>
+        <prop type="boolean" defalt="false" name="domainPannable"/>
+        <prop type="java.awt.Paint" defalt="#ff0000" name="paint"/>
+        <prop type="org.jfree.chart.axis.ValueAxis" name="rangeAxis"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="rangeGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="rangeGridlineStroke"/>
+        <prop type="boolean" defalt="true" name="rangeGridlinesVisible"/>
+        <prop type="boolean" defalt="false" name="rangePannable"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.CombinedDomainXYPlot" supername="org.jfree.chart.plot.XYPlot" displayname="CombinedDomainXYPlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.chart.axis.AxisSpace" name="fixedRangeAxisSpace"/>
+        <prop type="double" defalt="5.0" name="gap"/>
+        <prop type="org.jfree.chart.plot.PlotOrientation" defalt="VERTICAL" name="orientation"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.PiePlot3D" supername="org.jfree.chart.plot.PiePlot" displayname="PiePlot3D" isAbstract="false">
+      <props>
+        <prop type="boolean" defalt="false" name="darkerSides"/>
+        <prop type="double" defalt="0.12" name="depthFactor"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.WaferMapPlot" supername="org.jfree.chart.plot.Plot" displayname="WaferMapPlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.data.general.WaferMapDataset" name="dataset"/>
+        <prop type="org.jfree.chart.renderer.WaferMapRenderer" name="renderer"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.ContourPlot" supername="org.jfree.chart.plot.Plot" displayname="ContourPlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.chart.urls.XYURLGenerator" name="URLGenerator"/>
+        <prop type="org.jfree.chart.ClipPath" name="clipPath"/>
+        <prop type="org.jfree.chart.axis.ColorBar" name="colorBarAxis"/>
+        <prop type="org.jfree.ui.RectangleEdge" defalt="LEFT" name="colorBarLocation"/>
+        <prop type="double" defalt="0.0" name="dataAreaRatio"/>
+        <prop type="org.jfree.data.contour.ContourDataset" name="dataset"/>
+        <prop type="org.jfree.chart.axis.ValueAxis" name="domainAxis"/>
+        <prop type="boolean" defalt="true" name="domainCrosshairLockedOnData"/>
+        <prop type="java.awt.Paint" name="domainCrosshairPaint"/>
+        <prop type="java.awt.Stroke" name="domainCrosshairStroke"/>
+        <prop type="double" defalt="0.0" name="domainCrosshairValue"/>
+        <prop type="boolean" defalt="false" name="domainCrosshairVisible"/>
+        <prop type="java.awt.Paint" name="missingPaint"/>
+        <prop type="double" defalt="0.05" name="ptSizePct"/>
+        <prop type="org.jfree.chart.axis.ValueAxis" name="rangeAxis"/>
+        <prop type="boolean" defalt="true" name="rangeCrosshairLockedOnData"/>
+        <prop type="java.awt.Paint" name="rangeCrosshairPaint"/>
+        <prop type="java.awt.Stroke" name="rangeCrosshairStroke"/>
+        <prop type="double" defalt="0.0" name="rangeCrosshairValue"/>
+        <prop type="boolean" defalt="false" name="rangeCrosshairVisible"/>
+        <prop type="boolean" defalt="false" name="renderAsPoints"/>
+        <prop type="org.jfree.chart.labels.ContourToolTipGenerator" name="toolTipGenerator"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.CategoryPlot" supername="org.jfree.chart.plot.Plot" displayname="CategoryPlot" isAbstract="false">
+      <props>
+        <prop type="double" defalt="0.0" name="anchorValue"/>
+        <prop type="org.jfree.ui.RectangleInsets" defalt="0.0,0.0,0.0,0.0" name="axisOffset"/>
+        <prop type="org.jfree.util.SortOrder" name="columnRenderingOrder"/>
+        <prop type="int" defalt="0" name="crosshairDatasetIndex"/>
+        <prop type="org.jfree.chart.plot.DatasetRenderingOrder" name="datasetRenderingOrder"/>
+        <prop type="[Lorg.jfree.chart.axis.CategoryAxis;" name="domainAxes"/>
+        <prop type="java.lang.Comparable" name="domainCrosshairColumnKey"/>
+        <prop type="java.awt.Paint" defalt="#0000ff" name="domainCrosshairPaint"/>
+        <prop type="java.lang.Comparable" name="domainCrosshairRowKey"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="domainCrosshairStroke"/>
+        <prop type="boolean" defalt="false" name="domainCrosshairVisible"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="domainGridlinePaint"/>
+        <prop type="org.jfree.chart.axis.CategoryAnchor" name="domainGridlinePosition"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="domainGridlineStroke"/>
+        <prop type="boolean" defalt="false" name="domainGridlinesVisible"/>
+        <prop type="boolean" defalt="false" name="drawSharedDomainAxis"/>
+        <prop type="org.jfree.chart.axis.AxisSpace" name="fixedDomainAxisSpace"/>
+        <prop type="org.jfree.chart.LegendItemCollection" name="fixedLegendItems"/>
+        <prop type="org.jfree.chart.axis.AxisSpace" name="fixedRangeAxisSpace"/>
+        <prop type="org.jfree.chart.plot.PlotOrientation" defalt="VERTICAL" name="orientation"/>
+        <prop type="[Lorg.jfree.chart.axis.ValueAxis;" name="rangeAxes"/>
+        <prop type="boolean" defalt="true" name="rangeCrosshairLockedOnData"/>
+        <prop type="java.awt.Paint" defalt="#0000ff" name="rangeCrosshairPaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="rangeCrosshairStroke"/>
+        <prop type="double" defalt="0.0" name="rangeCrosshairValue"/>
+        <prop type="boolean" defalt="false" name="rangeCrosshairVisible"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="rangeGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="rangeGridlineStroke"/>
+        <prop type="boolean" defalt="true" name="rangeGridlinesVisible"/>
+        <prop type="java.awt.Paint" defalt="#ffffff" name="rangeMinorGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="rangeMinorGridlineStroke"/>
+        <prop type="boolean" defalt="false" name="rangeMinorGridlinesVisible"/>
+        <prop type="boolean" defalt="false" name="rangePannable"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="rangeZeroBaselinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="rangeZeroBaselineStroke"/>
+        <prop type="boolean" defalt="false" name="rangeZeroBaselineVisible"/>
+        <prop type="[Lorg.jfree.chart.renderer.category.CategoryItemRenderer;" name="renderers"/>
+        <prop type="org.jfree.util.SortOrder" name="rowRenderingOrder"/>
+        <prop type="int" defalt="0" name="weight"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.PiePlot" supername="org.jfree.chart.plot.Plot" displayname="PiePlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.chart.urls.PieURLGenerator" name="URLGenerator"/>
+        <prop type="boolean" defalt="false" name="autoPopulateSectionOutlinePaint"/>
+        <prop type="boolean" defalt="false" name="autoPopulateSectionOutlineStroke"/>
+        <prop type="boolean" defalt="true" name="autoPopulateSectionPaint"/>
+        <prop type="java.awt.Paint" defalt="#808080" name="baseSectionOutlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="baseSectionOutlineStroke"/>
+        <prop type="java.awt.Paint" defalt="#808080" name="baseSectionPaint"/>
+        <prop type="boolean" defalt="true" name="circular"/>
+        <prop type="org.jfree.data.general.PieDataset" name="dataset"/>
+        <prop type="org.jfree.util.Rotation" name="direction"/>
+        <prop type="boolean" defalt="false" name="ignoreNullValues"/>
+        <prop type="boolean" defalt="false" name="ignoreZeroValues"/>
+        <prop type="double" defalt="0.08" name="interiorGap"/>
+        <prop type="java.awt.Paint" defalt="#ffffc0" name="labelBackgroundPaint"/>
+        <prop type="org.jfree.chart.plot.AbstractPieLabelDistributor" name="labelDistributor"/>
+        <prop type="java.awt.Font" defalt="SansSerif-10" name="labelFont"/>
+        <prop type="double" defalt="0.025" name="labelGap"/>
+        <prop type="org.jfree.chart.labels.PieSectionLabelGenerator" name="labelGenerator"/>
+        <prop type="double" defalt="0.025" name="labelLinkMargin"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="labelLinkPaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="labelLinkStroke"/>
+        <prop type="org.jfree.chart.plot.PieLabelLinkStyle" name="labelLinkStyle"/>
+        <prop type="boolean" defalt="true" name="labelLinksVisible"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="labelOutlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="labelOutlineStroke"/>
+        <prop type="org.jfree.ui.RectangleInsets" defalt="2.0,2.0,2.0,2.0" name="labelPadding"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="labelPaint"/>
+        <prop type="java.awt.Paint" defalt="#979797" name="labelShadowPaint"/>
+        <prop type="java.awt.Shape" name="legendItemShape"/>
+        <prop type="org.jfree.chart.labels.PieSectionLabelGenerator" name="legendLabelGenerator"/>
+        <prop type="org.jfree.chart.labels.PieSectionLabelGenerator" name="legendLabelToolTipGenerator"/>
+        <prop type="org.jfree.chart.urls.PieURLGenerator" name="legendLabelURLGenerator"/>
+        <prop type="double" defalt="0.14" name="maximumLabelWidth"/>
+        <prop type="double" defalt="1.0E-5" name="minimumArcAngleToDraw"/>
+        <prop type="int" defalt="0" name="pieIndex"/>
+        <prop type="boolean" defalt="true" name="sectionOutlinesVisible"/>
+        <prop type="java.awt.Paint" defalt="#808080" name="shadowPaint"/>
+        <prop type="double" defalt="4.0" name="shadowXOffset"/>
+        <prop type="double" defalt="4.0" name="shadowYOffset"/>
+        <prop type="org.jfree.ui.RectangleInsets" defalt="0.18,0.18,0.18,0.18,RELATIVE" name="simpleLabelOffset"/>
+        <prop type="boolean" defalt="false" name="simpleLabels"/>
+        <prop type="double" defalt="90.0" name="startAngle"/>
+        <prop type="org.jfree.chart.labels.PieToolTipGenerator" name="toolTipGenerator"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.MeterPlot" supername="org.jfree.chart.plot.Plot" displayname="MeterPlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.data.general.ValueDataset" name="dataset"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="dialBackgroundPaint"/>
+        <prop type="java.awt.Paint" name="dialOutlinePaint"/>
+        <prop type="org.jfree.chart.plot.DialShape" name="dialShape"/>
+        <prop type="boolean" defalt="false" name="drawBorder"/>
+        <prop type="int" defalt="270" name="meterAngle"/>
+        <prop type="java.awt.Paint" defalt="#00ff00" name="needlePaint"/>
+        <prop type="org.jfree.data.Range" name="range"/>
+        <prop type="java.awt.Font" defalt="SansSerif-10" name="tickLabelFont"/>
+        <prop type="java.text.NumberFormat" name="tickLabelFormat"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="tickLabelPaint"/>
+        <prop type="boolean" defalt="true" name="tickLabelsVisible"/>
+        <prop type="java.awt.Paint" defalt="#ffffff" name="tickPaint"/>
+        <prop type="double" defalt="10.0" name="tickSize"/>
+        <prop type="java.lang.String" defalt="Units" name="units"/>
+        <prop type="java.awt.Font" defalt="SansSerif-12" name="valueFont"/>
+        <prop type="java.awt.Paint" defalt="#ffff00" name="valuePaint"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.XYPlot" supername="org.jfree.chart.plot.Plot" displayname="XYPlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.ui.RectangleInsets" defalt="0.0,0.0,0.0,0.0" name="axisOffset"/>
+        <prop type="org.jfree.chart.plot.DatasetRenderingOrder" name="datasetRenderingOrder"/>
+        <prop type="[Lorg.jfree.chart.axis.ValueAxis;" name="domainAxes"/>
+        <prop type="boolean" defalt="true" name="domainCrosshairLockedOnData"/>
+        <prop type="java.awt.Paint" defalt="#0000ff" name="domainCrosshairPaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="domainCrosshairStroke"/>
+        <prop type="double" defalt="0.0" name="domainCrosshairValue"/>
+        <prop type="boolean" defalt="false" name="domainCrosshairVisible"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="domainGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="domainGridlineStroke"/>
+        <prop type="boolean" defalt="true" name="domainGridlinesVisible"/>
+        <prop type="java.awt.Paint" defalt="#ffffff" name="domainMinorGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="domainMinorGridlineStroke"/>
+        <prop type="boolean" defalt="false" name="domainMinorGridlinesVisible"/>
+        <prop type="boolean" defalt="false" name="domainPannable"/>
+        <prop type="java.awt.Paint" name="domainTickBandPaint"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="domainZeroBaselinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="domainZeroBaselineStroke"/>
+        <prop type="boolean" defalt="false" name="domainZeroBaselineVisible"/>
+        <prop type="org.jfree.chart.axis.AxisSpace" name="fixedDomainAxisSpace"/>
+        <prop type="org.jfree.chart.LegendItemCollection" name="fixedLegendItems"/>
+        <prop type="org.jfree.chart.axis.AxisSpace" name="fixedRangeAxisSpace"/>
+        <prop type="org.jfree.chart.plot.PlotOrientation" defalt="VERTICAL" name="orientation"/>
+        <prop type="java.awt.geom.Point2D" name="quadrantOrigin"/>
+        <prop type="[Lorg.jfree.chart.axis.ValueAxis;" name="rangeAxes"/>
+        <prop type="boolean" defalt="true" name="rangeCrosshairLockedOnData"/>
+        <prop type="java.awt.Paint" defalt="#0000ff" name="rangeCrosshairPaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="rangeCrosshairStroke"/>
+        <prop type="double" defalt="0.0" name="rangeCrosshairValue"/>
+        <prop type="boolean" defalt="false" name="rangeCrosshairVisible"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="rangeGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="rangeGridlineStroke"/>
+        <prop type="boolean" defalt="true" name="rangeGridlinesVisible"/>
+        <prop type="java.awt.Paint" defalt="#ffffff" name="rangeMinorGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="rangeMinorGridlineStroke"/>
+        <prop type="boolean" defalt="false" name="rangeMinorGridlinesVisible"/>
+        <prop type="boolean" defalt="false" name="rangePannable"/>
+        <prop type="java.awt.Paint" name="rangeTickBandPaint"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="rangeZeroBaselinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=0" name="rangeZeroBaselineStroke"/>
+        <prop type="boolean" defalt="false" name="rangeZeroBaselineVisible"/>
+        <prop type="[Lorg.jfree.chart.renderer.xy.XYItemRenderer;" name="renderers"/>
+        <prop type="org.jfree.chart.plot.SeriesRenderingOrder" name="seriesRenderingOrder"/>
+        <prop type="int" defalt="1" name="weight"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.ThermometerPlot" supername="org.jfree.chart.plot.Plot" displayname="ThermometerPlot" isAbstract="false">
+      <props>
+        <prop type="int" defalt="2" name="axisLocation"/>
+        <prop type="int" defalt="40" name="bulbRadius"/>
+        <prop type="int" defalt="20" name="columnRadius"/>
+        <prop type="org.jfree.data.general.ValueDataset" name="dataset"/>
+        <prop type="boolean" defalt="false" name="followDataInSubranges"/>
+        <prop type="int" defalt="5" name="gap"/>
+        <prop type="double" defalt="0.0" name="lowerBound"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="mercuryPaint"/>
+        <prop type="org.jfree.ui.RectangleInsets" defalt="0.05,0.05,0.05,0.05,RELATIVE" name="padding"/>
+        <prop type="org.jfree.chart.axis.ValueAxis" name="rangeAxis"/>
+        <prop type="boolean" defalt="false" name="showValueLines"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="thermometerPaint"/>
+        <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="thermometerStroke"/>
+        <prop type="int" defalt="2" name="units"/>
+        <prop type="double" defalt="100.0" name="upperBound"/>
+        <prop type="boolean" defalt="true" name="useSubrangePaint"/>
+        <prop type="java.awt.Font" defalt="SansSerif-16" name="valueFont"/>
+        <prop type="java.text.NumberFormat" name="valueFormat"/>
+        <prop type="int" defalt="3" name="valueLocation"/>
+        <prop type="java.awt.Paint" defalt="#ffffff" name="valuePaint"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.dial.DialPlot" supername="org.jfree.chart.plot.Plot" displayname="DialPlot" isAbstract="false">
+      <props>
+        <prop type="org.jfree.chart.plot.dial.DialLayer" name="background"/>
+        <prop type="org.jfree.chart.plot.dial.DialLayer" name="cap"/>
+        <prop type="org.jfree.chart.plot.dial.DialFrame" name="dialFrame"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.PolarPlot" supername="org.jfree.chart.plot.Plot" displayname="PolarPlot" isAbstract="false">
+      <props>
+        <prop type="java.awt.Paint" defalt="#808080" name="angleGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="angleGridlineStroke"/>
+        <prop type="boolean" defalt="true" name="angleGridlinesVisible"/>
+        <prop type="java.awt.Font" defalt="SansSerif-12" name="angleLabelFont"/>
+        <prop type="java.awt.Paint" defalt="#000000" name="angleLabelPaint"/>
+        <prop type="boolean" defalt="true" name="angleLabelsVisible"/>
+        <prop type="org.jfree.chart.axis.TickUnit" defalt="45.0" name="angleTickUnit"/>
+        <prop type="org.jfree.chart.axis.ValueAxis" name="axis"/>
+        <prop type="org.jfree.data.xy.XYDataset" name="dataset"/>
+        <prop type="java.awt.Paint" defalt="#808080" name="radiusGridlinePaint"/>
+        <prop type="java.awt.Stroke" defalt="line=0.5|dash=1" name="radiusGridlineStroke"/>
+        <prop type="boolean" defalt="true" name="radiusGridlinesVisible"/>
+        <prop type="org.jfree.chart.renderer.PolarItemRenderer" name="renderer"/>
+      </props>
+    </bean>
+    <bean classname="org.jfree.chart.plot.MultiplePiePlot" supername="org.jfree.chart.plot.Plot" displayname="MultiplePiePlot" isAbstract="false">
+      <props>
+        <prop type="java.lang.Comparable" defalt="Other" name="aggregatedItemsKey"/>
+        <prop type="java.awt.Paint" defalt="#c0c0c0" name="aggregatedItemsPaint"/>
+        <prop type="org.jfree.util.TableOrder" name="dataExtractOrder"/>
+        <prop type="org.jfree.data.category.CategoryDataset" name="dataset"/>
+        <prop type="java.awt.Shape" name="legendItemShape"/>
+        <prop type="double" defalt="0.0" name="limit"/>
+        <prop type="org.jfree.chart.JFreeChart" name="pieChart"/>
+      </props>
+    </bean>
+  </plots>
+  <xyrenders>
+    <entry>
+      <string>XYStepAreaRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYStepAreaRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYStepAreaRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="outline"/>
+          <prop type="boolean" defalt="true" name="plotArea"/>
+          <prop type="double" defalt="0.0" name="rangeBase"/>
+          <prop type="boolean" defalt="false" name="shapesFilled"/>
+          <prop type="boolean" defalt="false" name="shapesVisible"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYBarRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYBarRenderer" isAbstract="false">
+        <props>
+          <prop type="double" defalt="-1.0" name="barAlignmentFactor"/>
+          <prop type="org.jfree.chart.renderer.xy.XYBarPainter" defalt="SOLID" name="barPainter"/>
+          <prop type="double" defalt="0.0" name="base"/>
+          <prop type="boolean" defalt="false" name="drawBarOutline"/>
+          <prop type="org.jfree.ui.GradientPaintTransformer" name="gradientPaintTransformer"/>
+          <prop type="java.awt.Shape" name="legendBar"/>
+          <prop type="double" defalt="0.0" name="margin"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="negativeItemLabelPositionFallback"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="positiveItemLabelPositionFallback"/>
+          <prop type="boolean" name="shadowVisible"/>
+          <prop type="double" defalt="4.0" name="shadowXOffset"/>
+          <prop type="double" defalt="4.0" name="shadowYOffset"/>
+          <prop type="boolean" defalt="false" name="useYInterval"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>AbstractXYItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" supername="org.jfree.chart.renderer.AbstractRenderer" displayname="AbstractXYItemRenderer" isAbstract="true">
+        <props>
+          <prop type="org.jfree.chart.urls.XYURLGenerator" name="URLGenerator"/>
+          <prop type="org.jfree.chart.labels.XYItemLabelGenerator" name="baseItemLabelGenerator"/>
+          <prop type="org.jfree.chart.labels.XYToolTipGenerator" name="baseToolTipGenerator"/>
+          <prop type="org.jfree.chart.labels.XYItemLabelGenerator" name="itemLabelGenerator"/>
+          <prop type="org.jfree.chart.labels.XYSeriesLabelGenerator" name="legendItemLabelGenerator"/>
+          <prop type="org.jfree.chart.labels.XYSeriesLabelGenerator" name="legendItemToolTipGenerator"/>
+          <prop type="org.jfree.chart.labels.XYSeriesLabelGenerator" name="legendItemURLGenerator"/>
+          <prop type="org.jfree.chart.plot.XYPlot" name="plot"/>
+          <prop type="org.jfree.chart.labels.XYToolTipGenerator" name="toolTipGenerator"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StackedXYAreaRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.StackedXYAreaRenderer" supername="org.jfree.chart.renderer.xy.XYAreaRenderer" displayname="StackedXYAreaRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" name="shapePaint"/>
+          <prop type="java.awt.Stroke" name="shapeStroke"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYStepRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYStepRenderer" supername="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer" displayname="XYStepRenderer" isAbstract="false">
+        <props>
+          <prop type="double" defalt="1.0" name="stepPoint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>YIntervalRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.YIntervalRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="YIntervalRenderer" isAbstract="false">
+        <props>
+          <prop type="org.jfree.chart.labels.XYItemLabelGenerator" name="additionalItemLabelGenerator"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StandardXYItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.StandardXYItemRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="StandardXYItemRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="true" name="baseShapesFilled"/>
+          <prop type="boolean" defalt="false" name="baseShapesVisible"/>
+          <prop type="boolean" defalt="false" name="drawSeriesLineAsPath"/>
+          <prop type="double" defalt="1.0" name="gapThreshold"/>
+          <prop type="org.jfree.util.UnitType" name="gapThresholdType"/>
+          <prop type="java.awt.Shape" name="legendLine"/>
+          <prop type="boolean" defalt="false" name="plotDiscontinuous"/>
+          <prop type="boolean" defalt="false" name="plotImages"/>
+          <prop type="boolean" defalt="true" name="plotLines"/>
+          <prop type="java.lang.Boolean" name="shapesFilled"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>HighLowRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.HighLowRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="HighLowRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" name="closeTickPaint"/>
+          <prop type="boolean" defalt="true" name="drawCloseTicks"/>
+          <prop type="boolean" defalt="true" name="drawOpenTicks"/>
+          <prop type="java.awt.Paint" name="openTickPaint"/>
+          <prop type="double" defalt="2.0" name="tickLength"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>ClusteredXYBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.ClusteredXYBarRenderer" supername="org.jfree.chart.renderer.xy.XYBarRenderer" displayname="ClusteredXYBarRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYShapeRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYShapeRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYShapeRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="drawOutlines"/>
+          <prop type="java.awt.Paint" defalt="#404040" name="guideLinePaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="guideLineStroke"/>
+          <prop type="boolean" defalt="false" name="guideLinesVisible"/>
+          <prop type="org.jfree.chart.renderer.PaintScale" name="paintScale"/>
+          <prop type="boolean" defalt="false" name="useFillPaint"/>
+          <prop type="boolean" defalt="true" name="useOutlinePaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYAreaRenderer2</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYAreaRenderer2" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYAreaRenderer2" isAbstract="false">
+        <props>
+          <prop type="java.awt.Shape" name="legendArea"/>
+          <prop type="boolean" defalt="false" name="outline"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYErrorRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYErrorRenderer" supername="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer" displayname="XYErrorRenderer" isAbstract="false">
+        <props>
+          <prop type="double" defalt="4.0" name="capLength"/>
+          <prop type="boolean" defalt="true" name="drawXError"/>
+          <prop type="boolean" defalt="true" name="drawYError"/>
+          <prop type="java.awt.Paint" name="errorPaint"/>
+          <prop type="java.awt.Stroke" name="errorStroke"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>CandlestickRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.CandlestickRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="CandlestickRenderer" isAbstract="false">
+        <props>
+          <prop type="double" defalt="0.6428571428571429" name="autoWidthFactor"/>
+          <prop type="double" defalt="0.0" name="autoWidthGap"/>
+          <prop type="int" defalt="0" name="autoWidthMethod"/>
+          <prop type="double" defalt="-1.0" name="candleWidth"/>
+          <prop type="java.awt.Paint" defalt="#ff0000" name="downPaint"/>
+          <prop type="boolean" defalt="true" name="drawVolume"/>
+          <prop type="double" defalt="7.2E7" name="maxCandleWidthInMilliseconds"/>
+          <prop type="java.awt.Paint" defalt="#00ff00" name="upPaint"/>
+          <prop type="boolean" defalt="false" name="useOutlinePaint"/>
+          <prop type="java.awt.Paint" defalt="#808080" name="volumePaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYLine3DRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYLine3DRenderer" supername="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer" displayname="XYLine3DRenderer" isAbstract="false">
+        <props>
+          <prop type="double" defalt="12.0" name="XOffset"/>
+          <prop type="double" defalt="8.0" name="YOffset"/>
+          <prop type="java.awt.Paint" defalt="#dddddd" name="wallPaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYDifferenceRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYDifferenceRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYDifferenceRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Shape" name="legendLine"/>
+          <prop type="java.awt.Paint" defalt="#ff0000" name="negativePaint"/>
+          <prop type="java.awt.Paint" defalt="#00ff00" name="positivePaint"/>
+          <prop type="boolean" defalt="false" name="roundXCoordinates"/>
+          <prop type="boolean" defalt="false" name="shapesVisible"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYAreaRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYAreaRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYAreaRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Shape" name="legendArea"/>
+          <prop type="boolean" defalt="false" name="outline"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>SamplingXYLineRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.SamplingXYLineRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="SamplingXYLineRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Shape" name="legendLine"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>DeviationRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.DeviationRenderer" supername="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer" displayname="DeviationRenderer" isAbstract="false">
+        <props>
+          <prop type="float" defalt="0.5" name="alpha"/>
+          <prop type="boolean" defalt="true" name="drawSeriesLineAsPath"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>DefaultXYItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.DefaultXYItemRenderer" supername="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer" displayname="DefaultXYItemRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYBubbleRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYBubbleRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYBubbleRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYBlockRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYBlockRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYBlockRenderer" isAbstract="false">
+        <props>
+          <prop type="org.jfree.ui.RectangleAnchor" name="blockAnchor"/>
+          <prop type="double" defalt="1.0" name="blockHeight"/>
+          <prop type="double" defalt="1.0" name="blockWidth"/>
+          <prop type="org.jfree.chart.renderer.PaintScale" name="paintScale"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StackedXYAreaRenderer2</string>
+      <bean classname="org.jfree.chart.renderer.xy.StackedXYAreaRenderer2" supername="org.jfree.chart.renderer.xy.XYAreaRenderer2" displayname="StackedXYAreaRenderer2" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="true" name="roundXCoordinates"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>AbstractRenderer</string>
+      <bean classname="org.jfree.chart.renderer.AbstractRenderer" displayname="AbstractRenderer" isAbstract="true">
+        <props>
+          <prop type="boolean" defalt="false" name="autoPopulateSeriesFillPaint"/>
+          <prop type="boolean" defalt="false" name="autoPopulateSeriesOutlinePaint"/>
+          <prop type="boolean" defalt="false" name="autoPopulateSeriesOutlineStroke"/>
+          <prop type="boolean" defalt="true" name="autoPopulateSeriesPaint"/>
+          <prop type="boolean" defalt="true" name="autoPopulateSeriesShape"/>
+          <prop type="boolean" defalt="true" name="autoPopulateSeriesStroke"/>
+          <prop type="boolean" defalt="true" name="baseCreateEntities"/>
+          <prop type="java.awt.Paint" defalt="#ffffff" name="baseFillPaint"/>
+          <prop type="java.awt.Font" defalt="SansSerif-10" name="baseItemLabelFont"/>
+          <prop type="java.awt.Paint" defalt="#000000" name="baseItemLabelPaint"/>
+          <prop type="java.lang.Boolean" defalt="false" name="baseItemLabelsVisible"/>
+          <prop type="java.awt.Shape" name="baseLegendShape"/>
+          <prop type="java.awt.Font" name="baseLegendTextFont"/>
+          <prop type="java.awt.Paint" name="baseLegendTextPaint"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="baseNegativeItemLabelPosition"/>
+          <prop type="java.awt.Paint" defalt="#808080" name="baseOutlinePaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="baseOutlineStroke"/>
+          <prop type="java.awt.Paint" defalt="#0000ff" name="basePaint"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="basePositiveItemLabelPosition"/>
+          <prop type="boolean" defalt="true" name="baseSeriesVisible"/>
+          <prop type="boolean" defalt="true" name="baseSeriesVisibleInLegend"/>
+          <prop type="java.awt.Shape" name="baseShape"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="baseStroke"/>
+          <prop type="java.lang.Boolean" name="createEntities"/>
+          <prop type="boolean" defalt="true" name="dataBoundsIncludesVisibleSeriesOnly"/>
+          <prop type="int" defalt="3" name="defaultEntityRadius"/>
+          <prop type="java.awt.Paint" name="fillPaint"/>
+          <prop type="double" defalt="2.0" name="itemLabelAnchorOffset"/>
+          <prop type="java.awt.Font" name="itemLabelFont"/>
+          <prop type="java.awt.Paint" name="itemLabelPaint"/>
+          <prop type="java.lang.Boolean" name="itemLabelsVisible"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="negativeItemLabelPosition"/>
+          <prop type="java.awt.Paint" name="outlinePaint"/>
+          <prop type="java.awt.Stroke" name="outlineStroke"/>
+          <prop type="java.awt.Paint" name="paint"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="positiveItemLabelPosition"/>
+          <prop type="java.awt.Shape" name="shape"/>
+          <prop type="java.awt.Stroke" name="stroke"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>CyclicXYItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.CyclicXYItemRenderer" supername="org.jfree.chart.renderer.xy.StandardXYItemRenderer" displayname="CyclicXYItemRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYBoxAndWhiskerRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYBoxAndWhiskerRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYBoxAndWhiskerRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" defalt="#000000" name="artifactPaint"/>
+          <prop type="java.awt.Paint" defalt="#00ff00" name="boxPaint"/>
+          <prop type="double" defalt="-1.0" name="boxWidth"/>
+          <prop type="boolean" defalt="true" name="fillBox"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYItemRenderer" displayname="XYItemRenderer" isAbstract="true">
+        <props>
+          <prop type="org.jfree.chart.urls.XYURLGenerator" name="URLGenerator"/>
+          <prop type="java.awt.Font" defalt="SansSerif-10" name="baseItemLabelFont"/>
+          <prop type="org.jfree.chart.labels.XYItemLabelGenerator" name="baseItemLabelGenerator"/>
+          <prop type="java.awt.Paint" defalt="#000000" name="baseItemLabelPaint"/>
+          <prop type="java.lang.Boolean" defalt="false" name="baseItemLabelsVisible"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="baseNegativeItemLabelPosition"/>
+          <prop type="java.awt.Paint" defalt="#808080" name="baseOutlinePaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="baseOutlineStroke"/>
+          <prop type="java.awt.Paint" defalt="#0000ff" name="basePaint"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="basePositiveItemLabelPosition"/>
+          <prop type="boolean" defalt="true" name="baseSeriesVisible"/>
+          <prop type="boolean" defalt="true" name="baseSeriesVisibleInLegend"/>
+          <prop type="java.awt.Shape" name="baseShape"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="baseStroke"/>
+          <prop type="org.jfree.chart.labels.XYToolTipGenerator" name="baseToolTipGenerator"/>
+          <prop type="java.awt.Font" name="itemLabelFont"/>
+          <prop type="org.jfree.chart.labels.XYItemLabelGenerator" name="itemLabelGenerator"/>
+          <prop type="java.awt.Paint" name="itemLabelPaint"/>
+          <prop type="java.lang.Boolean" name="itemLabelsVisible"/>
+          <prop type="org.jfree.chart.labels.XYSeriesLabelGenerator" name="legendItemLabelGenerator"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="negativeItemLabelPosition"/>
+          <prop type="java.awt.Paint" name="outlinePaint"/>
+          <prop type="java.awt.Stroke" name="outlineStroke"/>
+          <prop type="java.awt.Paint" name="paint"/>
+          <prop type="org.jfree.chart.plot.XYPlot" name="plot"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="positiveItemLabelPosition"/>
+          <prop type="java.awt.Shape" name="shape"/>
+          <prop type="java.awt.Stroke" name="stroke"/>
+          <prop type="org.jfree.chart.labels.XYToolTipGenerator" name="toolTipGenerator"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYDotRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYDotRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYDotRenderer" isAbstract="false">
+        <props>
+          <prop type="int" defalt="1" name="dotHeight"/>
+          <prop type="int" defalt="1" name="dotWidth"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYLineAndShapeRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="XYLineAndShapeRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="true" name="baseLinesVisible"/>
+          <prop type="boolean" defalt="true" name="baseShapesFilled"/>
+          <prop type="boolean" defalt="true" name="baseShapesVisible"/>
+          <prop type="boolean" defalt="true" name="drawOutlines"/>
+          <prop type="boolean" defalt="false" name="drawSeriesLineAsPath"/>
+          <prop type="java.awt.Shape" name="legendLine"/>
+          <prop type="java.lang.Boolean" name="linesVisible"/>
+          <prop type="java.lang.Boolean" name="shapesFilled"/>
+          <prop type="java.lang.Boolean" name="shapesVisible"/>
+          <prop type="boolean" defalt="false" name="useFillPaint"/>
+          <prop type="boolean" defalt="false" name="useOutlinePaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>XYSplineRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.XYSplineRenderer" supername="org.jfree.chart.renderer.xy.XYLineAndShapeRenderer" displayname="XYSplineRenderer" isAbstract="false">
+        <props>
+          <prop type="int" defalt="5" name="precision"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>VectorRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.VectorRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="VectorRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>StackedXYBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.StackedXYBarRenderer" supername="org.jfree.chart.renderer.xy.XYBarRenderer" displayname="StackedXYBarRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="renderAsPercentages"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>WindItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.xy.WindItemRenderer" supername="org.jfree.chart.renderer.xy.AbstractXYItemRenderer" displayname="WindItemRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+  </xyrenders>
+  <catrenders>
+    <entry>
+      <string>BarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.BarRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="BarRenderer" isAbstract="false">
+        <props>
+          <prop type="org.jfree.chart.renderer.category.BarPainter" defalt="SOLID" name="barPainter"/>
+          <prop type="double" defalt="0.0" name="base"/>
+          <prop type="boolean" defalt="false" name="drawBarOutline"/>
+          <prop type="org.jfree.ui.GradientPaintTransformer" name="gradientPaintTransformer"/>
+          <prop type="boolean" defalt="true" name="includeBaseInRange"/>
+          <prop type="double" defalt="0.2" name="itemMargin"/>
+          <prop type="double" defalt="1.0" name="maximumBarWidth"/>
+          <prop type="double" defalt="0.0" name="minimumBarLength"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="negativeItemLabelPositionFallback"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="positiveItemLabelPositionFallback"/>
+          <prop type="java.awt.Paint" defalt="#808080" name="shadowPaint"/>
+          <prop type="boolean" name="shadowVisible"/>
+          <prop type="double" defalt="4.0" name="shadowXOffset"/>
+          <prop type="double" defalt="4.0" name="shadowYOffset"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>AbstractRenderer</string>
+      <bean reference="../../../xyrenders/entry[23]/bean"/>
+    </entry>
+    <entry>
+      <string>GanttRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.GanttRenderer" supername="org.jfree.chart.renderer.category.IntervalBarRenderer" displayname="GanttRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" defalt="#00ff00" name="completePaint"/>
+          <prop type="double" defalt="0.65" name="endPercent"/>
+          <prop type="java.awt.Paint" defalt="#ff0000" name="incompletePaint"/>
+          <prop type="double" defalt="0.35" name="startPercent"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>MinMaxCategoryRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.MinMaxCategoryRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="MinMaxCategoryRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="drawLines"/>
+          <prop type="java.awt.Paint" defalt="#000000" name="groupPaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="groupStroke"/>
+          <prop type="javax.swing.Icon" name="maxIcon"/>
+          <prop type="javax.swing.Icon" name="minIcon"/>
+          <prop type="javax.swing.Icon" name="objectIcon"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>LineRenderer3D</string>
+      <bean classname="org.jfree.chart.renderer.category.LineRenderer3D" supername="org.jfree.chart.renderer.category.LineAndShapeRenderer" displayname="LineRenderer3D" isAbstract="false">
+        <props>
+          <prop type="double" defalt="12.0" name="XOffset"/>
+          <prop type="double" defalt="8.0" name="YOffset"/>
+          <prop type="java.awt.Paint" defalt="#dddddd" name="wallPaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>LevelRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.LevelRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="LevelRenderer" isAbstract="false">
+        <props>
+          <prop type="double" defalt="0.2" name="itemMargin"/>
+          <prop type="double" defalt="1.0" name="maxItemWidth"/>
+          <prop type="double" defalt="1.0" name="maximumItemWidth"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StatisticalBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.StatisticalBarRenderer" supername="org.jfree.chart.renderer.category.BarRenderer" displayname="StatisticalBarRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" defalt="#808080" name="errorIndicatorPaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="errorIndicatorStroke"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>CategoryStepRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.CategoryStepRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="CategoryStepRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="stagger"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StatisticalLineAndShapeRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.StatisticalLineAndShapeRenderer" supername="org.jfree.chart.renderer.category.LineAndShapeRenderer" displayname="StatisticalLineAndShapeRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" name="errorIndicatorPaint"/>
+          <prop type="java.awt.Stroke" name="errorIndicatorStroke"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StackedBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.StackedBarRenderer" supername="org.jfree.chart.renderer.category.BarRenderer" displayname="StackedBarRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="renderAsPercentages"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>AbstractCategoryItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" supername="org.jfree.chart.renderer.AbstractRenderer" displayname="AbstractCategoryItemRenderer" isAbstract="true">
+        <props>
+          <prop type="org.jfree.chart.labels.CategoryItemLabelGenerator" name="baseItemLabelGenerator"/>
+          <prop type="org.jfree.chart.urls.CategoryURLGenerator" name="baseItemURLGenerator"/>
+          <prop type="org.jfree.chart.labels.CategoryToolTipGenerator" name="baseToolTipGenerator"/>
+          <prop type="org.jfree.chart.labels.CategoryItemLabelGenerator" name="itemLabelGenerator"/>
+          <prop type="org.jfree.chart.urls.CategoryURLGenerator" name="itemURLGenerator"/>
+          <prop type="org.jfree.chart.labels.CategorySeriesLabelGenerator" name="legendItemLabelGenerator"/>
+          <prop type="org.jfree.chart.labels.CategorySeriesLabelGenerator" name="legendItemToolTipGenerator"/>
+          <prop type="org.jfree.chart.labels.CategorySeriesLabelGenerator" name="legendItemURLGenerator"/>
+          <prop type="org.jfree.chart.plot.CategoryPlot" name="plot"/>
+          <prop type="org.jfree.chart.labels.CategoryToolTipGenerator" name="toolTipGenerator"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>LayeredBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.LayeredBarRenderer" supername="org.jfree.chart.renderer.category.BarRenderer" displayname="LayeredBarRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>IntervalBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.IntervalBarRenderer" supername="org.jfree.chart.renderer.category.BarRenderer" displayname="IntervalBarRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>CategoryItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.CategoryItemRenderer" displayname="CategoryItemRenderer" isAbstract="true">
+        <props>
+          <prop type="java.awt.Font" defalt="SansSerif-10" name="baseItemLabelFont"/>
+          <prop type="org.jfree.chart.labels.CategoryItemLabelGenerator" name="baseItemLabelGenerator"/>
+          <prop type="java.awt.Paint" defalt="#000000" name="baseItemLabelPaint"/>
+          <prop type="java.lang.Boolean" defalt="false" name="baseItemLabelsVisible"/>
+          <prop type="org.jfree.chart.urls.CategoryURLGenerator" name="baseItemURLGenerator"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="baseNegativeItemLabelPosition"/>
+          <prop type="java.awt.Paint" defalt="#808080" name="baseOutlinePaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="baseOutlineStroke"/>
+          <prop type="java.awt.Paint" defalt="#0000ff" name="basePaint"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="basePositiveItemLabelPosition"/>
+          <prop type="boolean" defalt="true" name="baseSeriesVisible"/>
+          <prop type="boolean" defalt="true" name="baseSeriesVisibleInLegend"/>
+          <prop type="java.awt.Shape" name="baseShape"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="baseStroke"/>
+          <prop type="org.jfree.chart.labels.CategoryToolTipGenerator" name="baseToolTipGenerator"/>
+          <prop type="java.awt.Font" name="itemLabelFont"/>
+          <prop type="org.jfree.chart.labels.CategoryItemLabelGenerator" name="itemLabelGenerator"/>
+          <prop type="java.awt.Paint" name="itemLabelPaint"/>
+          <prop type="java.lang.Boolean" name="itemLabelsVisible"/>
+          <prop type="org.jfree.chart.urls.CategoryURLGenerator" name="itemURLGenerator"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="negativeItemLabelPosition"/>
+          <prop type="java.awt.Paint" name="outlinePaint"/>
+          <prop type="java.awt.Stroke" name="outlineStroke"/>
+          <prop type="java.awt.Paint" name="paint"/>
+          <prop type="org.jfree.chart.plot.CategoryPlot" name="plot"/>
+          <prop type="org.jfree.chart.labels.ItemLabelPosition" name="positiveItemLabelPosition"/>
+          <prop type="java.awt.Shape" name="shape"/>
+          <prop type="java.awt.Stroke" name="stroke"/>
+          <prop type="org.jfree.chart.labels.CategoryToolTipGenerator" name="toolTipGenerator"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StackedBarRenderer3D</string>
+      <bean classname="org.jfree.chart.renderer.category.StackedBarRenderer3D" supername="org.jfree.chart.renderer.category.BarRenderer3D" displayname="StackedBarRenderer3D" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="renderAsPercentages"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>BarRenderer3D</string>
+      <bean classname="org.jfree.chart.renderer.category.BarRenderer3D" supername="org.jfree.chart.renderer.category.BarRenderer" displayname="BarRenderer3D" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" defalt="#dddddd" name="wallPaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>BoxAndWhiskerRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.BoxAndWhiskerRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="BoxAndWhiskerRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" defalt="#000000" name="artifactPaint"/>
+          <prop type="boolean" defalt="true" name="fillBox"/>
+          <prop type="double" defalt="0.2" name="itemMargin"/>
+          <prop type="double" defalt="1.0" name="maximumBarWidth"/>
+          <prop type="boolean" defalt="true" name="meanVisible"/>
+          <prop type="boolean" defalt="true" name="medianVisible"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>ScatterRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.ScatterRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="ScatterRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="true" name="baseShapesFilled"/>
+          <prop type="boolean" defalt="false" name="drawOutlines"/>
+          <prop type="double" defalt="0.2" name="itemMargin"/>
+          <prop type="boolean" defalt="false" name="useFillPaint"/>
+          <prop type="boolean" defalt="false" name="useOutlinePaint"/>
+          <prop type="boolean" defalt="true" name="useSeriesOffset"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>StackedAreaRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.StackedAreaRenderer" supername="org.jfree.chart.renderer.category.AreaRenderer" displayname="StackedAreaRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="renderAsPercentages"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>WaterfallBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.WaterfallBarRenderer" supername="org.jfree.chart.renderer.category.BarRenderer" displayname="WaterfallBarRenderer" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" defalt="gradient:#2222ff,#6666ff,0.0,0.0,0.0,0.0,true" name="firstBarPaint"/>
+          <prop type="java.awt.Paint" defalt="gradient:#ffff22,#ffff66,0.0,0.0,0.0,0.0,true" name="lastBarPaint"/>
+          <prop type="java.awt.Paint" defalt="gradient:#ff2222,#ff6666,0.0,0.0,0.0,0.0,true" name="negativeBarPaint"/>
+          <prop type="java.awt.Paint" defalt="gradient:#22ff22,#66ff66,0.0,0.0,0.0,0.0,true" name="positiveBarPaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>LineAndShapeRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.LineAndShapeRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="LineAndShapeRenderer" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="true" name="baseLinesVisible"/>
+          <prop type="boolean" defalt="true" name="baseShapesFilled"/>
+          <prop type="boolean" defalt="true" name="baseShapesVisible"/>
+          <prop type="boolean" defalt="true" name="drawOutlines"/>
+          <prop type="double" defalt="0.0" name="itemMargin"/>
+          <prop type="java.lang.Boolean" name="linesVisible"/>
+          <prop type="java.lang.Boolean" name="shapesFilled"/>
+          <prop type="java.lang.Boolean" name="shapesVisible"/>
+          <prop type="boolean" defalt="false" name="useFillPaint"/>
+          <prop type="boolean" defalt="false" name="useOutlinePaint"/>
+          <prop type="boolean" defalt="false" name="useSeriesOffset"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>DefaultCategoryItemRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.DefaultCategoryItemRenderer" supername="org.jfree.chart.renderer.category.LineAndShapeRenderer" displayname="DefaultCategoryItemRenderer" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>GroupedStackedBarRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.GroupedStackedBarRenderer" supername="org.jfree.chart.renderer.category.StackedBarRenderer" displayname="GroupedStackedBarRenderer" isAbstract="false">
+        <props>
+          <prop type="org.jfree.data.KeyToGroupMap" name="seriesToGroupMap"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>AreaRenderer</string>
+      <bean classname="org.jfree.chart.renderer.category.AreaRenderer" supername="org.jfree.chart.renderer.category.AbstractCategoryItemRenderer" displayname="AreaRenderer" isAbstract="false">
+        <props>
+          <prop type="org.jfree.chart.renderer.AreaRendererEndType" name="endType"/>
+        </props>
+      </bean>
+    </entry>
+  </catrenders>
+  <axes>
+    <entry>
+      <string>CyclicNumberAxis</string>
+      <bean classname="org.jfree.chart.axis.CyclicNumberAxis" supername="org.jfree.chart.axis.NumberAxis" displayname="CyclicNumberAxis" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" name="advanceLinePaint"/>
+          <prop type="java.awt.Stroke" name="advanceLineStroke"/>
+          <prop type="boolean" name="advanceLineVisible"/>
+          <prop type="boolean" name="boundMappedToLastCycle"/>
+          <prop type="double" name="fixedAutoRange"/>
+          <prop type="double" name="offset"/>
+          <prop type="double" name="period"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>SymbolAxis</string>
+      <bean classname="org.jfree.chart.axis.SymbolAxis" supername="org.jfree.chart.axis.NumberAxis" displayname="SymbolAxis" isAbstract="false">
+        <props>
+          <prop type="java.awt.Paint" name="gridBandAlternatePaint"/>
+          <prop type="java.awt.Paint" name="gridBandPaint"/>
+          <prop type="boolean" name="gridBandsVisible"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>Axis</string>
+      <bean classname="org.jfree.chart.axis.Axis" displayname="Axis" isAbstract="true">
+        <props>
+          <prop type="java.awt.Paint" defalt="#808080" name="axisLinePaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="axisLineStroke"/>
+          <prop type="boolean" defalt="true" name="axisLineVisible"/>
+          <prop type="double" defalt="0.0" name="fixedDimension"/>
+          <prop type="java.lang.String" name="label"/>
+          <prop type="double" defalt="0.0" name="labelAngle"/>
+          <prop type="java.awt.Font" defalt="SansSerif-12" name="labelFont"/>
+          <prop type="org.jfree.ui.RectangleInsets" defalt="3.0,3.0,3.0,3.0" name="labelInsets"/>
+          <prop type="java.awt.Paint" defalt="#000000" name="labelPaint"/>
+          <prop type="float" defalt="0.0" name="minorTickMarkInsideLength"/>
+          <prop type="float" defalt="2.0" name="minorTickMarkOutsideLength"/>
+          <prop type="boolean" defalt="false" name="minorTickMarksVisible"/>
+          <prop type="org.jfree.chart.plot.Plot" name="plot"/>
+          <prop type="java.awt.Font" defalt="SansSerif-10" name="tickLabelFont"/>
+          <prop type="org.jfree.ui.RectangleInsets" defalt="2.0,4.0,2.0,4.0" name="tickLabelInsets"/>
+          <prop type="java.awt.Paint" defalt="#000000" name="tickLabelPaint"/>
+          <prop type="boolean" defalt="true" name="tickLabelsVisible"/>
+          <prop type="float" defalt="0.0" name="tickMarkInsideLength"/>
+          <prop type="float" defalt="2.0" name="tickMarkOutsideLength"/>
+          <prop type="java.awt.Paint" defalt="#808080" name="tickMarkPaint"/>
+          <prop type="java.awt.Stroke" defalt="line=1.0|dash=0" name="tickMarkStroke"/>
+          <prop type="boolean" defalt="true" name="tickMarksVisible"/>
+          <prop type="boolean" defalt="true" name="visible"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>ExtendedCategoryAxis</string>
+      <bean classname="org.jfree.chart.axis.ExtendedCategoryAxis" supername="org.jfree.chart.axis.CategoryAxis" displayname="ExtendedCategoryAxis" isAbstract="false">
+        <props>
+          <prop type="java.awt.Font" name="subLabelFont"/>
+          <prop type="java.awt.Paint" name="subLabelPaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>PeriodAxis</string>
+      <bean classname="org.jfree.chart.axis.PeriodAxis" supername="org.jfree.chart.axis.ValueAxis" displayname="PeriodAxis" isAbstract="false">
+        <props>
+          <prop type="java.lang.Class" name="autoRangeTimePeriodClass"/>
+          <prop type="org.jfree.data.time.RegularTimePeriod" name="first"/>
+          <prop type="[Lorg.jfree.chart.axis.PeriodAxisLabelInfo;" name="labelInfo"/>
+          <prop type="org.jfree.data.time.RegularTimePeriod" name="last"/>
+          <prop type="java.lang.Class" name="majorTickTimePeriodClass"/>
+          <prop type="float" name="minorTickMarkInsideLength"/>
+          <prop type="float" name="minorTickMarkOutsideLength"/>
+          <prop type="java.awt.Paint" name="minorTickMarkPaint"/>
+          <prop type="java.awt.Stroke" name="minorTickMarkStroke"/>
+          <prop type="boolean" name="minorTickMarksVisible"/>
+          <prop type="java.lang.Class" name="minorTickTimePeriodClass"/>
+          <prop type="java.util.TimeZone" name="timeZone"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>ModuloAxis</string>
+      <bean classname="org.jfree.chart.axis.ModuloAxis" supername="org.jfree.chart.axis.NumberAxis" displayname="ModuloAxis" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>CategoryAxis</string>
+      <bean classname="org.jfree.chart.axis.CategoryAxis" supername="org.jfree.chart.axis.Axis" displayname="CategoryAxis" isAbstract="false">
+        <props>
+          <prop type="int" defalt="4" name="categoryLabelPositionOffset"/>
+          <prop type="org.jfree.chart.axis.CategoryLabelPositions" defalt="STANDARD" name="categoryLabelPositions"/>
+          <prop type="double" defalt="0.2" name="categoryMargin"/>
+          <prop type="double" defalt="0.05" name="lowerMargin"/>
+          <prop type="int" defalt="1" name="maximumCategoryLabelLines"/>
+          <prop type="float" defalt="0.0" name="maximumCategoryLabelWidthRatio"/>
+          <prop type="double" defalt="0.05" name="upperMargin"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>CategoryAxis3D</string>
+      <bean classname="org.jfree.chart.axis.CategoryAxis3D" supername="org.jfree.chart.axis.CategoryAxis" displayname="CategoryAxis3D" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>LogarithmicAxis</string>
+      <bean classname="org.jfree.chart.axis.LogarithmicAxis" supername="org.jfree.chart.axis.NumberAxis" displayname="LogarithmicAxis" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="false" name="allowNegativesFlag"/>
+          <prop type="boolean" defalt="false" name="autoRangeNextLogFlag"/>
+          <prop type="boolean" defalt="false" name="expTickLabelsFlag"/>
+          <prop type="boolean" defalt="false" name="log10TickLabelsFlag"/>
+          <prop type="org.jfree.data.Range" name="range"/>
+          <prop type="boolean" defalt="true" name="strictValuesFlag"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>DateAxis</string>
+      <bean classname="org.jfree.chart.axis.DateAxis" supername="org.jfree.chart.axis.ValueAxis" displayname="DateAxis" isAbstract="false">
+        <props>
+          <prop type="java.text.DateFormat" name="dateFormatOverride"/>
+          <prop type="java.util.Date" defalt="1969-12-31" name="maximumDate"/>
+          <prop type="java.util.Date" defalt="1969-12-31" name="minimumDate"/>
+          <prop type="org.jfree.data.Range" name="range"/>
+          <prop type="org.jfree.chart.axis.DateTickMarkPosition" defalt="START" name="tickMarkPosition"/>
+          <prop type="org.jfree.chart.axis.DateTickUnit" name="tickUnit"/>
+          <prop type="java.util.TimeZone" name="timeZone"/>
+          <prop type="org.jfree.chart.axis.Timeline" name="timeline"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>LogAxis</string>
+      <bean classname="org.jfree.chart.axis.LogAxis" supername="org.jfree.chart.axis.ValueAxis" displayname="LogAxis" isAbstract="false">
+        <props>
+          <prop type="double" defalt="10.0" name="base"/>
+          <prop type="java.text.NumberFormat" name="numberFormatOverride"/>
+          <prop type="double" defalt="1.0E-100" name="smallestValue"/>
+          <prop type="org.jfree.chart.axis.NumberTickUnit" defalt="1.0" name="tickUnit"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>SubCategoryAxis</string>
+      <bean classname="org.jfree.chart.axis.SubCategoryAxis" supername="org.jfree.chart.axis.CategoryAxis" displayname="SubCategoryAxis" isAbstract="false">
+        <props>
+          <prop type="java.awt.Font" name="subLabelFont"/>
+          <prop type="java.awt.Paint" name="subLabelPaint"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>NumberAxis3D</string>
+      <bean classname="org.jfree.chart.axis.NumberAxis3D" supername="org.jfree.chart.axis.NumberAxis" displayname="NumberAxis3D" isAbstract="false">
+        <props/>
+      </bean>
+    </entry>
+    <entry>
+      <string>ValueAxis</string>
+      <bean classname="org.jfree.chart.axis.ValueAxis" supername="org.jfree.chart.axis.Axis" displayname="ValueAxis" isAbstract="true">
+        <props>
+          <prop type="boolean" defalt="true" name="autoRange"/>
+          <prop type="double" defalt="2.0" name="autoRangeMinimumSize"/>
+          <prop type="boolean" defalt="true" name="autoTickUnitSelection"/>
+          <prop type="org.jfree.data.Range" name="defaultAutoRange"/>
+          <prop type="java.awt.Shape" name="downArrow"/>
+          <prop type="double" defalt="0.0" name="fixedAutoRange"/>
+          <prop type="boolean" defalt="false" name="inverted"/>
+          <prop type="java.awt.Shape" name="leftArrow"/>
+          <prop type="double" defalt="0.0" name="lowerBound"/>
+          <prop type="double" defalt="0.05" name="lowerMargin"/>
+          <prop type="int" defalt="0" name="minorTickCount"/>
+          <prop type="boolean" defalt="false" name="negativeArrowVisible"/>
+          <prop type="boolean" defalt="false" name="positiveArrowVisible"/>
+          <prop type="org.jfree.data.Range" name="range"/>
+          <prop type="org.jfree.data.Range" name="rangeWithMargins"/>
+          <prop type="java.awt.Shape" name="rightArrow"/>
+          <prop type="org.jfree.chart.axis.TickUnitSource" name="standardTickUnits"/>
+          <prop type="java.awt.Shape" name="upArrow"/>
+          <prop type="double" defalt="1.0" name="upperBound"/>
+          <prop type="double" defalt="0.05" name="upperMargin"/>
+          <prop type="boolean" defalt="false" name="verticalTickLabels"/>
+        </props>
+      </bean>
+    </entry>
+    <entry>
+      <string>NumberAxis</string>
+      <bean classname="org.jfree.chart.axis.NumberAxis" supername="org.jfree.chart.axis.ValueAxis" displayname="NumberAxis" isAbstract="false">
+        <props>
+          <prop type="boolean" defalt="true" name="autoRangeIncludesZero"/>
+          <prop type="boolean" defalt="true" name="autoRangeStickyZero"/>
+          <prop type="org.jfree.chart.axis.MarkerAxisBand" name="markerBand"/>
+          <prop type="java.text.NumberFormat" name="numberFormatOverride"/>
+          <prop type="org.jfree.data.RangeType" name="rangeType"/>
+          <prop type="org.jfree.chart.axis.NumberTickUnit" defalt="1.0" name="tickUnit"/>
+        </props>
+      </bean>
+    </entry>
+  </axes>
+</chart-types>

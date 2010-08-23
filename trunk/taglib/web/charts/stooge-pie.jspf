@@ -1,0 +1,6 @@
+<c:chart plotType="pie3d">
+ <c:series name="Stooges" datasource="d1" x="3"/>
+ <c:props>
+title.text=Stooge Preferences (Pie)
+ </c:props>
+</c:chart>

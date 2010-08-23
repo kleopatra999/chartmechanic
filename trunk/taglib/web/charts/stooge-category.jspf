@@ -1,0 +1,6 @@
+<c:chart>
+ <c:series name="Stooge Count" datasource="d1" x="3"/>
+ <c:props>
+title.text=Stooge Preferences (Category Plot)
+ </c:props>
+</c:chart>

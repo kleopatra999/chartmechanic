@@ -1,0 +1,815 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<script LANGUAGE="JavaScript">
+<!-- hide from old browsers
+function JumpToURL2()
+{
+	//var form = document.frmDepts;
+	var url = '';
+	
+	switch( url )
+	{
+		case 'bo':
+			window.location  = '/depts/directors/default.asp';
+			break;
+		case 'gm':
+			window.location  = '/depts/gm/default.asp';
+			break;
+		case 'ad':
+			window.location  = '/depts/admin/default.asp';
+			break;
+		case 'fi':
+			window.location  = '/depts/finance/default.asp';
+			break;
+		case 'om':
+			window.location  = '/depts/ops/default.asp';
+			break;
+		case 'hr':
+			window.location  = '/depts/hr/default.asp';
+			break;
+		case 'ts':
+			window.location  = '/depts/techservices/default.asp';
+			break;
+		case 'sa':
+			window.location  = '/depts/safety/default.asp';
+			break;
+		case 'tr':
+			window.location  = '/depts/training/default.asp';
+			break;
+		case 'en':
+			window.location  = '/depts/engineering/default.asp';
+			break;
+		case 'it':
+			window.location  = '/depts/it/default.asp';
+			break;
+		default:
+			window.location  = '/default.asp';
+			break;
+
+	}
+}
+//-->
+</script>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">var javascript_version = 1.0;</script>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">javascript_version = 1.1;</script>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+var newwin;
+var civicawin;
+civicawin = null;
+function launchwin(winurl,winname,winfeatures)
+{
+	newwin = window.open(winurl,winname,winfeatures);
+	if (!newwin.opener)
+	{
+		newwin.opener = self
+	}
+
+	if(javascript_version > 1.0)
+	{
+ 		setTimeout('newwin.focus();',250);
+	}
+}
+
+function civicapopupwin(winurl,winname,winfeatures)
+{
+	civicawin = window.open(winurl,winname,winfeatures);
+	
+	if (!civicawin.opener)
+	{
+		civicawin.opener = self
+	}
+
+	if(javascript_version > 1.0)
+	{
+ 		setTimeout('civicawin.focus();',250);
+	}
+}
+
+//-->
+</script>
+
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+
+var bOverButton = false;
+var bOverMenu = false;
+var otimerid = 0;
+
+var bWFOverButton = false;
+var bWFOverMenu = false;
+var oWFtimerid = 0;
+
+function civicapostwindow(sPath)
+{
+	document.wfpost.action=sPath;
+	document.wfpost.submit();
+}
+
+function clkEditButton(obj)
+{
+	bOverButton = true;
+
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid=0;
+
+
+	divEditMenu.style.visibility = 'visible';
+	var y = obj.offsetTop + 25; //- ((divEditMenu.scrollHeight-obj.scrollHeight)/2);
+	if ( y < 0 )
+		y=0;
+
+	divEditMenu.style.top = y;
+
+//	if( divEditMenu.style.top < 0 )
+//		divEditMenu.style.top =0;
+
+	divEditMenu.style.left = obj.offsetLeft;
+
+}
+
+function clkWorkFlowButton(obj)
+{
+	bWFOverButton = true;
+
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid=0;
+
+
+	divWorkFlowMenu.style.visibility = 'visible';
+	var y = obj.offsetTop + 25; //- ((divEditMenu.scrollHeight-obj.scrollHeight)/2);
+	if ( y < 0 )
+		y=0;
+
+	divWorkFlowMenu.style.top = y;
+
+//	if( divEditMenu.style.top < 0 )
+//		divEditMenu.style.top =0;
+
+	divWorkFlowMenu.style.left = obj.offsetLeft;
+
+}
+
+function exitButton(obj)
+{
+	if( bOverButton && !bOverMenu )
+	{
+		//divEditMenu.style.visibility = 'hidden';
+		otimerid = setTimeout("CloseMenu()",500);
+	}
+}
+
+function exitWorkFlowButton(obj)
+{
+	if( bWFOverButton && !bWFOverMenu )
+	{
+		//divEditMenu.style.visibility = 'hidden';
+		oWFtimerid = setTimeout("CloseWorkFlowMenu()",500);
+	}
+}
+
+
+function CloseMenu()
+{
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid=0;
+	bOverMenu = false;
+	bOverButton = false;
+	divEditMenu.style.visibility = 'hidden';
+}
+
+function CloseWorkFlowMenu()
+{
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid=0;
+	bWFOverMenu = false;
+	bWFOverButton = false;
+	divWorkFlowMenu.style.visibility = 'hidden';
+}
+
+
+function EnterMenu()
+{
+	bOverMenu=true;
+	bOverButton=false;
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid=0;
+}
+
+function EnterWorkFlowMenu()
+{
+	bOverWFMenu=true;
+	bOverWFButton=false;
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid=0;
+}
+
+function ExitMenu()
+{
+	bOverMenu=false;
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid = setTimeout("CloseMenu()",1000);
+}
+
+function ExitWorkFlowMenu()
+{
+	bWFOverMenu=false;
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid = setTimeout("CloseWorkFlowMenu()",500);
+}
+//-->
+</script>
+
+
+
+<style type="text/css">
+<!--
+
+a:link       { text-decoration: underline; font-size: 13px; color: rgb(0,0,128) }
+a:visited    { text-decoration: underline; font-size: 13px; color: rgb(0,0,128) }
+a:active     { text-decoration: underline; font-size: 13px; color: rgb(0,0,128) }
+a:hover      { text-decoration: underline; font-size: 13px; color: red }
+
+
+a.mnav:link       { text-decoration: none; font-size: 10px; color: white }
+a.mnav:visited    { text-decoration: none; font-size: 10px; color: white }
+a.mnav:active     { text-decoration: none; font-size: 10px; color: white }
+a.mnav:hover      { text-decoration: none; font-size: 10px; color: yellow }
+
+a.l2:link       { text-decoration: underline; font-size: 13px; color: red }
+a.l2:visited    { text-decoration: underline; font-size: 13px; color: red }
+a.l2:active     { text-decoration: underline; font-size: 13px; color: rgb(200,0,0) }
+a.l2:hover      { text-decoration: underline; font-size: 13px; color: rgb(200,0,0) }
+a.yah:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #000000 }
+a.yah:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #000000 }
+a.yah:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #000000 }
+a.yah:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: red }
+font.yah		{ font-family: Tahoma, sans-serif; font-size: 11px; color: #FFFFFF }
+font.wee		{ font-family: Tahoma, sans-serif; font-size: 11px  }
+font.wee2		{ font-family: Tahoma, sans-serif; font-size: 11px; color: rgb(51,51,51) }
+.f1			{ font-family: Tahoma, sans-serif; font-size: 11px }
+.f2			{ font-family: Tahoma, sans-serif; font-size: 13px }
+.f3			{ font-family: Tahoma, sans-serif; font-size: 15px }
+.f4			{ font-family: Tahoma, sans-serif; font-size: 17px }
+a.wee:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: rgb(0,0,128) }
+a.wee:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: rgb(0,0,128) }
+a.wee:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: rgb(0,0,128) }
+a.wee:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: red }
+a.nav:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: rgb(0,0,128) }
+a.nav:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: rgb(0,0,128) }
+a.nav:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: rgb(0,0,128) }
+a.nav:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: red }
+font.topdate		{ font-family: Tahoma, sans-serif; font-size: 11px; color: #646464;font-weight: bold}
+body.default  {font-family: Tahoma, Arial, sans-serif; font-size: 13px; color: black}
+.searchresulturl { font-family: Tahoma, sans-serif; font-size: 11px; color: rgb(64,64,192)}
+SELECT.seldept { PADDING-LEFT: 4px; FONT-SIZE: 11px; FONT-FAMILY: Tahoma, sans-serif}
+
+font.crum					{ font-family: Tahoma, sans-serif; font-size: 11px; color: #00000  }
+a.crum:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #00000 }
+a.crum:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #00000 }
+a.crum:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #00000 }
+a.crum:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #FFBA00 }
+
+font.copy					{ font-family: Tahoma, sans-serif; font-size: 11px; color: #73735B  }
+span.copy					{ font-family: Tahoma, sans-serif; font-size: 11px; color: #73735B  }
+span.scopy				{ font-family: Tahoma, sans-serif; font-size: 11px; color: #73735B  }
+
+a.copy:link, a.copy:visited, a.copy:active	{ font-family: Tahoma, sans-serif; font-size: 11px; font-weight: bold; text-decoration: underline; color: rgb(0,0,128) }
+a.copy:hover      { font-family: Tahoma, sans-serif; font-size: 11px; font-weight: bold; text-decoration: underline; color: rgb(192,0,0) }
+
+a.lohi:link, a.lohi:visited, a.lohi:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: #C9DDEA }
+a.lohi:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #FFFFFF }
+
+a.myem:link, a.myem:visited, a.myem:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: #C9DDEA }
+a.myem:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: #FFFFFF }
+
+
+body
+{ 
+	background-color: #145F8E;
+	color: #000000;
+	margin: 0px;
+	height: 100%;
+}
+
+font.hpcontact		{ font-family: Tahoma, sans-serif; font-size: 10.5px; line-height: 14px; font-weight: normal }
+font.hpcontactb		{ font-family: Tahoma, sans-serif; font-size: 10.5px; line-height: 14px; font-weight: bold }
+
+a.hpcontact:link, a.hpcontact:visited,
+a.hpcontact:active	{ text-decoration: underline; font-size: 11px; color: rgb(0,0,0); font-weight: normal }
+a.hpcontact:hover		{ text-decoration: underline; font-size: 11px; color: red; font-weight: normal }
+
+
+#divEditMenu
+{   BORDER: #959595 1px solid;
+    PADDING: 2px;
+    FONT-FAMILY: Tahoma;
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-DECORATION: none;
+    position:absolute;
+		visibility:hidden;
+		top:-1000px;
+		left: -1000px;
+}
+
+#divWorkFlowMenu
+{   BORDER: #959595 1px solid;
+    PADDING: 2px;
+    FONT-FAMILY: Tahoma;
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-DECORATION: none;
+    position:absolute;
+		visibility:hidden;
+		top:-1000px;
+		left: -1000px;
+}
+
+FONT.pagelink
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #000099;
+    FONT-FAMILY: Tahoma, arial, sans-serif;
+    TEXT-DECORATION: none
+}
+
+A.pagelink:link, A.pagelink:visited, A.pagelink:active
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #000099;
+    FONT-FAMILY: Tahoma, arial, sans-serif;
+    TEXT-DECORATION: none
+}
+A.pagelink:hover
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #cc0000;
+    FONT-FAMILY: Tahoma, arial, sans-serif;
+    TEXT-DECORATION: none
+}
+
+div.divFormSecurity
+{   
+	width:90%; 
+	padding:4px; 
+	background-color:#f8f8f8; 
+	border: solid 1px #e0e0e0;  
+	line-height:28px;
+	text-align:center;
+}
+
+
+/***************************************************************************
+	Search Results Page
+/**************************************************************************/
+
+font.srchSubHeader
+{
+	font-family: tahoma, sans-serif; 
+	font-size: 15px; 
+	font-weight: Bold; 
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 25px; 
+}
+
+font.srchSearchedFor
+{
+	font-family: tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 21px; 
+}
+font.srchResultsLabel
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+}
+font.srchResultsInfo
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+}
+font.srchResultsNone
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+}
+
+a.srchResultsAll:link,
+a.srchResultsAll:visited, a.srchResultsAll:active
+a.srchResultsAll
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+	text-decoration: none; 
+
+}
+a.srchResultsAll:hover
+{  
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #c00000;
+	line-height: 19px; 
+	text-decoration: none; 
+}
+
+a.srchDisplayLink:link,
+a.srchDisplayLink:visited, a.srchDisplayLink:active
+a.srchDisplayLink
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 21px; 
+	text-decoration: none; 
+
+}
+a.srchDisplayLink:hover
+{  
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #c00000;
+	line-height: 21px; 
+	text-decoration: none; 
+}
+
+.srchDisplaySub 
+{ 
+	font-family: tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 17px; 
+}
+.srchDisplayURL
+{ 
+	font-family: tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #808080;
+	line-height: 17px; 
+}
+.srchDescription
+{ 
+    font-family: tahoma, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    vertical-align: middle; 
+    color: #aaaaaa;
+    line-height: 17px; 
+}
+
+/***************************************************************************
+	Template spacing, v75 templates
+/**************************************************************************/
+
+div.tmplVertSpace1
+{
+	width: 100%;
+	height: 20px;
+	/*border: solid 1px black*/
+}
+div.tmplVertSpace2
+{
+	width: 100%;
+	height: 10px;
+	/*border: solid 1px black*/
+}
+td.tmplRightColumn
+{
+	padding-top:10px; 
+	vertical-align:top;
+	background-color:#c9ddea;
+	height:100%;
+}
+-->
+</style>
+
+
+<title>Port of Long Beach - TEUs Archive Since 1995</title>
+</head>
+<body id="devbody">
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="/navdata/758.js" TYPE='text/javascript'></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="/civica/js/FormVal.js"></SCRIPT>
+
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+function HM_f_MenuTop()
+{
+	return 0;
+}
+
+function subGrphVer( grphver )
+{
+	document.frmGrpxVer.grpxver.value = grphver;
+	document.frmGrpxVer.submit();
+}
+
+function frmSearchSubmit()
+{
+
+  if (document.frmSearch.searchquery.value=='')
+  {
+    alert('Please Enter a value to search');
+    return;
+  }
+  with(document.frmSearch)
+  {
+    action = '/search/default.asp';
+    submit();
+  }
+
+}
+
+var cvPageID = 839;
+
+function CV_jumpMenu(selObj,restore)
+{ 
+	var url = selObj.options[selObj.selectedIndex].value; 
+	if (url) window.open(url); 
+	if (restore) selObj.selectedIndex=0; 
+} 
+
+function CV_jumpMenu(selObj,restore)
+{ 
+	var url = selObj.options[selObj.selectedIndex].value; 
+	if (url) window.open(url); 
+	if (restore) selObj.selectedIndex=0; 
+} 
+
+//-->
+</script>
+
+
+<script LANGUAGE="JavaScript"> var javascript_version = 1.0;</script>
+<script LANGUAGE="JavaScript1.1">  javascript_version = 1.1;</script>
+
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+
+
+
+if(window.event + "" == "undefined") event = null;
+function HM_f_PopUp(){return false};
+function HM_f_PopDown(){return false};
+popUp = HM_f_PopUp;
+popDown = HM_f_PopDown;
+
+
+if (document.images) {
+	but1_off = new Image; but1_off.src = "/img/navbuts/but1_off.gif";
+	but1_on = new Image;  but1_on.src =  "/img/navbuts/but1_on.gif";
+	
+	but2_off = new Image; but2_off.src = "/img/navbuts/but2_off.gif";
+	but2_on = new Image;  but2_on.src =  "/img/navbuts/but2_on.gif";
+	
+	but3_off = new Image; but3_off.src = "/img/navbuts/but3_off.gif";
+	but3_on = new Image;  but3_on.src =  "/img/navbuts/but3_on.gif";
+	
+	but4_off = new Image; but4_off.src = "/img/navbuts/but4_off.gif";
+	but4_on = new Image;  but4_on.src =  "/img/navbuts/but4_on.gif";
+	
+	but5_off = new Image; but5_off.src = "/img/navbuts/but5_off.gif";
+	but5_on = new Image;  but5_on.src =  "/img/navbuts/but5_on.gif";
+	
+	but6_off = new Image; but6_off.src = "/img/navbuts/but6_off.gif";
+	but6_on = new Image;  but6_on.src =  "/img/navbuts/but6_on.gif";
+	
+	but7_off = new Image; but7_off.src = "/img/navbuts/but7_off.gif";
+	but7_on = new Image;  but7_on.src =  "/img/navbuts/but7_on.gif";
+	
+	but8_off = new Image; but8_off.src = "/img/navbuts/but8_off.gif";
+	but8_on = new Image;  but8_on.src =  "/img/navbuts/but8_on.gif";
+	
+	search_off = new Image; search_off.src = "/img/navbuts/search_off.gif";
+	search_on = new Image; search_on.src = "/img/navbuts/search_on.gif";
+
+	go_off = new Image; go_off.src = "/img/navbuts/go_off.gif";
+	go_on = new Image; go_on.src = "/img/navbuts/go_on.gif";
+	
+	lbut1_off = new Image;
+	lbut1_on = new Image;
+	
+	lbut2_off = new Image;
+	lbut2_on = new Image;
+	
+	lbut3_off = new Image;
+	lbut3_on = new Image;
+
+	lbut4_off = new Image;
+	lbut4_on = new Image;
+	
+	lbut5_off = new Image;
+	lbut5_on = new Image;
+	
+	lbut6_off = new Image;
+	lbut6_on = new Image;
+
+	lbut7_off = new Image;
+	lbut7_on = new Image;
+	
+	lbut8_off = new Image;
+	lbut8_on = new Image;
+	
+	lbut9_off = new Image;
+	lbut9_on = new Image;
+
+	lbut10_off = new Image;
+	lbut10_on = new Image;
+
+	lbut11_off = new Image;
+	lbut11_on = new Image;
+
+}
+
+var nav_b = new Array ("b1","b2","b3","b4","b5","b6","b7","b8","sh","go",
+											 "l1","l2","l3","l4","l5","l6","l7","l8","l9","l10","l11");
+var obj_boff = new Array (but1_off,but2_off,but3_off,but4_off,but5_off,but6_off,but7_off,but8_off,search_off,go_off,
+													lbut1_off,lbut2_off,lbut3_off,lbut4_off,lbut5_off,lbut6_off,lbut7_off,lbut8_off,lbut9_off,lbut10_off,lbut11_off);
+var obj_bon = new Array  (but1_on, but2_on, but3_on, but4_on, but5_on, but6_on, but7_on, but8_on, search_on, go_on, 
+													lbut1_on, lbut2_on, lbut3_on,lbut4_on, lbut5_on, lbut6_on,lbut7_on, lbut8_on, lbut9_on, lbut10_on, lbut11_on);
+
+
+function on( num )
+{
+	//alert(num);
+	
+	if( document.images )
+	{	
+		document.images[nav_b[num-1]].src = obj_bon[num-1].src;
+		if( (num > 0) && (num < 9) && (document.images) )
+		{
+			//alert(num);
+			popUp('HM_Menu'+(num+1));
+		}
+	}		
+}
+
+function off( num )
+{
+	//alert(num)
+	
+	if( num >= 9  )
+		if( document.images )
+			document.images[nav_b[num-1]].src = obj_boff[num-1].src;
+	
+	if( num < 9 )
+	{
+		popDown('HM_Menu'+(num+1));
+	}
+}
+
+
+
+function buttonoff( num )
+{
+	//alert(num);
+	if( num < 9  )
+		if( document.images[nav_b[num-1]] )
+			document.images[nav_b[num-1]].src = obj_boff[num-1].src;
+}
+
+function buttonon( num )
+{
+	if( num < 9  )
+		if( document.images[nav_b[num-1]] )
+			document.images[nav_b[num-1]].src = obj_bon[num-1].src;
+}
+
+
+
+var newwin;
+
+function launchwin(winurl,winname,winfeatures)
+{
+	newwin = window.open(winurl,winname,winfeatures);
+	if(javascript_version > 1.0)
+	{
+ 		setTimeout('newwin.focus();',250);
+	}
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function newwindow(theURL) {
+  window.open(theURL,'','');
+}
+
+
+
+function SubmitSearch()
+{ document.frmSearch.submit(); }
+
+HM_PG_MenuWidth = 190;
+HM_PG_FontFamily = "Tahoma, sans-serif";
+HM_PG_FontSize = 8;
+HM_PG_FontBold = 0;
+HM_PG_FontItalic = 0;
+HM_PG_FontColor = "blue";
+HM_PG_FontColorOver = "white";
+HM_PG_BGColor = "#DDDDDD";
+HM_PG_BGColorOver = "#FFCCCC";
+HM_PG_ItemPadding = 3;
+
+HM_PG_BorderWidth = 1;
+HM_PG_BorderColor = "black";
+HM_PG_BorderStyle = "solid";
+HM_PG_SeparatorSize = 1;
+HM_PG_SeparatorColor = "#d0ff00";
+HM_PG_ImageSrc = "/img/tri.gif";
+HM_PG_ImageSrcLeft = "/img/triL.gif";
+
+HM_PG_ImageSize = 5;
+HM_PG_ImageHorizSpace = 0;
+HM_PG_ImageVertSpace = 0;
+
+HM_PG_KeepHilite = true; 
+HM_PG_ClickStart = 0;
+HM_PG_ClickKill = false;
+HM_PG_ChildOverlap = 30;
+HM_PG_ChildOffset = 5;
+HM_PG_ChildPerCentOver = null;
+HM_PG_TopSecondsVisible = .2;
+HM_PG_ChildSecondsVisible = .2;
+
+HM_PG_StatusDisplayBuild =0;
+HM_PG_StatusDisplayLink = 0;
+HM_PG_UponDisplay = null;
+HM_PG_UponHide = null;
+HM_PG_RightToLeft = false;
+
+HM_PG_CreateTopOnly = 1;
+HM_PG_ShowLinkCursor = 1;
+HM_PG_NSFontOver = true;
+
+//HM_a_TreesToBuild = [2];
+
+//-->
+</script>
+
+
+<script LANGUAGE="JavaScript1.2" SRC="/HM_StuLoader.js" TYPE="text/javascript"></script>
+<table border="0" style="width:100%; height:100%;" cellspacing="0" cellpadding="0"><tr><td style="height:100%; background-color: #145F8E; background-image: url(/img/layout/lfade.gif); background-repeat: repeat-y; background-position: right"><img src="/img/blank.gif" width=1 height=1 border=0 alt=""></td><td width="740" valign="top" bgcolor="#FFFFFF"><div id="oAllScreen" style="display:block; position:relative; top: 0px; left: 0px; height: 100%;"><table border="0" style="width:100%; height:100%;" cellspacing="0" cellpadding="0"><tr><td width="740" valign="top" style="height:100%;">
+
+<!-- Top Navigation Table -->
+<div align="center" name="MainDiv">
+<a name="top"></a><table border="0" cellpadding="0" cellspacing="0" width="748" bgcolor="#ffffff"><tr><td width="748" height="85" valign="top" align="left" background="/img/layout/header.jpg"><span name="spnHead" id="spnHead" onmouseover="this.style.cursor='hand';" onmouseout="this.style.cursor='default';" onclick="javascript:frmHomePage.submit();"><img src="/img/blank.gif" width="748" height="55" border="0"><img src="/img/blank.gif" width="20" height="20" border="0"><a class="lohi" href="javascript:subGrphVer('lo');">Low Graphics Version</a><img src="/img/blank.gif" width="600" height="20" border="0"><img src="/img/blank.gif" width="748" height="9" border="0"></span></td></tr><form name="frmHomePage" action="/default.asp" method="post" ><input type="hidden" name="a" value="1"></form></table><table width="748" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111"><form name="frmSearch" id="frmSearch" action="/search/default.asp" method="post" target="_self"></tr><td width ="608" height="30" background="/img/layout/searchs.gif"><a href="/about/default.asp" target="_self" onmouseout="off(1);" onmouseover="on(1);"><img border="0" src="/img/navbuts/but1_off.gif" width="103" height="30" name="b1"></a><a href="/commission/default.asp" target="_self" onmouseout="off(2);" onmouseover="on(2);"><img border="0" src="/img/navbuts/but2_off.gif" width="134" height="30" name="b2"></a><a href="/economics/default.asp" target="_self" onmouseout="off(3);" onmouseover="on(3);"><img border="0" src="/img/navbuts/but3_off.gif" width="117" height="30" name="b3"></a><a href="/environment/default.asp" target="_self" onmouseout="off(4);" onmouseover="on(4);"><img border="0" src="/img/navbuts/but4_off.gif" width="93" height="30" name="b4"></a><a href="/community/default.asp" target="_self" onmouseout="off(5);" onmouseover="on(5);"><img border="0" src="/img/navbuts/but5_off.gif" width="84" height="30" name="b5"></a><a href="/contact/default.asp" target="_self" onmouseout="off(6);" onmouseover="on(6);"><img border="0" src="/img/navbuts/but6_off.gif" width="77" height="30" name="b6"></a></td><td width="93" height="30" align="right" background="/img/layout/searchs.gif"><input type="text" name="searchquery" size="10" maxlength="50" value="Search"></td><td width="47" height="30" background="/img/layout/searchs.gif"><a href='javascript:frmSearchSubmit();' target=_self onmouseover='on(9);' onmouseout='off(9);'><img name='sh' src='/img/navbuts/search_off.gif' width=40 height=30 align=right border=0 ></a></td></tr></form></table><table width="748" border="0" cellpadding="0" cellspacing="0"><tr valign="top" ><td width="5" background="/img/layout/crumbs.gif"><img src='/img/blank.gif' width="5"  border="0"></td><td height="25" valign="top" width="598" background="/img/layout/crumbs.gif"><a class="crum" href='/default.asp' target='_self'><img src="/img/homeicon.gif" width="26" height="25" border="0" align="absmiddle">Home</a>&nbsp;<font class="crum">></font>&nbsp;<a class="crum" href='/economics/default.asp' target='_self'>Trade/Commerce</a>&nbsp;<font class="crum">></font>&nbsp;<a class="crum" href='/economics/port_stats/default.asp' target='_self'>Port Stats</a>&nbsp;<font class="crum" color="#000000">>&nbsp;TEUs Archive Since 1995</font></td><td width="140" valign="top" align="right" background="/img/layout/crumbs.gif"><a href="mailto:?subject=I found this link&amp;body=http://www.polb.com/economics/port_stats/teus_archive_since_1995.asp"><img border="0" width="65" height="25" alt="E-mail story" src="/img/icons/email-icon.gif"></a><img border="0" width="5" height="25" src="/img/blank.gif"><a href="javascript:document.frmPrintable.submit();"><img border="0" width="65" height="25" alt="Print friendly format" src="/img/icons/print-icon.gif"></a></td><td width="5" background="/img/layout/crumbs.gif"><img src='/img/blank.gif' width="5"  border="0"></td></tr></table>
+</div>
+<table border="0" width="748" height="100%" cellspacing="0" cellpadding="0"><tr><td width="182" valign="top" height="100%" bgcolor="#C9DDEA"><table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0"><tr><td width="182" valign="top" align="center" bgcolor="#C9DDEA">
+<table border="0" width="182" cellspacing="0" cellpadding="0"><tr><td colspan="3" valign="top"><img border="0" src="/img/navmenu/navmenu.gif" width="182" ></td></tr></table>
+
+	<div id="navbg" style="position:relative; height:191px; width:182px; backgroundImage:url(/img/navmenu/navslice.gif);"></div>
+	<div id="navcolumn" style="position:relative;visibility:hidden" >
+	<img border="0" src="/img/navmenu/NavBott.gif" width="182" height="20"><table border="0" height="10" width="182" cellspacing="0" cellpadding="0"><tr><td width="182" height="10" valign="top"><img src='/img/blank.gif' width=182 height=10 border=0></td></tr></table></div>
+</td></tr></table></td><td width="12" valign="top" background="/img/layout/liedge.gif"><img src='/img/blank.gif' width=12 height=400 border=0></td><td width="549" bgcolor="#ffffff" valign="top">
+<table border="0"  cellspacing="0" cellpadding="0" style="width:100%; height:400; background-color:#ffffff;">
+<tr>
+	<td style="width:100%; vertical-align:top;"><font size=4 face="Tahoma, Sans-Serif" color="#153B3B">TEUs Archive Since 1995</font><BR><IMG src="/img/underline.gif" border=0><BR><p>
+<!-- begin table of interest -->
+<TABLE cellSpacing=0 cellPadding=0 width=458 border=0 x:str><COLGROUP><COL width=63><COL span=5 width=79>
+<TBODY>
+
+<TR height=21><TD width=458 colSpan=6 height=21><STRONG>Container Trade in TEUs*</STRONG></TD></TR><TR height=17><TD width=458 colSpan=6 height=17><STRONG><FONT size=2>Since 1995</FONT></STRONG></TD></TR><TR height=17><TD width=458 colSpan=6 height=17><FONT size=2>*TEUs: 20-foot-equivalent unit or 20-foot-long cargo container</FONT></TD></TR><TR height=17><TD width=458 colSpan=6 height=17><FONT size=2></FONT></TD></TR><TR height=17><TD width=458 colSpan=6 height=17><FONT size=2></FONT></TD></TR><TR height=17><TD width=63 height=34 rowSpan=2><FONT size=2></FONT></TD><TD width=79><FONT size=2><STRONG>Loaded</STRONG></FONT></TD><TD width=79><FONT size=2><STRONG>Loaded</STRONG></FONT></TD><TD width=79><FONT size=2><STRONG>Total</STRONG></FONT></TD><TD width=79 rowSpan=2><FONT size=2><STRONG>Empties</STRONG></FONT></TD><TD width=79 rowSpan=2><FONT size=2><STRONG>Total</STRONG></FONT></TD></TR><TR height=17><TD width=79 height=17><FONT size=2><STRONG>Inbound</STRONG></FONT></TD><TD width=79><FONT size=2><STRONG>Outbound</STRONG></FONT></TD><TD width=79><FONT size=2><STRONG>Loaded</STRONG></FONT></TD></TR>
+<TR height=17><TD width=63 height=17 x:num="39052"><STRONG><FONT size=2>Dec-06</FONT></STRONG></TD><TD width=79 x:num="282726"><FONT size=2>282,726 </FONT></TD><TD width=79 x:num="111838"><FONT size=2>111,838 </FONT></TD><TD width=79 x:num="394564" x:fmla="=B8+C8"><FONT size=2>394,564 </FONT></TD><TD width=79 x:num="180663"><FONT size=2>180,663 </FONT></TD><TD width=79 x:num="575227" x:fmla="=D8+E8"><FONT size=2>575,227 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="39022"><STRONG><FONT size=2>Nov-06</FONT></STRONG></TD><TD width=79 x:num="332806"><FONT size=2>332,806 </FONT></TD><TD width=79 x:num="107738"><FONT size=2>107,738 </FONT></TD><TD width=79 x:num="440544" x:fmla="=B9+C9"><FONT size=2>440,544 </FONT></TD><TD width=79 x:num="214453"><FONT size=2>214,453 </FONT></TD><TD width=79 x:num="654997" x:fmla="=D9+E9"><FONT size=2>654,997 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38991"><STRONG><FONT size=2>Oct-06</FONT></STRONG></TD><TD width=79 x:num="335688"><FONT size=2>335,688 </FONT></TD><TD width=79 x:num="109318"><FONT size=2>109,318 </FONT></TD><TD width=79 x:num="445006" x:fmla="=B10+C10"><FONT size=2>445,006 </FONT></TD><TD width=79 x:num="205720"><FONT size=2>205,720 </FONT></TD><TD width=79 x:num="650726" x:fmla="=D10+E10"><FONT size=2>650,726 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38961"><STRONG><FONT size=2>Sep-06</FONT></STRONG></TD><TD width=79 x:num="317661"><FONT size=2>317,661 </FONT></TD><TD width=79 x:num="98660"><FONT size=2>98,660 </FONT></TD><TD width=79 x:num="416321" x:fmla="=B11+C11"><FONT size=2>416,321 </FONT></TD><TD width=79 x:num="198418"><FONT size=2>198,418 </FONT></TD><TD width=79 x:num="614739" x:fmla="=D11+E11"><FONT size=2>614,739 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38930"><STRONG><FONT size=2>Aug-06</FONT></STRONG></TD><TD width=79 x:num="347829"><FONT size=2>347,829 </FONT></TD><TD width=79 x:num="105256"><FONT size=2>105,256 </FONT></TD><TD width=79 x:num="453085" x:fmla="=B12+C12"><FONT size=2>453,085 </FONT></TD><TD width=79 x:num="221973"><FONT size=2>221,973 </FONT></TD><TD width=79 x:num="675058" x:fmla="=D12+E12"><FONT size=2>675,058 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38899"><STRONG><FONT size=2>Jul-06</FONT></STRONG></TD><TD width=79 x:num="305117"><FONT size=2>305,117 </FONT></TD><TD width=79 x:num="100861"><FONT size=2>100,861 </FONT></TD><TD width=79 x:num="405978" x:fmla="=B13+C13"><FONT size=2>405,978 </FONT></TD><TD width=79 x:num="176947"><FONT size=2>176,947 </FONT></TD><TD width=79 x:num="582925" x:fmla="=D13+E13"><FONT size=2>582,925 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38869"><STRONG><FONT size=2>Jun-06</FONT></STRONG></TD><TD width=79 x:num="319737"><FONT size=2>319,737 </FONT></TD><TD width=79 x:num="101828"><FONT size=2>101,828 </FONT></TD><TD width=79 x:num="421565" x:fmla="=B14+C14"><FONT size=2>421,565 </FONT></TD><TD width=79 x:num="195437"><FONT size=2>195,437 </FONT></TD><TD width=79 x:num="617002" x:fmla="=D14+E14"><FONT size=2>617,002 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38838"><STRONG><FONT size=2>May-06</FONT></STRONG></TD><TD width=79 x:num="328314"><FONT size=2>328,314 </FONT></TD><TD width=79 x:num="115158"><FONT size=2>115,158 </FONT></TD><TD width=79 x:num="443472" x:fmla="=B15+C15"><FONT size=2>443,472 </FONT></TD><TD width=79 x:num="200594"><FONT size=2>200,594 </FONT></TD><TD width=79 x:num="644066" x:fmla="=D15+E15"><FONT size=2>644,066 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38808"><STRONG><FONT size=2>Apr-06</FONT></STRONG></TD><TD width=79 x:num="321044"><FONT size=2>321,044 </FONT></TD><TD width=79 x:num="111755"><FONT size=2>111,755 </FONT></TD><TD width=79 x:num="432799" x:fmla="=B16+C16"><FONT size=2>432,799 </FONT></TD><TD width=79 x:num="186713"><FONT size=2>186,713 </FONT></TD><TD width=79 x:num="619512" x:fmla="=D16+E16"><FONT size=2>619,512 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38777"><STRONG><FONT size=2>Mar-06</FONT></STRONG></TD><TD width=79 x:num="282440"><FONT size=2>282,440 </FONT></TD><TD width=79 x:num="118728"><FONT size=2>118,728 </FONT></TD><TD width=79 x:num="401168" x:fmla="=B17+C17"><FONT size=2>401,168 </FONT></TD><TD width=79 x:num="160026"><FONT size=2>160,026 </FONT></TD><TD width=79 x:num="561194" x:fmla="=D17+E17"><FONT size=2>561,194 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38749"><STRONG><FONT size=2>Feb-06</FONT></STRONG></TD><TD width=79 x:num="252463"><FONT size=2>252,463 </FONT></TD><TD width=79 x:num="109963"><FONT size=2>109,963 </FONT></TD><TD width=79 x:num="362426" x:fmla="=B18+C18"><FONT size=2>362,426 </FONT></TD><TD width=79 x:num="153038"><FONT size=2>153,038 </FONT></TD><TD width=79 x:num="515464" x:fmla="=D18+E18"><FONT size=2>515,464 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38718"><STRONG><FONT size=2>Jan-06</FONT></STRONG></TD><TD width=79 x:num="293855"><FONT size=2>293,855 </FONT></TD><TD width=79 x:num="99740"><FONT size=2>99,740 </FONT></TD><TD width=79 x:num="393595" x:fmla="=B19+C19"><FONT size=2>393,595 </FONT></TD><TD width=79 x:num="185860"><FONT size=2>185,860 </FONT></TD><TD width=79 x:num="579455" x:fmla="=D19+E19"><FONT size=2>579,455 </FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38687"><STRONG><FONT size=2>Dec-05</FONT></STRONG></TD><TD width=79 x:num="266358"><FONT size=2>266,358</FONT></TD><TD width=79 x:num="104184"><FONT size=2>104,184</FONT></TD><TD width=79 x:num="370542" x:fmla="=B20+C20"><FONT size=2>370,542</FONT></TD><TD width=79 x:num="175230"><FONT size=2>175,230</FONT></TD><TD width=79 x:num="545772"><FONT size=2>545,772</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38657"><STRONG><FONT size=2>Nov-05</FONT></STRONG></TD><TD width=79 x:num="305065"><FONT size=2>305,065</FONT></TD><TD width=79 x:num="107147"><FONT size=2>107,147</FONT></TD><TD width=79 x:num="412212" x:fmla="=B21+C21"><FONT size=2>412,212</FONT></TD><TD width=79 x:num="198432"><FONT size=2>198,432</FONT></TD><TD width=79 x:num="610644"><FONT size=2>610,644</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38626"><STRONG><FONT size=2>Oct-05</FONT></STRONG></TD><TD width=79 x:num="299203"><FONT size=2>299,203</FONT></TD><TD width=79 x:num="103422"><FONT size=2>103,422</FONT></TD><TD width=79 x:num="402625" x:fmla="=B22+C22"><FONT size=2>402,625</FONT></TD><TD width=79 x:num="198315"><FONT size=2>198,315</FONT></TD><TD width=79 x:num="600940"><FONT size=2>600,940</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38596"><STRONG><FONT size=2>Sep-05</FONT></STRONG></TD><TD width=79 x:num="313460"><FONT size=2>313,460</FONT></TD><TD width=79 x:num="97009"><FONT size=2>97,009</FONT></TD><TD width=79 x:num="410469"><FONT size=2>410,469</FONT></TD><TD width=79 x:num="199800"><FONT size=2>199,800</FONT></TD><TD width=79 x:num="610269"><FONT size=2>610,269</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38569"><STRONG><FONT size=2>Aug-05</FONT></STRONG></TD><TD width=79 x:num="306124"><FONT size=2>306,124</FONT></TD><TD width=79 x:num="110750"><FONT size=2>110,750</FONT></TD><TD width=79 x:num="416874"><FONT size=2>416,874</FONT></TD><TD width=79 x:num="198487"><FONT size=2>198,487</FONT></TD><TD width=79 x:num="615361"><FONT size=2>615,361</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38538"><STRONG><FONT size=2>Jul-05</FONT></STRONG></TD><TD width=79 x:num="289518"><FONT size=2>289,518</FONT></TD><TD width=79 x:num="106917"><FONT size=2>106,917</FONT></TD><TD width=79 x:num="396435"><FONT size=2>396,435</FONT></TD><TD width=79 x:num="176865"><FONT size=2>176,865</FONT></TD><TD width=79 x:num="573300"><FONT size=2>573,300</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38508"><STRONG><FONT size=2>Jun-05</FONT></STRONG></TD><TD width=79 x:num="294252"><FONT size=2>294,252</FONT></TD><TD width=79 x:num="101381"><FONT size=2>101,381</FONT></TD><TD width=79 x:num="395633"><FONT size=2>395,633</FONT></TD><TD width=79 x:num="180971"><FONT size=2>180,971</FONT></TD><TD width=79 x:num="576604"><FONT size=2>576,604</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38477"><STRONG><FONT size=2>May-05</FONT></STRONG></TD><TD width=79 x:num="288031"><FONT size=2>288,031</FONT></TD><TD width=79 x:num="106034"><FONT size=2>106,034</FONT></TD><TD width=79 x:num="394065"><FONT size=2>394,065</FONT></TD><TD width=79 x:num="170821"><FONT size=2>170,821</FONT></TD><TD width=79 x:num="564886"><FONT size=2>564,886</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38447"><STRONG><FONT size=2>Apr-05</FONT></STRONG></TD><TD width=79 x:num="270920"><FONT size=2>270,920</FONT></TD><TD width=79 x:num="107609"><FONT size=2>107,609</FONT></TD><TD width=79 x:num="378529"><FONT size=2>378,529</FONT></TD><TD width=79 x:num="159972"><FONT size=2>159,972</FONT></TD><TD width=79 x:num="538501"><FONT size=2>538,501</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38416"><STRONG><FONT size=2>Mar-05</FONT></STRONG></TD><TD width=79 x:num="210093"><FONT size=2>210,093</FONT></TD><TD width=79 x:num="104519"><FONT size=2>104,519</FONT></TD><TD width=79 x:num="314612"><FONT size=2>314,612</FONT></TD><TD width=79 x:num="151407"><FONT size=2>151,407</FONT></TD><TD width=79 x:num="466019"><FONT size=2>466,019</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38388"><STRONG><FONT size=2>Feb-05</FONT></STRONG></TD><TD width=79 x:num="250245"><FONT size=2>250,245</FONT></TD><TD width=79 x:num="90867"><FONT size=2>90,867</FONT></TD><TD width=79 x:num="341112"><FONT size=2>341,112</FONT></TD><TD width=79 x:num="156813"><FONT size=2>156,813</FONT></TD><TD width=79 x:num="497925"><FONT size=2>497,925</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38353"><STRONG><FONT size=2>Jan-05</FONT></STRONG></TD><TD width=79 x:num="252785"><FONT size=2>252,785</FONT></TD><TD width=79 x:num="81580"><FONT size=2>81,580</FONT></TD><TD width=79 x:num="334365"><FONT size=2>334,365</FONT></TD><TD width=79 x:num="175232"><FONT size=2>175,232</FONT></TD><TD width=79 x:num="509597"><FONT size=2>509,597</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38325"><STRONG><FONT size=2>Dec-04</FONT></STRONG></TD><TD width=79 x:num="269495"><FONT size=2>269,495</FONT></TD><TD width=79 x:num="93377"><FONT size=2>93,377</FONT></TD><TD width=79 x:num="362872"><FONT size=2>362,872</FONT></TD><TD width=79 x:num="188467"><FONT size=2>188,467</FONT></TD><TD width=79 x:num="551339"><FONT size=2>551,339</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38295"><STRONG><FONT size=2>Nov-04</FONT></STRONG></TD><TD width=79 x:num="295717"><FONT size=2>295,717</FONT></TD><TD width=79 x:num="99436"><FONT size=2>99,436</FONT></TD><TD width=79 x:num="395153"><FONT size=2>395,153</FONT></TD><TD width=79 x:num="187461"><FONT size=2>187,461</FONT></TD><TD width=79 x:num="582614"><FONT size=2>582,614</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38264"><STRONG><FONT size=2>Oct-04</FONT></STRONG></TD><TD width=79 x:num="288590"><FONT size=2>288,590</FONT></TD><TD width=79 x:num="85824"><FONT size=2>85,824</FONT></TD><TD width=79 x:num="374414"><FONT size=2>374,414</FONT></TD><TD width=79 x:num="183251"><FONT size=2>183,251</FONT></TD><TD width=79 x:num="557665"><FONT size=2>557,665</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38234"><STRONG><FONT size=2>Sep-04</FONT></STRONG></TD><TD width=79 x:num="255592"><FONT size=2>255,592</FONT></TD><TD width=79 x:num="76190"><FONT size=2>76,190</FONT></TD><TD width=79 x:num="331782"><FONT size=2>331,782</FONT></TD><TD width=79 x:num="162594"><FONT size=2>162,594</FONT></TD><TD width=79 x:num="494376"><FONT size=2>494,376</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38203"><STRONG><FONT size=2>Aug-04</FONT></STRONG></TD><TD width=79 x:num="274914"><FONT size=2>274,914</FONT></TD><TD width=79 x:num="79339"><FONT size=2>79,339</FONT></TD><TD width=79 x:num="354253"><FONT size=2>354,253</FONT></TD><TD width=79 x:num="166651"><FONT size=2>166,651</FONT></TD><TD width=79 x:num="520904"><FONT size=2>520,904</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38172"><STRONG><FONT size=2>Jul-04</FONT></STRONG></TD><TD width=79 x:num="281817"><FONT size=2>281,817</FONT></TD><TD width=79 x:num="82441"><FONT size=2>82,441</FONT></TD><TD width=79 x:num="364258"><FONT size=2>364,258</FONT></TD><TD width=79 x:num="165405"><FONT size=2>165,405</FONT></TD><TD width=79 x:num="529663"><FONT size=2>529,663</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38142"><STRONG><FONT size=2>Jun-04</FONT></STRONG></TD><TD width=79 x:num="260752"><FONT size=2>260,752</FONT></TD><TD width=79 x:num="82218"><FONT size=2>82,218</FONT></TD><TD width=79 x:num="342970"><FONT size=2>342,970</FONT></TD><TD width=79 x:num="151128"><FONT size=2>151,128</FONT></TD><TD width=79 x:num="494098"><FONT size=2>494,098</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38111"><STRONG><FONT size=2>May-04</FONT></STRONG></TD><TD width=79 x:num="242910"><FONT size=2>242,910</FONT></TD><TD width=79 x:num="84502"><FONT size=2>84,502</FONT></TD><TD width=79 x:num="327412"><FONT size=2>327,412</FONT></TD><TD width=79 x:num="140617"><FONT size=2>140,617</FONT></TD><TD width=79 x:num="468029"><FONT size=2>468,029</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38081"><STRONG><FONT size=2>Apr-04</FONT></STRONG></TD><TD width=79 x:num="227046"><FONT size=2>227,046</FONT></TD><TD width=79 x:num="79825"><FONT size=2>79,825</FONT></TD><TD width=79 x:num="306871"><FONT size=2>306,871</FONT></TD><TD width=79 x:num="134190"><FONT size=2>134,190</FONT></TD><TD width=79 x:num="441061"><FONT size=2>441,061</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38050"><STRONG><FONT size=2>Mar-04</FONT></STRONG></TD><TD width=79 x:num="235500"><FONT size=2>235,500</FONT></TD><TD width=79 x:num="94823"><FONT size=2>94,823</FONT></TD><TD width=79 x:num="330323"><FONT size=2>330,323</FONT></TD><TD width=79 x:num="118075"><FONT size=2>118,075</FONT></TD><TD width=79 x:num="448398"><FONT size=2>448,398</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="38021"><STRONG><FONT size=2>Feb-04</FONT></STRONG></TD><TD width=79 x:num="153995"><FONT size=2>153,995</FONT></TD><TD width=79 x:num="76963"><FONT size=2>76,963</FONT></TD><TD width=79 x:num="230958"><FONT size=2>230,958</FONT></TD><TD width=79 x:num="83791"><FONT size=2>83,791</FONT></TD><TD width=79 x:num="314749"><FONT size=2>314,749</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37990"><STRONG><FONT size=2>Jan-04</FONT></STRONG></TD><TD width=79 x:num="201652"><FONT size=2>201,652</FONT></TD><TD width=79 x:num="72975"><FONT size=2>72,975</FONT></TD><TD width=79 x:num="274627"><FONT size=2>274,627</FONT></TD><TD width=79 x:num="102329"><FONT size=2>102,329</FONT></TD><TD width=79 x:num="376956"><FONT size=2>376,956</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37958"><STRONG><FONT size=2>Dec-03</FONT></STRONG></TD><TD width=79 x:num="210094"><FONT size=2>210,094</FONT></TD><TD width=79 x:num="83941"><FONT size=2>83,941</FONT></TD><TD width=79 x:num="294035"><FONT size=2>294,035</FONT></TD><TD width=79 x:num="111986"><FONT size=2>111,986</FONT></TD><TD width=79 x:num="406021"><FONT size=2>406,021</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37928"><STRONG><FONT size=2>Nov-03</FONT></STRONG></TD><TD width=79 x:num="216379"><FONT size=2>216,379</FONT></TD><TD width=79 x:num="82449"><FONT size=2>82,449</FONT></TD><TD width=79 x:num="298828"><FONT size=2>298,828</FONT></TD><TD width=79 x:num="126065"><FONT size=2>126,065</FONT></TD><TD width=79 x:num="424893"><FONT size=2>424,893</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37897"><STRONG><FONT size=2>Oct-03</FONT></STRONG></TD><TD width=79 x:num="230527"><FONT size=2>230,527</FONT></TD><TD width=79 x:num="84952"><FONT size=2>84,952</FONT></TD><TD width=79 x:num="315479"><FONT size=2>315,479</FONT></TD><TD width=79 x:num="121345"><FONT size=2>121,345</FONT></TD><TD width=79 x:num="436824"><FONT size=2>436,824</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37867"><STRONG><FONT size=2>Sep-03</FONT></STRONG></TD><TD width=79 x:num="206315"><FONT size=2>206,315</FONT></TD><TD width=79 x:num="65926"><FONT size=2>65,926</FONT></TD><TD width=79 x:num="272241"><FONT size=2>272,241</FONT></TD><TD width=79 x:num="107570"><FONT size=2>107,570</FONT></TD><TD width=79 x:num="379811"><FONT size=2>379,811</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37836"><STRONG><FONT size=2>Aug-03</FONT></STRONG></TD><TD width=79 x:num="206910"><FONT size=2>206,910</FONT></TD><TD width=79 x:num="75338"><FONT size=2>75,338</FONT></TD><TD width=79 x:num="282248"><FONT size=2>282,248</FONT></TD><TD width=79 x:num="108469"><FONT size=2>108,469</FONT></TD><TD width=79 x:num="390717"><FONT size=2>390,717</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37805"><STRONG><FONT size=2>Jul-03</FONT></STRONG></TD><TD width=79 x:num="231118"><FONT size=2>231,118</FONT></TD><TD width=79 x:num="80972"><FONT size=2>80,972</FONT></TD><TD width=79 x:num="312090"><FONT size=2>312,090</FONT></TD><TD width=79 x:num="118596"><FONT size=2>118,596</FONT></TD><TD width=79 x:num="430686"><FONT size=2>430,686</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37775"><STRONG><FONT size=2>Jun-03</FONT></STRONG></TD><TD width=79 x:num="204344"><FONT size=2>204,344</FONT></TD><TD width=79 x:num="70992"><FONT size=2>70,992</FONT></TD><TD width=79 x:num="275336"><FONT size=2>275,336</FONT></TD><TD width=79 x:num="111180"><FONT size=2>111,180</FONT></TD><TD width=79 x:num="386516"><FONT size=2>386,516</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37744"><STRONG><FONT size=2>May-03</FONT></STRONG></TD><TD width=79 x:num="196565"><FONT size=2>196,565</FONT></TD><TD width=79 x:num="76606"><FONT size=2>76,606</FONT></TD><TD width=79 x:num="273171"><FONT size=2>273,171</FONT></TD><TD width=79 x:num="115215"><FONT size=2>115,215</FONT></TD><TD width=79 x:num="388386"><FONT size=2>388,386</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37714"><STRONG><FONT size=2>Apr-03</FONT></STRONG></TD><TD width=79 x:num="200476"><FONT size=2>200,476</FONT></TD><TD width=79 x:num="75295"><FONT size=2>75,295</FONT></TD><TD width=79 x:num="275771"><FONT size=2>275,771</FONT></TD><TD width=79 x:num="125015"><FONT size=2>125,015</FONT></TD><TD width=79 x:num="400786"><FONT size=2>400,786</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37683"><STRONG><FONT size=2>Mar-03</FONT></STRONG></TD><TD width=79 x:num="179800"><FONT size=2>179,800</FONT></TD><TD width=79 x:num="82797"><FONT size=2>82,797</FONT></TD><TD width=79 x:num="262597"><FONT size=2>262,597</FONT></TD><TD width=79 x:num="93935"><FONT size=2>93,935</FONT></TD><TD width=79 x:num="356532"><FONT size=2>356,532</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37655"><STRONG><FONT size=2>Feb-03</FONT></STRONG></TD><TD width=79 x:num="158863"><FONT size=2>158,863</FONT></TD><TD width=79 x:num="67645"><FONT size=2>67,645</FONT></TD><TD width=79 x:num="226508"><FONT size=2>226,508</FONT></TD><TD width=79 x:num="96098"><FONT size=2>96,098</FONT></TD><TD width=79 x:num="322606"><FONT size=2>322,606</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37624"><STRONG><FONT size=2>Jan-03</FONT></STRONG></TD><TD width=79 x:num="168186"><FONT size=2>168,186</FONT></TD><TD width=79 x:num="57626"><FONT size=2>57,626</FONT></TD><TD width=79 x:num="225812"><FONT size=2>225,812</FONT></TD><TD width=79 x:num="108534"><FONT size=2>108,534</FONT></TD><TD width=79 x:num="334346"><FONT size=2>334,346</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37592"><STRONG><FONT size=2>Dec-02</FONT></STRONG></TD><TD width=79 x:num="186243"><FONT size=2>186,243</FONT></TD><TD width=79 x:num="64262"><FONT size=2>64,262</FONT></TD><TD width=79 x:num="250505"><FONT size=2>250,505</FONT></TD><TD width=79 x:num="111457"><FONT size=2>111,457</FONT></TD><TD width=79 x:num="361962"><FONT size=2>361,962</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37562"><STRONG><FONT size=2>Nov-02</FONT></STRONG></TD><TD width=79 x:num="179463"><FONT size=2>179,463</FONT></TD><TD width=79 x:num="64946"><FONT size=2>64,946</FONT></TD><TD width=79 x:num="244409"><FONT size=2>244,409</FONT></TD><TD width=79 x:num="90740"><FONT size=2>90,740</FONT></TD><TD width=79 x:num="335149"><FONT size=2>335,149</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37531"><STRONG><FONT size=2>Oct-02</FONT></STRONG></TD><TD width=79 x:num="163776"><FONT size=2>163,776</FONT></TD><TD width=79 x:num="40608"><FONT size=2>40,608</FONT></TD><TD width=79 x:num="204384"><FONT size=2>204,384</FONT></TD><TD width=79 x:num="96934"><FONT size=2>96,934</FONT></TD><TD width=79 x:num="301318"><FONT size=2>301,318</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37501"><STRONG><FONT size=2>Sep-02</FONT></STRONG></TD><TD width=79 x:num="188874"><FONT size=2>188,874</FONT></TD><TD width=79 x:num="53924"><FONT size=2>53,924</FONT></TD><TD width=79 x:num="242898"><FONT size=2>242,898</FONT></TD><TD width=79 x:num="97541"><FONT size=2>97,541</FONT></TD><TD width=79 x:num="340339"><FONT size=2>340,339</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37470"><STRONG><FONT size=2>Aug-02</FONT></STRONG></TD><TD width=79 x:num="234592"><FONT size=2>234,592</FONT></TD><TD width=79 x:num="71086"><FONT size=2>71,086</FONT></TD><TD width=79 x:num="305678"><FONT size=2>305,678</FONT></TD><TD width=79 x:num="121558"><FONT size=2>121,558</FONT></TD><TD width=79 x:num="427236"><FONT size=2>427,236</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37439"><STRONG><FONT size=2>Jul-02</FONT></STRONG></TD><TD width=79 x:num="249618"><FONT size=2>249,618</FONT></TD><TD width=79 x:num="70500"><FONT size=2>70,500</FONT></TD><TD width=79 x:num="320118"><FONT size=2>320,118</FONT></TD><TD width=79 x:num="131799"><FONT size=2>131,799</FONT></TD><TD width=79 x:num="451917"><FONT size=2>451,917</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37409"><STRONG><FONT size=2>Jun-02</FONT></STRONG></TD><TD width=79 x:num="236112"><FONT size=2>236,112</FONT></TD><TD width=79 x:num="75814"><FONT size=2>75,814</FONT></TD><TD width=79 x:num="311926"><FONT size=2>311,926</FONT></TD><TD width=79 x:num="107051"><FONT size=2>107,051</FONT></TD><TD width=79 x:num="418977"><FONT size=2>418,977</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37378"><STRONG><FONT size=2>May-02</FONT></STRONG></TD><TD width=79 x:num="231382"><FONT size=2>231,382</FONT></TD><TD width=79 x:num="84062"><FONT size=2>84,062</FONT></TD><TD width=79 x:num="315444"><FONT size=2>315,444</FONT></TD><TD width=79 x:num="112589"><FONT size=2>112,589</FONT></TD><TD width=79 x:num="428033"><FONT size=2>428,033</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37348"><STRONG><FONT size=2>Apr-02</FONT></STRONG></TD><TD width=79 x:num="227953"><FONT size=2>227,953</FONT></TD><TD width=79 x:num="87960"><FONT size=2>87,960</FONT></TD><TD width=79 x:num="315913"><FONT size=2>315,913</FONT></TD><TD width=79 x:num="94287"><FONT size=2>94,287</FONT></TD><TD width=79 x:num="410200"><FONT size=2>410,200</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37317"><STRONG><FONT size=2>Mar-02</FONT></STRONG></TD><TD width=79 x:num="171874"><FONT size=2>171,874</FONT></TD><TD width=79 x:num="87845"><FONT size=2>87,845</FONT></TD><TD width=79 x:num="259719"><FONT size=2>259,719</FONT></TD><TD width=79 x:num="83887"><FONT size=2>83,887</FONT></TD><TD width=79 x:num="343606"><FONT size=2>343,606</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37289"><STRONG><FONT size=2>Feb-02</FONT></STRONG></TD><TD width=79 x:num="202276"><FONT size=2>202,276</FONT></TD><TD width=79 x:num="83333"><FONT size=2>83,333</FONT></TD><TD width=79 x:num="285609"><FONT size=2>285,609</FONT></TD><TD width=79 x:num="77374"><FONT size=2>77,374</FONT></TD><TD width=79 x:num="362983"><FONT size=2>362,983</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37258"><STRONG><FONT size=2>Jan-02</FONT></STRONG></TD><TD width=79 x:num="180528"><FONT size=2>180,528</FONT></TD><TD width=79 x:num="70944"><FONT size=2>70,944</FONT></TD><TD width=79 x:num="251472"><FONT size=2>251,472</FONT></TD><TD width=79 x:num="93173"><FONT size=2>93,173</FONT></TD><TD width=79 x:num="344645"><FONT size=2>344,645</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37226"><STRONG><FONT size=2>Dec-01</FONT></STRONG></TD><TD width=79 x:num="191584"><FONT size=2>191,584</FONT></TD><TD width=79 x:num="83660"><FONT size=2>83,660</FONT></TD><TD width=79 x:num="275244"><FONT size=2>275,244</FONT></TD><TD width=79 x:num="84299"><FONT size=2>84,299</FONT></TD><TD width=79 x:num="359543"><FONT size=2>359,543</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37196"><STRONG><FONT size=2>Nov-01</FONT></STRONG></TD><TD width=79 x:num="193861"><FONT size=2>193,861</FONT></TD><TD width=79 x:num="75879"><FONT size=2>75,879</FONT></TD><TD width=79 x:num="269740"><FONT size=2>269,740</FONT></TD><TD width=79 x:num="102345"><FONT size=2>102,345</FONT></TD><TD width=79 x:num="372085"><FONT size=2>372,085</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37165"><STRONG><FONT size=2>Oct-01</FONT></STRONG></TD><TD width=79 x:num="238185"><FONT size=2>238,185</FONT></TD><TD width=79 x:num="82255"><FONT size=2>82,255</FONT></TD><TD width=79 x:num="320440"><FONT size=2>320,440</FONT></TD><TD width=79 x:num="114428"><FONT size=2>114,428</FONT></TD><TD width=79 x:num="434868"><FONT size=2>434,868</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37135"><STRONG><FONT size=2>Sep-01</FONT></STRONG></TD><TD width=79 x:num="220204"><FONT size=2>220,204</FONT></TD><TD width=79 x:num="76724"><FONT size=2>76,724</FONT></TD><TD width=79 x:num="296928"><FONT size=2>296,928</FONT></TD><TD width=79 x:num="91451"><FONT size=2>91,451</FONT></TD><TD width=79 x:num="388379"><FONT size=2>388,379</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37104"><STRONG><FONT size=2>Aug-01</FONT></STRONG></TD><TD width=79 x:num="221492"><FONT size=2>221,492</FONT></TD><TD width=79 x:num="83301"><FONT size=2>83,301</FONT></TD><TD width=79 x:num="304793"><FONT size=2>304,793</FONT></TD><TD width=79 x:num="101069"><FONT size=2>101,069</FONT></TD><TD width=79 x:num="405862"><FONT size=2>405,862</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37073"><STRONG><FONT size=2>Jul-01</FONT></STRONG></TD><TD width=79 x:num="208179"><FONT size=2>208,179</FONT></TD><TD width=79 x:num="77956"><FONT size=2>77,956</FONT></TD><TD width=79 x:num="286135"><FONT size=2>286,135</FONT></TD><TD width=79 x:num="92897"><FONT size=2>92,897</FONT></TD><TD width=79 x:num="379032"><FONT size=2>379,032</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37043"><STRONG><FONT size=2>Jun-01</FONT></STRONG></TD><TD width=79 x:num="202988"><FONT size=2>202,988</FONT></TD><TD width=79 x:num="78395"><FONT size=2>78,395</FONT></TD><TD width=79 x:num="281383"><FONT size=2>281,383</FONT></TD><TD width=79 x:num="81275"><FONT size=2>81,275</FONT></TD><TD width=79 x:num="362658"><FONT size=2>362,658</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="37012"><STRONG><FONT size=2>May-01</FONT></STRONG></TD><TD width=79 x:num="196120"><FONT size=2>196,120</FONT></TD><TD width=79 x:num="81108"><FONT size=2>81,108</FONT></TD><TD width=79 x:num="277228"><FONT size=2>277,228</FONT></TD><TD width=79 x:num="90344"><FONT size=2>90,344</FONT></TD><TD width=79 x:num="367572"><FONT size=2>367,572</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36982"><STRONG><FONT size=2>Apr-01</FONT></STRONG></TD><TD width=79 x:num="202575"><FONT size=2>202,575</FONT></TD><TD width=79 x:num="76624"><FONT size=2>76,624</FONT></TD><TD width=79 x:num="279199"><FONT size=2>279,199</FONT></TD><TD width=79 x:num="87329"><FONT size=2>87,329</FONT></TD><TD width=79 x:num="366528"><FONT size=2>366,528</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36951"><STRONG><FONT size=2>Mar-01</FONT></STRONG></TD><TD width=79 x:num="195605"><FONT size=2>195,605</FONT></TD><TD width=79 x:num="84349"><FONT size=2>84,349</FONT></TD><TD width=79 x:num="279954"><FONT size=2>279,954</FONT></TD><TD width=79 x:num="80325"><FONT size=2>80,325</FONT></TD><TD width=79 x:num="360279"><FONT size=2>360,279</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36923"><STRONG><FONT size=2>Feb-01</FONT></STRONG></TD><TD width=79 x:num="155148"><FONT size=2>155,148</FONT></TD><TD width=79 x:num="75520"><FONT size=2>75,520</FONT></TD><TD width=79 x:num="230668"><FONT size=2>230,668</FONT></TD><TD width=79 x:num="81044"><FONT size=2>81,044</FONT></TD><TD width=79 x:num="311712"><FONT size=2>311,712</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36892"><STRONG><FONT size=2>Jan-01</FONT></STRONG></TD><TD width=79 x:num="194756"><FONT size=2>194,756</FONT></TD><TD width=79 x:num="77073"><FONT size=2>77,073</FONT></TD><TD width=79 x:num="271819"><FONT size=2>271,819</FONT></TD><TD width=79 x:num="82622"><FONT size=2>82,622</FONT></TD><TD width=79 x:num="354441"><FONT size=2>354,441</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36861"><STRONG><FONT size=2>Dec-00</FONT></STRONG></TD><TD width=79 x:num="180631"><FONT size=2>180,631</FONT></TD><TD width=79 x:num="79351"><FONT size=2>79,351</FONT></TD><TD width=79 x:num="259982"><FONT size=2>259,982</FONT></TD><TD width=79 x:num="91408"><FONT size=2>91,408</FONT></TD><TD width=79 x:num="351390"><FONT size=2>351,390</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36831"><STRONG><FONT size=2>Nov-00</FONT></STRONG></TD><TD width=79 x:num="213065"><FONT size=2>213,065</FONT></TD><TD width=79 x:num="90756"><FONT size=2>90,756</FONT></TD><TD width=79 x:num="303821"><FONT size=2>303,821</FONT></TD><TD width=79 x:num="107076"><FONT size=2>107,076</FONT></TD><TD width=79 x:num="410897"><FONT size=2>410,897</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36800"><STRONG><FONT size=2>Oct-00</FONT></STRONG></TD><TD width=79 x:num="235511"><FONT size=2>235,511</FONT></TD><TD width=79 x:num="88541"><FONT size=2>88,541</FONT></TD><TD width=79 x:num="324052"><FONT size=2>324,052</FONT></TD><TD width=79 x:num="108880"><FONT size=2>108,880</FONT></TD><TD width=79 x:num="432932"><FONT size=2>432,932</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36770"><STRONG><FONT size=2>Sep-00</FONT></STRONG></TD><TD width=79 x:num="208880"><FONT size=2>208,880</FONT></TD><TD width=79 x:num="80875"><FONT size=2>80,875</FONT></TD><TD width=79 x:num="289755"><FONT size=2>289,755</FONT></TD><TD width=79 x:num="97838"><FONT size=2>97,838</FONT></TD><TD width=79 x:num="387593"><FONT size=2>387,593</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36739"><STRONG><FONT size=2>Aug-00</FONT></STRONG></TD><TD width=79 x:num="236969"><FONT size=2>236,969</FONT></TD><TD width=79 x:num="86012"><FONT size=2>86,012</FONT></TD><TD width=79 x:num="322981"><FONT size=2>322,981</FONT></TD><TD width=79 x:num="111760"><FONT size=2>111,760</FONT></TD><TD width=79 x:num="434741"><FONT size=2>434,741</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36708"><STRONG><FONT size=2>Jul-00</FONT></STRONG></TD><TD width=79 x:num="224865"><FONT size=2>224,865</FONT></TD><TD width=79 x:num="86874"><FONT size=2>86,874</FONT></TD><TD width=79 x:num="311739"><FONT size=2>311,739</FONT></TD><TD width=79 x:num="98240"><FONT size=2>98,240</FONT></TD><TD width=79 x:num="409979"><FONT size=2>409,979</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36678"><STRONG><FONT size=2>Jun-00</FONT></STRONG></TD><TD width=79 x:num="203004"><FONT size=2>203,004</FONT></TD><TD width=79 x:num="83305"><FONT size=2>83,305</FONT></TD><TD width=79 x:num="286309"><FONT size=2>286,309</FONT></TD><TD width=79 x:num="88586"><FONT size=2>88,586</FONT></TD><TD width=79 x:num="374895"><FONT size=2>374,895</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36647"><STRONG><FONT size=2>May-00</FONT></STRONG></TD><TD width=79 x:num="218016"><FONT size=2>218,016</FONT></TD><TD width=79 x:num="97770"><FONT size=2>97,770</FONT></TD><TD width=79 x:num="315786"><FONT size=2>315,786</FONT></TD><TD width=79 x:num="90986"><FONT size=2>90,986</FONT></TD><TD width=79 x:num="406772"><FONT size=2>406,772</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36617"><STRONG><FONT size=2>Apr-00</FONT></STRONG></TD><TD width=79 x:num="200724"><FONT size=2>200,724</FONT></TD><TD width=79 x:num="91014"><FONT size=2>91,014</FONT></TD><TD width=79 x:num="291738"><FONT size=2>291,738</FONT></TD><TD width=79 x:num="74727"><FONT size=2>74,727</FONT></TD><TD width=79 x:num="366465"><FONT size=2>366,465</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36586"><STRONG><FONT size=2>Mar-00</FONT></STRONG></TD><TD width=79 x:num="178489"><FONT size=2>178,489</FONT></TD><TD width=79 x:num="97871"><FONT size=2>97,871</FONT></TD><TD width=79 x:num="276360"><FONT size=2>276,360</FONT></TD><TD width=79 x:num="74404"><FONT size=2>74,404</FONT></TD><TD width=79 x:num="350764"><FONT size=2>350,764</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36557"><STRONG><FONT size=2>Feb-00</FONT></STRONG></TD><TD width=79 x:num="177362"><FONT size=2>177,362</FONT></TD><TD width=79 x:num="81893"><FONT size=2>81,893</FONT></TD><TD width=79 x:num="259255"><FONT size=2>259,255</FONT></TD><TD width=79 x:num="75961"><FONT size=2>75,961</FONT></TD><TD width=79 x:num="335216"><FONT size=2>335,216</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36526"><STRONG><FONT size=2>Jan-00</FONT></STRONG></TD><TD width=79 x:num="178672"><FONT size=2>178,672</FONT></TD><TD width=79 x:num="80091"><FONT size=2>80,091</FONT></TD><TD width=79 x:num="258763"><FONT size=2>258,763</FONT></TD><TD width=79 x:num="80380"><FONT size=2>80,380</FONT></TD><TD width=79 x:num="339143"><FONT size=2>339,143</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36495"><STRONG><FONT size=2>Dec-99</FONT></STRONG></TD><TD width=79 x:num="185572"><FONT size=2>185,572</FONT></TD><TD width=79 x:num="86697"><FONT size=2>86,697</FONT></TD><TD width=79 x:num="272269"><FONT size=2>272,269</FONT></TD><TD width=79 x:num="92971"><FONT size=2>92,971</FONT></TD><TD width=79 x:num="365240"><FONT size=2>365,240</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36465"><STRONG><FONT size=2>Nov-99</FONT></STRONG></TD><TD width=79 x:num="209444"><FONT size=2>209,444</FONT></TD><TD width=79 x:num="91201"><FONT size=2>91,201</FONT></TD><TD width=79 x:num="300645"><FONT size=2>300,645</FONT></TD><TD width=79 x:num="96656"><FONT size=2>96,656</FONT></TD><TD width=79 x:num="397301"><FONT size=2>397,301</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36434"><STRONG><FONT size=2>Oct-99</FONT></STRONG></TD><TD width=79 x:num="204242"><FONT size=2>204,242</FONT></TD><TD width=79 x:num="84349"><FONT size=2>84,349</FONT></TD><TD width=79 x:num="288591"><FONT size=2>288,591</FONT></TD><TD width=79 x:num="107829"><FONT size=2>107,829</FONT></TD><TD width=79 x:num="396420"><FONT size=2>396,420</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36404"><STRONG><FONT size=2>Sep-99</FONT></STRONG></TD><TD width=79 x:num="219080"><FONT size=2>219,080</FONT></TD><TD width=79 x:num="82308"><FONT size=2>82,308</FONT></TD><TD width=79 x:num="301388"><FONT size=2>301,388</FONT></TD><TD width=79 x:num="101322"><FONT size=2>101,322</FONT></TD><TD width=79 x:num="402710"><FONT size=2>402,710</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36373"><STRONG><FONT size=2>Aug-99</FONT></STRONG></TD><TD width=79 x:num="214709"><FONT size=2>214,709</FONT></TD><TD width=79 x:num="80581"><FONT size=2>80,581</FONT></TD><TD width=79 x:num="295290"><FONT size=2>295,290</FONT></TD><TD width=79 x:num="104015"><FONT size=2>104,015</FONT></TD><TD width=79 x:num="399305"><FONT size=2>399,305</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36342"><STRONG><FONT size=2>Jul-99</FONT></STRONG></TD><TD width=79 x:num="188586"><FONT size=2>188,586</FONT></TD><TD width=79 x:num="74155"><FONT size=2>74,155</FONT></TD><TD width=79 x:num="262741"><FONT size=2>262,741</FONT></TD><TD width=79 x:num="85220"><FONT size=2>85,220</FONT></TD><TD width=79 x:num="347961"><FONT size=2>347,961</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36312"><STRONG><FONT size=2>Jun-99</FONT></STRONG></TD><TD width=79 x:num="194410"><FONT size=2>194,410</FONT></TD><TD width=79 x:num="78962"><FONT size=2>78,962</FONT></TD><TD width=79 x:num="273372"><FONT size=2>273,372</FONT></TD><TD width=79 x:num="100603"><FONT size=2>100,603</FONT></TD><TD width=79 x:num="373975"><FONT size=2>373,975</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36281"><STRONG><FONT size=2>May-99</FONT></STRONG></TD><TD width=79 x:num="205640"><FONT size=2>205,640</FONT></TD><TD width=79 x:num="87553"><FONT size=2>87,553</FONT></TD><TD width=79 x:num="293193"><FONT size=2>293,193</FONT></TD><TD width=79 x:num="101274"><FONT size=2>101,274</FONT></TD><TD width=79 x:num="394467"><FONT size=2>394,467</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36251"><STRONG><FONT size=2>Apr-99</FONT></STRONG></TD><TD width=79 x:num="181575"><FONT size=2>181,575</FONT></TD><TD width=79 x:num="77040"><FONT size=2>77,040</FONT></TD><TD width=79 x:num="258615"><FONT size=2>258,615</FONT></TD><TD width=79 x:num="81071"><FONT size=2>81,071</FONT></TD><TD width=79 x:num="339686"><FONT size=2>339,686</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36220"><STRONG><FONT size=2>Mar-99</FONT></STRONG></TD><TD width=79 x:num="171913"><FONT size=2>171,913</FONT></TD><TD width=79 x:num="88699"><FONT size=2>88,699</FONT></TD><TD width=79 x:num="260612"><FONT size=2>260,612</FONT></TD><TD width=79 x:num="87362"><FONT size=2>87,362</FONT></TD><TD width=79 x:num="347974"><FONT size=2>347,974</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36192"><STRONG><FONT size=2>Feb-99</FONT></STRONG></TD><TD width=79 x:num="172482"><FONT size=2>172,482</FONT></TD><TD width=79 x:num="80000"><FONT size=2>80,000</FONT></TD><TD width=79 x:num="252482"><FONT size=2>252,482</FONT></TD><TD width=79 x:num="71647"><FONT size=2>71,647</FONT></TD><TD width=79 x:num="324129"><FONT size=2>324,129</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36161"><STRONG><FONT size=2>Jan-99</FONT></STRONG></TD><TD width=79 x:num="169397"><FONT size=2>169,397</FONT></TD><TD width=79 x:num="77676"><FONT size=2>77,676</FONT></TD><TD width=79 x:num="247073"><FONT size=2>247,073</FONT></TD><TD width=79 x:num="72239"><FONT size=2>72,239</FONT></TD><TD width=79 x:num="319312"><FONT size=2>319,312</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36130"><STRONG><FONT size=2>Dec-98</FONT></STRONG></TD><TD width=79 x:num="166532"><FONT size=2>166,532</FONT></TD><TD width=79 x:num="87527"><FONT size=2>87,527</FONT></TD><TD width=79 x:num="254059"><FONT size=2>254,059</FONT></TD><TD width=79 x:num="82589"><FONT size=2>82,589</FONT></TD><TD width=79 x:num="336648"><FONT size=2>336,648</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36100"><STRONG><FONT size=2>Nov-98</FONT></STRONG></TD><TD width=79 x:num="192661"><FONT size=2>192,661</FONT></TD><TD width=79 x:num="84291"><FONT size=2>84,291</FONT></TD><TD width=79 x:num="276952"><FONT size=2>276,952</FONT></TD><TD width=79 x:num="91189"><FONT size=2>91,189</FONT></TD><TD width=79 x:num="368141"><FONT size=2>368,141</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36069"><STRONG><FONT size=2>Oct-98</FONT></STRONG></TD><TD width=79 x:num="180719"><FONT size=2>180,719</FONT></TD><TD width=79 x:num="77171"><FONT size=2>77,171</FONT></TD><TD width=79 x:num="257890"><FONT size=2>257,890</FONT></TD><TD width=79 x:num="89572"><FONT size=2>89,572</FONT></TD><TD width=79 x:num="347462"><FONT size=2>347,462</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36039"><STRONG><FONT size=2>Sep-98</FONT></STRONG></TD><TD width=79 x:num="198945"><FONT size=2>198,945</FONT></TD><TD width=79 x:num="73784"><FONT size=2>73,784</FONT></TD><TD width=79 x:num="272729"><FONT size=2>272,729</FONT></TD><TD width=79 x:num="100017"><FONT size=2>100,017</FONT></TD><TD width=79 x:num="372746"><FONT size=2>372,746</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="36008"><STRONG><FONT size=2>Aug-98</FONT></STRONG></TD><TD width=79 x:num="195413"><FONT size=2>195,413</FONT></TD><TD width=79 x:num="77416"><FONT size=2>77,416</FONT></TD><TD width=79 x:num="272829"><FONT size=2>272,829</FONT></TD><TD width=79 x:num="99786"><FONT size=2>99,786</FONT></TD><TD width=79 x:num="372615"><FONT size=2>372,615</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35977"><STRONG><FONT size=2>Jul-98</FONT></STRONG></TD><TD width=79 x:num="199138"><FONT size=2>199,138</FONT></TD><TD width=79 x:num="80950"><FONT size=2>80,950</FONT></TD><TD width=79 x:num="280088"><FONT size=2>280,088</FONT></TD><TD width=79 x:num="98626"><FONT size=2>98,626</FONT></TD><TD width=79 x:num="378714"><FONT size=2>378,714</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35947"><STRONG><FONT size=2>Jun-98</FONT></STRONG></TD><TD width=79 x:num="183019"><FONT size=2>183,019</FONT></TD><TD width=79 x:num="82615"><FONT size=2>82,615</FONT></TD><TD width=79 x:num="265634"><FONT size=2>265,634</FONT></TD><TD width=79 x:num="89402"><FONT size=2>89,402</FONT></TD><TD width=79 x:num="355036"><FONT size=2>355,036</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35916"><STRONG><FONT size=2>May-98</FONT></STRONG></TD><TD width=79 x:num="163640"><FONT size=2>163,640</FONT></TD><TD width=79 x:num="84381"><FONT size=2>84,381</FONT></TD><TD width=79 x:num="248021"><FONT size=2>248,021</FONT></TD><TD width=79 x:num="83598"><FONT size=2>83,598</FONT></TD><TD width=79 x:num="331619"><FONT size=2>331,619</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35886"><STRONG><FONT size=2>Apr-98</FONT></STRONG></TD><TD width=79 x:num="172247"><FONT size=2>172,247</FONT></TD><TD width=79 x:num="87271"><FONT size=2>87,271</FONT></TD><TD width=79 x:num="259518"><FONT size=2>259,518</FONT></TD><TD width=79 x:num="77406"><FONT size=2>77,406</FONT></TD><TD width=79 x:num="336924"><FONT size=2>336,924</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35855"><STRONG><FONT size=2>Mar-98</FONT></STRONG></TD><TD width=79 x:num="167712"><FONT size=2>167,712</FONT></TD><TD width=79 x:num="88518"><FONT size=2>88,518</FONT></TD><TD width=79 x:num="256230"><FONT size=2>256,230</FONT></TD><TD width=79 x:num="77104"><FONT size=2>77,104</FONT></TD><TD width=79 x:num="333334"><FONT size=2>333,334</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35827"><STRONG><FONT size=2>Feb-98</FONT></STRONG></TD><TD width=79 x:num="132117"><FONT size=2>132,117</FONT></TD><TD width=79 x:num="77303"><FONT size=2>77,303</FONT></TD><TD width=79 x:num="209420"><FONT size=2>209,420</FONT></TD><TD width=79 x:num="66756"><FONT size=2>66,756</FONT></TD><TD width=79 x:num="276176"><FONT size=2>276,176</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35796"><STRONG><FONT size=2>Jan-98</FONT></STRONG></TD><TD width=79 x:num="144758"><FONT size=2>144,758</FONT></TD><TD width=79 x:num="72420"><FONT size=2>72,420</FONT></TD><TD width=79 x:num="217178"><FONT size=2>217,178</FONT></TD><TD width=79 x:num="71096"><FONT size=2>71,096</FONT></TD><TD width=79 x:num="288274"><FONT size=2>288,274</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35765"><STRONG><FONT size=2>Dec-97</FONT></STRONG></TD><TD width=79 x:num="145840"><FONT size=2>145,840</FONT></TD><TD width=79 x:num="91138"><FONT size=2>91,138</FONT></TD><TD width=79 x:num="236978"><FONT size=2>236,978</FONT></TD><TD width=79 x:num="64014"><FONT size=2>64,014</FONT></TD><TD width=79 x:num="300992"><FONT size=2>300,992</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35735"><STRONG><FONT size=2>Nov-97</FONT></STRONG></TD><TD width=79 x:num="146354"><FONT size=2>146,354</FONT></TD><TD width=79 x:num="96568"><FONT size=2>96,568</FONT></TD><TD width=79 x:num="242922"><FONT size=2>242,922</FONT></TD><TD width=79 x:num="68070"><FONT size=2>68,070</FONT></TD><TD width=79 x:num="310992"><FONT size=2>310,992</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35704"><STRONG><FONT size=2>Oct-97</FONT></STRONG></TD><TD width=79 x:num="169995"><FONT size=2>169,995</FONT></TD><TD width=79 x:num="87101"><FONT size=2>87,101</FONT></TD><TD width=79 x:num="257096"><FONT size=2>257,096</FONT></TD><TD width=79 x:num="57860"><FONT size=2>57,860</FONT></TD><TD width=79 x:num="314956"><FONT size=2>314,956</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35674"><STRONG><FONT size=2>Sep-97</FONT></STRONG></TD><TD width=79 x:num="183914"><FONT size=2>183,914</FONT></TD><TD width=79 x:num="90761"><FONT size=2>90,761</FONT></TD><TD width=79 x:num="274675"><FONT size=2>274,675</FONT></TD><TD width=79 x:num="57795"><FONT size=2>57,795</FONT></TD><TD width=79 x:num="332470"><FONT size=2>332,470</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35643"><STRONG><FONT size=2>Aug-97</FONT></STRONG></TD><TD width=79 x:num="160215"><FONT size=2>160,215</FONT></TD><TD width=79 x:num="87518"><FONT size=2>87,518</FONT></TD><TD width=79 x:num="247733"><FONT size=2>247,733</FONT></TD><TD width=79 x:num="49775"><FONT size=2>49,775</FONT></TD><TD width=79 x:num="297508"><FONT size=2>297,508</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35612"><STRONG><FONT size=2>Jul-97</FONT></STRONG></TD><TD width=79 x:num="169964"><FONT size=2>169,964</FONT></TD><TD width=79 x:num="96244"><FONT size=2>96,244</FONT></TD><TD width=79 x:num="266208"><FONT size=2>266,208</FONT></TD><TD width=79 x:num="48792"><FONT size=2>48,792</FONT></TD><TD width=79 x:num="315000"><FONT size=2>315,000</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35582"><STRONG><FONT size=2>Jun-97</FONT></STRONG></TD><TD width=79 x:num="165763"><FONT size=2>165,763</FONT></TD><TD width=79 x:num="100262"><FONT size=2>100,262</FONT></TD><TD width=79 x:num="266025"><FONT size=2>266,025</FONT></TD><TD width=79 x:num="43604"><FONT size=2>43,604</FONT></TD><TD width=79 x:num="309629"><FONT size=2>309,629</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35551"><STRONG><FONT size=2>May-97</FONT></STRONG></TD><TD width=79 x:num="143330"><FONT size=2>143,330</FONT></TD><TD width=79 x:num="91734"><FONT size=2>91,734</FONT></TD><TD width=79 x:num="235064"><FONT size=2>235,064</FONT></TD><TD width=79 x:num="42953"><FONT size=2>42,953</FONT></TD><TD width=79 x:num="278017"><FONT size=2>278,017</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35521"><STRONG><FONT size=2>Apr-97</FONT></STRONG></TD><TD width=79 x:num="146110"><FONT size=2>146,110</FONT></TD><TD width=79 x:num="92893"><FONT size=2>92,893</FONT></TD><TD width=79 x:num="239003"><FONT size=2>239,003</FONT></TD><TD width=79 x:num="37931"><FONT size=2>37,931</FONT></TD><TD width=79 x:num="276934"><FONT size=2>276,934</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35490"><STRONG><FONT size=2>Mar-97</FONT></STRONG></TD><TD width=79 x:num="125040"><FONT size=2>125,040</FONT></TD><TD width=79 x:num="106556"><FONT size=2>106,556</FONT></TD><TD width=79 x:num="231596"><FONT size=2>231,596</FONT></TD><TD width=79 x:num="42326"><FONT size=2>42,326</FONT></TD><TD width=79 x:num="273922"><FONT size=2>273,922</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35462"><STRONG><FONT size=2>Feb-97</FONT></STRONG></TD><TD width=79 x:num="126804"><FONT size=2>126,804</FONT></TD><TD width=79 x:num="87586"><FONT size=2>87,586</FONT></TD><TD width=79 x:num="214390"><FONT size=2>214,390</FONT></TD><TD width=79 x:num="35884"><FONT size=2>35,884</FONT></TD><TD width=79 x:num="250274"><FONT size=2>250,274</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35431"><STRONG><FONT size=2>Jan-97</FONT></STRONG></TD><TD width=79 x:num="123456"><FONT size=2>123,456</FONT></TD><TD width=79 x:num="78965"><FONT size=2>78,965</FONT></TD><TD width=79 x:num="202421"><FONT size=2>202,421</FONT></TD><TD width=79 x:num="41484"><FONT size=2>41,484</FONT></TD><TD width=79 x:num="243905"><FONT size=2>243,905</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35400"><STRONG><FONT size=2>Dec-96</FONT></STRONG></TD><TD width=79 x:num="133087"><FONT size=2>133,087</FONT></TD><TD width=79 x:num="100557"><FONT size=2>100,557</FONT></TD><TD width=79 x:num="233644"><FONT size=2>233,644</FONT></TD><TD width=79 x:num="37737"><FONT size=2>37,737</FONT></TD><TD width=79 x:num="271381"><FONT size=2>271,381</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35370"><STRONG><FONT size=2>Nov-96</FONT></STRONG></TD><TD width=79 x:num="125971"><FONT size=2>125,971</FONT></TD><TD width=79 x:num="86338"><FONT size=2>86,338</FONT></TD><TD width=79 x:num="212309"><FONT size=2>212,309</FONT></TD><TD width=79 x:num="39910"><FONT size=2>39,910</FONT></TD><TD width=79 x:num="252219"><FONT size=2>252,219</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35339"><STRONG><FONT size=2>Oct-96</FONT></STRONG></TD><TD width=79 x:num="150796"><FONT size=2>150,796</FONT></TD><TD width=79 x:num="89676"><FONT size=2>89,676</FONT></TD><TD width=79 x:num="240472"><FONT size=2>240,472</FONT></TD><TD width=79 x:num="44390"><FONT size=2>44,390</FONT></TD><TD width=79 x:num="284862"><FONT size=2>284,862</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35309"><STRONG><FONT size=2>Sep-96</FONT></STRONG></TD><TD width=79 x:num="147405"><FONT size=2>147,405</FONT></TD><TD width=79 x:num="82123"><FONT size=2>82,123</FONT></TD><TD width=79 x:num="229528"><FONT size=2>229,528</FONT></TD><TD width=79 x:num="48001"><FONT size=2>48,001</FONT></TD><TD width=79 x:num="277529"><FONT size=2>277,529</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35278"><STRONG><FONT size=2>Aug-96</FONT></STRONG></TD><TD width=79 x:num="139554"><FONT size=2>139,554</FONT></TD><TD width=79 x:num="82965"><FONT size=2>82,965</FONT></TD><TD width=79 x:num="222519"><FONT size=2>222,519</FONT></TD><TD width=79 x:num="46353"><FONT size=2>46,353</FONT></TD><TD width=79 x:num="268872"><FONT size=2>268,872</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35247"><STRONG><FONT size=2>Jul-96</FONT></STRONG></TD><TD width=79 x:num="146839"><FONT size=2>146,839</FONT></TD><TD width=79 x:num="83146"><FONT size=2>83,146</FONT></TD><TD width=79 x:num="229985"><FONT size=2>229,985</FONT></TD><TD width=79 x:num="36962"><FONT size=2>36,962</FONT></TD><TD width=79 x:num="266947"><FONT size=2>266,947</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35217"><STRONG><FONT size=2>Jun-96</FONT></STRONG></TD><TD width=79 x:num="132419"><FONT size=2>132,419</FONT></TD><TD width=79 x:num="89889"><FONT size=2>89,889</FONT></TD><TD width=79 x:num="222308"><FONT size=2>222,308</FONT></TD><TD width=79 x:num="40016"><FONT size=2>40,016</FONT></TD><TD width=79 x:num="262324"><FONT size=2>262,324</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35186"><STRONG><FONT size=2>May-96</FONT></STRONG></TD><TD width=79 x:num="120002"><FONT size=2>120,002</FONT></TD><TD width=79 x:num="87242"><FONT size=2>87,242</FONT></TD><TD width=79 x:num="207244"><FONT size=2>207,244</FONT></TD><TD width=79 x:num="32777"><FONT size=2>32,777</FONT></TD><TD width=79 x:num="240021"><FONT size=2>240,021</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35156"><STRONG><FONT size=2>Apr-96</FONT></STRONG></TD><TD width=79 x:num="127583"><FONT size=2>127,583</FONT></TD><TD width=79 x:num="100782"><FONT size=2>100,782</FONT></TD><TD width=79 x:num="228365"><FONT size=2>228,365</FONT></TD><TD width=79 x:num="29775"><FONT size=2>29,775</FONT></TD><TD width=79 x:num="258140"><FONT size=2>258,140</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35125"><STRONG><FONT size=2>Mar-96</FONT></STRONG></TD><TD width=79 x:num="101338"><FONT size=2>101,338</FONT></TD><TD width=79 x:num="101382"><FONT size=2>101,382</FONT></TD><TD width=79 x:num="202720"><FONT size=2>202,720</FONT></TD><TD width=79 x:num="27480"><FONT size=2>27,480</FONT></TD><TD width=79 x:num="230200"><FONT size=2>230,200</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35096"><STRONG><FONT size=2>Feb-96</FONT></STRONG></TD><TD width=79 x:num="113349"><FONT size=2>113,349</FONT></TD><TD width=79 x:num="90233"><FONT size=2>90,233</FONT></TD><TD width=79 x:num="203582"><FONT size=2>203,582</FONT></TD><TD width=79 x:num="23322"><FONT size=2>23,322</FONT></TD><TD width=79 x:num="226904"><FONT size=2>226,904</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35065"><STRONG><FONT size=2>Jan-96</FONT></STRONG></TD><TD width=79 x:num="109235"><FONT size=2>109,235</FONT></TD><TD width=79 x:num="87554"><FONT size=2>87,554</FONT></TD><TD width=79 x:num="196789"><FONT size=2>196,789</FONT></TD><TD width=79 x:num="31147"><FONT size=2>31,147</FONT></TD><TD width=79 x:num="227936"><FONT size=2>227,936</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35034"><STRONG><FONT size=2>Dec-95</FONT></STRONG></TD><TD width=79 x:num="104146"><FONT size=2>104,146</FONT></TD><TD width=79 x:num="92793"><FONT size=2>92,793</FONT></TD><TD width=79 x:num="196939"><FONT size=2>196,939</FONT></TD><TD width=79 x:num="36927"><FONT size=2>36,927</FONT></TD><TD width=79 x:num="233866"><FONT size=2>233,866</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="35004"><STRONG><FONT size=2>Nov-95</FONT></STRONG></TD><TD width=79 x:num="109200"><FONT size=2>109,200</FONT></TD><TD width=79 x:num="89899"><FONT size=2>89,899</FONT></TD><TD width=79 x:num="199099"><FONT size=2>199,099</FONT></TD><TD width=79 x:num="44000"><FONT size=2>44,000</FONT></TD><TD width=79 x:num="243099"><FONT size=2>243,099</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34973"><STRONG><FONT size=2>Oct-95</FONT></STRONG></TD><TD width=79 x:num="134836"><FONT size=2>134,836</FONT></TD><TD width=79 x:num="92769"><FONT size=2>92,769</FONT></TD><TD width=79 x:num="227605"><FONT size=2>227,605</FONT></TD><TD width=79 x:num="43982"><FONT size=2>43,982</FONT></TD><TD width=79 x:num="271587"><FONT size=2>271,587</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34943"><STRONG><FONT size=2>Sep-95</FONT></STRONG></TD><TD width=79 x:num="114541"><FONT size=2>114,541</FONT></TD><TD width=79 x:num="81469"><FONT size=2>81,469</FONT></TD><TD width=79 x:num="196010"><FONT size=2>196,010</FONT></TD><TD width=79 x:num="46443"><FONT size=2>46,443</FONT></TD><TD width=79 x:num="242453"><FONT size=2>242,453</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34912"><STRONG><FONT size=2>Aug-95</FONT></STRONG></TD><TD width=79 x:num="127944"><FONT size=2>127,944</FONT></TD><TD width=79 x:num="89354"><FONT size=2>89,354</FONT></TD><TD width=79 x:num="217298"><FONT size=2>217,298</FONT></TD><TD width=79 x:num="46836"><FONT size=2>46,836</FONT></TD><TD width=79 x:num="264134"><FONT size=2>264,134</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34881"><STRONG><FONT size=2>Jul-95</FONT></STRONG></TD><TD width=79 x:num="127008"><FONT size=2>127,008</FONT></TD><TD width=79 x:num="88173"><FONT size=2>88,173</FONT></TD><TD width=79 x:num="215181"><FONT size=2>215,181</FONT></TD><TD width=79 x:num="40852"><FONT size=2>40,852</FONT></TD><TD width=79 x:num="256033"><FONT size=2>256,033</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34851"><STRONG><FONT size=2>Jun-95</FONT></STRONG></TD><TD width=79 x:num="113419"><FONT size=2>113,419</FONT></TD><TD width=79 x:num="83817"><FONT size=2>83,817</FONT></TD><TD width=79 x:num="197236"><FONT size=2>197,236</FONT></TD><TD width=79 x:num="30462"><FONT size=2>30,462</FONT></TD><TD width=79 x:num="227698"><FONT size=2>227,698</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34820"><STRONG><FONT size=2>May-95</FONT></STRONG></TD><TD width=79 x:num="113688"><FONT size=2>113,688</FONT></TD><TD width=79 x:num="91226"><FONT size=2>91,226</FONT></TD><TD width=79 x:num="204914"><FONT size=2>204,914</FONT></TD><TD width=79 x:num="35462"><FONT size=2>35,462</FONT></TD><TD width=79 x:num="240376"><FONT size=2>240,376</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34790"><STRONG><FONT size=2>Apr-95</FONT></STRONG></TD><TD width=79 x:num="110518"><FONT size=2>110,518</FONT></TD><TD width=79 x:num="86879"><FONT size=2>86,879</FONT></TD><TD width=79 x:num="197397"><FONT size=2>197,397</FONT></TD><TD width=79 x:num="29534"><FONT size=2>29,534</FONT></TD><TD width=79 x:num="226931"><FONT size=2>226,931</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34759"><STRONG><FONT size=2>Mar-95</FONT></STRONG></TD><TD width=79 x:num="94125"><FONT size=2>94,125</FONT></TD><TD width=79 x:num="83964"><FONT size=2>83,964</FONT></TD><TD width=79 x:num="178089"><FONT size=2>178,089</FONT></TD><TD width=79 x:num="28349"><FONT size=2>28,349</FONT></TD><TD width=79 x:num="206438"><FONT size=2>206,438</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34731"><STRONG><FONT size=2>Feb-95</FONT></STRONG></TD><TD width=79 x:num="99121"><FONT size=2>99,121</FONT></TD><TD width=79 x:num="81879"><FONT size=2>81,879</FONT></TD><TD width=79 x:num="181000"><FONT size=2>181,000</FONT></TD><TD width=79 x:num="35102"><FONT size=2>35,102</FONT></TD><TD width=79 x:num="216102"><FONT size=2>216,102</FONT></TD></TR><TR height=17><TD width=63 height=17 x:num="34700"><STRONG><FONT size=2>Jan-95</FONT></STRONG></TD><TD width=79 x:num="104774"><FONT size=2>104,774</FONT></TD><TD width=79 x:num="74091"><FONT size=2>74,091</FONT></TD><TD width=79 x:num="178865"><FONT size=2>178,865</FONT></TD><TD width=79 x:num="36030"><FONT size=2>36,030</FONT></TD><TD width=79 x:num="214895"><FONT size=2>214,895</FONT></TD></TR></TBODY></TABLE></p></td>
+</tr>
+</table>
+
+<script language="JavaScript" type="text/javascript" src="/inc/NavMenu.js"></script>
+</td><td style="width:5px; vertical-align:top; background-color:#ffffff;" ><img src='/img/blank.gif' width=5 height=1 border=0></td></tr></table></td></tr><tr><td width="100%" height="36" valign="bottom"><table border="0" width="748" cellspacing="0" cellpadding="0" bgcolor="#ffffff"><tr><td width="119"><img src="/img/layout/polblogo.gif" width=119 height=36 border=0></td><td width="60"><a href="http://dorado.ebrp.net/ebrp/toolkit.aspx" target="_blank"><img alt="eBRP Solutions" src="/img/layout/smlebrp.gif" width=60 height=36 border=0></a></td><td width="390" align="center" background="/img/layout/bottoms.gif"></td><td width="100" align="right" background="/img/layout/bottoms.gif"><a href="#top"><img border="0" src="/img/layout/smltop.gif" align="absmiddle" width="50" height="36" alt="Top of the Page"></a></td><td width="79"><a href="http://www.civicasoft.com" target="_blank"><img alt="Civica Software" src="/img/layout/smlciv.gif" width=79 height=36 border=0></a></td></tr></table></td></tr></table></td><td width=* height="100%" style="background-color: #145F8E; background-image: url(/img/layout/rfade.gif); background-repeat: repeat-y; background-position: left"><img src="/img/blank.gif" width=1 height=1 border=0></td></tr><form name="frmPrintable" id="frmPrintable" action="/economics/port_stats/teus_archive_since_1995.asp" method="post" target="_blank"><input type="hidden" name="prnt" value="y"></form><form name="frmGrpxVer" id="frmGrpxVer" action="/economics/port_stats/teus_archive_since_1995.asp" method="post" ><input type="hidden" name="grpxver" value="lo"></form><form style="display: inline; margin: 0;" name="wfpost" method=post target="_new" action=""></form></table></body></html>
+</body>
+</html>

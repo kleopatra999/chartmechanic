@@ -1,0 +1,420 @@
+158,"dave","2007-07-26T16:53:45.468667Z","get this compiling on JDK 1.5.x until i can figure out %#*@ properties file
+weirdness.  Might have runtime problems."
+157,"dave","2007-07-26T04:53:27.133303Z","OK, I finally figured this out.  It was weird.  Anyway, continue tomorrow."
+156,"dave","2007-07-26T03:58:58.892793Z","beginning of a property sheet for the generalized property scheme.
+some problems now, checking it in until i can figure it out tomorrow."
+155,"dave","2007-07-25T23:16:01.045570Z","change from using ArrayList to a proper array to fix ArrayOutOfBoundsException.
+I don't think you can use ArrayList the way this was implemented."
+154,"dave","2007-07-25T21:29:10.169955Z","clean this up a bit to use for setting many bean properties from
+name value pairs"
+153,"dave","2007-07-25T16:49:00.195689Z","sort renderer names in the UI"
+152,"dac","2007-07-25T06:31:35.276142Z","This is the new Metadata class based on ResultSetMetaData."
+151,"dave","2007-07-25T00:00:48.846648Z","- rename JarInspector -> TypeInspector
+- delete code in Factory that is obviated by TypeSystem"
+150,"dave","2007-07-24T23:58:59.096312Z","log error on 404"
+149,"dave","2007-07-24T23:58:33.134613Z","update samples after schema, data changes"
+148,"dave","2007-07-24T23:40:27.291856Z","missed this file"
+147,"dave","2007-07-24T23:40:06.366011Z","Implement a bean oriented type system of various JFreeChart classes. This
+will be the foundation for fine-grained editing of all the JFreeChart goodies.
+Only visible change at this point is that the renderer type list has changed."
+146,"jolly","2007-07-24T04:30:27.544618Z","an clumsy, initial stab at putting in-place data into the series.  
+
+SeriesInfo can now have a <data> field
+AbstractProducer treats that data as CSV if it exists
+
+If the SeriesTab in the UI had some means to edit that data, then we
+would have the beginnings of charts with completely internalized data
+"
+145,"jolly","2007-07-24T03:12:18.205540Z","clean up some usages of ChartSet where DataSetInfo is more applicable
+
+added a DataSourceFactory factory for creating datasource objects
+given DataSourceInfo's
+
+"
+144,"dave","2007-07-23T23:36:33.861484Z","beginning of a utility to figure out a lot of the bean tree for the
+types in the jfreechart jar.  The goal is to automagically provide
+editors to tweak most (all?) of the minutiae in the jfreechart api."
+143,"jolly","2007-07-23T23:31:34.940924Z","group all the data-related stuff into a DataSetInfo class
+now a ChartSet contains a DataSetInfo and a ChartInfo[]
+
+at some point, the DataSetInfo stuff may be separated from ChartSets
+altogether
+
+"
+142,"dac","2007-07-23T22:16:10.053943Z","Move data handling related classes into org.charmechanic.core.data package.
+
+"
+141,"dac","2007-07-23T21:59:31.216128Z","Add Apache POI library for reading in various office file formats including Excel, Word
+
+"
+140,"jolly","2007-07-23T20:54:16.000614Z","rename DbInfo -> DataSourceInfo as data sources don't have to be databases,
+e.g. they can be CSV files
+
+"
+139,"jolly","2007-07-23T20:42:31.257353Z","set File.deleteOnExit() on the tmp files
+
+"
+138,"dave","2007-07-21T23:25:03.376621Z","re-enable the performance results table"
+137,"dave","2007-07-21T23:11:42.218165Z","put some space between the blue regions of the chart viewer (on the top) and
+the query editor (on the bottom).  Feedback from Laura on the layout :-)"
+136,"dave","2007-07-21T19:01:31.854308Z","Simple support for CSV as a datasource, where the CSV is inline in the
+XML.  TODO: figure out if this is the shape we want, support for parsing
+dates, and UI changes."
+135,"dave","2007-07-21T01:39:38.291380Z","more work on changing UI elements when model fields change elsewhere in the UI"
+134,"dave","2007-07-21T00:45:00.705375Z","Better job of tracking query name changes.  Still more work to do
+in this area, in particular need to tighten up ui2model()/model2ui()
+pattern of the widgets."
+133,"dave","2007-07-20T23:00:47.430510Z","tweak samples a bit"
+132,"dave","2007-07-20T22:48:16.706043Z","referential integrity checking in the builder: when a query name changes,
+track down all references to the old name and replace it with the new name.
+We will need many more of these and might need a better thought out strategy
+than what i've done here."
+131,"dave","2007-07-20T22:37:45.589346Z","- add headers/labels to parts of the UI
+- make sure the color picker returns a hex color spec with six digits in all cases
+  so that server side can parse it"
+130,"dave","2007-07-20T21:39:53.872754Z","Use gwt.typeArgs annotation to squelch gwt compiler warning.  This
+annotation basically tells the gwt compiler what types will be inside
+a collection class (like HashMap) so it knows that it will be serializable
+at runtime.
+"
+129,"dave","2007-07-20T15:34:06.406506Z","index based access to jdbc (and datastream) columns is 1-based, not zero-based."
+128,"dac","2007-07-20T00:01:54.812671Z","Get query panel working with new DataSource class."
+127,"jolly","2007-07-19T23:04:32.853589Z","change from DbInfo[] to HashMap of DbInfo
+
+"
+126,"dave","2007-07-19T22:59:15.488043Z","fix bug where the series query would not get selected properly on loading new chart set"
+125,"dac","2007-07-19T22:58:42.274623Z","Added new DataSource class representing chart data source. Also DataStream for actual chart data (replaces ResultSet). Currently there is JDBC implementation for both."
+124,"dave","2007-07-19T22:18:03.867455Z","- add editor for a charts series(s).  this tab pane needs a bit of TLC
+- add actions to add charts and series
+- add a pie3D chart to the samples based on the same query as the category plot"
+123,"jolly","2007-07-19T21:40:24.980873Z","unit tests for ChartSet.validate()
+
+"
+122,"jolly","2007-07-19T19:25:42.776992Z","add validation that all SeriesInfo's point to proper QueryInfo's
+
+"
+121,"jolly","2007-07-19T18:55:38.188081Z","DbInfo's now have a name
+
+QueryInfo objects have a reference to their DbInfo source
+
+ChartSet has a validate() method that starts to check internal referential 
+consistency
+
+"
+119,"jolly","2007-07-19T17:41:02.101478Z","add a version field to the ChartSet to enable us to eventually
+check for compatibility down the road.  May need to be able to eventually
+get that out of the XML not using XStream so that XStream doesn't blow up 
+while reading older versions
+
+make the FileName a transient field that's not stored in the XML anymore
+
+"
+118,"jolly","2007-07-19T17:39:48.717556Z","the 'new-shell' target is now the official 'shell' target
+the old UI can still be run with the 'old-shell' ant target
+
+'redeploy' will now redeploy to jetty without recompiling the war target
+which takes a while
+
+"
+117,"dave","2007-07-19T17:21:50.246564Z","Fix errant non-zero cell padding/spacing of the main table when laying out
+on windows.  I assume the gwt shell on windows uses the IE COM control."
+116,"dave","2007-07-19T01:01:42.862902Z","make the data producers respect the query index of the series (i.e., each series specifies
+which column int the ResultSet from which it should be populated)."
+115,"dave","2007-07-19T00:50:47.108752Z","After much experimentation, get the alignment right for the chart and query lists on the left"
+114,"dave","2007-07-18T22:12:36.717890Z","much improved layout for query and chart editing.
+still need editors for series and datasources.  The
+latter can be brought over from the old UI, I figure
+I'll put it in a dialog."
+113,"dave","2007-07-18T21:46:51.445293Z","re-enable test after schema change"
+112,"jolly","2007-07-18T02:02:43.281945Z","push the xml encoding aliases constants into the classes themselves
+
+it's a big ugly to have those HashMaps that have to be statically
+initialized, but it still seems better to have the aliases within the 
+class source as opposed to being in the XmlConverter
+
+"
+111,"dave","2007-07-18T00:38:45.308825Z","Test Fix after schema change.  The KOAM tests are commented
+out until i can update that file (more complex than the samples).
+
+"
+110,"dave","2007-07-18T00:20:39.344940Z","remove the query definitions from inside of the <chart> element and
+make them a top-level element of the chart set.  This is functional
+now with the samples.xml set but there are problems with the editor
+still.  In particular:
+- no editor for series elements yet surfaced
+- no referential integrity updates: each series refers to an
+  underlying query by name.  If the editor re-names the query,
+  we need to update all the series' in the document with the new name.
+- layout for querylist/querypanel messed up (you'll see what i mean)"
+109,"jolly","2007-07-18T00:08:33.991016Z","add some test files for testing loading from file
+
+changed ChartFileStore to rely on the <fileName> element itself to determine
+the ChartSet.getFileName().
+
+
+"
+108,"dave","2007-07-17T22:52:12.663115Z","checkpoint before moving queries to be top-level items in the schema"
+107,"dave","2007-07-17T22:51:48.547315Z","checkpoint before moving queries to be top-level items in the schema"
+106,"dave","2007-07-17T00:27:47.942185Z","- merge chart creation time stats into just 2 values,
+  'create time' and 'persist time'
+- improve layout of the stats data table"
+105,"dave","2007-07-16T23:59:35.602270Z","bring query editor over from the old to the new
+doesn't look too nice but will gussy it up after
+de-coupling queries from charts"
+104,"jolly","2007-07-16T23:45:32.940390Z","add a new DbInfo info for datasources. now the chart-set xml looks like
+ <datasources>
+   <jdbc driver=""..."" />
+ </datasources>
+
+make jdbcInfo fields attributes instead of elements
+add javadoc URLs to .classpath
+
+"
+103,"jolly","2007-07-16T18:35:52.716617Z","the loadsave servlet URL need to be prefaced with GWT.getModuleBaseURL
+
+"
+102,"jolly","2007-07-16T17:54:40.626993Z","point all servlets to the new ChartBuilder
+
+"
+101,"dave","2007-07-16T17:42:13.141702Z","%^&*@#!!!
+
+"
+100,"dave","2007-07-16T17:40:50.226981Z","add loadsave servlet registration relative to the new UI's entry point"
+99,"dave","2007-07-16T17:39:31.166795Z","keep web.xml up to date by adding the LoadSaveServlet registrations"
+98,"jolly","2007-07-16T17:34:36.508285Z","change deploy target to the new builder"
+97,"dave","2007-07-15T22:19:24.138970Z","turn off shapes for simple line renderer"
+96,"dave","2007-07-15T18:15:54.127513Z","port over color combo box widget"
+95,"dave","2007-07-15T02:41:05.026117Z","beginning of keyboard shortcuts: Ctrl-C executes the ""create chart"" command
+"
+94,"dave","2007-07-15T01:57:50.669402Z","much progress on the new UI, which is a great improvement
+over the old.  Query/Series editor is only thing from the
+old that is still missing.
+
+"
+93,"dave","2007-07-14T23:02:38.351588Z","checkpoint updates to the new UI"
+92,"dave","2007-07-14T17:28:04.296297Z","missed this"
+91,"dave","2007-07-14T17:27:32.115156Z","get base layout right for the new UI"
+90,"dave","2007-07-14T16:09:48.426613Z","BF"
+89,"jolly","2007-07-14T05:52:48.124499Z","generalized the ChartFileStore into a ChartStore interface with a
+ChartStoreFactory
+
+moved the XStream stuff into XmlConverter
+
+Added a ChartDBStore to store in a single table in hsqldb just as a 
+simple proof of concept.  Not wired up yet, ChartStoreFactory 
+defaults to using the filesystem store
+
+started a ChartStoreTest that tests load/store for both file and db
+unit tests pass except it leaves cruft on your disk; need to clean up
+the tmp files and the hsqldb on disk
+
+"
+88,"jolly","2007-07-14T00:40:47.870422Z","rename ChartStore -> ChartFileStore
+first step in generalizing chart storage.  ChartStore will become an interface with
+ChartFileStore, ChartDBStore, etc. as concrete instances
+
+"
+87,"dave","2007-07-14T00:11:23.417877Z","get save() working"
+86,"dave","2007-07-13T00:21:56.554272Z","start a do-over of the chart UI now that I understand GWT
+better, and have a better idea of what we think the UI should
+look like.  Basically a mulligan.
+
+"
+85,"jolly","2007-07-12T23:45:22.149697Z","can now deploy to Jetty
+
+set jetty.home as a ant property (or in your build.properties)
+and point it to your Jetty installation
+
+the jetty-ant.jar contains helpful ant tasks for deploying jetty webapps
+ 
+"
+84,"jolly","2007-07-12T22:38:36.385095Z","split up the build file into build-core and buildbuilder 
+with some common stuff in build-common.xml
+
+delete some old crufty scripts
+
+fix the href in index.html
+
+"
+83,"dave","2007-07-12T20:02:24.525935Z","fix assorted bugs and quirks with load/save
+"
+82,"jolly","2007-07-12T19:57:52.636947Z","moved org.chartmechanic.model.QueryResult to ui-src since it's not
+really part of the core. Used just for displaying the tabular data
+in the builder
+
+"
+81,"dac","2007-07-12T19:21:15.436634Z","Load properties from build.properties if present
+"
+80,"jolly","2007-07-12T18:35:45.840630Z","more unit tests for jdbcinfo (100% coverage. :) )
+
+"
+79,"dave","2007-07-12T17:59:20.258623Z","treat the initial bootstrapped sample file the same as other files
+"
+78,"dave","2007-07-12T17:49:28.006391Z","fix bug: be sure to use simple file name from fileupload form processing
+"
+77,"jolly","2007-07-12T16:35:40.659836Z","fix to include test srcs and junit jar
+"
+76,"jolly","2007-07-12T04:59:32.430400Z","start unit tests and code coverage
+
+using JUnit 4.3.1 and Cobertura
+(trying Cobertura instead of emma because it seems like emma dev has stopped since 2005 and 
+Cobertura guys are still moving forward)
+
+add instrumentation to the compilation target
+add a 'test' target that will run junit tests and produce a coverage report in 
+test.out/coverage
+
+"
+75,"dave","2007-07-12T00:31:48.561629Z","load/save work: i figured out the plumbing, which works OK.  UI still terrible.
+"
+74,"dave","2007-07-10T21:40:39.543319Z","- bundle load/save UI into its own panel
+- remove obsolete RPC call saveChart()
+"
+73,"dave","2007-07-10T18:39:34.565977Z","- Rename UploadServlet more appropriately to LoadSaveServlet
+- primitive but working ""save file"" functionality"
+72,"dave","2007-07-10T00:41:23.722029Z","Happy path of loading chart sets from local (browser-side)
+files is working.  More error checking needed.  Save side
+needs a bit more work.
+
+"
+71,"dave","2007-07-09T23:34:45.957969Z","add fileupload for file saving feature"
+70,"dave","2007-07-04T18:22:37.129002Z","misc fixups"
+69,"dave","2007-07-04T17:52:15.960915Z","- fix interaction with color picker popup
+- add the calendar widget to src code before i go 'off the grid' on vaction,
+  calendar not wired up to anything yet
+"
+68,"dave","2007-07-04T01:20:24.050151Z","start wiring up the color picker"
+67,"dave","2007-07-04T00:41:03.375430Z","- plumbing for save/load functionality of chartset xml files, still
+  need more UI
+- half-baked color picker module.  Having this present in the
+  build is slowing down compilation, need to speed up somehow
+"
+66,"dave","2007-07-03T14:49:31.390970Z","image editing: make this tiny red X a little bigger and thicker"
+65,"dave","2007-07-03T00:00:39.306581Z","No more of this devMode silliness since I found this
+in the GWT bug database:
+http://code.google.com/p/google-web-toolkit/issues/detail?id=507&can=2&q=servlet
+we can substitute our own web.xml, which allows us to have servlets
+registered...
+
+"
+64,"dave","2007-07-02T23:45:42.997253Z","don't need these since jolly ant-ified everything"
+63,"dave","2007-07-02T23:19:53.363994Z","Fix my HTML attempt from yesterday, no wonder this didn't work then
+"
+62,"dave","2007-07-02T22:53:21.527575Z","oops, missed one thing in com->org refactor"
+61,"dave","2007-07-02T22:09:47.594521Z","Complete refactoring from com.moonspider.chart -> org.chartmechanic
+I just want to help the hammer and sickle collective
+"
+60,"dave","2007-07-02T21:56:06.232435Z","...and these..."
+59,"dave","2007-07-02T21:55:37.123612Z","...and these..."
+58,"dave","2007-07-02T21:55:06.542369Z","axe these"
+57,"dave","2007-07-02T21:53:19.973346Z","big refactor com.moonspider.chart -> org.chartmechanic
+this probably doesn't work at this point"
+56,"dave","2007-07-02T21:37:01.967177Z","checkpoint"
+55,"dave","2007-07-02T21:06:56.528046Z","axe this"
+54,"dave","2007-07-02T18:54:20.147348Z","misc updates"
+53,"jolly","2007-07-02T17:49:46.586680Z","add a com.moonspider.chart.server.Config class to put all the 
+configuration propeties in one place.  Add new configs here instead of having
+them strewn all over the code.   For now, implementation is simply 
+System Properties.   cacheroot defaults to $HOME/.chartcache but can
+be customized with property chartmechanic.cacheRoot
+
+move the bin directory to the back of the classpath so that 'ant
+shell' picks up any eclipse compiled classes last
+
+"
+52,"dave","2007-07-02T16:45:48.675476Z","comment out hard-coded devmode setting from sample"
+51,"dave","2007-07-01T19:52:58.519130Z","- add performance stats collection for various parts of chart
+  creation, render them in the UI.
+
+The individual pieces of the UI are OK, but the overall layout and
+interaction is a mess.  FIXME!!!
+
+"
+50,"dave","2007-07-01T16:44:23.911009Z","- Finish up the JdbcControl widget, display it in the main UI
+  inside a disclosure.  It still isn't wired to the backend.
+- change the timeseries sample to represent 3 fictitious stocks
+  in a Random Walk since January 1
+"
+49,"dave","2007-06-30T00:21:25.670201Z","- encapsulate JDBC connect info into it's own object in the XML format.  We will
+  need to add more of these as we add new flavors of data source.
+- update sample files to new xml format for JDBC
+- add a widget to specify/edit JDBC"
+48,"jolly","2007-06-29T23:31:57.763890Z","upgrade to jfreechart-1.0.6.jar and jcommon-1.0.10.jar
+fix Eclipse lib reference, too
+
+"
+47,"dave","2007-06-29T22:21:55.193580Z","checkpoint this (JdbcPanel)"
+46,"jolly","2007-06-28T21:49:24.468963Z","more build logic cleanup
+
+"
+45,"jolly","2007-06-28T20:23:28.955485Z","fiddle with the build a bit
+moved some gwt jars into 'gwt'
+still depends on an env variable GWTDIR to find the rest of the native libs
+
+added a new target 'shell' to run the hosted model, replaces ClientEntryPoint-shell
+
+"
+44,"dave","2007-06-28T20:11:34.775521Z","data and chart for timeseries table (just random numbers)"
+43,"dave","2007-06-28T19:36:24.392894Z","- Refactor ChartStore into (new) client-side class ChartSet
+- Update chart-shell.cmd on windows
+- Update sample xml files
+"
+42,"dave","2007-06-28T16:32:49.379933Z","pick up GWT install from environment variable GWTDIR to set up classpath for the GWT shell"
+41,"dave","2007-06-28T00:45:06.699592Z","get a simple sample working using hypersonic hsqldb, still needs tweaks"
+40,"dave","2007-06-26T23:38:04.018071Z","include classes dir from ant build when running the shell"
+39,"dave","2007-06-25T17:29:27.920461Z","fix the shell invocation on windows after classpath changes and additions"
+38,"dave","2007-06-25T01:20:04.599348Z","compile the ui-specific parts too when building war"
+37,"dave","2007-06-24T23:13:56.993036Z","re-org build: move gwt-user.jar to compile-only lib directory
+
+"
+36,"dave","2007-06-24T22:42:42.382691Z","add this for build"
+35,"dave","2007-06-24T19:50:22.988317Z","refactor sources into 2 roots: one for the embeddable
+utility, and another for the GWT based UI
+"
+34,"dave","2007-06-23T00:15:41.457340Z","more updates: better log4j usage, introduce cache invalidation"
+33,"dave","2007-06-21T00:33:52.887082Z","- md5 hash the chart file names to ensure uniqueness
+- re-jigger factory api a bit
+- use commons logging, backed by log4j, on the server
+"
+32,"dave","2007-06-20T17:38:53.970898Z","- add ability to pick background color and alpha
+- smarter default for devMode, work around GWT shell
+  differences on linux and windows
+"
+31,"dave","2007-06-19T00:18:16.684856Z","finally get the data popup sizing right, on to more interesting problems"
+30,"dave","2007-06-18T21:23:57.320716Z","better sizing/formatting for sample data popup"
+29,"dave","2007-06-16T19:10:24.942518Z","checkpoint, misc cleanups"
+28,"dave","2007-06-14T18:39:10.606765Z","finally a half decent data browser popup"
+27,"dave","2007-06-14T00:15:48.926256Z","use popup for quick view of sample data"
+26,"dave","2007-06-13T20:08:45.228444Z","do not use dialog for sample data, blocks the rest of the UI"
+25,"dave","2007-06-13T19:00:05.527028Z","checkpoint"
+24,"dave","2007-06-13T16:07:26.455986Z","half-backed refactoring part II"
+23,"dave","2007-06-13T14:42:54.741386Z","half-baked refactoring"
+22,"dave","2007-06-06T16:01:39.134033Z","make jdbc connect info configurable"
+21,"dave","2007-05-31T13:33:28.600335Z","sync various updates, fixes"
+20,"dave","2007-05-30T15:05:34.193654Z","change render type choices when plot type changes"
+19,"dave","2007-05-29T15:14:49.313542Z","- pie/pie3d plot types
+- foreground alpha
+- enable/disable timeperiod choice based on whether
+  'timeseries' plot type is selected.
+
+"
+18,"dave","2007-05-27T21:12:13.946467Z","work around GWT ListBox goofiness once and for all"
+17,"dave","2007-05-27T18:01:08.742613Z","updates from win32 usage"
+16,"dave","2007-05-26T22:48:13.066103Z","upon load, select 1st chart definition in the list"
+15,"dave","2007-05-26T19:11:50.680974Z","all kinds of sweet updates"
+14,"dave","2007-05-20T23:04:21.529832Z","- re-org the UI to allow tabs for multiple queries
+- support for category plots
+
+"
+13,"dave","2007-05-18T23:42:15.800235Z","updates"
+12,"dave","2007-05-16T23:58:26.547065Z","inch the SWT UI along"
+11,"dave","2007-05-16T15:21:50.577829Z","more of a proper build"
+10,"dave","2007-05-14T22:12:58.770827Z","more updates"
+9,"dave","2007-05-13T18:01:38.252689Z","missed these files"
+8,"dave","2007-05-13T17:58:26.689926Z","various updates"
+7,"dave","2007-04-22T23:10:38.827091Z","better dialog css"
+6,"dave","2007-04-22T21:19:30.448200Z","simple chart creation/viewing from the UI working"
+5,"dave","2007-04-19T23:25:45.899676Z","updates"
+4,"dave","2007-04-18T15:34:09.606821Z","initial checkin of charting stuff"
+3,"dave","2007-04-11T15:15:58.073868Z","add more junk"
+2,"svm","2007-04-11T00:00:01.000000Z","SVM: initializing mirror for /trunk/chart"

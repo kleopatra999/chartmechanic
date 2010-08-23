@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>  <message:MessageGroup xmlns:message="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message"  xmlns:common="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/common"  xmlns:frb="http://www.federalreserve.gov/structure/compact/common"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:schemaLocation="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message SDMXMessage.xsd"><message:Header xmlns:message="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message">
+    <message:ID>G19</message:ID>
+    <message:Test>true</message:Test>
+    <message:Name>G.19 - Consumer Credit</message:Name>
+    <message:Prepared>2008-02-07T20:02:26</message:Prepared>
+    <message:Sender id="FRB">
+      <message:Name>Federal Reserve Board</message:Name>
+      <message:Contact>
+        <message:Name>Household and Real Estate Finance Section</message:Name>
+        <message:Email>G19Release@frb.gov</message:Email>
+      </message:Contact>
+    </message:Sender>
+  </message:Header>
+ <!-- 3 series, each with thirty rows/observations -->
+<frb:DataSet id="TERMS" xmlns:kf="http://www.federalreserve.gov/structure/compact/G19_TERMS" xsi:schemaLocation="http://www.federalreserve.gov/structure/compact/G19_TERMS G19_TERMS.xsd"  >
+<kf:Series CURRENCY="NA" FREQ="129" ISSUE="COMBANK" SERIES_NAME="RIFLPBCIANM48_N.M" TERMS="NEWCAR" UNIT="Percent" UNIT_MULT="1"  > 
+<frb:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Short Description</common:AnnotationsType>
+<common:AnnotationsText>FINANCE RATE ON CONSUMER INSTALLMENT LOANS AT COML BANKS - NEW AUTOS, 48
+MONTH LOAN</common:AnnotationsText>
+</common:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Long Description</common:AnnotationsType>
+<common:AnnotationsText>FINANCE RATE ON CONSUMER INSTALLMENT LOANS AT COML BANKS - NEW AUTOS, 48
+MONTH LOAN</common:AnnotationsText>
+</common:Annotations>
+</frb:Annotations>
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.08" TIME_PERIOD="2005-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.43" TIME_PERIOD="2005-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.39" TIME_PERIOD="2006-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.60" TIME_PERIOD="2006-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.95" TIME_PERIOD="2006-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.92" TIME_PERIOD="2006-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.74" TIME_PERIOD="2007-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.92" TIME_PERIOD="2007-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.82" TIME_PERIOD="2007-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.59" TIME_PERIOD="2007-11-30" />
+</kf:Series>
+<kf:Series CURRENCY="NA" FREQ="129" ISSUE="COMBANK" SERIES_NAME="RIFLPBCIPLM24_N.M" TERMS="PERS" UNIT="Percent" UNIT_MULT="1"  > 
+<frb:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Short Description</common:AnnotationsType>
+<common:AnnotationsText>COMM BANK FIN RATE PERSONAL 24-MO MAT.</common:AnnotationsText>
+</common:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Long Description</common:AnnotationsType>
+<common:AnnotationsText>COMM BANK FIN RATE PERSONAL 24-MO MAT.</common:AnnotationsText>
+</common:Annotations>
+</frb:Annotations>
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.22" TIME_PERIOD="2005-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="11.95" TIME_PERIOD="2005-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.18" TIME_PERIOD="2006-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.58" TIME_PERIOD="2006-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.40" TIME_PERIOD="2006-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.49" TIME_PERIOD="2006-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.32" TIME_PERIOD="2007-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.57" TIME_PERIOD="2007-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.51" TIME_PERIOD="2007-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.16" TIME_PERIOD="2007-11-30" />
+</kf:Series>
+<kf:Series CURRENCY="NA" FREQ="129" ISSUE="COMBANK" SERIES_NAME="RIFSPBCICC_N.M" TERMS="ALLCC" UNIT="Percent" UNIT_MULT="1"  > 
+<frb:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Short Description</common:AnnotationsType>
+<common:AnnotationsText>Commercial bank interest rate on credit card plans - all accounts</common:AnnotationsText>
+</common:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Long Description</common:AnnotationsType>
+<common:AnnotationsText>Commercial bank interest rate on credit card plans - all accounts</common:AnnotationsText>
+</common:Annotations>
+</frb:Annotations>
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.48" TIME_PERIOD="2005-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.58" TIME_PERIOD="2005-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2005-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.30" TIME_PERIOD="2006-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.16" TIME_PERIOD="2006-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.06" TIME_PERIOD="2006-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.31" TIME_PERIOD="2006-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2006-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.41" TIME_PERIOD="2007-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.46" TIME_PERIOD="2007-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.58" TIME_PERIOD="2007-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="-9999" TIME_PERIOD="2007-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.08" TIME_PERIOD="2007-11-30" />
+</kf:Series>
+</frb:DataSet>
+<!-- 2 series, each with 30 observations -->
+<frb:DataSet id="CCOUT" xmlns:kf="http://www.federalreserve.gov/structure/compact/G19_CCOUT" xsi:schemaLocation="http://www.federalreserve.gov/structure/compact/G19_CCOUT G19_CCOUT.xsd"  >
+<kf:Series CREDTYP="TOTAL" CURRENCY="NA" DATAREP="PCTCHG" FREQ="129" HOLDER="ALL" SA="SA" SERIES_NAME="DTCTL_GR.M" UNIT="Percent" UNIT_MULT="1"  > 
+<frb:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Short Description</common:AnnotationsType>
+<common:AnnotationsText>Seasonally adjusted percent change of Total Consumer Credit, at an annual rate</common:AnnotationsText>
+</common:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Long Description</common:AnnotationsType>
+<common:AnnotationsText>Seasonally adjusted percent change of Total Consumer Credit, at an annual rate</common:AnnotationsText>
+</common:Annotations>
+</frb:Annotations>
+<frb:Obs OBS_STATUS="A" OBS_VALUE="5.3" TIME_PERIOD="2005-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="6.0" TIME_PERIOD="2005-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.4" TIME_PERIOD="2005-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="1.0" TIME_PERIOD="2005-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="4.1" TIME_PERIOD="2005-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.3" TIME_PERIOD="2005-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="5.5" TIME_PERIOD="2006-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="1.5" TIME_PERIOD="2006-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.8" TIME_PERIOD="2006-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="3.0" TIME_PERIOD="2006-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.6" TIME_PERIOD="2006-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="5.8" TIME_PERIOD="2006-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="5.9" TIME_PERIOD="2006-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="6.1" TIME_PERIOD="2006-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="3.2" TIME_PERIOD="2006-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="1.1" TIME_PERIOD="2006-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="9.6" TIME_PERIOD="2006-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.8" TIME_PERIOD="2006-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="3.9" TIME_PERIOD="2007-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="3.1" TIME_PERIOD="2007-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.1" TIME_PERIOD="2007-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="1.6" TIME_PERIOD="2007-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="9.4" TIME_PERIOD="2007-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="5.8" TIME_PERIOD="2007-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="8.1" TIME_PERIOD="2007-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="10.1" TIME_PERIOD="2007-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.6" TIME_PERIOD="2007-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.7" TIME_PERIOD="2007-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="8.2" TIME_PERIOD="2007-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.1" TIME_PERIOD="2007-12-31" />
+</kf:Series>
+<kf:Series CREDTYP="REV" CURRENCY="NA" DATAREP="PCTCHG" FREQ="129" HOLDER="ALL" SA="SA" SERIES_NAME="DTCTLR_GR.M" UNIT="Percent" UNIT_MULT="1"  > 
+<frb:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Short Description</common:AnnotationsType>
+<common:AnnotationsText>Seasonally adjusted percent change of Total Revolving Consumer Credit, at an annual rate</common:AnnotationsText>
+</common:Annotations>
+<common:Annotations>
+<common:AnnotationsType>Long Description</common:AnnotationsType>
+<common:AnnotationsText>Seasonally adjusted percent change of Total Revolving Consumer Credit, at an annual rate</common:AnnotationsText>
+</common:Annotations>
+</frb:Annotations>
+<frb:Obs OBS_STATUS="A" OBS_VALUE="1.1" TIME_PERIOD="2005-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="5.1" TIME_PERIOD="2005-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="4.1" TIME_PERIOD="2005-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.9" TIME_PERIOD="2005-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.3" TIME_PERIOD="2005-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.4" TIME_PERIOD="2005-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.9" TIME_PERIOD="2006-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="1.8" TIME_PERIOD="2006-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="1.4" TIME_PERIOD="2006-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.1" TIME_PERIOD="2006-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="11.7" TIME_PERIOD="2006-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="11.1" TIME_PERIOD="2006-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="5.5" TIME_PERIOD="2006-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="7.3" TIME_PERIOD="2006-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="4.3" TIME_PERIOD="2006-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="6.7" TIME_PERIOD="2006-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.4" TIME_PERIOD="2006-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="3.4" TIME_PERIOD="2006-12-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.0" TIME_PERIOD="2007-01-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="4.1" TIME_PERIOD="2007-02-28" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="10.0" TIME_PERIOD="2007-03-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="0.6" TIME_PERIOD="2007-04-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="12.8" TIME_PERIOD="2007-05-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="6.8" TIME_PERIOD="2007-06-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="9.7" TIME_PERIOD="2007-07-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="10.6" TIME_PERIOD="2007-08-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="6.0" TIME_PERIOD="2007-09-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="11.1" TIME_PERIOD="2007-10-31" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="13.7" TIME_PERIOD="2007-11-30" />
+<frb:Obs OBS_STATUS="A" OBS_VALUE="2.7" TIME_PERIOD="2007-12-31" />
+</kf:Series>
+</frb:DataSet>
+</message:MessageGroup>

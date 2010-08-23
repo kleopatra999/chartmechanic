@@ -1,0 +1,6 @@
+"TXDate","Action","Quantity","Symbol","Price","Amount"
+2005-07-15,,0,normal string,,100.0
+2005-06-30,,0,"XXX,YYY,ZZZ",,216.17
+2005-06-30,,0,"I""BM",,274.98
+2005-07-15,,0,"embedded
+newline",,303.79

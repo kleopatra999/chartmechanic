@@ -1,0 +1,36 @@
+<%-- applies to the plot of each chart: don't show a plot outline --%>
+<c:props template="default" prefix="plot">
+outlineVisible=false
+</c:props>
+<%-- the default template for all charts --%>
+<c:props template="default">
+chart.backgroundPaint=#ffffff
+chart.backgroundImage=/demo/images/smiley-600.png
+chart.backgroundImageAlpha=0.2
+plot.backgroundAlpha=0.0
+plot.foregroundAlpha=0.5
+title.paint=black
+title.font=Arial-bold-16
+width=500
+height=400
+range-axis-0.tickLabelFont=Arial-plain-10
+range-axis-1.tickLabelFont=Arial-plain-10
+range-axis-2.tickLabelFont=Arial-plain-10
+range-axis-3.tickLabelFont=Arial-plain-10
+domain-axis.tickLabelFont=Arial-plain-10
+range-axis-0.labelFont=Arial-bold-12
+range-axis-1.labelFont=Arial-bold-12
+range-axis-2.labelFont=Arial-bold-12
+range-axis-3.labelFont=Arial-bold-12
+domain-axis.labelFont=Arial-bold-12
+#range-axis-0.label=
+</c:props>
+<%-- template for Y axis markers --%>
+<c:props template="y-marker">
+stroke=line=2.0|dash=0
+paint=orange
+labelFont=Arial-bold-12
+labelAnchor=center
+layer=FOREGROUND
+alpha=1.0
+</c:props>

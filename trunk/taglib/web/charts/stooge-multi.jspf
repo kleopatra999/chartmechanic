@@ -1,0 +1,8 @@
+<c:chart plotType="time" title="Stooge Sales by Month">
+ <c:series datasource="all stooge sales" 
+  y="3" name="multi" dynamicNameColumn="2"
+  render="Stacked Bar" timeperiod="month"/>
+  <c:props>
+chart.backgroundImage=/demo/images/smiley-600.png  
+  </c:props>
+</c:chart>

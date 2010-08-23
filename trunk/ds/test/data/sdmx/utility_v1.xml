@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?> 
+<testData xmlns:frbny="http://www.newyorkfed.org/xml/schemas/FX/utility">
+<!--         <frbny:Key>
+            <frbny:FREQ>D</frbny:FREQ>
+            <frbny:CURR>GBP</frbny:CURR>
+            <frbny:FX_TIME>12</frbny:FX_TIME>
+            <frbny:FX_TYPE>S</frbny:FX_TYPE>
+         </frbny:Key>
+-->
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-06</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4855</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-07</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4900</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-10</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4923</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-11</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4905</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-12</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.5018</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-13</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4957</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-14</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4913</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-18</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4965</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-19</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4910</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-20</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.5000</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-21</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4948</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-24</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4905</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-25</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4930</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-26</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4940</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-27</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4930</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-28</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4995</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-01-31</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.5005</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-02-01</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.5030</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-02-02</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4953</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>1994-02-03</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.4930</frbny:OBS_VALUE>
+         </frbny:Obs>
+</testData>
