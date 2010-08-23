@@ -1,0 +1,149 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+<project name="chart taglib" default="all">
+  <property environment="env"/>
+  <property name="debug" value="true"/>
+  <property name="classes" value="classes"/>
+  <property name="lib" value="lib"/>
+  <property name="compile-lib" value="compile-lib"/>
+  <property name="src" value="src"/>
+<!--
+  <property name="test-src" value="test"/>
+  <property name="test-classes" value="test-classes"/>
+  <property name="test-out" value="test-out"/>
+-->
+  <property name="dist" value="dist"/>
+  <property name="common.dir" value="${basedir}/../common"/>
+  <!-- commonly used properties (e.g. common-lib, junit.classpath, etc. are set here) -->
+  <import file="${common.dir}/common-imports.xml"/>
+
+  <property name="ds.dir" value="${basedir}/../ds"/>
+  <property name="ds.jar" value="${ds.dir}/dist/chartengine-ds.jar"/>
+
+  <property name="core.dir" value="${basedir}/../chart"/>
+  <property name="corejar" value="${core.dir}/dist/chartengine-core.jar"/>
+  <property name="cm-jfree.jar" value="${core.dir}/dist/chartengine-jfree.jar"/>
+
+  <property name="common.dir" value="${basedir}/../common"/>
+
+  <path id="core.classpath">
+    <path path="${ds.jar}"/>
+    <path path="${corejar}"/>
+    <path path="${cm-jfree.jar}"/>
+    <fileset dir="${compile-lib}" includes="servlet-api*.jar"/>
+    <fileset dir="${compile-lib}/jsp-2.1" includes="jsp-api*.jar"/>
+    <fileset dir="${common-lib}" includes="*.jar"/>
+    <fileset dir="${ds.dir}/lib" includes="*.jar"/>
+    <fileset dir="${core.dir}/lib" includes="*.jar"/>
+  </path>
+
+  <path id="jetty.classpath">
+    <fileset dir="${compile-lib}" includes="*.jar"/>
+    <fileset dir="${compile-lib}/jsp-2.1" includes="*.jar"/>
+  </path>
+  <target name="build-dependencies" depends="compile-ds-jar,compile-core-jar"
+          description="build dependencies from other project"/>
+
+  <target name="compile-ds-jar" description="compile the ds jar from the other project">
+     <echo>compiling ds jar:</echo>
+     <ant dir="${ds.dir}" target="jar" inheritAll="false" inheritRefs="false">
+        <property name="skip-instrument" value="true"/> 
+     </ant>
+  </target>
+  <target name="compile-core-jar"
+          description="compile the chart core jars from the other project">
+     <echo>compiling core jars:</echo>
+     <ant dir="${core.dir}" target="core" inheritAll="false" inheritRefs="false">
+        <property name="skip-instrument" value="true"/> 
+     </ant>
+  </target>
+
+  <target name="all" depends="clean,build-dependencies,compile,compile-demo,package"/>
+
+  <target name="compile" depends="build-dependencies" description="compile it all">
+    <mkdir dir="${classes}"/>
+    <javac srcdir="${src}" destdir="${classes}"
+           includes="com/bayareasoftware/**" debug="${debug}">
+      <classpath>
+        <path refid="core.classpath"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="compile-demo" description="compile demo">
+    <mkdir dir="${classes}"/>
+    <javac srcdir="${src}" destdir="${classes}"
+           includes="demo/**" debug="${debug}">
+      <classpath>
+        <path refid="core.classpath"/>
+        <path refid="jetty.classpath"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="package" depends="compile" description="bundle up re-distributable bits">
+   <mkdir dir="${dist}"/>
+   <!-- demo jar -->
+   <jar destfile="${dist}/chart-taglib-demo.jar">
+    <manifest>
+     <attribute name="Main-Class" value="demo.DemoServer" />
+    </manifest>
+    <fileset dir="${classes}"/>
+    <fileset dir="${basedir}" includes="web/**"/>
+    <!-- jetty -->
+    <zipgroupfileset dir="${compile-lib}" includes="*.jar" />
+    <zipgroupfileset dir="${compile-lib}/jsp-2.1" includes="*.jar" />
+    <zipgroupfileset dir="${ds.dir}/dist" includes="chartengine-ds.jar"/>
+    <zipgroupfileset dir="${core.dir}/dist" includes="chartengine-core.jar,chartengine-jfree.jar"/>
+    <zipgroupfileset dir="${core.dir}/lib" includes="*.jar"/>
+    <zipgroupfileset dir="${ds.dir}/lib" includes="opencsv-1.7.jar"/>
+    <!-- h2 for demo DBMS access -->
+    <zipgroupfileset dir="${common.dir}/compile-lib" includes="h2.jar"/>
+    <!-- commons logging and codec -->
+    <zipgroupfileset dir="${common.dir}/lib" includes="commons-*.jar"/>
+    <!-- PDF & PS outputters, needed by chart/ChartDriver -->
+    <zipgroupfileset dir="${common.dir}/lib" includes="iText-2.1.3.jar,freehep-graphics*.jar"/>
+    <!-- Needed for type inspector to load itself -->
+    <zipgroupfileset dir="${common.dir}/lib" includes="xstream-1.3.jar"/>
+    <!-- FIXME: remove gdata,poi,jtidy dependencies from ds module -->
+    <zipgroupfileset dir="${ds.dir}/lib" includes="gdata*.jar,poi*.jar,jtidy.jar"/>
+   </jar>
+   <!-- same as above, minus jetty,h2 and demo web directory -->
+   <jar destfile="${dist}/chart-taglib.jar">
+    <fileset dir="${classes}"/>
+    <zipgroupfileset dir="${ds.dir}/dist" includes="chartengine-ds.jar"/>
+    <zipgroupfileset dir="${core.dir}/dist" includes="chartengine-core.jar,chartengine-jfree.jar"/>
+    <zipgroupfileset dir="${core.dir}/lib" includes="*.jar"/>
+    <zipgroupfileset dir="${ds.dir}/lib" includes="opencsv-1.7.jar"/>
+    <!-- commons logging and codec -->
+    <zipgroupfileset dir="${common.dir}/lib" includes="commons-*.jar"/>
+    <!-- PDF & PS outputters, needed by chart/ChartDriver -->
+    <zipgroupfileset dir="${common.dir}/lib" includes="iText-2.1.3.jar,freehep-graphics*.jar"/>
+    <!-- Needed for type inspector to load itself -->
+    <zipgroupfileset dir="${common.dir}/lib" includes="xstream-1.3.jar"/>
+    <!-- FIXME: remove gdata,poi,jtidy dependencies from ds module -->
+    <!-- These bloat our ~4900 classes by ~2300 -->
+    <zipgroupfileset dir="${ds.dir}/lib" includes="gdata*.jar,poi*.jar,jtidy.jar"/>
+    <metainf dir="web/WEB-INF" includes="taglib.tld"/>
+   </jar>
+   
+  </target>
+
+  <target name="clean">
+    <delete dir="${classes}"/>
+    <delete dir="${dist}"/>
+  </target>
+</project>

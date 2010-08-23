@@ -1,0 +1,35 @@
+<%-- global data source, visible to all charts on the page --%>
+<c:data id="d1" type="CSV">
+ DATE,VALUE,STOOGE
+ 2010,14,Larry
+ 2009,10,Moe
+ 2008,17,Curly
+ 2007,5,Shemp
+ 2006,20,Joe
+</c:data>
+<c:data id="stooge sales" type="CSV">
+Date,#Sales,Quota,Actual
+05/2010,7,$800,$500
+06/2010,2,$800,$800
+07/2010,8,$1000,$1300
+08/2010,9,$1000,$900
+09/2010,12,$1000,$2400
+</c:data>
+<c:data id="all stooge sales">
+05/2010,Larry,5
+05/2010,Moe,6
+05/2010,Shemp,2
+05/2010,Curly,9
+06/2010,Larry,6
+06/2010,Moe,7
+06/2010,Curly,11
+06/2010,Shemp,1
+07/2010,Larry,7
+07/2010,Moe,8
+07/2010,Curly,15
+07/2010,Shemp,0
+08/2010,Larry,6
+08/2010,Moe,4
+08/2010,Curly,18
+08/2010,Shemp,1
+</c:data>

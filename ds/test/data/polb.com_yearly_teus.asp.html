@@ -1,0 +1,809 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+
+<script LANGUAGE="JavaScript">
+<!-- hide from old browsers
+function JumpToURL2()
+{
+	//var form = document.frmDepts;
+	var url = '';
+	
+	switch( url )
+	{
+		case 'bo':
+			window.location  = '/depts/directors/default.asp';
+			break;
+		case 'gm':
+			window.location  = '/depts/gm/default.asp';
+			break;
+		case 'ad':
+			window.location  = '/depts/admin/default.asp';
+			break;
+		case 'fi':
+			window.location  = '/depts/finance/default.asp';
+			break;
+		case 'om':
+			window.location  = '/depts/ops/default.asp';
+			break;
+		case 'hr':
+			window.location  = '/depts/hr/default.asp';
+			break;
+		case 'ts':
+			window.location  = '/depts/techservices/default.asp';
+			break;
+		case 'sa':
+			window.location  = '/depts/safety/default.asp';
+			break;
+		case 'tr':
+			window.location  = '/depts/training/default.asp';
+			break;
+		case 'en':
+			window.location  = '/depts/engineering/default.asp';
+			break;
+		case 'it':
+			window.location  = '/depts/it/default.asp';
+			break;
+		default:
+			window.location  = '/default.asp';
+			break;
+
+	}
+}
+//-->
+</script>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">var javascript_version = 1.0;</script>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">javascript_version = 1.1;</script>
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+var newwin;
+var civicawin;
+civicawin = null;
+function launchwin(winurl,winname,winfeatures)
+{
+	newwin = window.open(winurl,winname,winfeatures);
+	if (!newwin.opener)
+	{
+		newwin.opener = self
+	}
+
+	if(javascript_version > 1.0)
+	{
+ 		setTimeout('newwin.focus();',250);
+	}
+}
+
+function civicapopupwin(winurl,winname,winfeatures)
+{
+	civicawin = window.open(winurl,winname,winfeatures);
+	
+	if (!civicawin.opener)
+	{
+		civicawin.opener = self
+	}
+
+	if(javascript_version > 1.0)
+	{
+ 		setTimeout('civicawin.focus();',250);
+	}
+}
+
+//-->
+</script>
+
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+
+var bOverButton = false;
+var bOverMenu = false;
+var otimerid = 0;
+
+var bWFOverButton = false;
+var bWFOverMenu = false;
+var oWFtimerid = 0;
+
+function civicapostwindow(sPath)
+{
+	document.wfpost.action=sPath;
+	document.wfpost.submit();
+}
+
+function clkEditButton(obj)
+{
+	bOverButton = true;
+
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid=0;
+
+
+	divEditMenu.style.visibility = 'visible';
+	var y = obj.offsetTop + 25; //- ((divEditMenu.scrollHeight-obj.scrollHeight)/2);
+	if ( y < 0 )
+		y=0;
+
+	divEditMenu.style.top = y;
+
+//	if( divEditMenu.style.top < 0 )
+//		divEditMenu.style.top =0;
+
+	divEditMenu.style.left = obj.offsetLeft;
+
+}
+
+function clkWorkFlowButton(obj)
+{
+	bWFOverButton = true;
+
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid=0;
+
+
+	divWorkFlowMenu.style.visibility = 'visible';
+	var y = obj.offsetTop + 25; //- ((divEditMenu.scrollHeight-obj.scrollHeight)/2);
+	if ( y < 0 )
+		y=0;
+
+	divWorkFlowMenu.style.top = y;
+
+//	if( divEditMenu.style.top < 0 )
+//		divEditMenu.style.top =0;
+
+	divWorkFlowMenu.style.left = obj.offsetLeft;
+
+}
+
+function exitButton(obj)
+{
+	if( bOverButton && !bOverMenu )
+	{
+		//divEditMenu.style.visibility = 'hidden';
+		otimerid = setTimeout("CloseMenu()",500);
+	}
+}
+
+function exitWorkFlowButton(obj)
+{
+	if( bWFOverButton && !bWFOverMenu )
+	{
+		//divEditMenu.style.visibility = 'hidden';
+		oWFtimerid = setTimeout("CloseWorkFlowMenu()",500);
+	}
+}
+
+
+function CloseMenu()
+{
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid=0;
+	bOverMenu = false;
+	bOverButton = false;
+	divEditMenu.style.visibility = 'hidden';
+}
+
+function CloseWorkFlowMenu()
+{
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid=0;
+	bWFOverMenu = false;
+	bWFOverButton = false;
+	divWorkFlowMenu.style.visibility = 'hidden';
+}
+
+
+function EnterMenu()
+{
+	bOverMenu=true;
+	bOverButton=false;
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid=0;
+}
+
+function EnterWorkFlowMenu()
+{
+	bOverWFMenu=true;
+	bOverWFButton=false;
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid=0;
+}
+
+function ExitMenu()
+{
+	bOverMenu=false;
+	if(otimerid > 0) clearTimeout(otimerid);
+	otimerid = setTimeout("CloseMenu()",1000);
+}
+
+function ExitWorkFlowMenu()
+{
+	bWFOverMenu=false;
+	if(oWFtimerid > 0) clearTimeout(oWFtimerid);
+	oWFtimerid = setTimeout("CloseWorkFlowMenu()",500);
+}
+//-->
+</script>
+
+
+
+<style type="text/css">
+<!--
+
+a:link       { text-decoration: underline; font-size: 13px; color: rgb(0,0,128) }
+a:visited    { text-decoration: underline; font-size: 13px; color: rgb(0,0,128) }
+a:active     { text-decoration: underline; font-size: 13px; color: rgb(0,0,128) }
+a:hover      { text-decoration: underline; font-size: 13px; color: red }
+
+
+a.mnav:link       { text-decoration: none; font-size: 10px; color: white }
+a.mnav:visited    { text-decoration: none; font-size: 10px; color: white }
+a.mnav:active     { text-decoration: none; font-size: 10px; color: white }
+a.mnav:hover      { text-decoration: none; font-size: 10px; color: yellow }
+
+a.l2:link       { text-decoration: underline; font-size: 13px; color: red }
+a.l2:visited    { text-decoration: underline; font-size: 13px; color: red }
+a.l2:active     { text-decoration: underline; font-size: 13px; color: rgb(200,0,0) }
+a.l2:hover      { text-decoration: underline; font-size: 13px; color: rgb(200,0,0) }
+a.yah:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #000000 }
+a.yah:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #000000 }
+a.yah:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #000000 }
+a.yah:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: red }
+font.yah		{ font-family: Tahoma, sans-serif; font-size: 11px; color: #FFFFFF }
+font.wee		{ font-family: Tahoma, sans-serif; font-size: 11px  }
+font.wee2		{ font-family: Tahoma, sans-serif; font-size: 11px; color: rgb(51,51,51) }
+.f1			{ font-family: Tahoma, sans-serif; font-size: 11px }
+.f2			{ font-family: Tahoma, sans-serif; font-size: 13px }
+.f3			{ font-family: Tahoma, sans-serif; font-size: 15px }
+.f4			{ font-family: Tahoma, sans-serif; font-size: 17px }
+a.wee:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: rgb(0,0,128) }
+a.wee:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: rgb(0,0,128) }
+a.wee:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: rgb(0,0,128) }
+a.wee:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: red }
+a.nav:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: rgb(0,0,128) }
+a.nav:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: rgb(0,0,128) }
+a.nav:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: rgb(0,0,128) }
+a.nav:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: red }
+font.topdate		{ font-family: Tahoma, sans-serif; font-size: 11px; color: #646464;font-weight: bold}
+body.default  {font-family: Tahoma, Arial, sans-serif; font-size: 13px; color: black}
+.searchresulturl { font-family: Tahoma, sans-serif; font-size: 11px; color: rgb(64,64,192)}
+SELECT.seldept { PADDING-LEFT: 4px; FONT-SIZE: 11px; FONT-FAMILY: Tahoma, sans-serif}
+
+font.crum					{ font-family: Tahoma, sans-serif; font-size: 11px; color: #00000  }
+a.crum:link       { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #00000 }
+a.crum:visited    { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #00000 }
+a.crum:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #00000 }
+a.crum:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #FFBA00 }
+
+font.copy					{ font-family: Tahoma, sans-serif; font-size: 11px; color: #73735B  }
+span.copy					{ font-family: Tahoma, sans-serif; font-size: 11px; color: #73735B  }
+span.scopy				{ font-family: Tahoma, sans-serif; font-size: 11px; color: #73735B  }
+
+a.copy:link, a.copy:visited, a.copy:active	{ font-family: Tahoma, sans-serif; font-size: 11px; font-weight: bold; text-decoration: underline; color: rgb(0,0,128) }
+a.copy:hover      { font-family: Tahoma, sans-serif; font-size: 11px; font-weight: bold; text-decoration: underline; color: rgb(192,0,0) }
+
+a.lohi:link, a.lohi:visited, a.lohi:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: #C9DDEA }
+a.lohi:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: underline; color: #FFFFFF }
+
+a.myem:link, a.myem:visited, a.myem:active     { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: #C9DDEA }
+a.myem:hover      { font-family: Tahoma, sans-serif; font-size: 11px; text-decoration: none; color: #FFFFFF }
+
+
+body
+{ 
+	background-color: #145F8E;
+	color: #000000;
+	margin: 0px;
+	height: 100%;
+}
+
+font.hpcontact		{ font-family: Tahoma, sans-serif; font-size: 10.5px; line-height: 14px; font-weight: normal }
+font.hpcontactb		{ font-family: Tahoma, sans-serif; font-size: 10.5px; line-height: 14px; font-weight: bold }
+
+a.hpcontact:link, a.hpcontact:visited,
+a.hpcontact:active	{ text-decoration: underline; font-size: 11px; color: rgb(0,0,0); font-weight: normal }
+a.hpcontact:hover		{ text-decoration: underline; font-size: 11px; color: red; font-weight: normal }
+
+
+#divEditMenu
+{   BORDER: #959595 1px solid;
+    PADDING: 2px;
+    FONT-FAMILY: Tahoma;
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-DECORATION: none;
+    position:absolute;
+		visibility:hidden;
+		top:-1000px;
+		left: -1000px;
+}
+
+#divWorkFlowMenu
+{   BORDER: #959595 1px solid;
+    PADDING: 2px;
+    FONT-FAMILY: Tahoma;
+    BACKGROUND-COLOR: #ffffff;
+    TEXT-DECORATION: none;
+    position:absolute;
+		visibility:hidden;
+		top:-1000px;
+		left: -1000px;
+}
+
+FONT.pagelink
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #000099;
+    FONT-FAMILY: Tahoma, arial, sans-serif;
+    TEXT-DECORATION: none
+}
+
+A.pagelink:link, A.pagelink:visited, A.pagelink:active
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #000099;
+    FONT-FAMILY: Tahoma, arial, sans-serif;
+    TEXT-DECORATION: none
+}
+A.pagelink:hover
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 13px;
+    COLOR: #cc0000;
+    FONT-FAMILY: Tahoma, arial, sans-serif;
+    TEXT-DECORATION: none
+}
+
+div.divFormSecurity
+{   
+	width:90%; 
+	padding:4px; 
+	background-color:#f8f8f8; 
+	border: solid 1px #e0e0e0;  
+	line-height:28px;
+	text-align:center;
+}
+
+
+/***************************************************************************
+	Search Results Page
+/**************************************************************************/
+
+font.srchSubHeader
+{
+	font-family: tahoma, sans-serif; 
+	font-size: 15px; 
+	font-weight: Bold; 
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 25px; 
+}
+
+font.srchSearchedFor
+{
+	font-family: tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 21px; 
+}
+font.srchResultsLabel
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+}
+font.srchResultsInfo
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+}
+font.srchResultsNone
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+}
+
+a.srchResultsAll:link,
+a.srchResultsAll:visited, a.srchResultsAll:active
+a.srchResultsAll
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 19px; 
+	text-decoration: none; 
+
+}
+a.srchResultsAll:hover
+{  
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #c00000;
+	line-height: 19px; 
+	text-decoration: none; 
+}
+
+a.srchDisplayLink:link,
+a.srchDisplayLink:visited, a.srchDisplayLink:active
+a.srchDisplayLink
+{
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 21px; 
+	text-decoration: none; 
+
+}
+a.srchDisplayLink:hover
+{  
+	font-family: tahoma, sans-serif;
+	font-size: 13px;
+	font-weight: bold;
+	vertical-align: middle; 
+	color: #c00000;
+	line-height: 21px; 
+	text-decoration: none; 
+}
+
+.srchDisplaySub 
+{ 
+	font-family: tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #000000;
+	line-height: 17px; 
+}
+.srchDisplayURL
+{ 
+	font-family: tahoma, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	vertical-align: middle; 
+	color: #808080;
+	line-height: 17px; 
+}
+.srchDescription
+{ 
+    font-family: tahoma, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    vertical-align: middle; 
+    color: #aaaaaa;
+    line-height: 17px; 
+}
+
+/***************************************************************************
+	Template spacing, v75 templates
+/**************************************************************************/
+
+div.tmplVertSpace1
+{
+	width: 100%;
+	height: 20px;
+	/*border: solid 1px black*/
+}
+div.tmplVertSpace2
+{
+	width: 100%;
+	height: 10px;
+	/*border: solid 1px black*/
+}
+td.tmplRightColumn
+{
+	padding-top:10px; 
+	vertical-align:top;
+	background-color:#c9ddea;
+	height:100%;
+}
+-->
+</style>
+
+
+<title>Port of Long Beach - Yearly TEUs</title>
+</head>
+<body id="devbody">
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="/navdata/758.js" TYPE='text/javascript'></SCRIPT>
+
+<SCRIPT LANGUAGE="JavaScript1.2" SRC="/civica/js/FormVal.js"></SCRIPT>
+
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+function HM_f_MenuTop()
+{
+	return 0;
+}
+
+function subGrphVer( grphver )
+{
+	document.frmGrpxVer.grpxver.value = grphver;
+	document.frmGrpxVer.submit();
+}
+
+function frmSearchSubmit()
+{
+
+  if (document.frmSearch.searchquery.value=='')
+  {
+    alert('Please Enter a value to search');
+    return;
+  }
+  with(document.frmSearch)
+  {
+    action = '/search/default.asp';
+    submit();
+  }
+
+}
+
+var cvPageID = 779;
+
+function CV_jumpMenu(selObj,restore)
+{ 
+	var url = selObj.options[selObj.selectedIndex].value; 
+	if (url) window.open(url); 
+	if (restore) selObj.selectedIndex=0; 
+} 
+
+function CV_jumpMenu(selObj,restore)
+{ 
+	var url = selObj.options[selObj.selectedIndex].value; 
+	if (url) window.open(url); 
+	if (restore) selObj.selectedIndex=0; 
+} 
+
+//-->
+</script>
+
+
+<script LANGUAGE="JavaScript"> var javascript_version = 1.0;</script>
+<script LANGUAGE="JavaScript1.1">  javascript_version = 1.1;</script>
+
+<script LANGUAGE="JavaScript" TYPE="text/javascript">
+<!--
+
+
+
+if(window.event + "" == "undefined") event = null;
+function HM_f_PopUp(){return false};
+function HM_f_PopDown(){return false};
+popUp = HM_f_PopUp;
+popDown = HM_f_PopDown;
+
+
+if (document.images) {
+	but1_off = new Image; but1_off.src = "/img/navbuts/but1_off.gif";
+	but1_on = new Image;  but1_on.src =  "/img/navbuts/but1_on.gif";
+	
+	but2_off = new Image; but2_off.src = "/img/navbuts/but2_off.gif";
+	but2_on = new Image;  but2_on.src =  "/img/navbuts/but2_on.gif";
+	
+	but3_off = new Image; but3_off.src = "/img/navbuts/but3_off.gif";
+	but3_on = new Image;  but3_on.src =  "/img/navbuts/but3_on.gif";
+	
+	but4_off = new Image; but4_off.src = "/img/navbuts/but4_off.gif";
+	but4_on = new Image;  but4_on.src =  "/img/navbuts/but4_on.gif";
+	
+	but5_off = new Image; but5_off.src = "/img/navbuts/but5_off.gif";
+	but5_on = new Image;  but5_on.src =  "/img/navbuts/but5_on.gif";
+	
+	but6_off = new Image; but6_off.src = "/img/navbuts/but6_off.gif";
+	but6_on = new Image;  but6_on.src =  "/img/navbuts/but6_on.gif";
+	
+	but7_off = new Image; but7_off.src = "/img/navbuts/but7_off.gif";
+	but7_on = new Image;  but7_on.src =  "/img/navbuts/but7_on.gif";
+	
+	but8_off = new Image; but8_off.src = "/img/navbuts/but8_off.gif";
+	but8_on = new Image;  but8_on.src =  "/img/navbuts/but8_on.gif";
+	
+	search_off = new Image; search_off.src = "/img/navbuts/search_off.gif";
+	search_on = new Image; search_on.src = "/img/navbuts/search_on.gif";
+
+	go_off = new Image; go_off.src = "/img/navbuts/go_off.gif";
+	go_on = new Image; go_on.src = "/img/navbuts/go_on.gif";
+	
+	lbut1_off = new Image;
+	lbut1_on = new Image;
+	
+	lbut2_off = new Image;
+	lbut2_on = new Image;
+	
+	lbut3_off = new Image;
+	lbut3_on = new Image;
+
+	lbut4_off = new Image;
+	lbut4_on = new Image;
+	
+	lbut5_off = new Image;
+	lbut5_on = new Image;
+	
+	lbut6_off = new Image;
+	lbut6_on = new Image;
+
+	lbut7_off = new Image;
+	lbut7_on = new Image;
+	
+	lbut8_off = new Image;
+	lbut8_on = new Image;
+	
+	lbut9_off = new Image;
+	lbut9_on = new Image;
+
+	lbut10_off = new Image;
+	lbut10_on = new Image;
+
+	lbut11_off = new Image;
+	lbut11_on = new Image;
+
+}
+
+var nav_b = new Array ("b1","b2","b3","b4","b5","b6","b7","b8","sh","go",
+											 "l1","l2","l3","l4","l5","l6","l7","l8","l9","l10","l11");
+var obj_boff = new Array (but1_off,but2_off,but3_off,but4_off,but5_off,but6_off,but7_off,but8_off,search_off,go_off,
+													lbut1_off,lbut2_off,lbut3_off,lbut4_off,lbut5_off,lbut6_off,lbut7_off,lbut8_off,lbut9_off,lbut10_off,lbut11_off);
+var obj_bon = new Array  (but1_on, but2_on, but3_on, but4_on, but5_on, but6_on, but7_on, but8_on, search_on, go_on, 
+													lbut1_on, lbut2_on, lbut3_on,lbut4_on, lbut5_on, lbut6_on,lbut7_on, lbut8_on, lbut9_on, lbut10_on, lbut11_on);
+
+
+function on( num )
+{
+	//alert(num);
+	
+	if( document.images )
+	{	
+		document.images[nav_b[num-1]].src = obj_bon[num-1].src;
+		if( (num > 0) && (num < 9) && (document.images) )
+		{
+			//alert(num);
+			popUp('HM_Menu'+(num+1));
+		}
+	}		
+}
+
+function off( num )
+{
+	//alert(num)
+	
+	if( num >= 9  )
+		if( document.images )
+			document.images[nav_b[num-1]].src = obj_boff[num-1].src;
+	
+	if( num < 9 )
+	{
+		popDown('HM_Menu'+(num+1));
+	}
+}
+
+
+
+function buttonoff( num )
+{
+	//alert(num);
+	if( num < 9  )
+		if( document.images[nav_b[num-1]] )
+			document.images[nav_b[num-1]].src = obj_boff[num-1].src;
+}
+
+function buttonon( num )
+{
+	if( num < 9  )
+		if( document.images[nav_b[num-1]] )
+			document.images[nav_b[num-1]].src = obj_bon[num-1].src;
+}
+
+
+
+var newwin;
+
+function launchwin(winurl,winname,winfeatures)
+{
+	newwin = window.open(winurl,winname,winfeatures);
+	if(javascript_version > 1.0)
+	{
+ 		setTimeout('newwin.focus();',250);
+	}
+}
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+function newwindow(theURL) {
+  window.open(theURL,'','');
+}
+
+
+
+function SubmitSearch()
+{ document.frmSearch.submit(); }
+
+HM_PG_MenuWidth = 190;
+HM_PG_FontFamily = "Tahoma, sans-serif";
+HM_PG_FontSize = 8;
+HM_PG_FontBold = 0;
+HM_PG_FontItalic = 0;
+HM_PG_FontColor = "blue";
+HM_PG_FontColorOver = "white";
+HM_PG_BGColor = "#DDDDDD";
+HM_PG_BGColorOver = "#FFCCCC";
+HM_PG_ItemPadding = 3;
+
+HM_PG_BorderWidth = 1;
+HM_PG_BorderColor = "black";
+HM_PG_BorderStyle = "solid";
+HM_PG_SeparatorSize = 1;
+HM_PG_SeparatorColor = "#d0ff00";
+HM_PG_ImageSrc = "/img/tri.gif";
+HM_PG_ImageSrcLeft = "/img/triL.gif";
+
+HM_PG_ImageSize = 5;
+HM_PG_ImageHorizSpace = 0;
+HM_PG_ImageVertSpace = 0;
+
+HM_PG_KeepHilite = true; 
+HM_PG_ClickStart = 0;
+HM_PG_ClickKill = false;
+HM_PG_ChildOverlap = 30;
+HM_PG_ChildOffset = 5;
+HM_PG_ChildPerCentOver = null;
+HM_PG_TopSecondsVisible = .2;
+HM_PG_ChildSecondsVisible = .2;
+
+HM_PG_StatusDisplayBuild =0;
+HM_PG_StatusDisplayLink = 0;
+HM_PG_UponDisplay = null;
+HM_PG_UponHide = null;
+HM_PG_RightToLeft = false;
+
+HM_PG_CreateTopOnly = 1;
+HM_PG_ShowLinkCursor = 1;
+HM_PG_NSFontOver = true;
+
+//HM_a_TreesToBuild = [2];
+
+//-->
+</script>
+
+
+<script LANGUAGE="JavaScript1.2" SRC="/HM_StuLoader.js" TYPE="text/javascript"></script>
+<table border="0" style="width:100%; height:100%;" cellspacing="0" cellpadding="0"><tr><td style="height:100%; background-color: #145F8E; background-image: url(/img/layout/lfade.gif); background-repeat: repeat-y; background-position: right"><img src="/img/blank.gif" width=1 height=1 border=0 alt=""></td><td width="740" valign="top" bgcolor="#FFFFFF"><div id="oAllScreen" style="display:block; position:relative; top: 0px; left: 0px; height: 100%;"><table border="0" style="width:100%; height:100%;" cellspacing="0" cellpadding="0"><tr><td width="740" valign="top" style="height:100%;">
+
+<!-- Top Navigation Table -->
+<div align="center" name="MainDiv">
+<a name="top"></a><table border="0" cellpadding="0" cellspacing="0" width="748" bgcolor="#ffffff"><tr><td width="748" height="85" valign="top" align="left" background="/img/layout/header.jpg"><span name="spnHead" id="spnHead" onmouseover="this.style.cursor='hand';" onmouseout="this.style.cursor='default';" onclick="javascript:frmHomePage.submit();"><img src="/img/blank.gif" width="748" height="55" border="0"><img src="/img/blank.gif" width="20" height="20" border="0"><a class="lohi" href="javascript:subGrphVer('lo');">Low Graphics Version</a><img src="/img/blank.gif" width="600" height="20" border="0"><img src="/img/blank.gif" width="748" height="9" border="0"></span></td></tr><form name="frmHomePage" action="/default.asp" method="post" ><input type="hidden" name="a" value="1"></form></table><table width="748" border="0" cellpadding="0" cellspacing="0" style="border-collapse: collapse" bordercolor="#111111"><form name="frmSearch" id="frmSearch" action="/search/default.asp" method="post" target="_self"></tr><td width ="608" height="30" background="/img/layout/searchs.gif"><a href="/about/default.asp" target="_self" onmouseout="off(1);" onmouseover="on(1);"><img border="0" src="/img/navbuts/but1_off.gif" width="103" height="30" name="b1"></a><a href="/commission/default.asp" target="_self" onmouseout="off(2);" onmouseover="on(2);"><img border="0" src="/img/navbuts/but2_off.gif" width="134" height="30" name="b2"></a><a href="/economics/default.asp" target="_self" onmouseout="off(3);" onmouseover="on(3);"><img border="0" src="/img/navbuts/but3_off.gif" width="117" height="30" name="b3"></a><a href="/environment/default.asp" target="_self" onmouseout="off(4);" onmouseover="on(4);"><img border="0" src="/img/navbuts/but4_off.gif" width="93" height="30" name="b4"></a><a href="/community/default.asp" target="_self" onmouseout="off(5);" onmouseover="on(5);"><img border="0" src="/img/navbuts/but5_off.gif" width="84" height="30" name="b5"></a><a href="/contact/default.asp" target="_self" onmouseout="off(6);" onmouseover="on(6);"><img border="0" src="/img/navbuts/but6_off.gif" width="77" height="30" name="b6"></a></td><td width="93" height="30" align="right" background="/img/layout/searchs.gif"><input type="text" name="searchquery" size="10" maxlength="50" value="Search"></td><td width="47" height="30" background="/img/layout/searchs.gif"><a href='javascript:frmSearchSubmit();' target=_self onmouseover='on(9);' onmouseout='off(9);'><img name='sh' src='/img/navbuts/search_off.gif' width=40 height=30 align=right border=0 ></a></td></tr></form></table><table width="748" border="0" cellpadding="0" cellspacing="0"><tr valign="top" ><td width="5" background="/img/layout/crumbs.gif"><img src='/img/blank.gif' width="5"  border="0"></td><td height="25" valign="top" width="598" background="/img/layout/crumbs.gif"><a class="crum" href='/default.asp' target='_self'><img src="/img/homeicon.gif" width="26" height="25" border="0" align="absmiddle">Home</a>&nbsp;<font class="crum">></font>&nbsp;<a class="crum" href='/economics/default.asp' target='_self'>Trade/Commerce</a>&nbsp;<font class="crum">></font>&nbsp;<a class="crum" href='/economics/port_stats/default.asp' target='_self'>Port Stats</a>&nbsp;<font class="crum" color="#000000">>&nbsp;Yearly TEUs</font></td><td width="140" valign="top" align="right" background="/img/layout/crumbs.gif"><a href="mailto:?subject=I found this link&amp;body=http://www.polb.com/economics/port_stats/yearly_teus.asp"><img border="0" width="65" height="25" alt="E-mail story" src="/img/icons/email-icon.gif"></a><img border="0" width="5" height="25" src="/img/blank.gif"><a href="javascript:document.frmPrintable.submit();"><img border="0" width="65" height="25" alt="Print friendly format" src="/img/icons/print-icon.gif"></a></td><td width="5" background="/img/layout/crumbs.gif"><img src='/img/blank.gif' width="5"  border="0"></td></tr></table>
+</div>
+<table border="0" width="748" height="100%" cellspacing="0" cellpadding="0"><tr><td width="182" valign="top" height="100%" bgcolor="#C9DDEA"><table border="0" width="100%" height="100%" cellspacing="0" cellpadding="0"><tr><td width="182" valign="top" align="center" bgcolor="#C9DDEA">
+<table border="0" width="182" cellspacing="0" cellpadding="0"><tr><td colspan="3" valign="top"><img border="0" src="/img/navmenu/navmenu.gif" width="182" ></td></tr></table>
+
+	<div id="navbg" style="position:relative; height:0px; width:182px; backgroundImage:url(/img/navmenu/navslice.gif);"></div>
+	<div id="navcolumn" style="position:relative;visibility:hidden" >
+	<img border="0" src="/img/navmenu/NavBott.gif" width="182" height="20"><table border="0" height="10" width="182" cellspacing="0" cellpadding="0"><tr><td width="182" height="10" valign="top"><img src='/img/blank.gif' width=182 height=10 border=0></td></tr></table></div>
+</td></tr></table></td><td width="12" valign="top" background="/img/layout/liedge.gif"><img src='/img/blank.gif' width=12 height=400 border=0></td><td width="549" bgcolor="#ffffff" valign="top">
+<table border="0"  cellspacing="0" cellpadding="0" style="width:100%; height:400; background-color:#ffffff;">
+<tr>
+	<td style="width:100%; vertical-align:top;"><font size=4 face="Tahoma, Sans-Serif" color="#153B3B">Yearly TEUs</font><BR><IMG src="/img/underline.gif" border=0><BR><p><TABLE cellSpacing=0 cellPadding=0 width=476 border=0><TBODY><TR><TD vAlign=bottom width=476 colSpan=6><P align=center><B><SPAN><FONT face=Tahoma>Container Trade in TEUs*</FONT></SPAN></B></P></TD></TR><TR><TD vAlign=bottom width=476 colSpan=6><P align=center><B><SPAN><FONT face=Tahoma>Yearly TEU Totals</FONT></SPAN></B></P></TD></TR><TR><TD vAlign=bottom width=64 rowSpan=2><P align=center><SPAN><FONT face=Tahoma size=2>Year</FONT></SPAN></P></TD><TD vAlign=bottom width=85><P align=center><B><SPAN><FONT face=Tahoma size=2>Loaded</FONT></SPAN></B></P></TD><TD vAlign=bottom width=83><P align=center><B><SPAN><FONT face=Tahoma size=2>Loaded</FONT></SPAN></B></P></TD><TD vAlign=bottom width=79><P align=center><B><SPAN><FONT face=Tahoma size=2>Total</FONT></SPAN></B></P></TD><TD vAlign=bottom width=72 rowSpan=2><P align=center><B><SPAN><FONT face=Tahoma size=2>Empties</FONT></SPAN></B></P></TD><TD vAlign=bottom width=93><P align=center><B><SPAN><FONT face=Tahoma size=2>Total</FONT></SPAN></B></P></TD></TR><TR><TD vAlign=bottom width=85><P align=center><B><SPAN><FONT face=Tahoma size=2>Inbound</FONT></SPAN></B></P></TD><TD vAlign=bottom width=83><P align=center><B><SPAN><FONT face=Tahoma size=2>Outbound</FONT></SPAN></B></P></TD><TD vAlign=bottom width=79><P align=center><B><SPAN><FONT face=Tahoma size=2>Loaded</FONT></SPAN></B></P></TD><TD vAlign=bottom width=93><P align=center><B><SPAN><FONT face=Tahoma size=2>Containers</FONT></SPAN></B></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>2006</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>3,719,680</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>1,290,843</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>5,010,523</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>2,279,842</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>7,290,365</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>2005</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>3,346,054</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>1,221,419</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>4,567,473</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>2,142,345</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>6,709,818</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>2004</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>2,987,980</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>1,007,913</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>3,995,893</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>1,783,959</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>5,779,852</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>2003</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>2,409,577</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>904,539</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>3,314,116</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>1,344,008</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>4,658,124</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>2002</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>2,452,490</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>855,202</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>3,307,692</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>1,218,673</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>4,526,365</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>2001</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>2,420,687</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>952,845</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>3,373,532</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>1,089,435</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>4,462,967</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>2000</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>2,456,188</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>1,044,353</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>3,500,541</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>1,100,246</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>4,600,787</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>1999</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>2,317,050</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>989,221</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>3,306,271</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>1,102,209</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>4,408,480</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>1998</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>2,096,901</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>973,647</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>3,070,548</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>1,027,141</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>4,097,689</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>1997</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>1,806,787</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>1,107,324</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>2,914,111</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>590,491</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>3,504,602</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>1996</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>1,547,578</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>1,081,887</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>2,629,465</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>437,869</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>3,067,334</FONT></SPAN></P></TD></TR><TR><TD vAlign=bottom width=64><P align=center><B><SPAN><FONT face=Tahoma size=2>1995</FONT></SPAN></B></P></TD><TD vAlign=bottom width=85><P align=center><SPAN><FONT face=Tahoma size=2>1,353,320</FONT></SPAN></P></TD><TD vAlign=bottom width=83><P align=center><SPAN><FONT face=Tahoma size=2>1,036,213</FONT></SPAN></P></TD><TD vAlign=bottom width=79><P align=center><SPAN><FONT face=Tahoma size=2>2,389,533</FONT></SPAN></P></TD><TD vAlign=bottom width=72><P align=center><SPAN><FONT face=Tahoma size=2>453,969</FONT></SPAN></P></TD><TD vAlign=bottom width=93><P align=center><SPAN><FONT face=Tahoma size=2>2,843,502</FONT></SPAN></P></TD></TR></TBODY></TABLE><P>* Calendar year (Jan. thru Dec.)</P><P>&nbsp;</P><P><FONT face="Times New Roman"></FONT></P></p></td>
+</tr>
+</table>
+
+<script language="JavaScript" type="text/javascript" src="/inc/NavMenu.js"></script>
+</td><td style="width:5px; vertical-align:top; background-color:#ffffff;" ><img src='/img/blank.gif' width=5 height=1 border=0></td></tr></table></td></tr><tr><td width="100%" height="36" valign="bottom"><table border="0" width="748" cellspacing="0" cellpadding="0" bgcolor="#ffffff"><tr><td width="119"><img src="/img/layout/polblogo.gif" width=119 height=36 border=0></td><td width="60"><a href="http://dorado.ebrp.net/ebrp/toolkit.aspx" target="_blank"><img alt="eBRP Solutions" src="/img/layout/smlebrp.gif" width=60 height=36 border=0></a></td><td width="390" align="center" background="/img/layout/bottoms.gif"></td><td width="100" align="right" background="/img/layout/bottoms.gif"><a href="#top"><img border="0" src="/img/layout/smltop.gif" align="absmiddle" width="50" height="36" alt="Top of the Page"></a></td><td width="79"><a href="http://www.civicasoft.com" target="_blank"><img alt="Civica Software" src="/img/layout/smlciv.gif" width=79 height=36 border=0></a></td></tr></table></td></tr></table></td><td width=* height="100%" style="background-color: #145F8E; background-image: url(/img/layout/rfade.gif); background-repeat: repeat-y; background-position: left"><img src="/img/blank.gif" width=1 height=1 border=0></td></tr><form name="frmPrintable" id="frmPrintable" action="/economics/port_stats/yearly_teus.asp" method="post" target="_blank"><input type="hidden" name="prnt" value="y"></form><form name="frmGrpxVer" id="frmGrpxVer" action="/economics/port_stats/yearly_teus.asp" method="post" ><input type="hidden" name="grpxver" value="lo"></form><form style="display: inline; margin: 0;" name="wfpost" method=post target="_new" action=""></form></table></body></html>
+</body>
+</html>

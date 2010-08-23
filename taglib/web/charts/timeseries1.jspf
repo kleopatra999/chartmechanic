@@ -1,0 +1,14 @@
+<c:chart renderType="Bar">
+ <c:series name="My Values" datasource="d1"
+    x="1" y="2" timeperiod="year" color="dark_green"/>
+ <c:props>
+title.text=A Time Series
+ </c:props>
+<c:marker name="x axis line" xaxis="true" dateValues="2007-07-01" color="red">
+stroke=line=2.0
+</c:marker>
+<c:marker name="x axis band" xaxis="true" dateValues="2009-01-01|2010-01-01" color="gray">
+layer=foreground
+</c:marker>
+</c:chart>
+

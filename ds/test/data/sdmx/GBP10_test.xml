@@ -1,0 +1,149 @@
+<?xml version = '1.0'?>
+<UtilityData xsi:schemaLocation="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message SDMXMessage.xsd http://www.newyorkfed.org/xml/schemas/FX/utility FX_Utility.xsd" xmlns:generic="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/generic" xmlns="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message" xmlns:utility="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/utility" xmlns:query="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/query" xmlns:structure="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/structure" xmlns:common="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/common" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:compact="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/compact" xmlns:frbny="http://www.newyorkfed.org/xml/schemas/FX/utility" xmlns:cross="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/cross">
+   <Header>
+      <ID>FX10GB</ID>
+      <Test>true</Test>
+      <Name xml:lang="en">Foreign Exchange UK Pound 10AM Rates</Name>
+      <Prepared>2008-02-14</Prepared>
+      <Sender id="FRBNY">
+         <Name xml:lang="en">Federal Reserve Bank of New York</Name>
+         <Contact>
+            <Name xml:lang="en">George Matthes</Name>
+            <Email>george.matthes@ny.frb.org</Email>
+         </Contact>
+      </Sender>
+      <ReportingBegin>1993-10-05</ReportingBegin>
+   </Header>
+   <frbny:DataSet>
+      <frbny:Series AVAILABILITY="A" UNIT_MULT="0" TIME_FORMAT="P1D" DECIMALS="4" UNIT="USD" FX_METHOD="S" DISCLAIMER="S">
+         <frbny:Key>
+            <frbny:FREQ>D</frbny:FREQ>
+            <frbny:CURR>GBP</frbny:CURR>
+            <frbny:FX_TIME>10</frbny:FX_TIME>
+            <frbny:FX_TYPE>S</frbny:FX_TYPE>
+         </frbny:Key>
+
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-03</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9745</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-04</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9754</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-07</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9724</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-08</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9773</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-09</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9590</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-10</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9590</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-11</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9579</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-14</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9583</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-15</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9714</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-16</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9698</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-17</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9764</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-18</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9603</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-22</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9518</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-23</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9497</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-24</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9682</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-25</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9840</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-28</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9867</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-29</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9868</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-30</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9884</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-01-31</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9878</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-01</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9719</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-04</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9745</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-05</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9653</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-06</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9594</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-07</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9434</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-08</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9449</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-11</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9452</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-12</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9596</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-13</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9607</frbny:OBS_VALUE>
+         </frbny:Obs>
+         <frbny:Obs OBS_CONF="F" OBS_STATUS="A">
+            <frbny:TIME_PERIOD>2008-02-14</frbny:TIME_PERIOD>
+            <frbny:OBS_VALUE>1.9701</frbny:OBS_VALUE>
+         </frbny:Obs>
+
+      </frbny:Series>
+   </frbny:DataSet>
+</UtilityData>

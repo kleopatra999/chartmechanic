@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Structure xmlns="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message" xmlns:common="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/common" xmlns:compact="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/compact" xmlns:cross="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/" xmlns:generic="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/generic" xmlns:query="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/query" xmlns:structure="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/structure" xmlns:utility="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/utility" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.SDMX.org/resources/SDMXML/schemas/v1_0/message http://www.sdmx.org/data/SDMXMessage.xsd">
+	<Header>
+		<ID>FRBNY_FX</ID>
+		<Test>true</Test>
+		<Name xml:lang="en">Foreign Exchange</Name>
+		<Prepared>2005-07-07</Prepared>
+		<Sender id="FRBNY">
+			<Name xml:lang="en">Federal Reserve Bank of New York</Name>
+			<Contact>
+				<Name xml:lang="en">NY Fed Webteam</Name>
+				<Email>ny.piwebteam@ny.frb.org</Email>
+			</Contact>
+		</Sender>
+	</Header>
+	
+	<CodeLists>
+		<CodeList id="CL_FREQ" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/codelists/cl_freq.htm">
+			<Name>frequency</Name>
+			<Code value="D">
+				<Description xml:lang="en">daily</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_TIME_FORMAT" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/codelists/cl_time_format.xml">
+			<Name>time format</Name>
+			<Code value="P1D">
+				<Description xml:lang="en">daily</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_FRBNY_DISCLAIMER" agency="FRBNY" version="1.0" isExternalReference="true" uri="http://www.newyorkfed.org/xml/codelists/GeneralCodeLists.xml">
+			<Name>disclaimer</Name>
+			<Code value="12">
+				<Description xml:lang="en">This information is intended only for informational purposes. The data were obtained from sources believed to be reliable but this bank does not guarantee their accuracy, completeness or correctness.</Description>
+			</Code>
+			<Code value="S">
+				<Description xml:lang="en">While the information contained herein has been obtained from sources we consider to be reliable, it is furnished without liability on our part.</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_AVAILABILITY" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/codelists/cl_availability.xml">
+			<Name>availability</Name>
+			<Code value="A">
+				<Description xml:lang="en">free</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_CURRENCY_UNIT" agency="UNECE" version="1.0" uri="http://www.unece.org/etrades/unedocs/repository/codelists/xml/CurrencyCodeList.xml" isExternalReference="true">
+			<Name>currency unit</Name>
+			<Code value="USD">
+				<Description xml:lang="en">United States dollar</Description>
+			</Code>
+			<Code value="ATS">
+				<Description xml:lang="en">Austrian schilling</Description>
+			</Code>
+			<Code value="AUD">
+				<Description xml:lang="en">Australian dollar</Description>
+			</Code>
+			<Code value="BEF">
+				<Description xml:lang="en">Belgian franc</Description>
+			</Code>
+			<Code value="BRL">
+				<Description xml:lang="en">Brazilian real</Description>
+			</Code>
+			<Code value="CAD">
+				<Description xml:lang="en">Canadian dollar</Description>
+			</Code>
+			<Code value="CHF">
+				<Description xml:lang="en">Swiss franc</Description>
+			</Code>
+			<Code value="CNY">
+				<Description xml:lang="en">Chinese yuan renminbi</Description>
+			</Code>
+			<Code value="DEM">
+				<Description xml:lang="en">German mark</Description>
+			</Code>
+			<Code value="DKK">
+				<Description xml:lang="en">Danish krone</Description>
+			</Code>
+			<Code value="ESP">
+				<Description xml:lang="en">Spanish peseta</Description>
+			</Code>
+			<Code value="EUR">
+				<Description xml:lang="en">Euro</Description>
+			</Code>
+			<Code value="FIM">
+				<Description xml:lang="en">Finnish markkha</Description>
+			</Code>
+			<Code value="FRF">
+				<Description xml:lang="en">French franc</Description>
+			</Code>
+			<Code value="GBP">
+				<Description xml:lang="en">British pound or Pound sterling</Description>
+			</Code>
+			<Code value="GRD">
+				<Description xml:lang="en">Greek drachma</Description>
+			</Code>
+			<Code value="HKD">
+				<Description xml:lang="en">Hong Kong dollar</Description>
+			</Code>
+			<Code value="IEP">
+				<Description xml:lang="en">Irish punt</Description>
+			</Code>
+			<Code value="INR">
+				<Description xml:lang="en">Indian rupee</Description>
+			</Code>
+			<Code value="ITL">
+				<Description xml:lang="en">Italian lira</Description>
+			</Code>
+			<Code value="JPY">
+				<Description xml:lang="en">Japanese yen</Description>
+			</Code>
+			<Code value="KRW">
+				<Description xml:lang="en">South Korean won</Description>
+			</Code>
+			<Code value="LKR">
+				<Description xml:lang="en">Sri Lankan rupee</Description>
+			</Code>
+			<Code value="MXN">
+				<Description xml:lang="en">Mexican peso</Description>
+			</Code>
+			<Code value="MYR">
+				<Description xml:lang="en">Malaysian ringgit</Description>
+			</Code>
+			<Code value="NLG">
+				<Description xml:lang="en">Dutch guilder</Description>
+			</Code>
+			<Code value="NOK">
+				<Description xml:lang="en">United States dollar</Description>
+			</Code>
+			<Code value="NZD">
+				<Description xml:lang="en">Norwegian kroner</Description>
+			</Code>
+			<Code value="PTE">
+				<Description xml:lang="en">Portuguese escudo</Description>
+			</Code>
+			<Code value="SEK">
+				<Description xml:lang="en">Swedish krona</Description>
+			</Code>
+			<Code value="SGD">
+				<Description xml:lang="en">Singapore dollar</Description>
+			</Code>
+			<Code value="THB">
+				<Description xml:lang="en">Thai baht</Description>
+			</Code>
+			<Code value="TWD">
+				<Description xml:lang="en">Taiwan dollar</Description>
+			</Code>
+			<Code value="VEB">
+				<Description xml:lang="en">Venezuelan bolivar</Description>
+			</Code>
+			<Code value="ZAR">
+				<Description xml:lang="en">South African rand</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_UNIT_MULT" agency="BIS" version="1.0" uri="http://www.bis.org/structure/codelists/cl_unit_mult.xml" isExternalReference="true">
+			<Name xml:lang="en">unit multiplier</Name>
+			<Code value="0">
+				<Description xml:lang="en">units</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_DECIMALS" agency="BIS" version="1.0" uri="http://www.bis.org/structure/codelists/cl_decimals.xml" isExternalReference="true">
+			<Name xml:lang="en">decimals</Name>
+			<Code value="4">
+				<Description xml:lang="en">four</Description>
+			</Code>
+			<Code value="3">
+				<Description xml:lang="en">three</Description>
+			</Code>
+			<Code value="2">
+				<Description xml:lang="en">two</Description>
+			</Code>
+			<Code value="1">
+				<Description xml:lang="en">one</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_OBS_CONF" agency="BIS" version="1.0" uri="http://www.bis.org/structure/codelists/cl_bis_obs_conf.xml" isExternalReference="true">
+			<Name xml:lang="en">observation confidentiality</Name>
+			<Code value="F">
+				<Description xml:lang="en">free</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_OBS_STATUS" agency="BIS" version="1.0" uri="http://www.bis.org/structure/codelists/cl_obs_status.xml" isExternalReference="true">
+			<Name xml:lang="en">observation status</Name>
+			<Code value="A">
+				<Description xml:lang="en">present</Description>
+			</Code>
+			<Code value="M">
+				<Description xml:lang="en">missing</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_FRBNY_FX_METHOD" agency="FRBNY" version="1.0" uri="http://www.newyorkfed.org/xml/codelists/FXCodeLists.xml" isExternalReference="true">
+			<Name xml:lang="en">foreign exchange method</Name>
+				<Code value="S">
+					<Description xml:lang="en">spot</Description>
+				</Code>
+				<Code value="F">
+					<Description xml:lang="en">forward</Description>
+				</Code>
+				<Code value="12">
+					<Description xml:lang="en">noon buying</Description>
+				</Code>
+		</CodeList>
+		<CodeList id="CL_FRBNY_AUTHORITY" agency="FRBNY" version="1.0" uri="http://www.newyorkfed.org/xml/codelists/FXCodeLists.xml" isExternalReference="true">
+			<Name xml:lang="en">foreign exchange authority</Name>
+			<Code value="12">
+				<Description xml:lang="en">noon buying</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_FRBNY_FX_TIME" agency="FRBNY" version="1.0" uri="http://www.newyorkfed.org/xml/codelists/FXCodeLists.xml" isExternalReference="true">
+			<Name xml:lang="en">foreign exchange time</Name>
+			<Code value="10">
+				<Description xml:lang="en">10 am</Description>
+			</Code>
+			<Code value="12">
+				<Description xml:lang="en">12 noon</Description>
+			</Code>
+		</CodeList>
+		<CodeList id="CL_FRBNY_FX_TYPE" agency="FRBNY" version="1.0" uri="http://www.newyorkfed.org/xml/codelists/FXCodeLists.xml" isExternalReference="true">
+			<Name xml:lang="en">foreign exchange type</Name>
+			<Code value="S">
+				<Description xml:lang="en">spot</Description>
+			</Code>
+			<Code value="3">
+				<Description xml:lang="en">3 months forward</Description>
+			</Code>
+			<Code value="6">
+				<Description xml:lang="en">6 months forward</Description>
+			</Code>
+		</CodeList>
+	</CodeLists>
+	
+	<Concepts>
+		<Concept id="CURR" agency="UNECE" version="1.0" isExternalReference="true" uri="http://www.unece.org/etrades/unedocs/repository/codelists/xml/CurrencyCodeList.xml">
+			<Name>currency unit</Name>
+		</Concept>
+		<Concept id="FX_TIME" agency="FRBNY" version="1.0">
+			<Name xml:lang="en">foreign exchange time</Name>
+		</Concept>
+		<Concept id="FX_TYPE" agency="FRBNY" version="1.0">
+			<Name xml:lang="en">foreign exchange type</Name>
+		</Concept>
+		<Concept id="FREQ" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/FREQ.xml">
+			<Name>frequency</Name>
+		</Concept>
+		<Concept id="AVAILABILITY" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/AVAILABILITY.xml">
+			<Name>availability</Name>
+		</Concept>
+		<Concept id="DECIMALS" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/DECIMALS.xml">
+			<Name>decimals</Name>
+		</Concept>
+		<Concept id="UNIT" agency="UNECE" version="1.0" isExternalReference="true" uri="http://www.unece.org/etrades/unedocs/repository/codelists/xml/CurrencyCodeList.xml">
+			<Name>currency unit</Name>
+		</Concept>
+		<Concept id="UNIT_MULT" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/UNIT_MULT.xml">
+			<Name>unit multiplier</Name>
+		</Concept>
+		<Concept id="TIME_FORMAT" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/TIME_FORMAT.xml">
+			<Name>time format</Name>
+		</Concept>
+		<Concept id="FX_METHOD" agency="FRBNY" version="1.0">
+			<Name>foreign exchange method</Name>
+		</Concept>
+		<Concept id="DISCLAIMER" agency="FRBNY" version="1.0">
+			<Name>disclaimer</Name>
+		</Concept>
+		<Concept id="AUTHORITY" agency="FRBNY" version="1.0">
+			<Name>foreign exchange authority</Name>
+		</Concept>
+		<Concept id="TIME_PERIOD" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/TIME.xml">
+			<Name>time</Name>
+		</Concept>
+		<Concept id="OBS_VALUE" agency="FRBNY" version="1.0">
+			<Name>observation</Name>
+		</Concept>
+		<Concept id="OBS_CONF" agency="BIS" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/OBS_CONF.xml">
+			<Name>observation confidentiality</Name>
+		</Concept>
+		<Concept id="OBS_STATUS" agency="FRBNY" version="1.0" isExternalReference="true" uri="http://www.bis.org/structure/concepts/OBS_STATUS.xml">
+			<Name>observation status</Name>
+		</Concept>
+	</Concepts>
+	
+	<KeyFamilies>
+		<KeyFamily id="FX" agency="FRBNY" version="1.0" uri="http://www.newyorkfed.org/xml/structures/fxStructure.xml">
+			<Name xml:lang="en">foreign exchange</Name>
+			<Components>
+				<Dimension codelist="CL_FREQ" concept="FREQ" isFrequencyDimension="true"/>
+				<Dimension codelist="CL_CURRENCY_UNIT" concept="CURR"/>
+				<Dimension codelist="CL_FRBNY_FX_TIME" concept="FX_TIME"/>
+				<Dimension codelist="CL_FRBNY_FX_TYPE" concept="FX_TYPE"/>
+				<TimeDimension concept="TIME_PERIOD"/>
+				<structure:PrimaryMeasure concept="OBS_VALUE"/>
+				<Attribute attachmentLevel="Series" concept="AVAILABILITY" codelist="CL_AVAILABILITY" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Series" concept="TIME_FORMAT" codelist="CL_TIME_FORMAT" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Series" concept="DISCLAIMER" codelist="CL_FRBNY_DISCLAIMER" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Series" concept="FX_METHOD" codelist="CL_FRBNY_FX_METHOD" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Series" concept="UNIT" codelist="CL_CURRENCY_UNIT" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Series" concept="UNIT_MULT" codelist="CL_UNIT_MULT" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Series" concept="DECIMALS" codelist="CL_DECIMALS" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Series" concept="AUTHORITY" codelist="CL_FRBNY_AUTHORITY" assignmentStatus="Conditional"/>
+				<Attribute attachmentLevel="Observation" concept="OBS_CONF" codelist="CL_OBS_CONF" assignmentStatus="Mandatory"/>
+				<Attribute attachmentLevel="Observation" concept="OBS_STATUS" codelist="CL_OBS_STATUS" assignmentStatus="Mandatory"/>
+			</Components>
+		</KeyFamily>
+	</KeyFamilies>
+</Structure>

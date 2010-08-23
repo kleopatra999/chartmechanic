@@ -1,0 +1,237 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+
+<project name="ChartEngine chart" default="all" basedir=".">
+  <property environment="env"/>
+  <property file="build.properties"/>
+  <property name="debug" value="true"/>
+  <property name="dist" value="dist"/>
+  <property name="chartengine-core.jar" value="${dist}/chartengine-core.jar"/>
+  <property name="chartengine-jfree.jar" value="${dist}/chartengine-jfree.jar"/>
+  <property name="chartengine-core-javadoc.zip" value="${dist}/chartengine-core-javadoc.zip"/>
+
+<!--  <property name="stage" value="stage"/> -->
+
+  <property name="common.dir" value="${basedir}/../common"/>
+  <!-- commonly used properties (e.g. common-lib, junit.classpath, etc. are set here) -->
+  <import file="${common.dir}/common-imports.xml"/>
+
+  <property name="test" value="test"/>
+  <property name="src" value="src"/>
+<!--  <property name="classes.dir" value="${stage}/WEB-INF/classes"/> -->
+  <property name="classes.dir" value="classes"/>
+
+  <property name="ds.dir" value="${basedir}/../ds"/>
+  <property name="ds.jar" value="${ds.dir}/dist/chartengine-ds.jar"/>
+
+  <path id="core.classpath">
+    <path path="${ds.jar}"/>
+    <fileset dir="lib" includes="*.jar"/>
+    <fileset dir="${common-lib}" includes="*.jar"/>
+    <fileset dir="${ds.dir}/lib" includes="*.jar"/>
+  </path>
+  <!-- for compilation/runtime of tests ONLY, NOT to be depended upon by product code -->
+  <path id="test.classpath">
+    <fileset dir="${common-compile-lib}" includes="*.jar"/>
+  </path>
+
+  <target name="clean">
+	<delete dir="${dist}"/>
+<!--    <delete dir="${stage}"/> -->
+	<delete dir="${classes.dir}"/>
+	<delete dir="${test.out}"/>
+	<delete dir="${coverage.dir}"/>
+	<delete file="${cobertura.ser}"/>
+  </target>
+
+  <target name="compile-ds-jar" description="compile the ds jar from the other project">
+     <echo>compiling ds jar:</echo>
+     <ant dir="${ds.dir}" target="jar" inheritAll="false" inheritRefs="false">
+        <property name="skip-instrument" value="true"/> 
+     </ant>
+  </target>
+
+
+
+  <target name="javadoc"
+		  description="create javadocs">
+   <mkdir dir="${dist}/doc"/>
+	<javadoc
+	   destdir="${dist}/doc"
+	   classpathref="core.classpath"
+	   use="true"
+	   windowtitle="ChartEngine Core API" >
+	  <bottom><![CDATA[<i>Copyright &#169; 2008-2010 Bay Area Software Inc.</i>]]></bottom>
+          <packageset dir="src" defaultexcludes="yes">
+            <include name="com/bayareasoftware/chartengine/**"/>
+            <exclude name="com/bayareasoftware/chartengine/model/types/**"/>
+          </packageset>
+	</javadoc>
+	<zip zipfile="${chartengine-core-javadoc.zip}">
+	  <zipfileset dir="${dist}/doc"
+				  prefix="chartengine-core-javadocs"/>
+    </zip>
+  </target>
+
+
+  <target name="compile" 
+		  description="compile the Chartengine-chart library classes"
+		  depends="compile-ds-jar">
+	<mkdir dir="${classes.dir}"/>
+	<javac srcdir="${src}" destdir="${classes.dir}" debug="${debug}"
+		   classpathref="core.classpath">
+	</javac>
+	<copy file="${src}/jfreechart-types.xml" toDir="${classes.dir}" overwrite="true"/>
+	<copy file="${src}/jfree-render-doc.xml" toDir="${classes.dir}" overwrite="true"/>
+        <!-- branding images -->
+        <copy todir="${classes.dir}/com/bayareasoftware/chartengine/chart">
+          <fileset dir="${src}/com/bayareasoftware/chartengine/chart" includes="*.png"/>
+        </copy>
+	<mkdir dir="${instrumented.dir}"/>
+    <antcall target="instrument-classes"/>
+  </target>
+
+  <target name="instrument-classes"  unless="skip-instrument">
+	<cobertura-instrument todir="${instrumented.dir}" datafile="${cobertura.ser}">
+	  <fileset dir="${classes.dir}">
+		<include name="**/*.class"/>
+		<exclude name="**/*Test.class"/>
+	  </fileset>
+	</cobertura-instrument>
+  </target>
+         
+  <target name="core"
+		  description="create the core jars"
+		  depends="clean,compile">
+	<mkdir dir="${dist}"/>
+
+	<!-- the core jar does not have any jfreechart isms-->
+	<jar destfile="${chartengine-core.jar}"
+		 basedir="${classes.dir}"
+		 excludes="**/*Test.class, **/jfree/**, jfreechart-types.xml"/>
+
+	<!-- put all the jfreechart isms in chartengine-jfree.jar -->
+	<jar destfile="${chartengine-jfree.jar}"
+		 basedir="${classes.dir}"
+		 includes="**/jfree/*.class, jfreechart-types.xml"
+		 excludes="**/*Test.class"/>
+  </target>
+
+  <target name="test" description="run unit tests" depends="compile-tests">
+	<mkdir dir="${test.out}"/>
+	<mkdir dir="${coverage.dir}"/>
+    <junit fork="yes" 
+		   dir="${basedir}" 
+		   haltonerror="false" 
+		   haltonfailure="false"
+                   failureproperty="junit.failed"
+		   showoutput="true">
+       <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser}"/>
+       <sysproperty key="chartengine.allowFileUrls" value="true"/>
+       <classpath refid="junit.classpath"/>
+	   <classpath location="${instrumented.dir}"/>
+	   <classpath location="${classes.dir}"/>
+	   <classpath refid="cobertura.classpath"/>
+	   <classpath refid="core.classpath"/>
+	   <classpath refid="test.classpath"/>
+	   <formatter type="xml"/>
+	   <batchtest todir="${test.out}">
+		    <fileset dir="${test}">
+                 <include name="**/*Test.java"/>
+<!--
+                 <exclude name="**/builder/*Test.java"/>
+                 <exclude name="**/RestletApplicationTest.java"/>
+-->
+            </fileset>
+       </batchtest>
+    </junit>
+
+<!--
+    <junit fork="yes" 
+		   dir="${basedir}" 
+		   haltonerror="false" 
+		   haltonfailure="false"
+                   failureproperty="junit.failed"
+		   showoutput="true">
+       <sysproperty key="net.sourceforge.cobertura.datafile" file="${cobertura.ser}"/>
+       <classpath refid="junit.classpath"/>
+	   <classpath location="${instrumented.dir}"/>
+	   <classpath location="${classes.dir}"/>
+	   <classpath refid="cobertura.classpath"/>
+	   <classpath refid="core.classpath"/>
+	   <formatter type="xml"/>
+	   <batchtest todir="${test.out}">
+		    <fileset dir="${test}">
+                 <include name="**/RestletApplicationTest.java"/>
+            </fileset>
+       </batchtest>
+    </junit>
+-->
+    <cobertura-report format="html" datafile="${cobertura.ser}" destdir="${coverage.dir}" srcdir="${src}"/> 
+    <cobertura-report format="xml" datafile="${cobertura.ser}" destdir="${coverage.dir}" srcdir="${src}"/> 
+    <echo>Coverage report is available at ${coverage.dir}/index.html</echo>
+
+    <junitreport todir="${test.out}">
+      <fileset dir="${test.out}">
+       <include name="TEST-*.xml"/>
+      </fileset>
+      <report format="noframes" todir="${test.out}"/>
+    </junitreport>
+    <echo>JUnit report available at ${test.out}/junit-noframes.html</echo>
+    <fail if="junit.failed">JUnit failed, see test output for details</fail>
+
+  </target>
+
+  <target name="compile-tests" description="compile unit tests" depends="compile">
+    <mkdir dir="${classes.dir}"/>
+    <javac srcdir="${test}" destdir="${classes.dir}" debug="${debug}">
+	    <classpath>
+           <path refid="core.classpath"/>
+           <path refid="junit.classpath"/>
+        </classpath>
+       <include name="**/*Test.java"/>
+       <exclude name="**/builder/*Test.java"/>
+	</javac>
+  </target>
+
+  <target name="all" description="build everything" depends="core,test"/>
+
+  <target name="noodle" description="run the jFreeNoodle example" depends="compile">
+	<java classname="com.bayareasoftware.chartengine.chart.jfree.JFreeNoodle" fork="true">
+        <classpath>
+          <pathelement path="${classes.dir}"/>
+          <path refid="core.classpath"/>
+        </classpath>
+    </java>
+  </target>
+
+  <target name="typeinspector" description="runs the typeinspector to introspect jfreechart jars" depends="compile">
+<!--	<input  message="Enter file name of JFreeChart Library -> " addproperty="libfile"
+            defaultvalue="lib/jfreechart-1.0.9.jar"/>
+-->
+    <property name="libfile" value="lib/jfreechart-1.0.13.jar"/>
+    <echo message="you entered: ${libfile}"/>
+	<java classname="com.bayareasoftware.chartengine.chart.jfree.TypeInspector" fork="true">
+        <classpath>
+          <pathelement path="${classes.dir}"/>
+          <path refid="core.classpath"/>
+          <pathelement path="../website/compile-lib/servlet.jar"/>
+        </classpath>
+		<arg value="${libfile}"/>
+    </java>
+  </target>
+
+</project>

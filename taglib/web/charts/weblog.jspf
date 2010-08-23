@@ -1,0 +1,49 @@
+<c:chart>
+<c:data id="log stats" type="CSV">
+2010-07-01,413,9.27187315E2
+2010-07-02,117,7.28394634E2
+2010-07-03,102,1.05
+2010-07-04,100,6.05151615E2
+2010-07-05,159,2.5
+2010-07-06,223,4.56410034E2
+2010-07-07,107,4.60074102E2
+2010-07-08,346,6.7
+2010-07-09,93,3.1
+2010-07-10,124,1.856196822E3
+2010-07-11,114,6.0524204E2
+2010-07-12,240,1.53293522E2
+2010-07-13,174,4.50552268E2
+2010-07-14,130,3.02573846E2
+2010-07-15,157,1.52319428E2
+2010-07-16,68,3.8
+2010-07-17,70,1.50015679E2
+2010-07-18,389,2.40
+2010-07-19,1312,1.53013693E2
+2010-07-20,716,3.03350403E2
+2010-07-21,262,1.51901641E2
+2010-07-22,414,7.56432768E2
+</c:data>
+<c:series name="Hits" datasource="log stats" x="1" y="2"
+          yaxis="0" render="Line And Shape">
+renderer.shape=circle
+renderer.useOutlinePaint=true
+renderer.outlinePaint=gray
+renderer.outlineStroke=line=2.0|dash=0
+renderer.useFillPaint=true
+renderer.fillPaint=orange
+</c:series>
+<c:series name="Bandwidth" datasource="log stats" x="1" y="3"
+          yaxis="1" render="Area" color="gray"/>
+<c:marker value="600" name="SIX" yaxis="0" template="y-marker">
+paint=light_blue
+</c:marker>
+<c:marker bandValues="50|100|150|200" name="pink band" yaxis="0" template="y-marker">
+paint=pink
+</c:marker>
+ <c:props>
+title.text=Web Log Summary (July '10)
+legend.position=right
+legend.verticalAlignment=bottom
+legend.visible=true
+ </c:props>
+</c:chart>

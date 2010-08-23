@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/xpp3_min-1.1.3.4.O.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-codec-1.3.jar"/>
+	<classpathentry kind="lib" path="/common/lib/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/log4j-1.2.15.jar"/>
+	<classpathentry kind="lib" path="/common/lib/postgresql-8.1-404.jdbc3.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ds"/>
+	<classpathentry kind="lib" path="/common/compile-lib/junit-4.4.jar"/>
+	<classpathentry kind="lib" path="/common/lib/xstream-1.3.jar"/>
+	<classpathentry kind="lib" path="/common/lib/iText-2.1.3.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphics2d-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphicsio-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphicsio-emf-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphicsio-java-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphicsio-pdf-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphicsio-ps-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphicsio-svg-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-graphicsio-swf-2.1.1.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-util-2.0.2.jar"/>
+	<classpathentry kind="lib" path="/common/lib/freehep-io-2.0.2.jar"/>
+	<classpathentry kind="lib" path="/common/compile-lib/h2.jar"/>
+	<classpathentry kind="lib" path="lib/jcommon-1.0.16.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.13.jar" sourcepath="/opt/jfreechart/jfreechart-1.0.13/source"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

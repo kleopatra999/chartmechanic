@@ -1,0 +1,631 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+<renderers>
+  <xy>
+    <!-- Area same as Area2, but cannot display negative numbers.  Use Area2 -->
+    <render-doc displayName="Area - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYAreaRenderer</classname>
+      <description>render a series as Area</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Area" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYAreaRenderer2</classname>
+      <description>render a series as filled Area</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Bar" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYBarRenderer</classname>
+      <description>horizontal/vertical rectagular Bars</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- Needs XYZ dataset: z value is color of block @ XY coordinates -->
+    <render-doc displayName="Block - disabled" excluded="true" datasetType="XYZ">
+      <classname>org.jfree.chart.renderer.xy.XYBlockRenderer</classname>
+      <description>render a series as Block</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- Needs BoxAndWhiskerDataset, is it the same as Candlestick/OHLC? -->
+    <render-doc displayName="Box And Whisker - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYBoxAndWhiskerRenderer</classname>
+      <description>render a series as BoxAndWhisker</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Bubble" excluded="false" datasetType="XYZ">
+      <classname>org.jfree.chart.renderer.xy.XYBubbleRenderer</classname>
+      <description>circular, filled "bubble", with the diameter determined by a Z column</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>Sets the diameter of the bubble</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Candlestick" excluded="false" datasetType="OHLC">
+      <classname>org.jfree.chart.renderer.xy.CandlestickRenderer</classname>
+      <description>Candlestick (Box and Whisker) shows Open/High/Low/Close values, usually for a tradeable financial product.  An optional fifth column renders trading volume.</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Clustered Bar" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.ClusteredXYBarRenderer</classname>
+      <description>Bar rendering, where multiple series are clustered next to each other along the X axis.</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- Needs CyclicAxis on domain -->
+    <render-doc displayName="Cyclic Item - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.CyclicXYItemRenderer</classname>
+      <description>render a series as CyclicItem</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- same as XYLineAndShape Renderer (different options???) -->
+    <render-doc displayName="Line" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.DefaultXYItemRenderer</classname>
+      <description>render a series as simple line</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- Needs populated Y interval series, TimeSeriesCollection purports
+         to implement this interface, but doesn't do it right -->
+    <render-doc displayName="Deviation - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.DeviationRenderer</classname>
+      <description>render a series as Deviation</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Difference" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYDifferenceRenderer</classname>
+      <description>renders a difference between two series, with different colors for positive and negative differences</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Dot" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYDotRenderer</classname>
+      <description>draws values as Dots, a.k.a. a scatter plot</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- needs YInterval dataset, TimeSeriesCollection doesn't do it right -->
+    <render-doc displayName="Error - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYErrorRenderer</classname>
+      <description>render a series as Error</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- Needs OHLCDataset, same as candlestick?? -->
+    <render-doc displayName="High Low - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.HighLowRenderer</classname>
+      <description>render a series as HighLow</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Line 3D" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYLine3DRenderer</classname>
+      <description>draws a Line, with an optional shadow behind it</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- basically the same as "Line" DefaultXYItemRenderer, w/ different options? -->
+    <render-doc displayName="Line And Shape" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYLineAndShapeRenderer</classname>
+      <description>render a series as line with a shape at value points.  Shape can be filled/outlined.</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Spline" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYSplineRenderer</classname>
+      <description>render a series as a line, with spline iterpolation between points.</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- Doesn't handle negative values - use StackedArea2 -->
+    <render-doc displayName="Stacked Area - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.StackedXYAreaRenderer</classname>
+      <description>render a series as StackedArea</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Stacked Area" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.StackedXYAreaRenderer2</classname>
+      <description>Area rendering, with multiple series stacked on top of each other</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Stacked Bar" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.StackedXYBarRenderer</classname>
+      <description>renders values as rectangular bars, with multiple series stacked on top of each other</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- This renderer has been retained for historical reasons and, in general,
+         you should use the XYLineAndShapeRenderer class instead. -->
+    <render-doc displayName="Standard Item - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.StandardXYItemRenderer</classname>
+      <description>render a series as StandardItem</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Step" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYStepRenderer</classname>
+      <description>line rendering, with discrete vertical steps between values</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Step Area" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.XYStepAreaRenderer</classname>
+      <description>Step rendering, with the area below the line filled</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- needs VectorXYDataset, vector is direction + length -->
+    <render-doc displayName="Vector - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.VectorRenderer</classname>
+      <description>render a series as Vector</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- needs WindDataset -->
+    <render-doc displayName="Wind Item - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.WindItemRenderer</classname>
+      <description>render a series as WindItem</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- Needs YInterval (XYIntervalDataset) -->
+    <render-doc displayName="YInterval - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.xy.YIntervalRenderer</classname>
+      <description>render a series as YInterval</description>
+      <columns>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+  </xy>
+  <category>
+    <render-doc displayName="Area" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.AreaRenderer</classname>
+      <description>render a series as a filled Area</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Bar" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.BarRenderer</classname>
+      <description>horizontal/vertical rectagular Bars</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Bar 3D" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.BarRenderer3D</classname>
+      <description>Bar rendering, with 3D depth effect</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Box And Whisker - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.BoxAndWhiskerRenderer</classname>
+      <description>render a series as BoxAndWhisker</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Step" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.CategoryStepRenderer</classname>
+      <description>line rendering, with discrete vertical steps between values</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- same as category.LineAndShapeRenderer -->
+    <render-doc displayName="Default" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.DefaultCategoryItemRenderer</classname>
+      <description>render a series as line with a shape at value points.  Shape can be filled/outlined.</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Gantt" excluded="false" datasetType="XYZ">
+      <classname>org.jfree.chart.renderer.category.GanttRenderer</classname>
+      <description>Applicable only for Gantt chart type</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Grouped Stacked Bar" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.GroupedStackedBarRenderer</classname>
+      <description>stacked bar rendering, with clustering by group</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- needs IntervalCategoryDataset - need to read code to see that, not in docs -->
+    <render-doc displayName="Interval Bar - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.IntervalBarRenderer</classname>
+      <description>render a series as IntervalBar</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Layered Bar" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.LayeredBarRenderer</classname>
+      <description>render a series as LayeredBar</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Level" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.LevelRenderer</classname>
+      <description>draws a single line at the Y value</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Line 3D" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.LineRenderer3D</classname>
+      <description>draws a Line, with an optional shadow behind it</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Line And Shape" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.LineAndShapeRenderer</classname>
+      <description>render a series as line with a shape at value points.  Shape can be filled/outlined.</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- question - needs special dataset? -->
+    <render-doc displayName="Min Max" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.MinMaxCategoryRenderer</classname>
+      <description>similar to Level rendering, with values at the minimum and maximum</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- needs MultiValueCategoryDataset -->
+    <render-doc displayName="Scatter - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.ScatterRenderer</classname>
+      <description>render a series as Scatter</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Stacked Area" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.StackedAreaRenderer</classname>
+      <description>Area rendering, with multiple series stacked on top of each other</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Stacked Bar" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.StackedBarRenderer</classname>
+      <description>renders values as rectangular bars, with multiple series stacked on top of each other</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Stacked Bar 3D" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.StackedBarRenderer3D</classname>
+      <description>stacked Bar rendering, with 3D depth effect</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- needs Statistical dataset -->
+    <render-doc displayName="Statistical Bar - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.StatisticalBarRenderer</classname>
+      <description>render a series as StatisticalBar</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <!-- needs Statistical dataset -->
+    <render-doc displayName="Statistical Line And Shape - disabled" excluded="true" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.StatisticalLineAndShapeRenderer</classname>
+      <description>render a series as StatisticalLineAndShape</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+    <render-doc displayName="Waterfall" excluded="false" datasetType="XY">
+      <classname>org.jfree.chart.renderer.category.WaterfallBarRenderer</classname>
+      <description>renders as Waterfall effect, with sorted series values flowing into the next value</description>
+      <columns>
+        <column type="TEXT">
+          <description>any type is valid: text,date,number</description>
+        </column>
+        <column type="NUMBER">
+          <description>numeric type required</description>
+        </column>
+      </columns>
+    </render-doc>
+  </category>
+</renderers>

@@ -1,0 +1,486 @@
+/*
+ * Copyright 2008-2010 Bay Area Software, Inc.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License. 
+ */
+package com.bayareasoftware.chartengine.chart.jfree;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.jfree.data.general.Dataset;
+import org.jfree.data.time.Day;
+import org.jfree.data.time.Hour;
+import org.jfree.data.time.Millisecond;
+import org.jfree.data.time.Minute;
+import org.jfree.data.time.Month;
+import org.jfree.data.time.Quarter;
+import org.jfree.data.time.RegularTimePeriod;
+import org.jfree.data.time.Second;
+import org.jfree.data.time.TimePeriodAnchor;
+import org.jfree.data.time.TimeSeries;
+import org.jfree.data.time.TimeSeriesCollection;
+import org.jfree.data.time.TimeTableXYDataset;
+import org.jfree.data.time.Week;
+import org.jfree.data.time.Year;
+import org.jfree.data.xy.DefaultOHLCDataset;
+import org.jfree.data.xy.DefaultXYZDataset;
+import org.jfree.data.xy.OHLCDataItem;
+
+import com.bayareasoftware.chartengine.ds.DataStream;
+import com.bayareasoftware.chartengine.model.ChartInfo;
+import com.bayareasoftware.chartengine.model.SeriesDescriptor;
+import com.bayareasoftware.chartengine.model.TimeConstants;
+
+public class TimeProducer implements Producer, TimeConstants {
+    private Log log = LogFactory.getLog(TimeProducer.class);
+
+    private int chartPeriodType = -1;
+    private boolean bubbleRender = false;
+    
+    // for bubble time series, we store the values as arrays of three double values:  time (in msecs), Y value,  Z value
+    private List<double[]> bubbleVals = null;
+    
+    private boolean ohlcRender = false;
+    private List<OHLCDataItem> ohlcVals = null;
+    private boolean isStacked = false;
+    //private Date startDate = null, endDate = null;
+    
+    //private Map<String,String> params;
+    /**
+     * keep a mapping of SeriesDescriptor *or* seriesName to XYSeries
+     * so we are not relying solely on series names to find the XYSeries
+     * this allows the case of multiple series with the same name.  Chart looks goofy but it's better than
+     * losing the same named series altogether
+     */
+    private Map<Object,TimeSeries> stMap;
+    // keep track of dynamic series name and key, so that
+    // it won't exceed MAX_DYNAMIC_SERIES
+    private Map<String,Integer> dynamicSeries = new HashMap();
+    
+    /**
+     * @param periodType - a TimeConstants values  (e.g. TIME_YEAR)
+     */ 
+    public TimeProducer(int periodType) {
+        super();
+        this.chartPeriodType = periodType;
+//        this.params = params;
+    }
+
+    public Dataset createDataset(ChartInfo ci, SeriesDescriptor sd) {
+        String rtype = sd.getRenderer();
+        if (rtype == null) {
+            rtype = ci.getRenderType();
+        }
+        if ("Bubble".equals(rtype)) {
+            return new DefaultXYZDataset();
+        } else if ("Candlestick".equals(rtype)) {
+            return new DefaultOHLCDataset(sd.getName(), new OHLCDataItem[0]);
+        } else if (rtype != null && rtype.toLowerCase().indexOf("stacked") != -1) {
+            TimeTableXYDataset ret = new TimeTableXYDataset();
+            ret.setXPosition(TimePeriodAnchor.START);
+            return ret;
+        } else {
+            TimeSeriesCollection tsc = new TimeSeriesCollection();
+            tsc.setXPosition(TimePeriodAnchor.MIDDLE);
+            return tsc;
+        }
+    }
+
+    public void beginSeries(Dataset d, SeriesDescriptor sd, DataStream r) {
+//        if (params != null) {
+//            parseDates(r,sd);
+//        }
+
+        /* reset stateful booleans to defaults */
+        isStacked = bubbleRender = ohlcRender = false;
+        if (d == null) {
+        } else if (d instanceof DefaultXYZDataset) {
+            bubbleRender = true;
+            bubbleVals = new ArrayList<double[]>();
+        } else if (d instanceof DefaultOHLCDataset) {
+            ohlcRender = true;
+            ohlcVals = new ArrayList<OHLCDataItem>();
+        } else if (d instanceof TimeTableXYDataset) {
+            isStacked = true;
+        }
+        
+    }
+    
+    private boolean populateSingleOHLC(Dataset ds, DataStream rs) throws Exception {
+        boolean res = false;
+        
+        /* date,open,high,low,close,volume */
+        Date d = rs.getDate(1);
+        Double o = rs.getDouble(2);
+        Double h = rs.getDouble(3);
+        Double l = rs.getDouble(4);
+        Double c = rs.getDouble(5);
+        Double v = rs.getDouble(6);
+        if (d != null && o != null && h != null && l != null
+                && c != null && v != null) {
+            ohlcVals.add(new OHLCDataItem(d,o,h,l,c,v));
+            res = true;
+        } else {
+            /* FIXME: issue warning that will be visible to user */
+        }
+        
+        return res;
+    }
+    
+    private boolean populateSingleXYZ(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception {
+        boolean res = false;
+        int indx = currentSD.getXColumn();
+        int indy = currentSD.getYColumn();
+        int indz = currentSD.getZColumn();
+            
+        Date date = rs.getDate(indx);
+        Double yval = rs.getDouble(indy);
+        Double zval = rs.getDouble(indz);
+        if (date != null && yval != null && zval != null ) {
+            double[] vals = new double[3];
+            vals[0] = date.getTime();
+            vals[1] = yval;
+            vals[2] = zval;
+            bubbleVals.add(vals);
+            res = true;
+        }
+        return res;
+    }
+
+    public Dataset endSeries(Dataset d, SeriesDescriptor sd) {
+        if (bubbleRender) {
+            DefaultXYZDataset dset = (DefaultXYZDataset) d;
+            // have to invert array
+            //double[][] vals = new double[bubbleVals.size()][];
+            //bubbleVals.toArray(vals);
+            double[][] vals = new double[3][bubbleVals.size()];
+            for (int i = 0; i < bubbleVals.size(); i++) {
+                double[] row = bubbleVals.get(i);
+                vals[0][i] = row[0];
+                vals[1][i] = row[1];
+                vals[2][i] = row[2];
+            }
+            dset.addSeries(sd.getName(), vals);
+            return dset;
+        } else if (ohlcRender) {
+            DefaultOHLCDataset dset = (DefaultOHLCDataset) d;
+            OHLCDataItem[] items = new OHLCDataItem[ohlcVals.size()];
+            ohlcVals.toArray(items);
+            dset = new DefaultOHLCDataset(sd.getName(), items);
+            return dset;
+        } else if (isStacked) {
+//            TimeTableXYDataset ds = (TimeTableXYDataset) d;
+//            if (ds.getSeriesCount() == 2) {
+//                for (int i = 0; i < 2; i++) {
+//                    String key = (String) ds.getSeriesKey(i);
+//                    //p("series[" + i + "]='" + key + "' "
+//                      //      + ds.getItemCount(i) + " items");
+//                }
+//            }
+        } else {
+            TimeSeries ts = getTimeSeries(sd);
+            if (ts != null && ts.getItemCount() == 0) {
+                // series does not contain any values 
+//                System.err.println("**************** time series is empty and does not contain any values");
+                TimeSeriesCollection tsc = (TimeSeriesCollection)d;
+                tsc.removeSeries(ts);
+            }
+
+        }
+        this.stMap = null;
+        return d;
+    }
+    
+    private static final Date NOW = new Date();
+    
+    /**
+     * get the TimeSeries that matches the current SeriesDescriptor;
+     * @return
+     */
+    private TimeSeries getTimeSeries(SeriesDescriptor currentSD) {
+        TimeSeries ret = null;
+        if (stMap != null) {
+            ret = stMap.get(currentSD);
+        }
+        return ret;
+    }
+    
+    private void addTimeSeries(TimeSeries t, SeriesDescriptor currentSD) {
+        if (stMap == null) {
+            stMap = new HashMap<Object,TimeSeries>();
+        }
+        stMap.put(currentSD,t);
+    }
+    /**
+     * Get an existing time series based on name - for use only with dynamic time series
+     * @param seriesName
+     * @return
+     */
+    private TimeSeries getTimeSeries(String seriesName) {
+        return stMap != null ? stMap.get(seriesName) : null;
+    }
+    private void addTimeSeries(String seriesName, TimeSeries t) {
+        if (stMap == null) {
+            stMap = new HashMap<Object,TimeSeries>();
+        }
+        stMap.put(seriesName, t);
+    }
+    public boolean populateSingle(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception
+    {
+        boolean res = false;
+        
+        if (bubbleRender) {
+            res = populateSingleXYZ(d, currentSD, rs);
+        } else if (ohlcRender) {
+            res = populateSingleOHLC(d, rs);
+        } else if (isStacked) {
+            res = populateSingleStacked(d, currentSD, rs);
+        } else {
+            String seriesName = currentSD.getName();
+            boolean dynamicSeriesName = false;
+            if (currentSD.getSeriesNameFromData() > 0) {
+                seriesName = rs.getString(currentSD.getSeriesNameFromData());
+                dynamicSeriesName = true;
+            }
+            int ptype = currentSD.getTimePeriod();
+            if (ptype == TIME_UNKNOWN) {
+                ptype = chartPeriodType;
+            }
+            if (seriesName != null) {
+                TimeSeriesCollection tsc = (TimeSeriesCollection)d;
+
+                TimeSeries ts;
+                boolean createDynamic = true;
+                if (!dynamicSeriesName) {
+                    ts = getTimeSeries(currentSD);
+                } else if (seriesName != null) {
+                    ts = getTimeSeries(seriesName);
+                    if (ts == null) {
+                        if (tsc.getSeriesCount() <= MAX_DYNAMIC_SERIES) {
+                            createDynamic = true;
+                        } else {
+                            // dynamic series limit reached
+                            createDynamic = false;
+                        }
+                    }
+                } else {
+                    // no series name
+                    ts = null;
+                    createDynamic = false;
+                }
+
+                if (ts == null && createDynamic) {
+                    ts = new TimeSeries(seriesName, makePeriod(ptype,NOW).getClass());
+                    tsc.addSeries(ts);
+                    if (!dynamicSeriesName) {
+                        addTimeSeries(ts, currentSD);
+                    } else {
+                        addTimeSeries(seriesName, ts);
+                    }
+                }
+                if (ts != null) {
+                    Date date = rs.getDate(currentSD.getXColumn());
+                    Double y = rs.getDouble(currentSD.getYColumn());
+                    if (date != null && y != null) {
+                        RegularTimePeriod period = makePeriod(ptype, date);
+                        if (period != null) {
+                            ts.addOrUpdate(period, y);
+                            res = true;
+                        } else {
+                            log.warn("Failed to make time period for ptype: " + ptype + " date: " + date);
+                        }
+                    } else {
+                    //System.out.println("[Time] NOT producing series for d="
+                    //      + date + " y=" + y + " series='" + seriesName + "' y column=" + sd.getYColumn());
+                    }
+                }
+            }
+        }
+        return res;
+    }
+    
+    private boolean populateSingleStacked(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception {
+        boolean res = false;
+        
+        Date date = rs.getDate(currentSD.getXColumn());
+        Double y = rs.getDouble(currentSD.getYColumn());
+        if (date == null || y == null) {
+            /* FIXME: issue a warning about null or unparseable values */
+        } else {
+            TimeTableXYDataset ttd = (TimeTableXYDataset) d;
+            // make time period based on preferred time increment for this series,
+            // else default for the whole chart iff unknown
+            int ptype = currentSD.getTimePeriod();
+            if (ptype == TIME_UNKNOWN) {
+                ptype = chartPeriodType;
+            }
+            RegularTimePeriod period = makePeriod(ptype, date);
+            String seriesName = currentSD.getName();
+            boolean addToSeries = true;
+            if (currentSD.getSeriesNameFromData() > 0) {
+                seriesName = rs.getString(currentSD.getSeriesNameFromData());
+                if (this.dynamicSeries.get(seriesName) == null) {
+                    if (ttd.getSeriesCount() >= MAX_DYNAMIC_SERIES) {
+                        // max dynamic series exceeded
+                        addToSeries = false;
+                    } else {
+                        dynamicSeries.put(seriesName, dynamicSeries.size());
+                    }
+                }
+            }
+            if (seriesName != null && addToSeries) {
+                ttd.remove(period, seriesName);
+                ttd.add(period, y, seriesName);
+            }
+            res = true;
+        } 
+        return res;
+    }
+
+//    /**
+//     * determine the start and end dates
+//     * at the end of this method, this.startDate and and this.endDate are set
+//     * @param r
+//     * @param sd
+//     */
+//    private void parseDates(DataStream r, SeriesDescriptor sd) {
+//        String sstr = params.get(ChartConstants.PARAM_START_DATE);
+//        String estr = params.get(ChartConstants.PARAM_END_DATE);
+//        if (sstr != null || estr != null) {
+//            DateRecognizer dr = new DateRecognizer();
+//            if (estr != null) {
+//                dr.reset();
+//                dr.parse(estr);
+//                if (!dr.failed()) {
+//                    try {
+//                        endDate = dr.getSimpleDateFormat().parse(estr);
+//                    } catch (ParseException pe) { }
+//                }
+//            }
+//
+//            if (sstr != null) {
+//                if (isIntervalDate(sstr)) {
+//                    if (endDate == null) {
+//                        // if no endDate is specified, then attempt to determine the endDate from reading the stream 
+//                        // if the stream is resettable.
+//                        // functionally correct, but not very efficient.
+//                        if (r.isResettable()) {
+//                            r.reset();
+//                            int xColumn = sd.getXColumn();
+//                            try {
+//                                while (r.next()) {
+//                                    Date d = r.getDate(xColumn);
+//                                    if (d != null) {
+//                                        if (endDate == null || d.after(endDate)) {
+//                                            endDate = d;
+//                                        } 
+//                                    }
+//                                }
+//                            } catch (Exception e) {
+//                                e.printStackTrace();
+//                            }
+//                            r.reset();
+////                            log.warn("************** calculated endDate of : " + endDate);
+//                        }
+//                    }
+//                    
+//                    // hardcode some specify date handling for date ranges that are offsets from the end-date, if any
+//                    // understands formats like -<n>{m|d|y}
+//                    if (endDate != null) {
+//                        Calendar cal = Calendar.getInstance();
+//                        cal.setTime(endDate);
+//                        int field = -1;
+//                        
+//                        if (sstr.endsWith("d")) {
+//                            field = Calendar.DAY_OF_YEAR;
+//                        } else if (sstr.endsWith("m")) {
+//                            field = Calendar.MONTH;
+//                        } else if (sstr.endsWith("y")) {
+//                            field = Calendar.YEAR;
+//                        }    
+//                    
+//                        int val = Integer.parseInt(sstr.substring(0,sstr.length()-1));
+//                        cal.add(field,val);
+//                        startDate = cal.getTime();
+//                        
+////                        log.warn("************** given an endDate of : " + endDate + " and a sstr of " + sstr + " startDate = " + startDate);
+//                    }
+//                }
+//                dr.parse(sstr);
+//                if (!dr.failed()) {
+//                    try {
+//                        startDate = dr.getSimpleDateFormat().parse(sstr);
+//                    } catch (ParseException pe) { }
+//                }
+//            }
+//        }
+//    }
+    
+    private boolean isIntervalDate(String s) {
+        return s.startsWith("-") && (s.endsWith("d") || s.endsWith("m") || s.endsWith("y"));
+    }
+    
+//    /**
+//     * is the supplied date within the interval (startDate, endDate)? 
+//     * @param d
+//     * @return
+//     */
+//    private boolean dateInRange(Date d) {
+//        boolean ret = true;
+//        if (d != null) {
+//            if (startDate != null && d.before(startDate)) {
+//                ret = false;
+//            } else if (endDate != null && d.after(endDate)) {
+//                ret = false;
+//            }
+//        }
+//        return ret;
+//    }
+    
+    private RegularTimePeriod makePeriod(int ptype, Date d) {
+        RegularTimePeriod ret = null;
+        try {
+            switch (ptype) {
+            case TIME_MILLI:
+                ret = new Millisecond(d); break;
+            case TIME_SECOND:
+                ret = new Second(d); break;
+            case TIME_MINUTE:
+                ret = new Minute(d); break;
+            case TIME_HOUR:
+                ret = new Hour(d); break;
+            case TIME_DAY:
+                ret = new Day(d); break;
+            case TIME_WEEK:
+                ret = new Week(d); break;
+            case TIME_MONTH:
+                ret = new Month(d); break;
+            case TIME_QUARTER:
+                ret = new Quarter(d); break;
+            case TIME_YEAR:
+                ret = new Year(d); break;
+            default:
+                throw new RuntimeException("periodType '" + ptype + "' invalid");
+            }
+        } catch (IllegalArgumentException e) {
+            log.error("Failed to make periodType: " + ptype + " for date: " + d + " because of " + e);
+        }
+        return ret;
+    }
+}

@@ -1,0 +1,122 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+<chart-set>
+  <version>1.0.0</version>
+  <name>Samples</name>
+  <dataset>
+  <paramMeta>
+      <param-metadata>
+		<name>threshold</name>
+        <dataType>
+          <type>1</type>
+        </dataType>
+        <defaultValue>0</defaultValue>
+      </param-metadata>
+      <param-metadata>
+      <name>date</name>
+        <dataType>
+          <type>3</type>
+        </dataType>
+        <defaultValue>1999-01-01 00:00:00</defaultValue>
+      </param-metadata>
+      <param-metadata>
+      <name>other_param</name>
+        <dataType>
+          <type>4</type>
+        </dataType>
+        <defaultValue>foobarbaz</defaultValue>
+      </param-metadata>
+  </paramMeta>
+	<sources>
+		<jdbc>
+                   <driver>org.h2.Driver</driver>
+		   <url>jdbc:h2:mem:chartsample</url>
+		   <user>sa</user>
+		   <password></password>
+         <name>db1</name>
+	  <queries>
+      <query>
+		<query>select name, votes FROM fruit ORDER BY votes DESC</query>
+		<name>FavoriteFruits</name>
+      </query>
+      <query>
+        <query>select event_date, value1, value2, value3 FROM some_event WHERE event_date &gt; ?date ORDER BY event_date ASC</query>
+		<name>StockSeries</name>
+      </query>
+	</queries>
+        </jdbc>
+        <csv>
+		  <url>http://chartmechanic.com/test/svnlog.csv</url>
+          <name>csv1</name>
+        </csv>
+    </sources>
+  </dataset>
+  <charts>
+    <chart>
+      <name>Favorite Fruits</name>
+      <chart-series>
+        <series>
+          <name>Favorite Fruits</name>
+<!--          <query-name>FavoriteFruits</query-name> -->
+          <query-index>2</query-index>
+        </series>
+      </chart-series>
+      <plotType>category</plotType>
+      <title>Popular Fruits</title>
+      <xLabel>Fruits</xLabel>
+      <yLabel>Votes</yLabel>
+      <width>400</width>
+      <height>300</height>
+      <renderType>bar</renderType>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <bgColor>#dddddd</bgColor>
+      <timePeriod>0</timePeriod>
+    </chart>
+    <chart>
+      <name>A Random Walk Timeseries for 3 Stocks</name>
+      <chart-series>
+        <series>
+          <name>Stock 1</name>
+<!--          <query-name>StockSeries</query-name> -->
+          <query-index>2</query-index>
+        </series>
+        <series>
+          <name>Stock 2</name>
+<!--          <query-name>StockSeries</query-name> -->
+          <query-index>3</query-index>
+        </series>
+        <series>
+          <name>Stock 3</name>
+<!--          <query-name>StockSeries</query-name> -->
+          <query-index>4</query-index>
+        </series>
+      </chart-series>
+      <plotType>timeseries</plotType>
+      <title>A Random Walk Timeseries for 3 Stocks</title>
+      <xLabel>Time</xLabel>
+      <yLabel>Price</yLabel>
+      <width>400</width>
+      <height>300</height>
+      <renderType>line</renderType>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <bgColor>white</bgColor>
+      <timePeriod>4</timePeriod>
+    </chart>
+  </charts>
+
+</chart-set>

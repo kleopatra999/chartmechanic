@@ -1,0 +1,186 @@
+<!--
+ ~ Copyright 2008-2010 Bay Area Software, Inc.
+ ~
+ ~ Licensed under the Apache License, Version 2.0 (the "License");
+ ~ you may not use this file except in compliance with the License.
+ ~ You may obtain a copy of the License at
+ ~
+ ~     http://www.apache.org/licenses/LICENSE-2.0
+ ~
+ ~ Unless required by applicable law or agreed to in writing, software
+ ~ distributed under the License is distributed on an "AS IS" BASIS,
+ ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ~ See the License for the specific language governing permissions and
+ ~ limitations under the License. 
+-->
+<chart-set>
+  <version>1.0.0</version>
+  <name>KOAM</name>
+  <dataset>
+  <sources>
+  <jdbc>
+   <driver>"org.postgresql.Driver"</driver>
+   <url>"jdbc:postgresql://localhost:5432/koam_data"</url>
+   <user>"bt"</user>
+   <password>"bogus"</password>
+   <name>db1</name>
+  <queries>
+    <query>
+      <query>select id, id*id from show order by id asc limit 100</query>
+      <name>Quadratic</name>
+    </query>
+    <query>
+      <query>select date_trunc(&apos;day&apos;, download_time), count(*) from download_event group by 1 order by 1 asc</query>
+      <name>DownloadsByDay</name>
+    </query>
+    <query>
+      <query>select date_trunc(&apos;day&apos;, de.download_time), sum(sf.size)/(1024*1024) from show_file AS sf, download_event AS de WHERE de.show_file_id = sf.id group by 1 order by 1 asc</query>
+      <name>BandwidthByDay</name>
+    </query>
+    <query>
+     <query>select date_trunc(&apos;month&apos;, de.download_time), sum(sf.size)/(1024*1024) from show_file AS sf, download_event AS de WHERE de.show_file_id = sf.id group by 1 order by 1 asc</query>
+     <name>DownloadBWByMonth</name>
+    </query>
+    <query>
+      <query>select date_trunc(&apos;month&apos;, sf.upload_time), sum(sf.size)/(1024*1024) from show_file AS sf WHERE sf.upload_time &gt; &apos;2006-08-26&apos; group by 1 order by 1</query>
+      <name>UploadBWByMonth</name>
+    </query>
+    <query>
+      <query>select u.login, count(*) from download_event as de, koam_user as u where de.user_id = u.id group by 1 order by 2 desc LIMIT 10</query>
+      <name>DownloadsByUser</name>
+    </query>
+  </queries>
+  </jdbc>
+  </sources>
+  </dataset>
+  <charts>
+    <chart>
+      <name>My First Chart</name>
+      <chart-series>
+        <series>
+          <name>a series</name>
+          <query-name>Quadratic</query-name>
+          <query-index>2</query-index>
+        </series>
+      </chart-series>
+      <plotType>xy</plotType>
+      <title>My First Chart</title>
+      <xLabel>my x-axis</xLabel>
+      <yLabel>my y-axis</yLabel>
+      <width>600</width>
+      <height>600</height>
+      <renderType>line</renderType>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <bgColor></bgColor>
+      <timePeriod>0</timePeriod>
+    </chart>
+
+    <chart>
+      <name>Downloads per Day</name>
+      <chart-series>
+        <series>
+          <name># downloads by day</name>
+          <query-name>DownloadsByDay</query-name>
+          <query-index>2</query-index>
+        </series>
+      </chart-series>
+      <plotType>timeseries</plotType>
+      <title>Downloads per Day</title>
+      <xLabel>date</xLabel>
+      <yLabel>downloads</yLabel>
+      <width>600</width>
+      <height>600</height>
+      <renderType>bar</renderType>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <timePeriod>4</timePeriod>
+    </chart>
+    <chart>
+    <name>Bandwidth per Day, download</name>
+      <chart-series>
+        <series>
+          <name>Bandwidth download per Day</name>
+          <query-name>BandwidthByDay</query-name>
+          <query-index>2</query-index>
+          <renderer>bar</renderer>
+        </series>
+      </chart-series>
+      <plotType>timeseries</plotType>
+      <title>Bandwidth per Day, download</title>
+      <xLabel>date</xLabel>
+      <yLabel>MB downloaded</yLabel>
+      <width>600</width>
+      <height>500</height>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <timePeriod>4</timePeriod>
+    </chart>
+    <chart>
+      <name>Bandwidth per Month</name>
+      <chart-series>
+        <series>
+          <name>MB downloaded per month</name>
+          <query-name>DownloadBWByMonth</query-name>
+          <query-index>2</query-index>
+        </series>
+        <series>
+          <name>MB uploaded per Month</name>
+          <query-name>UploadBWByMonth</query-name>
+          <query-index>2</query-index>
+        </series>
+      </chart-series>
+      <plotType>timeseries</plotType>
+      <title>Bandwidth per Month</title>
+      <xLabel>date</xLabel>
+      <yLabel>MB</yLabel>
+      <width>600</width>
+      <height>600</height>
+      <renderType>stackedbar</renderType>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <timePeriod>6</timePeriod>
+    </chart>
+    <chart>
+      <name>Users &amp; Downloads</name>
+      <chart-series>
+        <series>
+          <name>Users</name>
+          <query-name>DownloadsByUser</query-name>
+          <query-index>2</query-index>
+        </series>
+      </chart-series>
+      <plotType>category</plotType>
+      <title>Users &amp; Downloads</title>
+      <xLabel>user</xLabel>
+      <yLabel>downloads</yLabel>
+      <width>600</width>
+      <height>400</height>
+      <renderType>bar</renderType>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <bgColor></bgColor>
+      <timePeriod>0</timePeriod>
+    </chart>
+    <chart>
+      <name>Users &amp; Downloads (pie)</name>
+      <chart-series>
+        <series>
+          <name>Users</name>
+          <query-name>DownloadsByUser</query-name>
+          <query-index>2</query-index>
+        </series>
+      </chart-series>
+      <plotType>pie</plotType>
+      <title>Users &amp; Downloads (pie)</title>
+      <xLabel>user</xLabel>
+      <yLabel>downloads</yLabel>
+      <width>600</width>
+      <height>400</height>
+      <renderType>bar</renderType>
+      <fgAlpha>1.0</fgAlpha>
+      <bgAlpha>1.0</bgAlpha>
+      <timePeriod>0</timePeriod>
+    </chart>
+  </charts>
+</chart-set>
