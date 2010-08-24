@@ -1,0 +1,130 @@
+
+body {
+ background-color: #ffffff;
+}
+
+a:link, a:visited, a:active {
+ color: blue;
+ text-decoration: none;
+}
+a:hover {text-decoration: underline; color: red;}
+
+pre {
+  margin-left: 20px;
+  padding: 5px;
+  /*border: #3c5a86 1px dashed;*/
+}
+.setup-div {
+  display: block;
+  background-color: #ffffff;
+  width:  700px;
+  margin: 10px;
+}
+
+.item-div {
+  display: block;
+  background-color: #ffffff;
+  width: 100%;
+  height: 420px;
+  margin: 10px;
+}
+
+.chart-div {
+  display: inline;
+  width: 500px;
+  height: 400px;
+  float: left;
+}
+
+.source-div {
+ display: inline;
+ margin-left: 20px;
+ padding: 0px 8px 0px 8px;
+ border: #3c5a86 1px dashed;
+ float: left;
+ width: 450px;
+ max-height: 400px; 
+}
+
+.source-div #title { 
+    display: block;
+    position: relative; 
+    top : -0.5em;
+    margin-left: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: inline; 
+    background-color: white; 
+}
+.source-div #source-content {
+  display: block;
+  overflow: scroll;
+  max-height: 400px; 
+}
+
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+.odd { background-color: #ffffff; }
+.even { background-color: #e0e0e0; }
+
+table, table td, table th {
+ border-collapse: collapse;
+ border: 0px;
+ margin: 5px;
+ padding: 4px;
+}
+
+table {
+  width: 400px;
+  margin-left: 20px;
+}
+
+table th {
+ background-color: #80b0f0;
+ text-align: center;
+}
+
+.doc-table {
+ width: 90%;
+ border: 1px #cccccc solid;
+ border-collapse: collapse;
+}
+
+.doc-table th {
+ background-color: #80b0f0;
+}
+.doc-table td, th {
+ border: 1px #cccccc solid;
+ border-collapse: collapse;
+}
+
+#header {
+  margin-top: 30px;
+}
+
+#header ul {
+ list-style: none;
+ padding:0;
+ margin:0;
+}
+
+#header li {
+ display: inline;
+ border: solid #cccccc;
+ border-width: 1px 1px 0 1px;
+ padding-top: 3px;
+ padding-left: 3px;
+ padding-right: 3px;
+ background-color: #cccccc;
+ margin: 0 0em 0em 1.5em;
+}
+
+#content {
+ border-top: 1px solid #cccccc;
+ padding: 20px;
+}
+
+#header #selected {
+ padding-bottom: 1px; 
+ background: white;
+}

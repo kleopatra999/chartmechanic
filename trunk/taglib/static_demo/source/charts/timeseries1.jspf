@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/timeseries1.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:chart renderType=&quot;Bar&quot;&gt;<br> &lt;c:series name=&quot;My Values&quot; datasource=&quot;d1&quot;<br> &nbsp; &nbsp;x=&quot;1&quot; y=&quot;2&quot; timeperiod=&quot;year&quot; color=&quot;dark_green&quot;/&gt;<br> &lt;c:props&gt;<br>title.text=A Time Series<br> &lt;/c:props&gt;<br>&lt;c:marker name=&quot;x axis line&quot; xaxis=&quot;true&quot; dateValues=&quot;2007-07-01&quot; color=&quot;red&quot;&gt;<br>stroke=line=2.0<br>&lt;/c:marker&gt;<br>&lt;c:marker name=&quot;x axis band&quot; xaxis=&quot;true&quot; dateValues=&quot;2009-01-01|2010-01-01&quot; color=&quot;gray&quot;&gt;<br>layer=foreground<br>&lt;/c:marker&gt;<br>&lt;/c:chart&gt;<br><br></pre>
+
+</body>
+</html>

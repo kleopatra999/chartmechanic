@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/stooge-multi.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:chart plotType=&quot;time&quot; title=&quot;Stooge Sales by Month&quot;&gt;<br> &lt;c:series datasource=&quot;all stooge sales&quot; <br> &nbsp;y=&quot;3&quot; name=&quot;multi&quot; dynamicNameColumn=&quot;2&quot;<br> &nbsp;render=&quot;Stacked Bar&quot; timeperiod=&quot;month&quot;/&gt;<br> &nbsp;&lt;c:props&gt;<br>chart.backgroundImage=/demo/images/smiley-600.png &nbsp;<br> &nbsp;&lt;/c:props&gt;<br>&lt;/c:chart&gt;</pre>
+
+</body>
+</html>
