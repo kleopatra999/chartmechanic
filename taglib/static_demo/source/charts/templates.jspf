@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/templates.jspf</title>
+</head>
+<body>
+<pre>
+&lt;%-- applies to the plot of each chart: don't show a plot outline --%&gt;<br>&lt;c:props template=&quot;default&quot; prefix=&quot;plot&quot;&gt;<br>outlineVisible=false<br>&lt;/c:props&gt;<br>&lt;%-- the default template for all charts --%&gt;<br>&lt;c:props template=&quot;default&quot;&gt;<br>chart.backgroundPaint=#ffffff<br>chart.backgroundImage=/demo/images/smiley-600.png<br>chart.backgroundImageAlpha=0.2<br>plot.backgroundAlpha=0.0<br>plot.foregroundAlpha=0.5<br>title.paint=black<br>title.font=Arial-bold-16<br>width=500<br>height=400<br>range-axis-0.tickLabelFont=Arial-plain-10<br>range-axis-1.tickLabelFont=Arial-plain-10<br>range-axis-2.tickLabelFont=Arial-plain-10<br>range-axis-3.tickLabelFont=Arial-plain-10<br>domain-axis.tickLabelFont=Arial-plain-10<br>range-axis-0.labelFont=Arial-bold-12<br>range-axis-1.labelFont=Arial-bold-12<br>range-axis-2.labelFont=Arial-bold-12<br>range-axis-3.labelFont=Arial-bold-12<br>domain-axis.labelFont=Arial-bold-12<br>#range-axis-0.label=<br>&lt;/c:props&gt;<br>&lt;%-- template for Y axis markers --%&gt;<br>&lt;c:props template=&quot;y-marker&quot;&gt;<br>stroke=line=2.0|dash=0<br>paint=orange<br>labelFont=Arial-bold-12<br>labelAnchor=center<br>layer=FOREGROUND<br>alpha=1.0<br>&lt;/c:props&gt;<br></pre>
+
+</body>
+</html>

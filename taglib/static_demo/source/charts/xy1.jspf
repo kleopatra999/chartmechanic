@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/xy1.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:chart plotType=&quot;xy&quot;&gt;<br>&lt;c:data id=&quot;random&quot; type=&quot;SQL&quot; jndiName=&quot;jdbc/DemoDS&quot;&gt;<br>select x,y from random<br>&lt;/c:data&gt;<br>&lt;c:series name=&quot;random series&quot; datasource=&quot;random&quot; paint=&quot;orange&quot;/&gt;<br>&lt;c:props&gt;<br>renderer.shape=circle<br>chart.backgroundPaint=#a0a0a0<br>#plot.backgroundAlpha=1<br>&lt;/c:props&gt;<br>&lt;c:marker value=&quot;9|13&quot; name=&quot;a band marker&quot; yaxis=&quot;0&quot; template=&quot;y-marker&quot;&gt;<br>&lt;c:marker name=&quot;x axis band&quot; xaxis=&quot;true&quot; value=&quot;3|4&quot; color=&quot;blue&quot;/&gt;<br>paint=#e0e0e0<br>layer=background<br>labelVisible=true<br>#label=My Band<br>labelPaint=#000000<br>&lt;/c:marker&gt;<br>&lt;/c:chart&gt;<br><br></pre>
+
+</body>
+</html>

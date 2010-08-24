@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/data-sources.jspf</title>
+</head>
+<body>
+<pre>
+&lt;%-- global data source, visible to all charts on the page --%&gt;<br>&lt;c:data id=&quot;d1&quot; type=&quot;CSV&quot;&gt;<br> DATE,VALUE,STOOGE<br> 2010,14,Larry<br> 2009,10,Moe<br> 2008,17,Curly<br> 2007,5,Shemp<br> 2006,20,Joe<br>&lt;/c:data&gt;<br>&lt;c:data id=&quot;stooge sales&quot; type=&quot;CSV&quot;&gt;<br>Date,#Sales,Quota,Actual<br>05/2010,7,$800,$500<br>06/2010,2,$800,$800<br>07/2010,8,$1000,$1300<br>08/2010,9,$1000,$900<br>09/2010,12,$1000,$2400<br>&lt;/c:data&gt;<br>&lt;c:data id=&quot;all stooge sales&quot;&gt;<br>05/2010,Larry,5<br>05/2010,Moe,6<br>05/2010,Shemp,2<br>05/2010,Curly,9<br>06/2010,Larry,6<br>06/2010,Moe,7<br>06/2010,Curly,11<br>06/2010,Shemp,1<br>07/2010,Larry,7<br>07/2010,Moe,8<br>07/2010,Curly,15<br>07/2010,Shemp,0<br>08/2010,Larry,6<br>08/2010,Moe,4<br>08/2010,Curly,18<br>08/2010,Shemp,1<br>&lt;/c:data&gt;<br></pre>
+
+</body>
+</html>

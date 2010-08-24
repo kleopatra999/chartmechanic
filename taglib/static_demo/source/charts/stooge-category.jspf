@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/stooge-category.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:chart&gt;<br> &lt;c:series name=&quot;Stooge Count&quot; datasource=&quot;d1&quot; x=&quot;3&quot;/&gt;<br> &lt;c:props&gt;<br>title.text=Stooge Preferences (Category Plot)<br> &lt;/c:props&gt;<br>&lt;/c:chart&gt;<br></pre>
+
+</body>
+</html>
