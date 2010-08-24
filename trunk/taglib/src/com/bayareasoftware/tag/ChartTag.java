@@ -292,6 +292,8 @@ public class ChartTag extends TagSupport implements ITagDoc {
         }
         HttpServletRequest req = (HttpServletRequest) pageContext.getRequest();
         String uri = req.getContextPath() + cc.getChartURI(cdr);
+        if (cc.getRelativeURIs() && uri.length() > 0 && uri.charAt(0) == '/')
+            uri = uri.substring(1);
         //out.println("<p><b>Path: </b>" + cdr.getImagePath() + "<br/>");
         //out.println("   <b>servlet URL: </b>" + uri + "</p>");
         out.println("<img src=\"" + uri + "\" width=\""+ ci.getWidth() + "\""
