@@ -15,7 +15,6 @@
  */
 package com.bayareasoftware.chartengine.ds.util;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
@@ -415,33 +414,5 @@ public class XLS2Data implements HSSFListener {
         }
     }
 
-    static boolean closed = false;
-    public static void main(String[] a) throws Exception {
-        String file;
-        String dir = "/home/dave/clients/poi-trunk/src/testcases/org/apache/poi/hssf/data/";
-        file = dir + "WithChart.xls";
-        file = "/home/dave/chartmechanic/trunk/sample-data/sample/spreadsheet-with-chart.xls";
-        if (false && a.length > 0) {
-            file = a[0];
-        }
-        InputStream is = new FileInputStream(file) {        
-            public void close() throws IOException {
-                super.close();
-                closed = true;
-            }
-        };
-        XLS2Data xd;
-        //xd = new XLS2Data(is, "QFS Projects (cmplt'd)", -1);
-        xd = new XLS2Data(is, null, 100);
-        xd.process();
-        System.err.println("input stream closed? " + closed);
-        List<String[]> data = xd.getData();
-        System.out.println("sheet names: " + xd.getSheetNames()
-                + " map size: " + xd.sheet2data.size()
-                + " rows: " + data.size());
-        //DSTestUtil.printList(data);
-    }
-    private static void p(String s) {
-        System.err.println("[XLS2Data] " + s);
-    }
+//    static boolean closed = false;
 }
