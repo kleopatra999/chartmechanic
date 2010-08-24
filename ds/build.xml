@@ -132,7 +132,9 @@
 	   <formatter type="xml"/>
 	   <batchtest todir="${test.out}">
             <fileset dir="${test}">
-                 <include name="**/*Test.java"/> 
+                 <include name="**/*Test.java"/>
+				 <!-- exclude for now since it uses postgresql and not everyone has that set up -->
+				 <exclude name="**/DBTableInspectorTest.java"/> 
            </fileset>
           </batchtest>
     </junit>

@@ -15,7 +15,11 @@
  */
 package com.bayareasoftware.chartengine.ds;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.io.File;
 import java.util.Date;
@@ -36,18 +40,17 @@ public class ExcelInferenceTest {
     public static void setup() {
         DSTestUtil.allowFiles();
     }
-    private static final File PRINTER_XLS = new File("../sample-data/PrinterMonthly.xls");
-    private static final File WITH_CHART_XLS = new File("../sample-data/sample/spreadsheet-with-chart.xls");
+    private static final File MONTHLY_XLS = new File("test/data/Monthly.xls");
+    private static final File WITH_CHART_XLS = new File("test/data/spreadsheet-with-chart.xls");
     private static final File TAXES_XLS = new File("test/data/your_taxes.xls");
     private static final File TWO_SHEETS_XLS = new File("test/data/two_sheets.xls");
     private static final File CS_XLS = new File("test/data/CSHomePrice_History.xls");
     private static final File MLB_BRACKET_XLS = new File("test/data/2008-mlb-bracket.xls");
     
     @Test
-    public void testPrinterMonthly() throws Exception {
+    public void testMonthly() throws Exception {
         RawData rd;
-        //rd = DSTestUtil.getRawData(DSTestUtil.getDSInfo(PRINTER_XLS),-1);
-        rd = DSTestUtil.getRawData(PRINTER_XLS,DataSourceInfo.EXCEL_TYPE,-1);
+        rd = DSTestUtil.getRawData(MONTHLY_XLS,DataSourceInfo.EXCEL_TYPE,-1);
         // need to hint that column #1 is date
         rd.metadata.setColumnType(1, DataType.DATE);
         assertEquals("expect header row 0", 0, rd.headerRow);
