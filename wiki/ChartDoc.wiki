@@ -65,17 +65,17 @@ Properties are converted into `set(...) ` calls in the [http://www.jfree.org/jfr
 || *AxisLocation* || Sets the location of an axis relative to a plot. || `BOTTOM_OR_LEFT BOTTOM_OR_RIGHT TOP_OR_LEFT TOP_OR_RIGHT` ||
 || *java.text.DateFormat* || Any format String supported by `SimpleDateFormat` || `MMM-yy` ||
 || *java.text.NumberFormat* || Any format String supported by `DecimalFormat` || `###,###` ||
-|| *RectangleAnchor* || JFreeChart block alignment constants || ` CENTER TOP TOP_LEFT TOP_RIGHT BOTTOM BOTTOM_LEFT BOTTOM_RIGHT LEFT RIGHT ` ||
-|| *TextAnchor* || JFreeChart text alignment constants || ` TOP_LEFT TOP_CENTER TOP_RIGHT HALF_ASCENT_LEFT HALF_ASCENT_CENTER HALF_ASCENT_RIGHT CENTER_LEFT CENTER CENTER_RIGHT BASELINE_LEFT BASELINE_CENTER BASELINE_RIGHT BOTTOM_LEFT BOTTOM_CENTER BOTTOM_RIGHT` ||
-|| *RectangleInsets* || JFreeChart inset rectangle, format: `top,left,bottom,right{,RELATIVE|ABSOLUTE}` || `4.0,4.0,4.0,2.0,RELATIVE` ||
-|| *HorizontalAlignment* || JFreeChart horizontal alignment constant || `CENTER LEFT RIGHT` ||
-|| *VerticalAlignment* || JFreeChart vertical alignment constant || `BOTTOM CENTER TOP` ||
-|| *NumberTickUnit* || The size/spacing for a JFreeChart [http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/NumberTickUnit.html  NumberTickUnit] || `any positive number` ||
-|| *XYBarPainter CategoryBarPainter* || JFreeChart bar painting styles || `SOLID GRADIENT` ||
-|| *DateTickUnit* || encodes a JFreeChart [http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/DateTickUnit.html DateTickUnit] `{unit_count}-{unit-type}` || `4-DAY` ���draw a tick every 4 days `12-HOUR` ��draw a tick every 12 hours ||
-|| *DateTickMarkPosition* || Position of a date tick mark within its cell || `START MIDDLE END` ||
-|| *RectangleEdge* || Layout constants to specify the edge of a rectangle || `BOTTOM LEFT RIGHT TOP` ||
-|| *CategoryLabelPositions* || Orientation of the labels on a category axis || `STANDARD UP_45 UP_90 DOWN_45 DOWN_90` ||
+|| *!RectangleAnchor* || JFreeChart block alignment constants || ` CENTER TOP TOP_LEFT TOP_RIGHT BOTTOM BOTTOM_LEFT BOTTOM_RIGHT LEFT RIGHT ` ||
+|| *!TextAnchor* || JFreeChart text alignment constants || ` TOP_LEFT TOP_CENTER TOP_RIGHT HALF_ASCENT_LEFT HALF_ASCENT_CENTER HALF_ASCENT_RIGHT CENTER_LEFT CENTER CENTER_RIGHT BASELINE_LEFT BASELINE_CENTER BASELINE_RIGHT BOTTOM_LEFT BOTTOM_CENTER BOTTOM_RIGHT` ||
+|| *!RectangleInsets* || JFreeChart inset rectangle, format: `top,left,bottom,right{,RELATIVE|ABSOLUTE}` || `4.0,4.0,4.0,2.0,RELATIVE` ||
+|| *!HorizontalAlignment* || JFreeChart horizontal alignment constant || `CENTER LEFT RIGHT` ||
+|| *!VerticalAlignment* || JFreeChart vertical alignment constant || `BOTTOM CENTER TOP` ||
+|| *!NumberTickUnit* || The size/spacing for a JFreeChart [http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/NumberTickUnit.html  NumberTickUnit] || `any positive number` ||
+|| *!XYBarPainter !CategoryBarPainter* || JFreeChart bar painting styles || `SOLID GRADIENT` ||
+|| *!DateTickUnit* || encodes a JFreeChart [http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/DateTickUnit.html DateTickUnit] `{unit_count}-{unit-type}` || `4-DAY` ���draw a tick every 4 days `12-HOUR` ��draw a tick every 12 hours ||
+|| *!DateTickMarkPosition* || Position of a date tick mark within its cell || `START MIDDLE END` ||
+|| *!RectangleEdge* || Layout constants to specify the edge of a rectangle || `BOTTOM LEFT RIGHT TOP` ||
+|| *!CategoryLabelPositions* || Orientation of the labels on a category axis || `STANDARD UP_45 UP_90 DOWN_45 DOWN_90` ||
 
 = Plot Types =
 
