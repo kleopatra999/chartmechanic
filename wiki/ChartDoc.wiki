@@ -1,17 +1,8 @@
 #summary Chart high level overview
 
-  * [#anatomy Anatomy of a Chart]
-  * [#properties Properties]
-  * [#property-types Property Types]
-  * [#plot-types Plot Types]
-  * [#series Series]
-  * [#graph-types Graph Types]
-  * [#series-functions Series Functions]
-  * [#markers Markers]
-  * [#marker-functions Marker Functions]
-  * [#templates Templates]
+<wiki:toc max_depth="2" />
 
-== Anatomy of a Chart ==
+= Anatomy of a Chart =
 
 The ChartMechanic tag library lets you customize many aspects of the charts it generates. Charts are organized into various pieces, identified in the diagram below:
 
@@ -27,7 +18,7 @@ http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/anatomy-1.png
   * *Legend* - a block showing a color and shape coded key for each series in the chart.
   * *Chart* - the background, or bottom layer of a chart. Basically, everything that is behind the other chart components.
 
-== Chart Properties ==
+= Chart Properties =
 
 The attributes of a chart are expressed with a collection of name/value pairs, known as the chart's *properties*. These name/value pairs are converted into `setXXX(...)` calls in the [http://www.jfree.org/jfreechart/api/javadoc/index.html JFreeChart] API. The prefix of a property name indicate which part of the chart the property is setting. For example, the following `<c:props>` tag:
 
@@ -60,7 +51,7 @@ font=Arial-bold-16
 
 Is equivalent to the previous tag usage, for the chart title.
 
-== Property Types ==
+= Property Types =
 
 Properties are converted into `set(...) ` calls in the [http://www.jfree.org/jfreechart/api/javadoc/index.html JFreeChart API]. This requires certain conventions for the format of property values to b e converted from strings. Basic types (numeric, boolean, etc) are simply represted as their literal values. Other supported types from the `java.awt.*` and JFreeChart API are represented as follows:
 
@@ -86,7 +77,7 @@ Properties are converted into `set(...) ` calls in the [http://www.jfree.org/jfr
 || *RectangleEdge* || Layout constants to specify the edge of a rectangle || `BOTTOM LEFT RIGHT TOP` ||
 || *CategoryLabelPositions* || Orientation of the labels on a category axis || `STANDARD UP_45 UP_90 DOWN_45 DOWN_90` ||
 
-== Plot Types ==
+= Plot Types =
 
 The plot types supported by the ChartMechanic tag library include:
 
@@ -107,7 +98,7 @@ The plot types supported by the ChartMechanic tag library include:
 || histogram || _N/A_ || NUMBER ||
 || gantt || _ANY_ || DATE ||
 
-== Series ==
+= Series =
 
 A `series` is the graphical representation of a data set having both *X*, *Y*, (and optionally *Z*) values. More simply, each line, or set of bars on a chart, are a series.
 
@@ -117,7 +108,7 @@ Every series is tied to the X axis for a chart/plot, and to one of the 4 Y axes.
 
 See the [tag-reference.jsp#series  series tag reference] for how to set up a series.
 
-== Graph Types ==
+= Graph Types =
 
 *Graph types for Time Series, XY, and Histogram Charts*
 
@@ -157,7 +148,7 @@ See the [tag-reference.jsp#series  series tag reference] for how to set up a ser
 || Step || line rendering, with discrete vertical steps between values ||
 || Waterfall || renders as Waterfall effect, with sorted series values flowing into the next value ||
 
-== Series Functions ==
+= Series Functions =
 
 Under construction
 
@@ -168,11 +159,11 @@ Under construction
 || *TIME CHANGE* || Change over Time || *Series* (sid) - Apply to series *Time Interval* (timeinterval) - Earlier time period from which to compute change *Percentage* (boolean) - Express as Percentage ||
 || *TIME JOIN* || Join Time Series || *Operand 1* (sid) - First Series *Operator* (math_operator) - Math Function *Operand 2* (sid) - Second Series *Join Tolerance* (timeinterval) - Tolerance interval for time join ||
 
-== Markers ==
+= Markers =
 
 A marker is a horizontal or vertical line across the plot area, tied to a point on an X or Y axis, with an optional descriptive label. You can specify a marker's value as a specific NUMBER or DATE value, or its value can be from a [#marker-functions FUNCTION] of a series.
 
-== Marker Functions ==
+= Marker Functions =
 
 Under construction
 
@@ -185,7 +176,7 @@ Under construction
 || *STDEV* || Standard Deviation || *Apply to Series* (sid) - null *Multiplier* (number) - Numeric factor to multiply the standard deviation by ||
 || *STDEVP* || Population Standard Deviation || *Apply to Series* (sid) - null *Multiplier* (number) - Numeric factor to multiply the standard deviation by ||
 
-== Templates ==
+= Templates =
 
 Frequently, one wants to have a common look and feel for all the charts in an application. It grows cumbersome to repeat the same properties over and over again for each usage of the `<chart>` tag.
 
