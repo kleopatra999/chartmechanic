@@ -3,6 +3,8 @@
 <head>
 <%
    String src = request.getParameter("source");
+   if (src == null) src = request.getPathInfo();
+   System.out.println("[source.jsp] src='" + src + "'");
 %>
  <title>Source of <%= src %></title>
 </head>

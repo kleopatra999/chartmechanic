@@ -45,7 +45,9 @@ Then start drawing charts:
  <div class="chart-div"><%@ include file="charts/stooge-multi.jspf" %></div>
  <d:source-div file="charts/stooge-multi.jspf"/>
 </div>
-
+<p>
+<b>&lt;data-table&gt; tag example</b>
 <c:data-table datasource="all stooge sales"/>
+</p>
 </div><%-- end content --%>
 <d:footer/>

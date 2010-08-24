@@ -52,7 +52,7 @@ public class ChartController {
     private String servletPrefix;
     private String defaultJdbcDriver, defaultJdbcUrl,
     defaultJdbcUsername, defaultJdbcPassword;
-    
+    private boolean relativeURIs = false;
     private ChartController() {
         fac = ChartDriverManager.getChartDriver(ChartDriverManager.JFREECHART);
         // FIXME: config
@@ -157,6 +157,9 @@ public class ChartController {
         this.defaultJdbcUrl = defaultJdbcUrl;
     }
 
+    public boolean getRelativeURIs() { return relativeURIs; }
+    public void setRelativeURIs(boolean b) { relativeURIs = b; }
+    
     public String getDefaultJdbcUsername() {
         return defaultJdbcUsername;
     }

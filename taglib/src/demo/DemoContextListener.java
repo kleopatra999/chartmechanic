@@ -36,6 +36,7 @@ import com.bayareasoftware.chartengine.ds.DSFactory;
 import com.bayareasoftware.chartengine.ds.DataInference;
 import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.model.DataSourceInfo;
+import com.bayareasoftware.tag.ChartController;
 
 public class DemoContextListener implements ServletContextListener {
 
@@ -63,6 +64,8 @@ java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
             close(conn);
         }
         p("initialized demo data");
+        ChartController.get().setRelativeURIs(true);
+        p("initialized chart controller");
     }
 
     private static void createTables(Connection conn) throws Exception {

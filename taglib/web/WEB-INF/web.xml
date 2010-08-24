@@ -23,9 +23,19 @@
   <servlet-class>com.bayareasoftware.tag.ChartServlet</servlet-class>
 </servlet>
 
+<servlet>
+  <servlet-name>source</servlet-name>
+  <jsp-file>/source.jsp</jsp-file>
+</servlet>
+
 <servlet-mapping>
   <servlet-name>chart</servlet-name>
   <url-pattern>/chart-images/*</url-pattern>
+</servlet-mapping>
+
+<servlet-mapping>
+  <servlet-name>source</servlet-name>
+  <url-pattern>/source/*</url-pattern>
 </servlet-mapping>
 
  <listener>
