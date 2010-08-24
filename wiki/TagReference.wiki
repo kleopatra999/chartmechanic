@@ -1,9 +1,6 @@
-  * [#data `<data>`]
-  * [#props `<props>`]
-  * [#chart `<chart>`]
-  * [#series `<series>`]
-  * [#marker `<marker>`]
-  * [#data-table `<data-table>`]
+#summary JSP Tag reference
+
+<wiki:toc max_depth="2" />
 
 == `data` tag ==
 
