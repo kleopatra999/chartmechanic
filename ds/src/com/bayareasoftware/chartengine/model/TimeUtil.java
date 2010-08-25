@@ -97,6 +97,98 @@ public class TimeUtil implements TimeConstants {
         }
         return ret;
     }
+    
+    /*
+     * format: <count>-<PERIOD-NAME>
+     * "1-YEAR"
+     * "5-DAY"
+     * "2-week"
+     * count is optional, and is implicitly 1 if not specified, so
+     * "MONTH" is valid too, as "1-MONTH"
+     */
+    public static long decodeTimeInterval(String val) {
+        long ret = 0;
+        if (val == null) {
+            return ret;
+        }
+        
+        // string literal of a long, as #msec, is acceptable...
+        // if it parses as a long, return that
+        try {
+            ret = Long.parseLong(val);
+            return ret;
+        } catch (NumberFormatException notANumber) {
+            // fall through to normal parsing
+        }
+        long period = 0;
+        int count = 1;
+        String[] sa = StringUtil.split(val, '-', true);
+        int cmPeriod = TimeConstants.TIME_UNKNOWN;
+        
+        if (sa.length > 1) {
+            try {
+                count = Math.max(1, Integer.parseInt(sa[0]));
+            } catch (Exception ignore) {
+                //ignore.printStackTrace();
+            }
+            try {
+                cmPeriod = TimeUtil.decodeTimeString(sa[1]);
+            } catch (Exception ignore) {
+                //ignore.printStackTrace();
+            }
+            
+        } else if (sa.length > 0) {
+            try {
+                cmPeriod = TimeUtil.decodeTimeString(sa[0]);
+            } catch (Exception ignore) {
+                //ignore.printStackTrace();
+            }
+        }
+        switch (cmPeriod) {
+        case TimeConstants.TIME_MILLI:
+            period = 1;
+            break;
+        case TimeConstants.TIME_SECOND:
+            period = INTERVAL_SEC;
+            break;
+        case TimeConstants.TIME_MINUTE:
+            period = INTERVAL_MINUTE;
+            break;
+        case TimeConstants.TIME_HOUR:
+            period = INTERVAL_HOUR;
+            break;
+        case TimeConstants.TIME_DAY:
+            period = INTERVAL_DAY;
+            break;
+        case TimeConstants.TIME_WEEK:
+            period = INTERVAL_WEEK;
+            break;
+        case TimeConstants.TIME_MONTH:
+            period = INTERVAL_MONTH;
+            break;
+        case TimeConstants.TIME_QUARTER:
+            period = INTERVAL_QUARTER;
+            break;
+        case TimeConstants.TIME_YEAR:
+            period = INTERVAL_YEAR;
+            break;
+        case TimeConstants.TIME_UNKNOWN:
+        default:
+            break;
+        }
+        //p("period=" + period + " decoded val='" + val + "'");
+        if (period != 0) {
+            ret = period * count;
+        } else {
+            throw new IllegalArgumentException(
+                    "cannot parse '" + val + "' as a time period"
+                    );
+        }
+        /*if (val != null && ret == null) {
+            log.warn("could not decode DateTickUnit from '" + val + "'" );
+        }*/
+        return ret;
+    }    
     public static String decodeTimeInt(int t) {
         String ret = null;
         switch (t) {

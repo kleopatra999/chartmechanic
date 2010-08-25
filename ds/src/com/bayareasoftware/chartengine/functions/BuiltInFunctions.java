@@ -104,7 +104,7 @@ public class BuiltInFunctions {
         tc.addArg(ArgType.SID, "Series", "Apply to series");
         tc.addArg(ArgType.TIME_INTERVAL, "Time Interval",
                 "Earlier time period from which to compute change",
-                "" + FuzzyTimeMap.MONTH);
+                "" + TimeUtil.INTERVAL_MONTH);
         tc.addArg(ArgType.BOOLEAN, "Percentage", "Express as Percentage", "false");
         mapperFuncs.add(tc);
         /** Joiners **/
@@ -148,7 +148,7 @@ public class BuiltInFunctions {
     public static FunctionDescriptor findSeriesFunction(String name) {
         FunctionDescriptor ret;
         ret = findFuncInList(mapperFuncs, name);
-        if (ret == null) ret = findFuncInList(mapperFuncs, name);
+        if (ret == null) ret = findFuncInList(joinerFuncs, name);
         return ret;
     }
 
