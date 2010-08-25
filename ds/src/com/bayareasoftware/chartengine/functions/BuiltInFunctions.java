@@ -139,12 +139,36 @@ public class BuiltInFunctions {
 
     public static List<FunctionDescriptor> getFunctionDescriptors() {
         List<FunctionDescriptor> ret = new ArrayList();
-        ret.addAll(mapperFuncs);
         ret.addAll(reducerFuncs);
+        ret.addAll(mapperFuncs);
         ret.addAll(joinerFuncs);
         return ret;
     }
 
+    public static FunctionDescriptor findSeriesFunction(String name) {
+        FunctionDescriptor ret;
+        ret = findFuncInList(mapperFuncs, name);
+        if (ret == null) ret = findFuncInList(mapperFuncs, name);
+        return ret;
+    }
+
+    public static FunctionDescriptor findMarkerFunction(String name) {
+        return findFuncInList(reducerFuncs, name);
+    }
+
+    // look based on fname, fn. + fname, or display name, ignore case
+    private static FunctionDescriptor findFuncInList(List<FunctionDescriptor> l, String name) {
+        FunctionDescriptor ret = null;
+        for (FunctionDescriptor fd : l) {
+            if (name.equalsIgnoreCase(fd.getName()) ||
+                    ("fn." + name).equalsIgnoreCase(fd.getName()) ||
+                    name.equalsIgnoreCase(fd.getDisplayName())) {
+                ret = fd;
+                break;
+            }
+        }
+        return ret;
+    }
     public static Object makeFunction(String fname) {
         List<FunctionDescriptor> fns = getFunctionDescriptors();
         for (FunctionDescriptor fd : fns) {
