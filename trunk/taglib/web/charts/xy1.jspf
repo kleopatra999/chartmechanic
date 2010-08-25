@@ -3,6 +3,8 @@
 select x,y from random
 </c:data>
 <c:series name="random series" datasource="random" paint="orange"/>
+<c:series-function name="MAVG" function="MVAVG" series="random series"
+  args="3"/>
 <c:props>
 renderer.shape=circle
 chart.backgroundPaint=#a0a0a0

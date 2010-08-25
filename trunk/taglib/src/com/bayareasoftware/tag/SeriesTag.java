@@ -102,22 +102,7 @@ implements DynamicAttributes,ITagDoc {
         List<AttInfo> l = DataTag.makeAttsList(BASE_ATTS);
         return DataTag.makeAttsList(ATTS, l);
     }    
-    @Override
-    public int doAfterBody() throws JspException {
-        try {
-            if (bodyContent == null) return super.doAfterBody();
-            String body = DataTag.readBody(bodyContent);
-            if (body != null) {
-                body = body.trim();
-                SimpleProps sp = new SimpleProps(body);
-                sp = sp.trimWhitespace();
-                sd.setRendererProps(sp);
-            }
-        } catch (IOException ioe) {
-            throw new JspException("error ready tag body", ioe);
-        }
-        return super.doAfterBody();
-    }
+
     
     @Override
     public int doEndTag() throws JspException {

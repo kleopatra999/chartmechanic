@@ -15,6 +15,7 @@
  */
 package com.bayareasoftware.tag;
 
+import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.jsp.JspException;
@@ -23,6 +24,7 @@ import javax.servlet.jsp.tagext.DynamicAttributes;
 
 import com.bayareasoftware.chartengine.chart.jfree.Producer;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
+import com.bayareasoftware.chartengine.model.SimpleProps;
 import com.bayareasoftware.chartengine.model.TimeUtil;
 
 /**
@@ -64,6 +66,23 @@ public abstract class AbstractSeriesTag extends BodyTagSupport {
         return true;
     }
     
+    @Override
+    public int doAfterBody() throws JspException {
+        try {
+            if (bodyContent == null) return super.doAfterBody();
+            String body = DataTag.readBody(bodyContent);
+            if (body != null) {
+                body = body.trim();
+                SimpleProps sp = new SimpleProps(body);
+                sp = sp.trimWhitespace();
+                sd.setRendererProps(sp);
+            }
+        } catch (IOException ioe) {
+            throw new JspException("error ready tag body", ioe);
+        }
+        return super.doAfterBody();
+    }
+
     protected static final Object[][] BASE_ATTS = {
         {"name", "The name of this series as it will appear on the chart.", true },
         {"graphType", "Specifies the <a href=\"charts.jsp#graph-types\">graph type</a>" +

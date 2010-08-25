@@ -7,6 +7,7 @@
  <li><a href="#props"><code>&lt;props&gt;</code></a></li>
  <li><a href="#chart"><code>&lt;chart&gt;</code></a></li>
  <li><a href="#series"><code>&lt;series&gt;</code></a></li>
+ <li><a href="#series-function"><code>&lt;series-function&gt;</code></a></li>
  <li><a href="#marker"><code>&lt;marker&gt;</code></a></li>
  <li><a href="#data-table"><code>&lt;data-table&gt;</code></a></li>
 </ul>
@@ -30,6 +31,11 @@
 <a name="series"></a><h2><code>series</code> tag</h2>
 <p>
 <d:doc-tag tag="<%= new SeriesTag() %>"/>
+</p>
+
+<a name="series-function"></a><h2><code>series-function</code> tag</h2>
+<p>
+<d:doc-tag tag="<%= new SeriesFunctionTag() %>"/>
 </p>
 
 <a name="marker"></a><h2><code>marker</code> tag</h2>
