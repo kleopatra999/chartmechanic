@@ -32,7 +32,8 @@ import com.bayareasoftware.chartengine.model.TimeUtil;
  * @author dave
  *
  */
-public abstract class AbstractSeriesTag extends BodyTagSupport {
+public abstract class AbstractSeriesTag extends BodyTagSupport
+implements DynamicAttributes {
 
     protected SeriesDescriptor sd;
     public AbstractSeriesTag() {
@@ -47,6 +48,18 @@ public abstract class AbstractSeriesTag extends BodyTagSupport {
     public void setName(String name) {
         sd.setName(name);
     }
+    
+    public void setYaxis(int axis) {
+        if (axis >= 0 && axis <= 3) {
+            sd.setAxisIndex(axis);
+        } else {
+            throw new IllegalArgumentException(
+                    "invalid axis index: '" + axis + "' must be 1 <= axis <= 4"
+                    );
+        }
+    }    
+
+    public void setVisible(boolean v) {sd.setVisible(v); }
     
     protected boolean setDynamicAttribute(String name, String val) throws JspException {
         String nl = name.toLowerCase();
@@ -66,6 +79,15 @@ public abstract class AbstractSeriesTag extends BodyTagSupport {
         return true;
     }
     
+    public void setDynamicAttribute(String uri, String name, Object obj)
+    throws JspException {
+        String val = obj != null ? obj.toString() : null;
+        if (!setDynamicAttribute(name, val)) {
+            throw new JspException(
+                    "do not understand attribute: " + name + "='" + val + "'"
+                    );
+        }
+    }    
     @Override
     public int doAfterBody() throws JspException {
         try {

@@ -77,7 +77,7 @@ public class ChartTag extends TagSupport implements ITagDoc {
         // a <data> tag is declared after a <series> tag
         // referencing it.  But I don't know a good alternative...
         String dsid = sd.getSource();
-        p("adding series(\"" + sd.getName() + "\")");
+        //p("adding series(\"" + sd.getName() + "\")");
         if (sd.getFunc() == null && cb.getDataSourceByID(dsid) == null) {
             // look for it on the page, external to this chart tag
             DataSourceInfo dsi = PageObjects.get(pc).getDataSource(dsid);

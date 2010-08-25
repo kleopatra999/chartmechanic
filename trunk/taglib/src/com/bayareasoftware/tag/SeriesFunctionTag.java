@@ -10,6 +10,7 @@ import com.bayareasoftware.chartengine.model.ArgType;
 import com.bayareasoftware.chartengine.model.FunctionDescriptor;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.StringUtil;
+import com.bayareasoftware.chartengine.model.TimeUtil;
 import com.bayareasoftware.chartengine.model.FunctionDescriptor.ArgDescriptor;
 
 public class SeriesFunctionTag extends AbstractSeriesTag
@@ -29,7 +30,6 @@ public class SeriesFunctionTag extends AbstractSeriesTag
         		"functional series will operate on.", true);
     
     private static final Object[][] ATTS = {
-        {"series", "The series name (ID) that this functional series will operate on.", true },
         {"function", "Specifies the function that will be applied to another series." +
             "  Valid values are: <br/>" + getFuncNames(), true },
         {"args", "Sets the arguments for <code>function</code>.  In general, you " +
@@ -65,13 +65,9 @@ public class SeriesFunctionTag extends AbstractSeriesTag
             throw new JspException("'" + func + "' not a valid series function");
         }
         sd.setFunc(fd.getName());
-        SeriesDescriptor other = ct.findSeries(seriesId);
-        if (other == null) {
-            throw new JspException("cannot find series '"
-                    + seriesId + "'");
-        }
+        String sid = stringifyArg(ArgType.SID, seriesId, ct);
         // series always first arg
-        sd.addArg(new Arg(ArgType.SID, other.getSid()));
+        sd.addArg(new Arg(ArgType.SID, sid));
         String[] strArgs = StringUtil.splitCompletely(args, '|');
         List<ArgDescriptor> ads = fd.getArgs();
         // offset of one btw args and descriptors: SID is an arg
@@ -81,7 +77,8 @@ public class SeriesFunctionTag extends AbstractSeriesTag
             		"got " + strArgs.length + " expected " + ads.size() + ")");
         }
         for (int i = 0; i < strArgs.length; i++) {
-            Arg a = new Arg(ads.get(i+1).getType(), strArgs[i]);
+            ArgType at = ads.get(i+1).getType();
+            Arg a = new Arg(ads.get(i+1).getType(), stringifyArg(at, strArgs[i], ct));
             sd.addArg(a);
         }
         ct.addSeriesDescriptor(sd);
@@ -89,6 +86,24 @@ public class SeriesFunctionTag extends AbstractSeriesTag
         return super.doEndTag();
     }
     
+    private static String stringifyArg(ArgType at, String val, ChartTag container) 
+    throws JspException {
+        String ret = val;
+        switch (at) {
+        case TIME_INTERVAL:
+            ret = "" + TimeUtil.decodeTimeInterval(val);
+            break;
+        case SID:
+            SeriesDescriptor other = container.findSeries(val);
+            if (other == null) {
+                throw new JspException("cannot find series '"
+                        + val + "'");
+            }
+            ret = "" + other.getSid();
+            break;
+        }
+        return ret;
+    }
     private static void p(String s) {
         System.out.println("[SeriesFuncTag] " + s);
     }
