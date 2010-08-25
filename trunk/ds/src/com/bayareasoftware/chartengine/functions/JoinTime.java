@@ -58,14 +58,23 @@ public class JoinTime implements Joiner {
         {
             String s = opstr;
             // FIXME: enum constants for these somewhere
-            if ("SUBTRACT".equalsIgnoreCase(s)) {
+            if ("SUBTRACT".equalsIgnoreCase(s) || "-".equals(s)
+                    || "MINUS".equalsIgnoreCase(s) || "SUB".equalsIgnoreCase(s)) {
                 op = OP_SUB;
-            } else if ("MULTIPLY".equals(s)) {
+            } else if ("MULTIPLY".equalsIgnoreCase(s) || "TIMES".equalsIgnoreCase(s)
+                    || "*".equals(s) || "X".equalsIgnoreCase(s)
+                    || "MULT".equalsIgnoreCase(s)) {
                 op = OP_MULT;
-            } else if ("DIVIDE".equals(s)) {
+            } else if ("DIVIDE".equals(s) || "/".equals(s) || "DIV".equalsIgnoreCase(s)) {
                 op = OP_DIV;
-            } else {
+            } else if ("ADD".equalsIgnoreCase(s) || "SUM".equalsIgnoreCase(s)
+                    || "+".equals(s)){
                 op = OP_ADD;
+            } else {
+                throw new IllegalArgumentException(
+                        "Invalid arithmetic operation '" + s + "': expecting "
+                        + " ADD SUBTRACT MULTIPLY DIVIDE or their aliases"
+                        );
             }
         }
         tolerance = args.get(3).asLong();
