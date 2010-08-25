@@ -78,7 +78,7 @@ public class ChartTag extends TagSupport implements ITagDoc {
         // referencing it.  But I don't know a good alternative...
         String dsid = sd.getSource();
         p("adding series(\"" + sd.getName() + "\")");
-        if (cb.getDataSourceByID(dsid) == null) {
+        if (sd.getFunc() == null && cb.getDataSourceByID(dsid) == null) {
             // look for it on the page, external to this chart tag
             DataSourceInfo dsi = PageObjects.get(pc).getDataSource(dsid);
             if (dsi == null) {
@@ -91,6 +91,16 @@ public class ChartTag extends TagSupport implements ITagDoc {
         ci.addSeriesDescriptor(sd);
     }
 
+    public SeriesDescriptor findSeries(String sname) {
+        SeriesDescriptor ret = null;
+        List<SeriesDescriptor> l = ci.getSeriesDescriptors();
+        for (SeriesDescriptor sd : l)
+            if (sname.equals(sd.getName())) {
+                ret = sd;
+                break;
+            }
+        return ret;
+    }
     public void addMarkerDescriptor(MarkerDescriptor md) {
         // make sure we have the referenced data source, if any
         String dsid = md.getSource();
