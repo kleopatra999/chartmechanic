@@ -15,21 +15,14 @@
  */
 package com.bayareasoftware.tag;
 
-import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.BodyTagSupport;
-import javax.servlet.jsp.tagext.DynamicAttributes;
-import javax.servlet.jsp.tagext.Tag;
 
 import com.bayareasoftware.chartengine.chart.jfree.Producer;
-import com.bayareasoftware.chartengine.model.SeriesDescriptor;
-import com.bayareasoftware.chartengine.model.SimpleProps;
-import com.bayareasoftware.chartengine.model.TimeUtil;
 
 public class SeriesTag extends AbstractSeriesTag
-implements DynamicAttributes,ITagDoc {
+implements ITagDoc {
 
     public SeriesTag() {
         super();
@@ -46,41 +39,11 @@ implements DynamicAttributes,ITagDoc {
     public void setX(int x) { sd.setXColumn(x); }
     public void setY(int x) { sd.setYColumn(x); }
     public void setZ(int x) { sd.setZColumn(x); }
-    public void setYaxis(int axis) {
-        if (axis >= 0 && axis <= 3) {
-            sd.setAxisIndex(axis);
-        } else {
-            throw new IllegalArgumentException(
-                    "invalid axis index: '" + axis + "' must be 1 <= axis <= 4"
-                    );
-        }
-    }
+
     public void setDynamicNameColumn(int col) {
         sd.setSeriesNameFromData(col);
     }
-    public void setVisible(boolean v) {sd.setVisible(v); }
     
-    public void setDynamicAttribute(String uri, String name, Object obj)
-    throws JspException {
-        String val = obj != null ? obj.toString() : null;
-        if ("renderer".equalsIgnoreCase(name) || "render".equalsIgnoreCase(name)
-                || "graph-type".equalsIgnoreCase(name) || "graph".equalsIgnoreCase(name)
-                || "type".equalsIgnoreCase(name) || "graphType".equalsIgnoreCase(name)) {
-            sd.setRenderer(val);
-        } else if ("color".equalsIgnoreCase(name) || "paint".equalsIgnoreCase(name)) {
-            sd.setColor(val);
-        } else if ("time".equalsIgnoreCase(name) || "timeperiod".equalsIgnoreCase(name)
-                || "period".equalsIgnoreCase(name)) {
-            int period = TimeUtil.decodeTimeString(val);
-            sd.setTimePeriod(period);
-        } else {
-            throw new IllegalArgumentException(
-                    "do not understand attribute: " + name + "='" + val + "'"
-                    );
-        }
-    }
-    
-
     private static final Object[][] ATTS = {
         {"datasource", "The datasource ID that this series will pull data from.", true },
         {"x", "The (1-based) column index on the series' datasource " +

@@ -78,6 +78,7 @@ java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
             st.execute("CREATE TABLE RANDOM (x INTEGER, y INTEGER)");
             st.execute("CREATE TABLE GAUSSIAN (x FLOAT8)");
             st.execute("CREATE TABLE TIMESERIES (d TIMESTAMP, x FLOAT8, y FLOAT8, w FLOAT8, z FLOAT8)");
+            st.execute("CREATE TABLE RANDOM_WALK (d TIMESTAMP, x FLOAT8, y FLOAT8, w FLOAT8, z FLOAT8)");
             st.execute("CREATE TABLE CATEGORY (name VARCHAR(20), val1 INTEGER, val2 INTEGER)");
             st.close();
             CallableStatement c1 = conn.prepareCall(
@@ -129,6 +130,7 @@ java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
                 gs.execute();
             }
             setupTimeseries(conn);
+            setupRandomWalk(conn);
             //setupBrokerage(conn);
         } finally {
             if (conn != null) {
@@ -176,7 +178,42 @@ java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
         st.close();
         cs.close();
     }
+
+    private static void setupRandomWalk(Connection conn) throws SQLException {
+        CallableStatement call = conn.prepareCall(
+                "INSERT INTO RANDOM_WALK (d,x,y,w,z) VALUES (?, ?, ?, ?, ?)"
+                );
+        Random rand = new Random(0L);
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, 2010);
+        cal.set(Calendar.DAY_OF_YEAR, 1);
+        double w,x,y,z;
+        w = x = y = z = 50.0;
+        for (int i = 0; i < 265; i++) {
+            call.setDate(1, new java.sql.Date(cal.getTime().getTime()));
+            call.setDouble(2, w);
+            call.setDouble(3, x);
+            call.setDouble(4, y);
+            call.setDouble(5, z);
+            if (call.executeUpdate() == CallableStatement.EXECUTE_FAILED) {
+                throw new RuntimeException("insert to RANDOM_WALK failed...");
+            }
+            cal.add(Calendar.DAY_OF_YEAR, 1);
+            w = walk(rand, w);
+            x = walk(rand, x);
+            y = walk(rand, y);
+            z = walk(rand, z);
+        }
+        call.close();
+    }
     
+    private static double walk(Random rand, double value) {
+        double step = rand.nextDouble() * 2.0d;
+        boolean b = rand.nextBoolean();
+        if (b)
+            step = -step;
+        return value + step;
+    }
     private static void setupTimeseries(Connection conn) throws SQLException {
         CallableStatement call = conn.prepareCall(
                 "INSERT INTO TIMESERIES (d,x,y,w,z) VALUES (?, ?, ?, ?, ?)"
@@ -185,7 +222,7 @@ java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
         Calendar cal = Calendar.getInstance();
         cal.set(Calendar.YEAR, 2010);
         cal.set(Calendar.DAY_OF_YEAR, 1);
-        for (int i = 0; i < 90; i++) {
+        for (int i = 0; i < 265; i++) {
             call.setDate(1, new java.sql.Date(cal.getTime().getTime()));
             call.setDouble(2, rand.nextDouble() * 10.0d + 10);
             call.setDouble(3, rand.nextDouble() * 10.0d);
