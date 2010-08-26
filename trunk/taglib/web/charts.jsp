@@ -313,10 +313,24 @@ See the <a href="tag-reference.jsp#series"> series tag reference</a> for how to 
 
 <a name="series-functions"></a><h2>Series Functions</h2>
 <p>
-<font color="#ff0000">Under construction</font>
+The following functions are available to generate a charting series that is derived from another series:
+</p>
+<p>
 <d:doc-functions reducers="false"/>  
 </p>
-
+<p>
+All of the series function operate on another series (in the case of TIMEJOIN, two other series).
+For example, given a daily time series <code>"stock price"</code>, the
+<code>series-function</code> tag:
+</p>
+<p>
+<code>
+&lt;c:series-function series="stock price" function="MVAVG" args="20" name="MA-20"/&gt;
+</code>
+</p>
+<p>
+will generate the 20 day moving average of the stock price series.
+</p>
 <a name="markers"></a><h2>Markers</h2>
 <p>
 A marker is a horizontal or vertical line across the plot area, tied to a point on an X or Y axis, with an optional descriptive label. You can specify a marker's value as a specific NUMBER or DATE value, or its value can be from a <a href="#marker-functions">FUNCTION</a> of a series. 
@@ -324,7 +338,6 @@ A marker is a horizontal or vertical line across the plot area, tied to a point 
 
 <a name="marker-functions"></a><h2>Marker Functions</h2>
 <p>
-<font color="#ff0000">Under construction</font>
 <d:doc-functions reducers="true"/>  
 </p>
 

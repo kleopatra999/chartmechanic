@@ -86,7 +86,7 @@ public class SeriesFunctionTag extends AbstractSeriesTag
         return super.doEndTag();
     }
     
-    private static String stringifyArg(ArgType at, String val, ChartTag container) 
+    /*package*/static String stringifyArg(ArgType at, String val, ChartTag container) 
     throws JspException {
         String ret = val;
         switch (at) {
