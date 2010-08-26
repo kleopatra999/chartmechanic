@@ -223,6 +223,9 @@ public class ChartTag extends TagSupport implements ITagDoc {
     @Override
     public int doAfterBody() throws JspException {
         try {
+            if (!plotSet)
+                inferPlotType();
+            fixupMarkers();
             makeTag();
         } catch (RuntimeException re) {
             throw re;
@@ -234,6 +237,25 @@ public class ChartTag extends TagSupport implements ITagDoc {
         return super.doAfterBody();
     }
     
+    // MarkerTag/MarkerDescriptor currently infers a lot w.r.t. the
+    // type (interval vs single, time vs numeric)  we're trying to
+    // infer the right type here - basically, if it has a data source,
+    // assume interval...may not always be right though...
+    private void fixupMarkers() {
+        PlotType pt = ci.getPlotType();
+        for (MarkerDescriptor md : ci.getMarkers()) {
+            if (md.getSource() == null) {
+                // assume these are ok
+                continue;
+            }
+            if (pt == PlotType.PLOT_TIME && !md.isRange()) {
+                // date interval
+                md.setType(MarkerDescriptor.MARKER_TYPE_DATE_INTERVAL);
+            } else {
+                md.setType(MarkerDescriptor.MARKER_TYPE_NUMERIC_INTERVAL);
+            }
+        }
+    }
     public void setPlotType(String str) {
         PlotType pt = PlotType.get(str);
         if (pt == null)
@@ -284,8 +306,6 @@ public class ChartTag extends TagSupport implements ITagDoc {
             out.println("</ol></font>");
             return;
         }
-        if (!plotSet)
-            inferPlotType();
         ChartController cc = ChartController.get();
         ChartDiskResult cdr;
         cdr = cc.getChart(cb, null);

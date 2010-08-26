@@ -1,0 +1,25 @@
+<c:data type="SQL" id="random walk" driver="org.h2.Driver"
+        url="jdbc:h2:mem:demo;DB_CLOSE_DELAY=-1" user="sa" password="bogus">
+  SELECT * FROM RANDOM_WALK
+</c:data>
+<c:chart plotType="time" graphType="Line" title="random walk">
+ <c:props>
+renderer.stroke=3.0
+plot.foregroundAlpha=1.0
+ </c:props>
+ <c:series name="W" datasource="random walk" y="2" visible="false"/>
+ <c:series-function series="W" function="MVAVG" args="20"
+           name="W MA-20" visible="false"/>
+ <c:series-function series="W" function="timechange" args="month|false"
+           name="W MoM % change" yaxis="1"/>
+ <c:series name="X" datasource="random walk" y="3" visible="false"/>
+ <c:series name="Y" datasource="random walk" y="4" visible="false"/>
+ <c:series name="Z" datasource="random walk" y="5" visible="false"/>
+ <c:series-function series="Y" function="timejoin" name="Y+Z"
+           args="+|Z|day"/>
+ <c:marker xaxis="true" color="red"
+  date="2010-07-04" name="Independence Day">
+stroke=3.0
+ </c:marker>
+</c:chart>
+

@@ -45,6 +45,17 @@ Then start drawing charts:
  <div class="chart-div"><%@ include file="charts/stooge-multi.jspf" %></div>
  <d:source-div file="charts/stooge-multi.jspf"/>
 </div>
+
+<div class="item-div">
+ <div class="chart-div"><%@ include file="charts/timeseries2.jspf" %></div>
+ <d:source-div file="charts/timeseries2.jspf"/>
+</div>
+
+<div class="item-div">
+ <div class="chart-div"><%@ include file="charts/olympics.jspf" %></div>
+ <d:source-div file="charts/olympics.jspf"/>
+</div>
+
 <p>
 <b>&lt;data-table&gt; tag example</b>
 <c:data-table datasource="all stooge sales"/>

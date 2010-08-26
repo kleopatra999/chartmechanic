@@ -17,6 +17,11 @@ package com.bayareasoftware.tag;
 
 import java.awt.Font;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.URL;
+import java.text.DateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -30,17 +35,24 @@ import com.bayareasoftware.chartengine.chart.ChartDiskResult;
 import com.bayareasoftware.chartengine.chart.ChartDriver;
 import com.bayareasoftware.chartengine.chart.ChartDriverManager;
 import com.bayareasoftware.chartengine.chart.ChartResult;
+import com.bayareasoftware.chartengine.ds.CSVDataSource;
 import com.bayareasoftware.chartengine.ds.DSFactory;
+import com.bayareasoftware.chartengine.ds.DataInference;
 import com.bayareasoftware.chartengine.ds.DataSource;
 import com.bayareasoftware.chartengine.ds.DataStream;
+import com.bayareasoftware.chartengine.functions.InflationAdjust;
 import com.bayareasoftware.chartengine.model.BaseDescriptor;
 import com.bayareasoftware.chartengine.model.ChartBundle;
 import com.bayareasoftware.chartengine.model.ChartConstants;
 import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.DataSourceInfo;
+import com.bayareasoftware.chartengine.model.DataType;
+import com.bayareasoftware.chartengine.model.InferredData;
 import com.bayareasoftware.chartengine.model.LogoInfo;
+import com.bayareasoftware.chartengine.model.Metadata;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.SimpleProps;
+import com.bayareasoftware.chartengine.util.DateUtil;
 
 public class ChartController {
 
@@ -62,6 +74,15 @@ public class ChartController {
         cache.clear();
         servletPrefix = "/chart-images";
         initTheme();
+        try {
+            initData();
+        } catch (RuntimeException re) {
+            throw re;
+        } catch (Exception e) {
+            p("cannot initialize data: " + e);
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
     
     private static ChartController instance = new ChartController();
@@ -176,6 +197,83 @@ public class ChartController {
         this.defaultJdbcPassword = defaultJdbcPassword;
     }
     
+    /* routines for initializing certain built-in datasets */
+
+    private String readURLAsString(String url) throws IOException {
+        URL u = getClass().getResource(url);
+        if (u == null) {
+            throw new RuntimeException(
+                    "Cannot find URL resource '" + url + "'"
+                    );
+        }
+        Reader rdr = new InputStreamReader(u.openStream());
+        StringBuilder sb = new StringBuilder();
+        try {
+            char[] buf = new char[512];
+            int r;
+            while ((r = rdr.read(buf)) > 0){
+                sb.append(buf, 0, r);
+            }
+        } finally {
+            rdr.close();
+        }
+        return sb.toString();
+    }
+    
+    private void initData() throws Exception {
+        DataSourceInfo cpi = createMonthlyCPI();
+        InflationAdjust.populateCPI(cpi);
+    }
+    private DataSourceInfo createMonthlyCPI() throws Exception {
+        String data = readURLAsString("/data/monthly-cpi.csv");
+        DataSourceInfo ret = new DataSourceInfo(DataSourceInfo.CSV_TYPE);
+        ret.setProperty(DataSourceInfo.CSV_DATA, data);
+        ret.setDataStartRow(1);
+        Metadata md = new Metadata(2);
+        md.setColumnType(1, DataType.DATE);
+        md.setColumnName(1, "Year & Month");
+        md.setColumnFormat(1, "MM/yyyy");
+        md.setColumnType(2, DataType.DOUBLE);
+        md.setColumnName(2, "CPI");
+        ret.setInputMetadata(md);
+        ret.setDescription("Monthly US Consumer Price Index (CPI)\n"
+                + "source: http://www.bls.gov/");
+        return ret;
+    }
+    /*
+    // data comes from http://www.nber.org/cycles/cyclesmain.html
+    private DataSourceInfo createUSRecessionData() throws Exception {
+        String data = readURLAsString("/data/us-recessions.csv");
+        DataSourceInfo ret = null;
+        StringBuilder sb;
+        {
+            DataSourceInfo info;
+            InferredData idata = DataInference.get().inferFromCSV(data);
+            info = idata.getDataSource();
+            DataStream ds = (new CSVDataSource(info)).getDataStream();
+            sb = new StringBuilder();
+            DateFormat fmt = DateUtil.createDateFormat("yyyy-MM-dd");
+            while (ds.next()) {
+                sb.append(fmt.format(ds.getDate(1))).append(',')
+                .append(fmt.format(ds.getDate(2))).append('\n');
+            }
+        }
+
+        ret = new DataSourceInfo(DataSourceInfo.CSV_TYPE);
+        ret.setDescription("Interval marker showing periods of recession (negative growth) in the United States economy.");
+        ret.setProperty(DataSourceInfo.CSV_DATA, sb.toString());
+        
+        Metadata md = new Metadata(2);
+        md.setColumnName(1,"start");
+        md.setColumnType(1, DataType.DATE);
+        md.setColumnName(2,"end");
+        md.setColumnType(2, DataType.DATE);
+        ret.setInputMetadata(md);
+
+        return ret;
+        
+    } 
+    */   
     private static void p(String s) {
         System.out.println("[ChartControl] " + s);
     }

@@ -65,7 +65,7 @@ implements DynamicAttributes {
         String nl = name.toLowerCase();
         if ("renderer".equals(nl) || "render".equals(nl)
                 || "graph-type".equals(nl) || "graph".equals(nl)
-                || "type".equals(nl) || "graphType".equals(nl)) {
+                || "type".equals(nl) || "graphtype".equals(nl)) {
             sd.setRenderer(val);
         } else if ("color".equals(nl) || "paint".equals(nl)) {
             sd.setColor(val);
