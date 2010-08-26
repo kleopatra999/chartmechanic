@@ -52,7 +52,7 @@
     <mkdir dir="${classes.dir}/data"/>
     <copy todir="${classes.dir}/data">
       <fileset dir="${test}/data"
-       includes="DJIA-monthly.csv,us-recessions.csv,monthly-cpi.csv,olympic-medals-vancouver.csv"/>
+       includes="us-recessions.csv,monthly-cpi.csv"/>
     </copy>
   </target>
 
