@@ -16,7 +16,9 @@
 package com.bayareasoftware.tag;
 
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.Reader;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +32,9 @@ import com.bayareasoftware.chartengine.ds.DataInference;
 import com.bayareasoftware.chartengine.model.DataSourceInfo;
 import com.bayareasoftware.chartengine.model.InferredData;
 import com.bayareasoftware.chartengine.model.Metadata;
+import com.bayareasoftware.chartengine.model.RawData;
 import com.bayareasoftware.chartengine.model.StandardProps;
+import com.bayareasoftware.chartengine.util.URLUtil;
 
 public class DataTag extends BodyTagSupport
 implements DynamicAttributes, ITagDoc {
@@ -43,6 +47,7 @@ implements DynamicAttributes, ITagDoc {
     private String jndiName, driver;
     // used by jdbc, and others when we get them
     private String url, username, password;
+    private boolean parsedBody = false;
     public DataTag() {
         release();
     }
@@ -68,6 +73,7 @@ implements DynamicAttributes, ITagDoc {
         type = "csv";
         jndiName = null;
         driver = url = username = password = null;
+        parsedBody = false;
         super.release();
     }
     
@@ -132,9 +138,74 @@ implements DynamicAttributes, ITagDoc {
         super.setPageContext(pc);
         this.pc = pc;
     }
+    
+    @Override
+    public int doEndTag() throws JspException {
+        if (parsedBody) {
+            release();
+            return super.doEndTag();
+        }
+        // no body - required to be type="csv" with a URL
+        if (!"csv".equalsIgnoreCase(type) || url == null) {
+            throw new JspException(
+                    "data tag (ID=" + id + ") without a body must" +
+                    " have type=\"csv\" and a url pointing to data"
+                    );
+        }
+        try {
+            URL u = URLUtil.safeURL(url);
+            if (u == null) {
+                throw new JspException("cannot load URL '" + url + "'");
+            }
+            Reader rdr = new InputStreamReader(u.openStream());
+            String data = null;
+            try {
+                data = readAsString(rdr);
+            } finally {
+                rdr.close();
+            }
+            DataSourceInfo dsi = parseCSVData(data);
+            storeDataSource(dsi);
+        } catch (IOException e) {
+            throw new JspException("cannot load URL '" + url + "'", e);
+        }
+        release();
+        return super.doEndTag();
+    }
+    
+    private DataSourceInfo parseCSVData(String data) throws IOException {
+        DataSourceInfo ds = null;
+        ds = new DataSourceInfo(DataSourceInfo.CSV_TYPE);
+        ds.setProperty(DataSourceInfo.CSV_DATA, data);
+        if (md == null) {
+            InferredData id = DataInference.get().inferFromCSV(data);
+            RawData rd = id.getRawData();
+            md = rd.metadata;
+            ds.setInputMetadata(md);
+            ds.setDataStartRow(rd.dataStartRow);
+            ds.setDataEndRow(rd.getDataEndRow());
+            //p("inferred for CSV " + md);
+        }
+        return ds;
+    }
+    
+    private void storeDataSource(DataSourceInfo dsi) {
+        dsi.setId(id);
+        ChartTag ct = (ChartTag) findAncestorWithClass(this, ChartTag.class);
+        /*if (ct == null)
+            throw new JspException("cannot find enclosing ChartTag");
+            */
+        if (ct != null) {
+            // if enclosed in a chart tag, just make it private to that chart
+            ct.addDataSource(dsi);
+        } else {
+            // if not in a chart tag, export to the rest of the page
+            PageObjects.get(pc).addDataSource(id, dsi);
+        }
+        
+    }
     @Override
     public int doAfterBody() throws JspException {
-        
         try {
             String body = readBody(bodyContent);
             //p("got body ###" + bodyCSV + "###");
@@ -155,29 +226,11 @@ implements DynamicAttributes, ITagDoc {
                 //ds.setProperty(DataSourceInfo., value)
                 ds.setDataScript(body);
             } else {
-                ds = new DataSourceInfo(DataSourceInfo.CSV_TYPE);
-                ds.setProperty(DataSourceInfo.CSV_DATA, body);
-                if (md == null) {
-                    InferredData id = DataInference.get().inferFromCSV(body);
-                    md = id.getRawData().metadata;
-                    ds.setInputMetadata(md);
-                    //p("inferred for CSV " + md);
-                }
+                ds = parseCSVData(body);
             }
-            ds.setId(id);
-            ChartTag ct = (ChartTag) findAncestorWithClass(this, ChartTag.class);
-            /*if (ct == null)
-                throw new JspException("cannot find enclosing ChartTag");
-                */
-            if (ct != null) {
-                // if enclosed in a chart tag, just make it private to that chart
-                ct.addDataSource(ds);
-            } else {
-                // if not in a chart tag, export to the rest of the page
-                PageObjects.get(pc).addDataSource(id, ds);
-            }
+            storeDataSource(ds);
         } catch (IOException e) { throw new JspException(e); }
-        release();
+        parsedBody = true;
         return super.doAfterBody();
     }
     
@@ -203,10 +256,14 @@ implements DynamicAttributes, ITagDoc {
     }
     
     public static String readBody(BodyContent bc) throws IOException {
-        StringBuilder sb = new StringBuilder();
         Reader rdr = bc.getReader();
+        return readAsString(rdr);
+    }
+    
+    static String readAsString(Reader rdr) throws IOException {
         char[] c = new char[1024];
         int r;
+        StringBuilder sb = new StringBuilder();
         while ((r = rdr.read(c)) != -1) {
             sb.append(c, 0, r);
         }
