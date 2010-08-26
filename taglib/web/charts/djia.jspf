@@ -1,0 +1,17 @@
+<c:data id="DJIA" url="/data/DJIA-monthly.csv"/>
+<c:data id="recessions" url="/data/us-recessions.csv"/>
+<c:chart title="Dow Jones Monthly" plotType="time" graphType="Line">
+<c:series datasource="DJIA" name="Dow"/>
+<c:series-function series="Dow" function="inflation" args="1990"
+          name="Dow (inflation adjusted, 1990)"/>
+<c:marker name="Recession" color="#c0c0c0" xaxis="true"
+         datasource="recessions">
+layer=foreground
+alpha=0.5
+</c:marker>
+<c:props>
+chart.backgroundImage=none
+renderer.stroke=2.0
+description=Dow Average, nominal and inflation-adjusted
+</c:props>
+</c:chart>

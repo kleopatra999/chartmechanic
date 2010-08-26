@@ -2,21 +2,27 @@
 <c:data id="random" type="SQL" jndiName="jdbc/DemoDS">
 select x,y from random
 </c:data>
-<c:series name="random series" datasource="random" paint="orange"/>
-<c:series-function name="MAVG" function="MVAVG" series="random series"
-  args="3"/>
+<c:series name="random series" datasource="random" paint="red"/>
 <c:props>
 renderer.shape=circle
+renderer.stroke=2.0
 chart.backgroundPaint=#a0a0a0
 #plot.backgroundAlpha=1
 </c:props>
-<c:marker value="9|13" name="a band marker" yaxis="0" template="y-marker">
-<c:marker name="x axis band" xaxis="true" value="3|4" color="blue"/>
+<c:marker name="x-axis band" xaxis="true" value="3|4" color="blue"/>
+<c:marker value="2|6" name="y-axis band" yaxis="0" template="y-marker">
 paint=#e0e0e0
 layer=background
 labelVisible=true
 #label=My Band
 labelPaint=#000000
+alpha=0.7
 </c:marker>
+<c:marker-function name="AVERAGE" series="random series" function="AVG">
+stroke=line=2.0|dash=1
+paint=yellow
+labelAnchor=CENTER
+labelFont=Arial-bold-14
+</c:marker-function>
 </c:chart>
 

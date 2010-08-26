@@ -236,6 +236,60 @@
     <dynamic-attributes>false</dynamic-attributes> 
   </tag>
 
+  <tag>
+    <name>marker-function</name>
+    <tag-class>com.bayareasoftware.tag.MarkerFunctionTag</tag-class>
+    <body-content>JSP</body-content>
+    <attribute>
+        <name>name</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+        <name>function</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+        <name>series</name>
+        <required>true</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+        <name>arg</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+        <name>yaxis</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+        <name>color</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+        <name>visible</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+
+    <attribute>
+        <name>template</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    <dynamic-attributes>false</dynamic-attributes> 
+  </tag>
+
 
   <tag>
     <name>props</name>

@@ -56,6 +56,11 @@ Then start drawing charts:
  <d:source-div file="charts/olympics.jspf"/>
 </div>
 
+<div class="item-div">
+ <div class="chart-div"><%@ include file="charts/djia.jspf" %></div>
+ <d:source-div file="charts/djia.jspf"/>
+</div>
+
 <p>
 <b>&lt;data-table&gt; tag example</b>
 <c:data-table datasource="all stooge sales"/>

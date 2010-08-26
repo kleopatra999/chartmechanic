@@ -92,6 +92,12 @@
         <path refid="jetty.classpath"/>
       </classpath>
     </javac>
+<!--
+    <mkdir dir="${classes}/data"/>
+    <copy todir="${classes}/data">
+      <fileset dir="test/data" includes="*.*"/>
+    </copy>
+-->
   </target>
 
   <target name="package" depends="compile" description="bundle up re-distributable bits">
@@ -103,6 +109,8 @@
     </manifest>
     <fileset dir="${classes}"/>
     <fileset dir="${basedir}" includes="web/**"/>
+    <!-- demo app data -->
+    <zipfileset dir="${basedir}/test/data" prefix="data"/>
     <!-- jetty -->
     <zipgroupfileset dir="${compile-lib}" includes="*.jar" />
     <zipgroupfileset dir="${compile-lib}/jsp-2.1" includes="*.jar" />

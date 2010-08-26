@@ -15,8 +15,11 @@
     out.println(" <td>" + fd.getDescription() + "</td><td>");
     java.util.List<FunctionDescriptor.ArgDescriptor> ads = fd.getArgs();
     for (com.bayareasoftware.chartengine.model.FunctionDescriptor.ArgDescriptor ad : fd.getArgs()) {
-      out.println("<b>" + ad.getName() + "</b> (" + ad.getType() + ") - "
-              + ad.getDescription() + "<br/>");
+      String desc = ad.getDescription();
+      if (desc == null) desc = "";
+      else desc = " - " + desc;
+      out.println("<b>" + ad.getName() + "</b> (" + ad.getType() + ") "
+              + desc + "<br/>");
     }
     out.println("</td></tr>");
   }
