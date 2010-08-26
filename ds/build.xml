@@ -45,10 +45,15 @@
   </path>
 
   <target name="compile">
-	<mkdir dir="${classes.dir}"/>
+    <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src}" destdir="${classes.dir}" debug="${debug}">
       <classpath refid="classpath"/>
     </javac>
+    <mkdir dir="${classes.dir}/data"/>
+    <copy todir="${classes.dir}/data">
+      <fileset dir="${test}/data"
+       includes="DJIA-monthly.csv,us-recessions.csv,monthly-cpi.csv,olympic-medals-vancouver.csv"/>
+    </copy>
   </target>
 
   <target name="javadoc"
