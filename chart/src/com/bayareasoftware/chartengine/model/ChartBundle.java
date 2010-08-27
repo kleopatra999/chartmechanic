@@ -426,26 +426,27 @@ public class ChartBundle extends PropChangeSource implements PropertySerializabl
         Map<String,Boolean> dsRefs = new HashMap<String,Boolean>(); 
         // ensure that every marker referenced by the ChartInfo is actually in this bundle
         for (MarkerDescriptor md : chartInfo.getMarkers()) {
-            double[] vals = md.getValues();
-            if (vals == null || vals.length == 0) {
-                String sourceID = md.getSource();
-                if (sourceID == null) {
-                    ret.add("marker '" + md.getName() + "' has no inline"
-                            + " values, and no data source ID");
-                    continue;
-                }
-                DataSourceInfo dsi = this.getDataSourceByID(sourceID);
-                if (dsi == null) {
-                    ret.add(
-                            "no data source with id='" + sourceID
-                            + "' (referred to by marker '" + md.getName() + "')"
-                            );
+            if (md.getFunc() == null) {
+                double[] vals = md.getValues();
+                if (vals == null || vals.length == 0) {
+                    String sourceID = md.getSource();
+                    if (sourceID == null) {
+                        ret.add("marker '" + md.getName() + "' has no inline"
+                                + " values, and no data source ID");
+                        continue;
+                    }
+                    DataSourceInfo dsi = this.getDataSourceByID(sourceID);
+                    if (dsi == null) {
+                        ret.add("no data source with id='" + sourceID
+                                + "' (referred to by marker '" + md.getName()
+                                + "')");
+                    } else {
+                        dsRefs.put(sourceID, Boolean.TRUE);
+                    }
                 } else {
-                    dsRefs.put(sourceID, Boolean.TRUE);
+                    // inline values, no datasource reference checking needed...
                 }
-            } else {
-                // inline values, no datasource reference checking needed...
-            }
+            } // function validation elsewhere
         
         }
 
