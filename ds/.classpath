@@ -30,5 +30,6 @@
 	<classpathentry kind="lib" path="lib/poi-contrib-3.5-beta4-20081128.jar"/>
 	<classpathentry kind="lib" path="lib/poi-ooxml-3.5-beta4-20081128.jar"/>
 	<classpathentry kind="lib" path="lib/poi-scratchpad-3.5-beta4-20081128.jar"/>
+	<classpathentry kind="lib" path="/common/compile-lib/h2.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
