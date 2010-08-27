@@ -24,8 +24,6 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.bayareasoftware.chartengine.ds.DBTableInspector;
-import com.bayareasoftware.chartengine.ds.JdbcDataSource;
 import com.bayareasoftware.chartengine.model.SimpleProps;
 import com.bayareasoftware.chartengine.model.StandardProps;
 
@@ -37,12 +35,17 @@ public class DBTableInspectorTest {
     public static void init() {
         try {
             SimpleProps props = new SimpleProps();
-            props.put(StandardProps.JDBC_DRIVER,"org.postgresql.Driver");
-            props.put(StandardProps.JDBC_URL,"jdbc:postgresql://localhost/cm_data_test");
-            props.put(StandardProps.JDBC_USERNAME,"bt");
+//            props.put(StandardProps.JDBC_DRIVER,"org.postgresql.Driver");
+//            props.put(StandardProps.JDBC_URL,"jdbc:postgresql://localhost/cm_data_test");
+//            props.put(StandardProps.JDBC_USERNAME,"bt");
+//            props.put(StandardProps.JDBC_PASSWORD,"");
+            
+            props.put(StandardProps.JDBC_DRIVER,"org.h2.Driver");
+            props.put(StandardProps.JDBC_URL,"jdbc:h2:mem:charttest;DB_CLOSE_DELAY=-1");
+            props.put(StandardProps.JDBC_USERNAME,"sa");
             props.put(StandardProps.JDBC_PASSWORD,"");
             conn = JdbcDataSource.createConnection(props);
-            createSampleTable(conn);
+            createSampleTable();
         } catch (Exception e) {
             Assert.fail("failed to initialize test tables due to " + e);
         }
@@ -63,7 +66,7 @@ public class DBTableInspectorTest {
             "CREATE TABLE " + T3 + " (f1 INTEGER)"
     };
 
-    private static void createSampleTable(Connection conn) throws SQLException {
+    private static void createSampleTable() throws SQLException {
         Statement stmt = conn.createStatement();
         try {
             stmt.execute("DROP TABLE T1");
