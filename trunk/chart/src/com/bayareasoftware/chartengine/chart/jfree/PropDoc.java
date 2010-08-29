@@ -46,7 +46,13 @@ public class PropDoc {
             if (is != null) is.close();
         }
     }
-    public void run() throws Exception {
+    
+    private void printTOC() {
+        
+        if (isWiki) {
+            out.println("<wiki:toc max_depth=\"2\"/>");
+            return;
+        }
         List<ChartBeanInfo> l;
         ChartBeanInfo cbi;
         out.println("<ul>"); // master list
@@ -85,10 +91,20 @@ public class PropDoc {
             printLi(c.getClassname(), c.getDisplayname());
         }
         out.println("</ul>");
-
-        
         out.println("</ul>"); // master TOC list
         
+        
+    }
+    public void run() throws Exception {
+        printTOC();
+        printChartTypes();
+        printXYRenderers();
+        printCategoryRenderers();
+    }
+    
+    private void printChartTypes() throws Exception {
+        List<ChartBeanInfo> l;
+        ChartBeanInfo cbi;
         cbi = ts.getChartBean();
         printMajorAnchor("chart", "chart");
         printBean(cbi);  // chart
@@ -122,6 +138,11 @@ public class PropDoc {
             printBean(cbi);
         }
 
+    }
+    
+    private void printXYRenderers() throws Exception {
+        List<ChartBeanInfo> l;
+        
         printMajorAnchor("xyrenderers", "XY Graph Types");
         l = ts.getConcreteXYRenderers();
         for (ChartBeanInfo c : l) {
@@ -129,7 +150,11 @@ public class PropDoc {
             printMinorAnchor(c.getClassname(), c.getDisplayname());
             printBean(c);
         }
-
+    }
+    
+    private void printCategoryRenderers() throws Exception {
+        List<ChartBeanInfo> l;
+    
         printMajorAnchor("categoryrenderers", "Category Graph Types");
         l = ts.getConcreteCategoryRenderers();
         for (ChartBeanInfo c : l) {
@@ -140,12 +165,46 @@ public class PropDoc {
         
     }
     public static void main(String[] args) throws Exception {
-        PrintStream out = System.out;
-        if (args.length > 0)
-            out = new PrintStream(new FileOutputStream(args[0]));
-        new PropDoc("/jfreechart-types.xml", out).run();
-    }
+        PrintStream out;
+        boolean wiki = false;
+        if (args.length != 4) {
+            System.err.println("usage: PropDoc <html-file> <chart-wiki-file> " +
+            		"<xy-renderer-wiki-file> <cat-renderer-wiki-file>");
+            System.exit(1);
+        }
+        
+        out = new PrintStream(new FileOutputStream(args[0]));
+        PropDoc pd = new PropDoc("/jfreechart-types.xml", out);
+        pd.isWiki = false;
+        pd.run();
+        out.close();
 
+        out = new PrintStream(new FileOutputStream(args[1]));
+        pd = new PropDoc("/jfreechart-types.xml", out);
+        pd.isWiki = true;
+        out.println("#summary Reference for chart, plot, axis, title and legend properties");
+        pd.printTOC();
+        pd.printChartTypes();
+        out.close();
+
+        out = new PrintStream(new FileOutputStream(args[2]));
+        pd = new PropDoc("/jfreechart-types.xml", out);
+        pd.isWiki = true;
+        out.println("#summary Reference for  XY graph-type (renderer) properties");
+        pd.printTOC();
+        pd.printXYRenderers();
+        out.close();
+
+        out = new PrintStream(new FileOutputStream(args[3]));
+        pd = new PropDoc("/jfreechart-types.xml", out);
+        pd.isWiki = true;
+        out.println("#summary Reference for Category graph-type (renderer) properties");
+        pd.printTOC();
+        pd.printCategoryRenderers();
+        out.close();
+        
+    }
+    
     private void printLi(String anchor, String text) {
         out.println("<li><a href=\"#" + anchor + "\">" + text + "</a></li>");
     }
@@ -153,8 +212,37 @@ public class PropDoc {
         if (isWiki) out.println("= " + text + " =");
         else out.println("<a name=\"" + anchor + "\"></a><h1>" + text + "</h1>");
     }
+    
+    private boolean isWikiWord(String s) {
+        if (!Character.isUpperCase(s.charAt(0))) {
+            return false;
+        }
+        if (Character.isUpperCase(s.charAt(1))) {
+            return false;
+        }
+        if (Character.isUpperCase(s.charAt(s.length() - 1))) {
+            return false;
+        }
+        boolean ret = false;
+        // true if we see at least one more upper
+        // false if we see a ' '
+        int len = s.length();
+        for (int i = 2; i < len; i++) {
+            char c = s.charAt(i);
+            if (Character.isUpperCase(c)) ret = true;
+            else if (Character.isWhitespace(c)) {
+                ret = false;
+                break;
+            }
+        }
+        return ret;
+    }
     private void printMinorAnchor(String anchor, String text) {
-        if (isWiki) out.println("== " + text + " ==");
+        String prefix = "";
+        if (isWikiWord(text)) {
+            prefix = "!";
+        }
+        if (isWiki) out.println("== " + prefix + text + " ==");
         else out.println("<a name=\"" + anchor + "\"></a><h2>" + text + "</h2>"
                 + "\n &nbsp;&nbsp;&nbsp;<a href=\"\">top</a>"
                 );
@@ -163,6 +251,16 @@ public class PropDoc {
     private void printClassComment(String cname) {
         String comment = javadocProps.getProperty(cname + ".class");
         if (comment == null) comment = "&nbsp;";
+        if (isWiki) {
+            comment = comment.replace("../../../../../images/",
+            "http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/");
+            comment = comment.replace("../../../../images/",
+            "http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/");
+            comment = comment.replace("<P>", "<br/><br/>");
+            comment = comment.replace("<p>", "<br/><br/>");
+            comment = comment.replace("</p>", "");
+            comment = comment.replace("</P>", "");
+        }
         out.println("<p>" + comment + "</p>");
     }
     
@@ -208,6 +306,8 @@ public class PropDoc {
             }
             String javadoc = javadocDoc(cbi.getClassname(), pi.getName());
             if (javadoc == null) javadoc = "&nbsp;";
+            javadoc = javadoc.replace("<P>", "<br/><br/>");
+            javadoc = javadoc.replace("<p>", "<br/><br/>");
             out.println("<tr><td>" + pi.getName() + "</td><td>" + trunc(type)
                     + "</td><td>" + javadoc
                     + "</td><td><code>" + def + "</code></td></tr>");
