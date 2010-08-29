@@ -89,7 +89,11 @@ public class ChartContext {
             String locationProp = rangeAxisPrefix + "." + CM_PROP_PREFIX + "axisLocation";
             String typeProp = rangeAxisPrefix + "." + CM_PROP_PREFIX + "axisType";
             rangeaxes[i].axisType = chartProps.get(typeProp);
+            if (rangeaxes[i].axisType == null)
+                rangeaxes[i].axisType = chartProps.get(rangeAxisPrefix + ".axisType");
             String locationVal = chartProps.get(locationProp);
+            if (locationVal == null)
+                locationVal = chartProps.get(rangeAxisPrefix + ".axisLocation");
             if (locationVal != null) {
                 rangeaxes[i].location = (AxisLocation) BeanUtil.convertType(locationVal, AxisLocation.class); 
             }

@@ -405,13 +405,17 @@ public class BeanUtil {
                 ret = PlotOrientation.VERTICAL;
             }
         } else if (c == AxisLocation.class) {
-            if ("BOTTOM_OR_LEFT".equals(s)) {
+            if ("BOTTOM_OR_LEFT".equalsIgnoreCase(s)) {
                 ret = AxisLocation.BOTTOM_OR_LEFT;
-            } else if ("BOTTOM_OR_RIGHT".equals(s)) {
+            } else if ("BOTTOM_OR_RIGHT".equalsIgnoreCase(s) ||
+                    "BOTTOM".equalsIgnoreCase(s) ||
+                    "RIGHT".equalsIgnoreCase(s)) {
                 ret = AxisLocation.BOTTOM_OR_RIGHT;
-            } else if ("TOP_OR_LEFT".equals(s)) {
+            } else if ("TOP_OR_LEFT".equalsIgnoreCase(s) ||
+                    "TOP".equalsIgnoreCase(s) ||
+                    "LEFT".equalsIgnoreCase(s)) {
                 ret = AxisLocation.TOP_OR_LEFT;
-            } else if ("TOP_OR_RIGHT".equals(s)) {
+            } else if ("TOP_OR_RIGHT".equalsIgnoreCase(s)) {
                 ret = AxisLocation.TOP_OR_RIGHT;
             }
         } else if (c == TextAnchor.class) {
