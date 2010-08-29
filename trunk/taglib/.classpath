@@ -19,5 +19,6 @@
 	<classpathentry kind="lib" path="compile-lib/jetty-plus-6.1.24.jar"/>
 	<classpathentry kind="lib" path="compile-lib/jetty-naming-6.1.24.jar"/>
 	<classpathentry kind="lib" path="/home/dave/chartmechanic/trunk/taglib"/>
+	<classpathentry kind="var" path="JAVA_HOME/lib/tools.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
