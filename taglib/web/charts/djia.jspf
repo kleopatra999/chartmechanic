@@ -1,6 +1,7 @@
 <c:data id="DJIA" url="/data/DJIA-monthly.csv"/>
 <c:data id="recessions" url="/data/us-recessions.csv"/>
-<c:chart title="Dow Jones Monthly" plotType="time" graphType="Line">
+<c:chart title="Dow Jones Monthly (log axis)"
+   plotType="time" graphType="Line">
 <c:series datasource="DJIA" name="Dow"/>
 <c:series-function series="Dow" function="inflation" args="1990"
           name="Dow (inflation adjusted, 1990)"/>
@@ -12,6 +13,10 @@ alpha=0.5
 <c:props>
 chart.backgroundImage=none
 renderer.stroke=2.0
-description=Dow Average, nominal and inflation-adjusted
+plot.foregroundAlpha=1.0
+range-axis-0.axisType=log
+range-axis-0.axisLocation=right
+description=Dow Jones Industrial Average,
+ nominal and inflation-adjusted
 </c:props>
 </c:chart>

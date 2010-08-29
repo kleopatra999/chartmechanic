@@ -68,8 +68,6 @@ implements ITagDoc {
             args.add(new Arg(ad.getType(), arg));
         }
         md.setArgs(args);
-        p("made marker=" + md + ", with args=" + args);
-        p("func expects " + fd.getArgs().size() + " args");
         ct.addMarkerDescriptor(md);
         //ct.addSeriesDescriptor(sd);
         release();
