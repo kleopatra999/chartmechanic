@@ -119,7 +119,7 @@ Properties are converted into <code>set(...) </code> calls in the <a href="http:
 <tr><td><b>AxisLocation</b></td>
 
  <td>Sets the location of an axis relative to a plot.</td>
- <td><code>BOTTOM_OR_LEFT BOTTOM_OR_RIGHT TOP_OR_LEFT TOP_OR_RIGHT</code></td>
+ <td><code>BOTTOM_OR_LEFT BOTTOM_OR_RIGHT TOP_OR_LEFT TOP_OR_RIGHT BOTTOM RIGHT TOP LEFT</code></td>
 </tr>
 <tr><td><b>java.text.DateFormat</b></td><td>Any format String supported by <code>SimpleDateFormat</code></td>
     <td><code>MMM-yy</code></td></tr>

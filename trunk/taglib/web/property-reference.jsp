@@ -1,5 +1,5 @@
 <d:header/>
 <div id="content">
-Under Construction
+<jsp:include page="chartprops.html"/>
 </div>
 <d:footer/>
