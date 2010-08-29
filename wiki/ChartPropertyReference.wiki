@@ -1,0 +1,968 @@
+#summary Reference for chart, plot, axis, title and legend properties
+<wiki:toc max_depth="2"/>
+= chart =
+<p>A chart class implemented using the Java 2D APIs.  The current version
+ supports bar charts, line charts, pie charts and xy plots (including time
+ series data).
+ <br/><br/>
+ JFreeChart coordinates several objects to achieve its aim of being able to
+ draw a chart on a Java 2D graphics device: a list of {@link Title} objects
+ (which often includes the chart's legend), a {@link Plot} and a
+ {@link org.jfree.data.general.Dataset} (the plot in turn manages a
+ domain axis and a range axis).
+ <br/><br/>
+ You should use a {@link ChartPanel} to display a chart in a GUI.
+ <br/><br/>
+ The {@link ChartFactory} class contains static methods for creating
+ 'ready-made' charts.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/JFreeChart.html">org.jfree.chart.JFreeChart</a></b></td></tr>
+<tr><td>antiAlias</td><td>boolean</td><td>Sets a flag that indicates whether or not anti-aliasing is used when the
+ chart is drawn.
+ <br/><br/>
+ Anti-aliasing usually improves the appearance of charts, but is slower.</td><td><code>true</code></td></tr>
+<tr><td>backgroundImage</td><td>Image</td><td>Sets the background image for the chart and sends a
+ {@link ChartChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>backgroundImageAlignment</td><td>int</td><td>Sets the background alignment.  Alignment options are defined by the
+ {@link org.jfree.ui.Align} class.</td><td><code>15</code></td></tr>
+<tr><td>backgroundImageAlpha</td><td>float</td><td>Sets the alpha-transparency for the chart's background image.
+ Registered listeners are notified that the chart has been changed.</td><td><code>0.5</code></td></tr>
+<tr><td>backgroundPaint</td><td>Paint</td><td>Sets the paint used to fill the chart background and sends a
+ {@link ChartChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>borderPaint</td><td>Paint</td><td>Sets the paint used to draw the chart border (if visible).</td><td><code>#000000</code></td></tr>
+<tr><td>borderStroke</td><td>Stroke</td><td>Sets the stroke used to draw the chart border (if visible).</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>borderVisible</td><td>boolean</td><td>Sets a flag that controls whether or not a border is drawn around the
+ outside of the chart.</td><td><code>false</code></td></tr>
+<tr><td>notify</td><td>boolean</td><td>Sets a flag that controls whether or not listeners receive
+ {@link ChartChangeEvent} notifications.</td><td><code>true</code></td></tr>
+<tr><td>padding</td><td>RectangleInsets</td><td>Sets the padding between the chart border and the chart drawing area,
+ and sends a {@link ChartChangeEvent} to all registered listeners.</td><td><code>0.0,0.0,0.0,0.0</code></td></tr>
+</table>
+= title =
+<p>A chart title that displays a text string with automatic wrapping as
+ required.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/title/TextTitle.html">org.jfree.chart.title.TextTitle</a></b></td></tr>
+<tr><td>URLText</td><td>String</td><td>Sets the URL text to the specified text and sends a
+ {@link TitleChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>backgroundPaint</td><td>Paint</td><td>Sets the background paint and sends a {@link TitleChangeEvent} to all
+ registered listeners.  If you set this attribute to <code>null</code>,
+ no background is painted (which makes the title background transparent).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>expandToFitSpace</td><td>boolean</td><td>Sets the flag that controls whether the title expands to fit the
+ available space, and sends a {@link TitleChangeEvent} to all registered
+ listeners.</td><td><code>false</code></td></tr>
+<tr><td>font</td><td>Font</td><td>Sets the font used to display the title string.  Registered listeners
+ are notified that the title has been modified.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>maximumLinesToDisplay</td><td>int</td><td>Sets the maximum number of lines to display and sends a
+ {@link TitleChangeEvent} to all registered listeners.</td><td><code>2147483647</code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint used to display the title string.  Registered listeners
+ are notified that the title has been modified.</td><td><code>#000000</code></td></tr>
+<tr><td>text</td><td>String</td><td>Sets the title to the specified text and sends a
+ {@link TitleChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>textAlignment</td><td>HorizontalAlignment</td><td>Sets the text alignment and sends a {@link TitleChangeEvent} to
+ all registered listeners.</td><td><code>CENTER</code></td></tr>
+<tr><td>toolTipText</td><td>String</td><td>Sets the tool tip text to the specified text and sends a
+ {@link TitleChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>horizontalAlignment</td><td>HorizontalAlignment</td><td>Sets the horizontal alignment for the title and sends a
+ {@link TitleChangeEvent} to all registered listeners.</td><td><code>CENTER</code></td></tr>
+<tr><td>notify</td><td>boolean</td><td>Sets the flag that indicates whether or not the notification mechanism
+ is enabled.  There are certain situations (such as cloning) where you
+ want to turn notification off temporarily.</td><td><code>true</code></td></tr>
+<tr><td>position</td><td>RectangleEdge</td><td>Sets the position for the title and sends a {@link TitleChangeEvent} to
+ all registered listeners.</td><td><code>TOP</code></td></tr>
+<tr><td>verticalAlignment</td><td>VerticalAlignment</td><td>Sets the vertical alignment for the title, and notifies any registered
+ listeners of the change.</td><td><code>CENTER</code></td></tr>
+<tr><td>visible</td><td>boolean</td><td>Sets a flag that controls whether or not the title should be drawn, and
+ sends a {@link TitleChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>ID</td><td>String</td><td>Sets the id for the block.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>height</td><td>double</td><td>Sets the natural width of the block, if this is known in advance.</td><td><code>0.0</code></td></tr>
+<tr><td>margin</td><td>RectangleInsets</td><td>Sets the margin (use {@link RectangleInsets#ZERO_INSETS} for no
+ padding).</td><td><code>0.0,0.0,0.0,0.0</code></td></tr>
+<tr><td>padding</td><td>RectangleInsets</td><td>Sets the padding (use {@link RectangleInsets#ZERO_INSETS} for no
+ padding).</td><td><code>1.0,1.0,1.0,1.0</code></td></tr>
+<tr><td>width</td><td>double</td><td>Sets the natural width of the block, if this is known in advance.</td><td><code>0.0</code></td></tr>
+</table>
+= legend =
+<p>A chart title that displays a legend for the data in the chart.
+ <br/><br/>
+ The title can be populated with legend items manually, or you can assign a
+ reference to the plot, in which case the legend items will be automatically
+ created to match the dataset(s).</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/title/LegendTitle.html">org.jfree.chart.title.LegendTitle</a></b></td></tr>
+<tr><td>backgroundPaint</td><td>Paint</td><td>Sets the background paint for the legend and sends a
+ {@link TitleChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>itemFont</td><td>Font</td><td>Sets the item font and sends a {@link TitleChangeEvent} to
+ all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>itemLabelPadding</td><td>RectangleInsets</td><td>Sets the padding used for the item labels in the legend.</td><td><code>2.0,2.0,2.0,2.0</code></td></tr>
+<tr><td>itemPaint</td><td>Paint</td><td>Sets the item paint.</td><td><code>#000000</code></td></tr>
+<tr><td>legendItemGraphicAnchor</td><td>RectangleAnchor</td><td>Sets the anchor point used for the graphic in each legend item.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendItemGraphicEdge</td><td>RectangleEdge</td><td>Sets the location of the shape within each legend item.</td><td><code>LEFT</code></td></tr>
+<tr><td>legendItemGraphicLocation</td><td>RectangleAnchor</td><td>Sets the legend item graphic location.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendItemGraphicPadding</td><td>RectangleInsets</td><td>Sets the padding that will be applied to each item graphic in the
+ legend and sends a {@link TitleChangeEvent} to all registered listeners.</td><td><code>2.0,2.0,2.0,2.0</code></td></tr>
+<tr><td>horizontalAlignment</td><td>HorizontalAlignment</td><td>Sets the horizontal alignment for the title and sends a
+ {@link TitleChangeEvent} to all registered listeners.</td><td><code>CENTER</code></td></tr>
+<tr><td>notify</td><td>boolean</td><td>Sets the flag that indicates whether or not the notification mechanism
+ is enabled.  There are certain situations (such as cloning) where you
+ want to turn notification off temporarily.</td><td><code>true</code></td></tr>
+<tr><td>position</td><td>RectangleEdge</td><td>Sets the position for the title and sends a {@link TitleChangeEvent} to
+ all registered listeners.</td><td><code>BOTTOM</code></td></tr>
+<tr><td>verticalAlignment</td><td>VerticalAlignment</td><td>Sets the vertical alignment for the title, and notifies any registered
+ listeners of the change.</td><td><code>CENTER</code></td></tr>
+<tr><td>visible</td><td>boolean</td><td>Sets a flag that controls whether or not the title should be drawn, and
+ sends a {@link TitleChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>ID</td><td>String</td><td>Sets the id for the block.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>height</td><td>double</td><td>Sets the natural width of the block, if this is known in advance.</td><td><code>0.0</code></td></tr>
+<tr><td>margin</td><td>RectangleInsets</td><td>Sets the margin (use {@link RectangleInsets#ZERO_INSETS} for no
+ padding).</td><td><code>1.0,1.0,1.0,1.0</code></td></tr>
+<tr><td>padding</td><td>RectangleInsets</td><td>Sets the padding (use {@link RectangleInsets#ZERO_INSETS} for no
+ padding).</td><td><code>1.0,1.0,1.0,1.0</code></td></tr>
+<tr><td>width</td><td>double</td><td>Sets the natural width of the block, if this is known in advance.</td><td><code>0.0</code></td></tr>
+</table>
+= marker =
+<p>The base class for markers that can be added to plots to highlight a value
+ or range of values.
+ <br><br>
+ An event notification mechanism was added to this class in JFreeChart
+ version 1.0.3.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/plot/Marker.html">org.jfree.chart.plot.Marker</a></b></td></tr>
+<tr><td>alpha</td><td>float</td><td>Sets the alpha transparency that should be used when drawing the
+ marker, and sends a {@link MarkerChangeEvent} to all registered
+ listeners.  The alpha transparency is a value in the range 0.0f
+ (completely transparent) to 1.0f (completely opaque).</td><td><code>0.8</code></td></tr>
+<tr><td>label</td><td>String</td><td>Sets the label (if <code>null</code> no label is displayed) and sends a
+ {@link MarkerChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>labelAnchor</td><td>RectangleAnchor</td><td>Sets the label anchor and sends a {@link MarkerChangeEvent} to all
+ registered listeners.  The anchor defines the position of the label
+ anchor, relative to the bounds of the marker.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>labelFont</td><td>Font</td><td>Sets the label font and sends a {@link MarkerChangeEvent} to all
+ registered listeners.</td><td><code>SansSerif-9</code></td></tr>
+<tr><td>labelOffset</td><td>RectangleInsets</td><td>Sets the label offset and sends a {@link MarkerChangeEvent} to all
+ registered listeners.</td><td><code>3.0,3.0,3.0,3.0</code></td></tr>
+<tr><td>labelPaint</td><td>Paint</td><td>Sets the label paint and sends a {@link MarkerChangeEvent} to all
+ registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>labelTextAnchor</td><td>TextAnchor</td><td>Sets the label text anchor and sends a {@link MarkerChangeEvent} to
+ all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint and sends a {@link MarkerChangeEvent} to all
+ registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke and sends a {@link MarkerChangeEvent} to all
+ registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint and sends a {@link MarkerChangeEvent} to all registered
+ listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke and sends a {@link MarkerChangeEvent} to all registered
+ listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+</table>
+= plot =
+== PiePlot3D ==
+<p>A plot that displays data in the form of a 3D pie chart, using data from
+ any class that implements the {@link PieDataset} interface.
+ <br/><br/>
+ Although this class extends {@link PiePlot}, it does not currently support
+ exploded sections.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/plot/PiePlot3D.html">org.jfree.chart.plot.PiePlot3D</a></b></td></tr>
+<tr><td>darkerSides</td><td>boolean</td><td>Sets a flag that controls whether or not the sides of the pie chart
+ are rendered using a darker colour, and sends a {@link PlotChangeEvent}
+ to all registered listeners.  This is only applied if the
+ section colour is an instance of {@link java.awt.Color}.</td><td><code>false</code></td></tr>
+<tr><td>depthFactor</td><td>double</td><td>Sets the pie depth as a percentage of the height of the plot area, and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.12</code></td></tr>
+</table>
+== !CategoryPlot ==
+<p>A general plotting class that uses data from a {@link CategoryDataset} and
+ renders each data item using a {@link CategoryItemRenderer}.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/plot/CategoryPlot.html">org.jfree.chart.plot.CategoryPlot</a></b></td></tr>
+<tr><td>anchorValue</td><td>double</td><td>Sets the anchor value and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>axisOffset</td><td>RectangleInsets</td><td>Sets the axis offsets (gap between the data area and the axes) and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.0,0.0,0.0,0.0</code></td></tr>
+<tr><td>crosshairDatasetIndex</td><td>int</td><td>Sets the dataset index for the crosshair and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>0</code></td></tr>
+<tr><td>domainCrosshairPaint</td><td>Paint</td><td>Sets the paint used to draw the domain crosshair.</td><td><code>#0000ff</code></td></tr>
+<tr><td>domainCrosshairStroke</td><td>Stroke</td><td>Sets the stroke used to draw the domain crosshair, and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>domainCrosshairVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the domain crosshair is
+ displayed by the plot, and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>domainGridlinePaint</td><td>Paint</td><td>Sets the paint used to draw the grid-lines (if any) against the domain
+ axis and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#c0c0c0</code></td></tr>
+<tr><td>domainGridlineStroke</td><td>Stroke</td><td>Sets the stroke used to draw grid-lines against the domain axis and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>domainGridlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not grid-lines are drawn against
+ the domain axis.
+ <br/><br/>
+ If the flag value changes, a {@link PlotChangeEvent} is sent to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>drawSharedDomainAxis</td><td>boolean</td><td>Sets the flag that controls whether the shared domain axis is drawn when
+ this plot is being used as a subplot.</td><td><code>false</code></td></tr>
+<tr><td>orientation</td><td>PlotOrientation</td><td>Sets the orientation for the plot and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>VERTICAL</code></td></tr>
+<tr><td>rangeCrosshairLockedOnData</td><td>boolean</td><td>Sets the flag indicating whether or not the range crosshair should
+ "lock-on" to actual data values, and sends a {@link PlotChangeEvent}
+ to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>rangeCrosshairPaint</td><td>Paint</td><td>Sets the paint used to draw the range crosshair (if visible) and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
+<tr><td>rangeCrosshairStroke</td><td>Stroke</td><td>Sets the pen-style (<code>Stroke</code>) used to draw the range
+ crosshair (if visible), and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>rangeCrosshairValue</td><td>double</td><td>Sets the range crosshair value and, if the crosshair is visible, sends
+ a {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>rangeCrosshairVisible</td><td>boolean</td><td>Sets the flag indicating whether or not the range crosshair is visible.</td><td><code>false</code></td></tr>
+<tr><td>rangeGridlinePaint</td><td>Paint</td><td>Sets the paint used to draw the grid lines against the range axis and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#c0c0c0</code></td></tr>
+<tr><td>rangeGridlineStroke</td><td>Stroke</td><td>Sets the stroke used to draw the grid-lines against the range axis and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>rangeGridlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not grid-lines are drawn against
+ the range axis.  If the flag changes value, a {@link PlotChangeEvent} is
+ sent to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>rangeMinorGridlinePaint</td><td>Paint</td><td>Sets the paint for the minor grid lines plotted against the range axis
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>rangeMinorGridlineStroke</td><td>Stroke</td><td>Sets the stroke for the minor grid lines plotted against the range axis,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>rangeMinorGridlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the range axis minor grid
+ lines are visible.
+ <br/><br/>
+ If the flag value is changed, a {@link PlotChangeEvent} is sent to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>rangePannable</td><td>boolean</td><td>Sets the flag that enables or disables panning of the plot along
+ the range axes.</td><td><code>false</code></td></tr>
+<tr><td>rangeZeroBaselinePaint</td><td>Paint</td><td>Sets the paint for the zero baseline plotted against the range axis and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>rangeZeroBaselineStroke</td><td>Stroke</td><td>Sets the stroke for the zero baseline for the range axis,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>rangeZeroBaselineVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the zero baseline is
+ displayed for the range axis, and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>weight</td><td>int</td><td>Sets the weight for the plot and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>0</code></td></tr>
+</table>
+== !PiePlot ==
+<p>A plot that displays data in the form of a pie chart, using data from any
+ class that implements the {@link PieDataset} interface.
+ The example shown here is generated by the <code>PieChartDemo2.java</code>
+ program included in the JFreeChart Demo Collection:
+ <br><br>
+ <img src="http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/PiePlotSample.png"
+ alt="PiePlotSample.png" />
+ <br/><br/>
+ Special notes:
+ <ol>
+ <li>the default starting point is 12 o'clock and the pie sections proceed
+ in a clockwise direction, but these settings can be changed;</li>
+ <li>negative values in the dataset are ignored;</li>
+ <li>there are utility methods for creating a {@link PieDataset} from a
+ {@link org.jfree.data.category.CategoryDataset};</li>
+ </ol></p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/plot/PiePlot.html">org.jfree.chart.plot.PiePlot</a></b></td></tr>
+<tr><td>autoPopulateSectionOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether or not the section outline paint is
+ auto-populated by the {@link #lookupSectionOutlinePaint(Comparable)}
+ method, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>autoPopulateSectionOutlineStroke</td><td>boolean</td><td>Sets the flag that controls whether or not the section outline stroke is
+ auto-populated by the {@link #lookupSectionOutlineStroke(Comparable)}
+ method, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>autoPopulateSectionPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the section paint is
+ auto-populated by the {@link #lookupSectionPaint(Comparable)} method,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>baseSectionOutlinePaint</td><td>Paint</td><td>Sets the base section paint.</td><td><code>#808080</code></td></tr>
+<tr><td>baseSectionOutlineStroke</td><td>Stroke</td><td>Sets the base section stroke.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>baseSectionPaint</td><td>Paint</td><td>Sets the base section paint and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>circular</td><td>boolean</td><td>A flag indicating whether the pie chart is circular, or stretched into
+ an elliptical shape.</td><td><code>true</code></td></tr>
+<tr><td>ignoreNullValues</td><td>boolean</td><td>Sets a flag that controls whether <code>null</code> values are ignored,
+ and sends a {@link PlotChangeEvent} to all registered listeners.  At
+ present, this only affects whether or not the key is presented in the
+ legend.</td><td><code>false</code></td></tr>
+<tr><td>ignoreZeroValues</td><td>boolean</td><td>Sets a flag that controls whether zero values are ignored,
+ and sends a {@link PlotChangeEvent} to all registered listeners.  This
+ only affects whether or not a label appears for the non-visible
+ pie section.</td><td><code>false</code></td></tr>
+<tr><td>interiorGap</td><td>double</td><td>Sets the interior gap and sends a {@link PlotChangeEvent} to all
+ registered listeners.  This controls the space between the edges of the
+ pie plot and the plot area itself (the region where the section labels
+ appear).</td><td><code>0.08</code></td></tr>
+<tr><td>labelBackgroundPaint</td><td>Paint</td><td>Sets the section label background paint and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffc0</code></td></tr>
+<tr><td>labelFont</td><td>Font</td><td>Sets the section label font and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>SansSerif-10</code></td></tr>
+<tr><td>labelGap</td><td>double</td><td>Sets the gap between the edge of the pie and the labels (expressed as a
+ percentage of the plot width) and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>0.025</code></td></tr>
+<tr><td>labelLinkMargin</td><td>double</td><td>Sets the link margin and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>0.025</code></td></tr>
+<tr><td>labelLinkPaint</td><td>Paint</td><td>Sets the paint used for the lines that connect pie sections to their
+ corresponding labels, and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>labelLinkStroke</td><td>Stroke</td><td>Sets the link stroke and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>labelLinksVisible</td><td>boolean</td><td>Sets the flag that controls whether or not label linking lines are
+ visible and sends a {@link PlotChangeEvent} to all registered listeners.
+ Please take care when hiding the linking lines - depending on the data
+ values, the labels can be displayed some distance away from the
+ corresponding pie section.</td><td><code>true</code></td></tr>
+<tr><td>labelOutlinePaint</td><td>Paint</td><td>Sets the section label outline paint and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>labelOutlineStroke</td><td>Stroke</td><td>Sets the section label outline stroke and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>labelPadding</td><td>RectangleInsets</td><td>Sets the padding between each label and its outline and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>2.0,2.0,2.0,2.0</code></td></tr>
+<tr><td>labelPaint</td><td>Paint</td><td>Sets the section label paint and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>labelShadowPaint</td><td>Paint</td><td>Sets the section label shadow paint and sends a {@link PlotChangeEvent}
+ to all registered listeners.</td><td><code>#979797</code></td></tr>
+<tr><td>legendItemShape</td><td>Shape</td><td>Sets the shape used for legend items and sends a {@link PlotChangeEvent}
+ to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>maximumLabelWidth</td><td>double</td><td>Sets the maximum label width as a percentage of the plot width and sends
+ a {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.14</code></td></tr>
+<tr><td>minimumArcAngleToDraw</td><td>double</td><td>Sets the minimum arc angle that will be drawn.  Pie sections for an
+ angle smaller than this are not drawn, to avoid a JDK bug.  See this
+ link for details:
+ <br><br>
+ <a href="http://www.jfree.org/phpBB2/viewtopic.php?t=2707">
+ http://www.jfree.org/phpBB2/viewtopic.php?t=2707</a>
+ <br><br>
+ ...and this bug report in the Java Bug Parade:
+ <br><br>
+ <a href=
+ "http://developer.java.sun.com/developer/bugParade/bugs/4836495.html">
+ http://developer.java.sun.com/developer/bugParade/bugs/4836495.html</a></td><td><code>1.0E-5</code></td></tr>
+<tr><td>pieIndex</td><td>int</td><td>Sets the pie index (this is used by the {@link MultiplePiePlot} class to
+ track subplots).</td><td><code>0</code></td></tr>
+<tr><td>sectionOutlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the outline is drawn for
+ each pie section, and sends a {@link PlotChangeEvent} to all registered
+ listeners.</td><td><code>true</code></td></tr>
+<tr><td>shadowPaint</td><td>Paint</td><td>Sets the shadow paint and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>shadowXOffset</td><td>double</td><td>Sets the x-offset for the shadow effect and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
+<tr><td>shadowYOffset</td><td>double</td><td>Sets the y-offset for the shadow effect and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
+<tr><td>simpleLabelOffset</td><td>RectangleInsets</td><td>Sets the offset for the simple labels and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.18,0.18,0.18,0.18,RELATIVE</code></td></tr>
+<tr><td>simpleLabels</td><td>boolean</td><td>Sets the flag that controls whether simple or extended labels are
+ displayed on the plot, and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>startAngle</td><td>double</td><td>Sets the starting angle and sends a {@link PlotChangeEvent} to all
+ registered listeners.  The initial default value is 90 degrees, which
+ corresponds to 12 o'clock.  A value of zero corresponds to 3 o'clock...
+ this is the encoding used by Java's Arc2D class.</td><td><code>90.0</code></td></tr>
+</table>
+== XYPlot ==
+<p>A general class for plotting data in the form of (x, y) pairs.  This plot can
+ use data from any class that implements the {@link XYDataset} interface.
+ <br/><br/>
+ <code>XYPlot</code> makes use of an {@link XYItemRenderer} to draw each point
+ on the plot.  By using different renderers, various chart types can be
+ produced.
+ <br/><br/>
+ The {@link org.jfree.chart.ChartFactory} class contains static methods for
+ creating pre-configured charts.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/plot/XYPlot.html">org.jfree.chart.plot.XYPlot</a></b></td></tr>
+<tr><td>axisOffset</td><td>RectangleInsets</td><td>Sets the axis offsets (gap between the data area and the axes) and sends
+ a {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.0,0.0,0.0,0.0</code></td></tr>
+<tr><td>domainCrosshairLockedOnData</td><td>boolean</td><td>Sets the flag indicating whether or not the domain crosshair should
+ "lock-on" to actual data values.  If the flag value changes, this
+ method sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>domainCrosshairPaint</td><td>Paint</td><td>Sets the paint used to draw the crosshairs (if visible) and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
+<tr><td>domainCrosshairStroke</td><td>Stroke</td><td>Sets the Stroke used to draw the crosshairs (if visible) and notifies
+ registered listeners that the axis has been modified.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>domainCrosshairValue</td><td>double</td><td>Sets the domain crosshair value and sends a {@link PlotChangeEvent} to
+ all registered listeners (provided that the domain crosshair is visible).</td><td><code>0.0</code></td></tr>
+<tr><td>domainCrosshairVisible</td><td>boolean</td><td>Sets the flag indicating whether or not the domain crosshair is visible
+ and, if the flag changes, sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>domainGridlinePaint</td><td>Paint</td><td>Sets the paint for the grid lines plotted against the domain axis, and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#c0c0c0</code></td></tr>
+<tr><td>domainGridlineStroke</td><td>Stroke</td><td>Sets the stroke for the grid lines plotted against the domain axis, and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>domainGridlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the domain grid-lines are
+ visible.
+ <br/><br/>
+ If the flag value is changed, a {@link PlotChangeEvent} is sent to all
+ registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>domainMinorGridlinePaint</td><td>Paint</td><td>Sets the paint for the minor grid lines plotted against the domain axis,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>domainMinorGridlineStroke</td><td>Stroke</td><td>Sets the stroke for the minor grid lines plotted against the domain
+ axis, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>domainMinorGridlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the domain minor grid-lines
+ are visible.
+ <br/><br/>
+ If the flag value is changed, a {@link PlotChangeEvent} is sent to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>domainPannable</td><td>boolean</td><td>Sets the flag that enables or disables panning of the plot along the
+ domain axes.</td><td><code>false</code></td></tr>
+<tr><td>domainTickBandPaint</td><td>Paint</td><td>Sets the paint for the domain tick bands.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>domainZeroBaselinePaint</td><td>Paint</td><td>Sets the paint for the zero baseline plotted against the domain axis and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>domainZeroBaselineStroke</td><td>Stroke</td><td>Sets the stroke for the zero baseline for the domain axis,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>domainZeroBaselineVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the zero baseline is
+ displayed for the domain axis, and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>orientation</td><td>PlotOrientation</td><td>Sets the orientation for the plot and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>VERTICAL</code></td></tr>
+<tr><td>rangeCrosshairLockedOnData</td><td>boolean</td><td>Sets the flag indicating whether or not the range crosshair should
+ "lock-on" to actual data values.  If the flag value changes, this method
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>rangeCrosshairPaint</td><td>Paint</td><td>Sets the paint used to color the crosshairs (if visible) and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
+<tr><td>rangeCrosshairStroke</td><td>Stroke</td><td>Sets the stroke used to draw the crosshairs (if visible) and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>rangeCrosshairValue</td><td>double</td><td>Sets the range crosshair value.
+ <br/><br/>
+ Registered listeners are notified that the plot has been modified, but
+ only if the crosshair is visible.</td><td><code>0.0</code></td></tr>
+<tr><td>rangeCrosshairVisible</td><td>boolean</td><td>Sets the flag indicating whether or not the range crosshair is visible.
+ If the flag value changes, this method sends a {@link PlotChangeEvent}
+ to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>rangeGridlinePaint</td><td>Paint</td><td>Sets the paint for the grid lines plotted against the range axis and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#c0c0c0</code></td></tr>
+<tr><td>rangeGridlineStroke</td><td>Stroke</td><td>Sets the stroke for the grid lines plotted against the range axis,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>rangeGridlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the range axis grid lines
+ are visible.
+ <br/><br/>
+ If the flag value is changed, a {@link PlotChangeEvent} is sent to all
+ registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>rangeMinorGridlinePaint</td><td>Paint</td><td>Sets the paint for the minor grid lines plotted against the range axis
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>rangeMinorGridlineStroke</td><td>Stroke</td><td>Sets the stroke for the minor grid lines plotted against the range axis,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=1</code></td></tr>
+<tr><td>rangeMinorGridlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the range axis minor grid
+ lines are visible.
+ <br/><br/>
+ If the flag value is changed, a {@link PlotChangeEvent} is sent to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>rangePannable</td><td>boolean</td><td>Sets the flag that enables or disables panning of the plot along
+ the range axes.</td><td><code>false</code></td></tr>
+<tr><td>rangeTickBandPaint</td><td>Paint</td><td>Sets the paint for the range tick bands.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>rangeZeroBaselinePaint</td><td>Paint</td><td>Sets the paint for the zero baseline plotted against the range axis and
+ sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>rangeZeroBaselineStroke</td><td>Stroke</td><td>Sets the stroke for the zero baseline for the range axis,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>rangeZeroBaselineVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the zero baseline is
+ displayed for the range axis, and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>weight</td><td>int</td><td>Sets the weight for the plot and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>1</code></td></tr>
+</table>
+= Axis Types =
+== !NumberAxis ==
+<p>An axis for displaying numerical data.
+ <br/><br/>
+ If the axis is set up to automatically determine its range to fit the data,
+ you can ensure that the range includes zero (statisticians usually prefer
+ this) by setting the <code>autoRangeIncludesZero</code> flag to
+ <code>true</code>.
+ <br/><br/>
+ The <code>NumberAxis</code> class has a mechanism for automatically
+ selecting a tick unit that is appropriate for the current axis range.  This
+ mechanism is an adaptation of code suggested by Laurence Vanhelsuwe.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/NumberAxis.html">org.jfree.chart.axis.NumberAxis</a></b></td></tr>
+<tr><td>autoRangeIncludesZero</td><td>boolean</td><td>Sets the flag that indicates whether or not the axis range, if
+ automatically calculated, is forced to include zero.
+ <br/><br/>
+ If the flag is changed to <code>true</code>, the axis range is
+ recalculated.
+ <br/><br/>
+ Any change to the flag will trigger an {@link AxisChangeEvent}.</td><td><code>true</code></td></tr>
+<tr><td>autoRangeStickyZero</td><td>boolean</td><td>Sets a flag that affects the auto-range when zero falls outside the data
+ range but inside the margins defined for the axis.</td><td><code>true</code></td></tr>
+<tr><td>numberFormatOverride</td><td>NumberFormat</td><td>Sets the number format override.  If this is non-null, then it will be
+ used to format the numbers on the axis.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>tickUnit</td><td>NumberTickUnit</td><td>Sets the tick unit for the axis and sends an {@link AxisChangeEvent} to
+ all registered listeners.  A side effect of calling this method is that
+ the "auto-select" feature for tick units is switched off (you can
+ restore it using the {@link ValueAxis#setAutoTickUnitSelection(boolean)}
+ method).</td><td><code>1.0</code></td></tr>
+<tr><td>autoRange</td><td>boolean</td><td>Sets a flag that determines whether or not the axis range is
+ automatically adjusted to fit the data, and notifies registered
+ listeners that the axis has been modified.</td><td><code>true</code></td></tr>
+<tr><td>autoRangeMinimumSize</td><td>double</td><td>Sets the auto range minimum size and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>autoTickUnitSelection</td><td>boolean</td><td>Sets a flag indicating whether or not the tick unit is automatically
+ selected from a range of standard tick units.  If the flag is changed,
+ registered listeners are notified that the chart has changed.</td><td><code>true</code></td></tr>
+<tr><td>downArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing downwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fixedAutoRange</td><td>double</td><td>Sets the fixed auto range for the axis.</td><td><code>0.0</code></td></tr>
+<tr><td>inverted</td><td>boolean</td><td>Sets a flag that controls the direction of values on the axis, and
+ notifies registered listeners that the axis has changed.</td><td><code>false</code></td></tr>
+<tr><td>leftArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing left at the
+ end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>lowerBound</td><td>double</td><td>Sets the lower bound for the axis range.  An {@link AxisChangeEvent} is
+ sent to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>lowerMargin</td><td>double</td><td>Sets the lower margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>minorTickCount</td><td>int</td><td>Sets the number of minor tick marks to display, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>0</code></td></tr>
+<tr><td>negativeArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the negative direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>positiveArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the positive direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>rightArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing rightwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing upwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upperBound</td><td>double</td><td>Sets the upper bound for the axis range, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>upperMargin</td><td>double</td><td>Sets the upper margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>verticalTickLabels</td><td>boolean</td><td>Sets the flag that controls whether the tick labels are displayed
+ vertically (that is, rotated 90 degrees from horizontal).  If the flag
+ is changed, an {@link AxisChangeEvent} is sent to all registered
+ listeners.</td><td><code>false</code></td></tr>
+<tr><td>axisLinePaint</td><td>Paint</td><td>Sets the paint used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>axisLineStroke</td><td>Stroke</td><td>Sets the stroke used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>axisLineVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis line is visible and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>fixedDimension</td><td>double</td><td>Sets the fixed dimension for the axis.
+ <br/><br/>
+ This is used when combining more than one plot on a chart.  In this case,
+ there may be several axes that need to have the same height or width so
+ that they are aligned.  This method is used to fix a dimension for the
+ axis (the context determines whether the dimension is horizontal or
+ vertical).</td><td><code>0.0</code></td></tr>
+<tr><td>label</td><td>String</td><td>Sets the label for the axis and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>labelAngle</td><td>double</td><td>Sets the angle for the label and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>labelFont</td><td>Font</td><td>Sets the font for the axis label and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>labelInsets</td><td>RectangleInsets</td><td>Sets the insets for the axis label, and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>3.0,3.0,3.0,3.0</code></td></tr>
+<tr><td>labelPaint</td><td>Paint</td><td>Sets the paint used to draw the axis label and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>minorTickMarkInsideLength</td><td>float</td><td>Sets the inside length of the minor tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>minorTickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the minor tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>minorTickMarksVisible</td><td>boolean</td><td>Sets the flag that indicates whether or not the minor tick marks are showing
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>tickLabelFont</td><td>Font</td><td>Sets the font for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
+<tr><td>tickLabelInsets</td><td>RectangleInsets</td><td>Sets the insets for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0,4.0,2.0,4.0</code></td></tr>
+<tr><td>tickLabelPaint</td><td>Paint</td><td>Sets the paint used to draw tick labels (if they are showing) and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>tickLabelsVisible</td><td>boolean</td><td>Sets the flag that determines whether or not the tick labels are
+ visible and sends an {@link AxisChangeEvent} to all registered
+ listeners.</td><td><code>true</code></td></tr>
+<tr><td>tickMarkInsideLength</td><td>float</td><td>Sets the inside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>tickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>tickMarkPaint</td><td>Paint</td><td>Sets the paint used to draw tick marks and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>tickMarkStroke</td><td>Stroke</td><td>Sets the stroke used to draw tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>tickMarksVisible</td><td>boolean</td><td>Sets the flag that indicates whether or not the tick marks are showing
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>visible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis is visible and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+</table>
+== !PeriodAxis ==
+<p>An axis that displays a date scale based on a
+ {@link org.jfree.data.time.RegularTimePeriod}.  This axis works when
+ displayed across the bottom or top of a plot, but is broken for display at
+ the left or right of charts.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/PeriodAxis.html">org.jfree.chart.axis.PeriodAxis</a></b></td></tr>
+<tr><td>minorTickMarkInsideLength</td><td>float</td><td>Sets the inside length of the minor tick marks and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>minorTickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the minor tick marks and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>minorTickMarkPaint</td><td>Paint</td><td>Sets the paint used to display minor tick marks, if they are
+ visible, and sends a {@link AxisChangeEvent} to all registered
+ listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>minorTickMarkStroke</td><td>Stroke</td><td>Sets the stroke used to display minor tick marks, if they are
+ visible, and sends a {@link AxisChangeEvent} to all registered
+ listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>minorTickMarksVisible</td><td>boolean</td><td>Sets the flag that controls whether or not minor tick marks
+ are displayed for the axis, and sends a {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>autoRange</td><td>boolean</td><td>Sets a flag that determines whether or not the axis range is
+ automatically adjusted to fit the data, and notifies registered
+ listeners that the axis has been modified.</td><td><code>true</code></td></tr>
+<tr><td>autoRangeMinimumSize</td><td>double</td><td>Sets the auto range minimum size and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>autoTickUnitSelection</td><td>boolean</td><td>Sets a flag indicating whether or not the tick unit is automatically
+ selected from a range of standard tick units.  If the flag is changed,
+ registered listeners are notified that the chart has changed.</td><td><code>true</code></td></tr>
+<tr><td>downArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing downwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fixedAutoRange</td><td>double</td><td>Sets the fixed auto range for the axis.</td><td><code>0.0</code></td></tr>
+<tr><td>inverted</td><td>boolean</td><td>Sets a flag that controls the direction of values on the axis, and
+ notifies registered listeners that the axis has changed.</td><td><code>false</code></td></tr>
+<tr><td>leftArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing left at the
+ end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>lowerBound</td><td>double</td><td>Sets the lower bound for the axis range.  An {@link AxisChangeEvent} is
+ sent to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>lowerMargin</td><td>double</td><td>Sets the lower margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>minorTickCount</td><td>int</td><td>Sets the number of minor tick marks to display, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>0</code></td></tr>
+<tr><td>negativeArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the negative direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>positiveArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the positive direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>rightArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing rightwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing upwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upperBound</td><td>double</td><td>Sets the upper bound for the axis range, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>upperMargin</td><td>double</td><td>Sets the upper margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>verticalTickLabels</td><td>boolean</td><td>Sets the flag that controls whether the tick labels are displayed
+ vertically (that is, rotated 90 degrees from horizontal).  If the flag
+ is changed, an {@link AxisChangeEvent} is sent to all registered
+ listeners.</td><td><code>false</code></td></tr>
+<tr><td>axisLinePaint</td><td>Paint</td><td>Sets the paint used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>axisLineStroke</td><td>Stroke</td><td>Sets the stroke used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>axisLineVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis line is visible and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>fixedDimension</td><td>double</td><td>Sets the fixed dimension for the axis.
+ <br/><br/>
+ This is used when combining more than one plot on a chart.  In this case,
+ there may be several axes that need to have the same height or width so
+ that they are aligned.  This method is used to fix a dimension for the
+ axis (the context determines whether the dimension is horizontal or
+ vertical).</td><td><code>0.0</code></td></tr>
+<tr><td>label</td><td>String</td><td>Sets the label for the axis and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>labelAngle</td><td>double</td><td>Sets the angle for the label and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>labelFont</td><td>Font</td><td>Sets the font for the axis label and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>labelInsets</td><td>RectangleInsets</td><td>Sets the insets for the axis label, and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>3.0,3.0,3.0,3.0</code></td></tr>
+<tr><td>labelPaint</td><td>Paint</td><td>Sets the paint used to draw the axis label and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>tickLabelFont</td><td>Font</td><td>Sets the font for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
+<tr><td>tickLabelInsets</td><td>RectangleInsets</td><td>Sets the insets for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0,4.0,2.0,4.0</code></td></tr>
+<tr><td>tickLabelPaint</td><td>Paint</td><td>Sets the paint used to draw tick labels (if they are showing) and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>tickLabelsVisible</td><td>boolean</td><td>Sets the flag that determines whether or not the tick labels are
+ visible and sends an {@link AxisChangeEvent} to all registered
+ listeners.</td><td><code>true</code></td></tr>
+<tr><td>tickMarkInsideLength</td><td>float</td><td>Sets the inside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>tickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>tickMarkPaint</td><td>Paint</td><td>Sets the paint used to draw tick marks and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>tickMarkStroke</td><td>Stroke</td><td>Sets the stroke used to draw tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>tickMarksVisible</td><td>boolean</td><td>Sets the flag that indicates whether or not the tick marks are showing
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>visible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis is visible and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+</table>
+== !DateAxis ==
+<p>The base class for axes that display dates.  You will find it easier to
+ understand how this axis works if you bear in mind that it really
+ displays/measures integer (or long) data, where the integers are
+ milliseconds since midnight, 1-Jan-1970.  When displaying tick labels, the
+ millisecond values are converted back to dates using a
+ <code>DateFormat</code> instance.
+ <br/><br/>
+ You can also create a {@link org.jfree.chart.axis.Timeline} and supply in
+ the constructor to create an axis that only contains certain domain values.
+ For example, this allows you to create a date axis that only contains
+ working days.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/DateAxis.html">org.jfree.chart.axis.DateAxis</a></b></td></tr>
+<tr><td>dateFormatOverride</td><td>DateFormat</td><td>Sets the date format override.  If this is non-null, then it will be
+ used to format the dates on the axis.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>maximumDate</td><td>Date</td><td>Sets the maximum date visible on the axis and sends an
+ {@link AxisChangeEvent} to all registered listeners.  If
+ <code>maximumDate</code> is on or before the current minimum date for
+ the axis, the minimum date will be shifted to preserve the current
+ length of the axis.</td><td><code>1969-12-31</code></td></tr>
+<tr><td>minimumDate</td><td>Date</td><td>Sets the minimum date visible on the axis and sends an
+ {@link AxisChangeEvent} to all registered listeners.  If
+ <code>date</code> is on or after the current maximum date for
+ the axis, the maximum date will be shifted to preserve the current
+ length of the axis.</td><td><code>1969-12-31</code></td></tr>
+<tr><td>tickMarkPosition</td><td>DateTickMarkPosition</td><td>Sets the tick mark position (start, middle or end of the time period)
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>START</code></td></tr>
+<tr><td>tickUnit</td><td>DateTickUnit</td><td>Sets the tick unit for the axis.  The auto-tick-unit-selection flag is
+ set to <code>false</code>, and registered listeners are notified that
+ the axis has been changed.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>autoRange</td><td>boolean</td><td>Sets a flag that determines whether or not the axis range is
+ automatically adjusted to fit the data, and notifies registered
+ listeners that the axis has been modified.</td><td><code>true</code></td></tr>
+<tr><td>autoRangeMinimumSize</td><td>double</td><td>Sets the auto range minimum size and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>autoTickUnitSelection</td><td>boolean</td><td>Sets a flag indicating whether or not the tick unit is automatically
+ selected from a range of standard tick units.  If the flag is changed,
+ registered listeners are notified that the chart has changed.</td><td><code>true</code></td></tr>
+<tr><td>downArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing downwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fixedAutoRange</td><td>double</td><td>Sets the fixed auto range for the axis.</td><td><code>0.0</code></td></tr>
+<tr><td>inverted</td><td>boolean</td><td>Sets a flag that controls the direction of values on the axis, and
+ notifies registered listeners that the axis has changed.</td><td><code>false</code></td></tr>
+<tr><td>leftArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing left at the
+ end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>lowerBound</td><td>double</td><td>Sets the lower bound for the axis range.  An {@link AxisChangeEvent} is
+ sent to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>lowerMargin</td><td>double</td><td>Sets the lower margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>minorTickCount</td><td>int</td><td>Sets the number of minor tick marks to display, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>0</code></td></tr>
+<tr><td>negativeArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the negative direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>positiveArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the positive direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>rightArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing rightwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing upwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upperBound</td><td>double</td><td>Sets the upper bound for the axis range, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>upperMargin</td><td>double</td><td>Sets the upper margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>verticalTickLabels</td><td>boolean</td><td>Sets the flag that controls whether the tick labels are displayed
+ vertically (that is, rotated 90 degrees from horizontal).  If the flag
+ is changed, an {@link AxisChangeEvent} is sent to all registered
+ listeners.</td><td><code>false</code></td></tr>
+<tr><td>axisLinePaint</td><td>Paint</td><td>Sets the paint used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>axisLineStroke</td><td>Stroke</td><td>Sets the stroke used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>axisLineVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis line is visible and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>fixedDimension</td><td>double</td><td>Sets the fixed dimension for the axis.
+ <br/><br/>
+ This is used when combining more than one plot on a chart.  In this case,
+ there may be several axes that need to have the same height or width so
+ that they are aligned.  This method is used to fix a dimension for the
+ axis (the context determines whether the dimension is horizontal or
+ vertical).</td><td><code>0.0</code></td></tr>
+<tr><td>label</td><td>String</td><td>Sets the label for the axis and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>labelAngle</td><td>double</td><td>Sets the angle for the label and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>labelFont</td><td>Font</td><td>Sets the font for the axis label and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>labelInsets</td><td>RectangleInsets</td><td>Sets the insets for the axis label, and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>3.0,3.0,3.0,3.0</code></td></tr>
+<tr><td>labelPaint</td><td>Paint</td><td>Sets the paint used to draw the axis label and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>minorTickMarkInsideLength</td><td>float</td><td>Sets the inside length of the minor tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>minorTickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the minor tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>minorTickMarksVisible</td><td>boolean</td><td>Sets the flag that indicates whether or not the minor tick marks are showing
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>tickLabelFont</td><td>Font</td><td>Sets the font for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
+<tr><td>tickLabelInsets</td><td>RectangleInsets</td><td>Sets the insets for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0,4.0,2.0,4.0</code></td></tr>
+<tr><td>tickLabelPaint</td><td>Paint</td><td>Sets the paint used to draw tick labels (if they are showing) and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>tickLabelsVisible</td><td>boolean</td><td>Sets the flag that determines whether or not the tick labels are
+ visible and sends an {@link AxisChangeEvent} to all registered
+ listeners.</td><td><code>true</code></td></tr>
+<tr><td>tickMarkInsideLength</td><td>float</td><td>Sets the inside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>tickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>tickMarkPaint</td><td>Paint</td><td>Sets the paint used to draw tick marks and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>tickMarkStroke</td><td>Stroke</td><td>Sets the stroke used to draw tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>tickMarksVisible</td><td>boolean</td><td>Sets the flag that indicates whether or not the tick marks are showing
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>visible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis is visible and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+</table>
+== !LogarithmicAxis ==
+<p>A numerical axis that uses a logarithmic scale.</p>
+<table class="doc-table">
+<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
+<tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/axis/LogarithmicAxis.html">org.jfree.chart.axis.LogarithmicAxis</a></b></td></tr>
+<tr><td>allowNegativesFlag</td><td>boolean</td><td>Sets the 'allowNegativesFlag' flag; true to allow negative values
+ in data, false to be able to plot positive values arbitrarily close to
+ zero.</td><td><code>false</code></td></tr>
+<tr><td>autoRangeNextLogFlag</td><td>boolean</td><td>Sets the 'autoRangeNextLogFlag' flag.  This determines whether or
+ not the 'autoAdjustRange()' method will select the next "10^n"
+ values when determining the upper and lower bounds.  The default
+ value is false.</td><td><code>false</code></td></tr>
+<tr><td>expTickLabelsFlag</td><td>boolean</td><td>Sets the 'expTickLabelsFlag' flag.  If the 'log10TickLabelsFlag'
+ is false then this will set whether or not "1e#"-style tick labels
+ are used.  The default is to use regular numeric tick labels.</td><td><code>false</code></td></tr>
+<tr><td>log10TickLabelsFlag</td><td>boolean</td><td>Sets the 'log10TickLabelsFlag' flag.  The default value is false.</td><td><code>false</code></td></tr>
+<tr><td>strictValuesFlag</td><td>boolean</td><td>Sets the 'strictValuesFlag' flag; if true and 'allowNegativesFlag'
+ is false then this axis will throw a runtime exception if any of its
+ values are less than or equal to zero; if false then the axis will
+ adjust for values less than or equal to zero as needed.</td><td><code>true</code></td></tr>
+<tr><td>autoRangeIncludesZero</td><td>boolean</td><td>Sets the flag that indicates whether or not the axis range, if
+ automatically calculated, is forced to include zero.
+ <br/><br/>
+ If the flag is changed to <code>true</code>, the axis range is
+ recalculated.
+ <br/><br/>
+ Any change to the flag will trigger an {@link AxisChangeEvent}.</td><td><code>true</code></td></tr>
+<tr><td>autoRangeStickyZero</td><td>boolean</td><td>Sets a flag that affects the auto-range when zero falls outside the data
+ range but inside the margins defined for the axis.</td><td><code>true</code></td></tr>
+<tr><td>numberFormatOverride</td><td>NumberFormat</td><td>Sets the number format override.  If this is non-null, then it will be
+ used to format the numbers on the axis.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>tickUnit</td><td>NumberTickUnit</td><td>Sets the tick unit for the axis and sends an {@link AxisChangeEvent} to
+ all registered listeners.  A side effect of calling this method is that
+ the "auto-select" feature for tick units is switched off (you can
+ restore it using the {@link ValueAxis#setAutoTickUnitSelection(boolean)}
+ method).</td><td><code>1.0</code></td></tr>
+<tr><td>autoRange</td><td>boolean</td><td>Sets a flag that determines whether or not the axis range is
+ automatically adjusted to fit the data, and notifies registered
+ listeners that the axis has been modified.</td><td><code>true</code></td></tr>
+<tr><td>autoRangeMinimumSize</td><td>double</td><td>Sets the auto range minimum size and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>autoTickUnitSelection</td><td>boolean</td><td>Sets a flag indicating whether or not the tick unit is automatically
+ selected from a range of standard tick units.  If the flag is changed,
+ registered listeners are notified that the chart has changed.</td><td><code>true</code></td></tr>
+<tr><td>downArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing downwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fixedAutoRange</td><td>double</td><td>Sets the fixed auto range for the axis.</td><td><code>0.0</code></td></tr>
+<tr><td>inverted</td><td>boolean</td><td>Sets a flag that controls the direction of values on the axis, and
+ notifies registered listeners that the axis has changed.</td><td><code>false</code></td></tr>
+<tr><td>leftArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing left at the
+ end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>lowerBound</td><td>double</td><td>Sets the lower bound for the axis range.  An {@link AxisChangeEvent} is
+ sent to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>lowerMargin</td><td>double</td><td>Sets the lower margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>minorTickCount</td><td>int</td><td>Sets the number of minor tick marks to display, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>0</code></td></tr>
+<tr><td>negativeArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the negative direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>positiveArrowVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis lines has an arrow
+ drawn that points in the positive direction for the axis, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>rightArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing rightwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upArrow</td><td>Shape</td><td>Sets the shape that can be displayed as an arrow pointing upwards at
+ the end of an axis line and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>upperBound</td><td>double</td><td>Sets the upper bound for the axis range, and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>upperMargin</td><td>double</td><td>Sets the upper margin for the axis (as a percentage of the axis range)
+ and sends an {@link AxisChangeEvent} to all registered listeners.  This
+ margin is added only when the axis range is auto-calculated - if you set
+ the axis range manually, the margin is ignored.</td><td><code>0.05</code></td></tr>
+<tr><td>verticalTickLabels</td><td>boolean</td><td>Sets the flag that controls whether the tick labels are displayed
+ vertically (that is, rotated 90 degrees from horizontal).  If the flag
+ is changed, an {@link AxisChangeEvent} is sent to all registered
+ listeners.</td><td><code>false</code></td></tr>
+<tr><td>axisLinePaint</td><td>Paint</td><td>Sets the paint used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>axisLineStroke</td><td>Stroke</td><td>Sets the stroke used to draw the axis line and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>axisLineVisible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis line is visible and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>fixedDimension</td><td>double</td><td>Sets the fixed dimension for the axis.
+ <br/><br/>
+ This is used when combining more than one plot on a chart.  In this case,
+ there may be several axes that need to have the same height or width so
+ that they are aligned.  This method is used to fix a dimension for the
+ axis (the context determines whether the dimension is horizontal or
+ vertical).</td><td><code>0.0</code></td></tr>
+<tr><td>label</td><td>String</td><td>Sets the label for the axis and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>labelAngle</td><td>double</td><td>Sets the angle for the label and sends an {@link AxisChangeEvent} to all
+ registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>labelFont</td><td>Font</td><td>Sets the font for the axis label and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>labelInsets</td><td>RectangleInsets</td><td>Sets the insets for the axis label, and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>3.0,3.0,3.0,3.0</code></td></tr>
+<tr><td>labelPaint</td><td>Paint</td><td>Sets the paint used to draw the axis label and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>minorTickMarkInsideLength</td><td>float</td><td>Sets the inside length of the minor tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>minorTickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the minor tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>minorTickMarksVisible</td><td>boolean</td><td>Sets the flag that indicates whether or not the minor tick marks are showing
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>tickLabelFont</td><td>Font</td><td>Sets the font for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
+<tr><td>tickLabelInsets</td><td>RectangleInsets</td><td>Sets the insets for the tick labels and sends an {@link AxisChangeEvent}
+ to all registered listeners.</td><td><code>2.0,4.0,2.0,4.0</code></td></tr>
+<tr><td>tickLabelPaint</td><td>Paint</td><td>Sets the paint used to draw tick labels (if they are showing) and
+ sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>tickLabelsVisible</td><td>boolean</td><td>Sets the flag that determines whether or not the tick labels are
+ visible and sends an {@link AxisChangeEvent} to all registered
+ listeners.</td><td><code>true</code></td></tr>
+<tr><td>tickMarkInsideLength</td><td>float</td><td>Sets the inside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
+<tr><td>tickMarkOutsideLength</td><td>float</td><td>Sets the outside length of the tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>2.0</code></td></tr>
+<tr><td>tickMarkPaint</td><td>Paint</td><td>Sets the paint used to draw tick marks and sends an
+ {@link AxisChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>tickMarkStroke</td><td>Stroke</td><td>Sets the stroke used to draw tick marks and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
+<tr><td>tickMarksVisible</td><td>boolean</td><td>Sets the flag that indicates whether or not the tick marks are showing
+ and sends an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>visible</td><td>boolean</td><td>Sets a flag that controls whether or not the axis is visible and sends
+ an {@link AxisChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+</table>
