@@ -49,6 +49,31 @@ public class ChartTypeSystem implements Serializable, ChartConstants {
      */
     private HashMap<String,ChartBeanInfo> axes = new HashMap<String,ChartBeanInfo>();
     
+    public ChartBeanInfo findBean(String c) {
+        ChartBeanInfo ret = null;
+        if (c.equals(chartBean.getClassname())) ret = chartBean;
+        else if (c.equals(textTitleBean.getClassname())) ret = textTitleBean;
+        else if (c.equals(markerBean.getClassname())) ret = markerBean;
+        else if (c.equals(legendBean.getClassname())) ret = legendBean;
+        else {
+            ret = xyrenders.get(c);
+            if (ret == null) {
+                ret = catrenders.get(c);
+            }
+            if (ret == null) {
+                ret = axes.get(c);
+            }
+            if (ret == null) {
+                for (int i = 0; i < plots.size(); i++) {
+                    if (c.equals(plots.get(i).getClassname())) {
+                        ret = plots.get(i);
+                        break;
+                    }
+                }
+            }
+        }
+        return ret;
+    }
     public ChartBeanInfo getChartBean() {
         return chartBean;
     }

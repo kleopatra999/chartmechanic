@@ -16,10 +16,12 @@
 package com.bayareasoftware.chartengine.chart.jfree;
 
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import com.bayareasoftware.chartengine.model.types.ChartBeanInfo;
 import com.bayareasoftware.chartengine.model.types.ChartTypeSystem;
@@ -30,10 +32,19 @@ public class PropDoc {
     private ChartTypeSystem ts;
     private PrintStream out;
     private boolean isWiki = false;
-    
+    // javadoc for bean setters on the jfreechart classes
+    // see ../taglib/.../PropsDoclet.java
+    private Properties javadocProps;
     public PropDoc(String file, PrintStream out) throws Exception {
         ts = TypeInspector.load(file);
         this.out = out;
+        javadocProps = new Properties();
+        InputStream is = getClass().getResourceAsStream("/chart-props-doc.properties");
+        try {
+            javadocProps.load(is);
+        } finally {
+            if (is != null) is.close();
+        }
     }
     public void run() throws Exception {
         List<ChartBeanInfo> l;
@@ -76,21 +87,12 @@ public class PropDoc {
         out.println("</ul>");
 
         
-        out.println("</ul>"); // master list
+        out.println("</ul>"); // master TOC list
         
         cbi = ts.getChartBean();
         printMajorAnchor("chart", "chart");
         printBean(cbi);  // chart
-        /*
-        cbi = ts.getPlotInfo("org.jfree.chart.plot.XYPlot");
-        printBean(cbi);
-        cbi = ts.getXYRendererInfo("Line And Shape");
-        printBean(cbi);
-        cbi = ts.getAxis("DateAxis");
-        printBean(cbi);
-        cbi = ts.getAxis("NumberAxis");
-        printBean(cbi);
-        */
+
         printMajorAnchor("title", "title");
         cbi = ts.getTextTitleBean();
         printBean(cbi);
@@ -151,7 +153,6 @@ public class PropDoc {
         if (isWiki) out.println("= " + text + " =");
         else out.println("<a name=\"" + anchor + "\"></a><h1>" + text + "</h1>");
     }
-    
     private void printMinorAnchor(String anchor, String text) {
         if (isWiki) out.println("== " + text + " ==");
         else out.println("<a name=\"" + anchor + "\"></a><h2>" + text + "</h2>"
@@ -159,15 +160,39 @@ public class PropDoc {
                 );
     }
 
+    private void printClassComment(String cname) {
+        String comment = javadocProps.getProperty(cname + ".class");
+        if (comment == null) comment = "&nbsp;";
+        out.println("<p>" + comment + "</p>");
+    }
+    
     private String javadocLink(ChartBeanInfo cbi) {
         String cname = cbi.getClassname();
         String path = cname.replace('.', '/') + ".html";
         return "<a href=\"http://www.jfree.org/jfreechart/api/javadoc/" + path
         + "\">" + cname + "</a>";
     }
+    
+    private String javadocDoc(String cname, String prop) {
+        String ret = javadocProps.getProperty(cname + "." + prop);
+        if (ret == null) {
+            try {
+                Class c = Class.forName(cname);
+                Class sup = c.getSuperclass();
+                if (!"java.lang.Object".equals(sup.getName())) {
+                    ret = javadocDoc(sup.getName(), prop);
+                }
+            } catch (ClassNotFoundException cnfe) {
+                throw new RuntimeException(cnfe);
+            }
+        }
+        return ret;
+        
+    }
     private void printBean(ChartBeanInfo cbi) {
-        out.println("<table>\n<tr><th>Name</th><th>Type</th><th>Default</th></tr>");
-        out.println("<tr><td colspan=\"3\"><b>" + javadocLink(cbi) + "</b></td></tr>");
+        printClassComment(cbi.getClassname());
+        out.println("<table class=\"doc-table\">\n<tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>");
+        out.println("<tr><td colspan=\"4\" align=\"center\"><b>" + javadocLink(cbi) + "</b></td></tr>");
         for (PropInfo pi : cbi.getProps()) {
             String def = pi.getDefault();
             String type = pi.getType();
@@ -181,7 +206,10 @@ public class PropDoc {
                 def = def.replaceAll("<", "&lt;");
                 def = def.replaceAll(">", "&gt;");
             }
+            String javadoc = javadocDoc(cbi.getClassname(), pi.getName());
+            if (javadoc == null) javadoc = "&nbsp;";
             out.println("<tr><td>" + pi.getName() + "</td><td>" + trunc(type)
+                    + "</td><td>" + javadoc
                     + "</td><td><code>" + def + "</code></td></tr>");
         }
         out.println("</table>");
