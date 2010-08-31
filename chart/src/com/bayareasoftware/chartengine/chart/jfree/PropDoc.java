@@ -250,7 +250,7 @@ public class PropDoc {
 
     private void printClassComment(String cname) {
         String comment = javadocProps.getProperty(cname + ".class");
-        if (comment == null) comment = "&nbsp;";
+        if (comment == null) comment = "";
         if (isWiki) {
             comment = comment.replace("../../../../../images/",
             "http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/");
@@ -258,6 +258,8 @@ public class PropDoc {
             "http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/");
             comment = comment.replace("<P>", "<br/><br/>");
             comment = comment.replace("<p>", "<br/><br/>");
+            comment = comment.replace("<br>", "<br/>");
+            comment = comment.replace("<BR>", "<br/>");
             comment = comment.replace("</p>", "");
             comment = comment.replace("</P>", "");
         }
