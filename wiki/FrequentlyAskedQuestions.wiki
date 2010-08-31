@@ -1,0 +1,25 @@
+#summary FAQ list of how to do certain things with charts
+
+<wiki:toc max_depth="2" />
+
+= How do I rotate/flip my chart 90 degrees? =
+
+Set the property:
+{{{
+plot.orientation=HORIZONTAL
+}}}
+The default is VERTICAL.  This is commonly used in Category charts, to make the X-axis labels more readable.
+
+= How do I place an image in the background of my chart? =
+
+Set properties on the chart like:
+{{{
+chart.backgroundImage=/images/my-chart-background.jpg
+chart.backgroundImageAlpha=0.3
+plot.backgroundAlpha=0.0
+}}}
+
+Charts are specified as a path within your web application, so that the image is accessible via {{{getClass().getResource(path)}}}, or else an external URL (e.g., http://server/image.jpg).
+
+Setting the alpha on the background image makes it more or less transparent; you will probably want some transparency, so that the image does not obscure the foreground of the chart.  Similarly, setting the plot alpha to zero makes the plot completely transparent, so that the image is visible.  Adjust these alpha values as needed to achieve the visual effect that you want.
+
