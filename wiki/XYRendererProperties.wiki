@@ -292,7 +292,7 @@
  JFreeChart demo collection:
  <br/><br/>
  http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/CandlestickRendererSample.png
- <br/><br/>
+ <br/>
  This renderer does not include code to calculate the crosshair point for the
  plot.</p>
 <table class="doc-table">

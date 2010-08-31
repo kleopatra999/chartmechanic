@@ -4,15 +4,15 @@
 <p>A chart class implemented using the Java 2D APIs.  The current version
  supports bar charts, line charts, pie charts and xy plots (including time
  series data).
- <br/><br/>
+ <br/>
  JFreeChart coordinates several objects to achieve its aim of being able to
  draw a chart on a Java 2D graphics device: a list of {@link Title} objects
  (which often includes the chart's legend), a {@link Plot} and a
  {@link org.jfree.data.general.Dataset} (the plot in turn manages a
  domain axis and a range axis).
- <br/><br/>
+ <br/>
  You should use a {@link ChartPanel} to display a chart in a GUI.
- <br/><br/>
+ <br/>
  The {@link ChartFactory} class contains static methods for creating
  'ready-made' charts.</p>
 <table class="doc-table">
@@ -86,7 +86,7 @@
 </table>
 = legend =
 <p>A chart title that displays a legend for the data in the chart.
- <br/><br/>
+ <br/>
  The title can be populated with legend items manually, or you can assign a
  reference to the plot, in which case the legend items will be automatically
  created to match the dataset(s).</p>
@@ -162,7 +162,7 @@
 == PiePlot3D ==
 <p>A plot that displays data in the form of a 3D pie chart, using data from
  any class that implements the {@link PieDataset} interface.
- <br/><br/>
+ <br/>
  Although this class extends {@link PiePlot}, it does not currently support
  exploded sections.</p>
 <table class="doc-table">
@@ -252,7 +252,7 @@
  program included in the JFreeChart Demo Collection:
  <br/><br/>
  http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/PiePlotSample.png
- <br/><br/>
+ <br/>
  Special notes:
  <ol>
  <li>the default starting point is 12 o'clock and the pie sections proceed
@@ -360,11 +360,11 @@
 == XYPlot ==
 <p>A general class for plotting data in the form of (x, y) pairs.  This plot can
  use data from any class that implements the {@link XYDataset} interface.
- <br/><br/>
+ <br/>
  <code>XYPlot</code> makes use of an {@link XYItemRenderer} to draw each point
  on the plot.  By using different renderers, various chart types can be
  produced.
- <br/><br/>
+ <br/>
  The {@link org.jfree.chart.ChartFactory} class contains static methods for
  creating pre-configured charts.</p>
 <table class="doc-table">
@@ -462,12 +462,12 @@
 = Axis Types =
 == !NumberAxis ==
 <p>An axis for displaying numerical data.
- <br/><br/>
+ <br/>
  If the axis is set up to automatically determine its range to fit the data,
  you can ensure that the range includes zero (statisticians usually prefer
  this) by setting the <code>autoRangeIncludesZero</code> flag to
  <code>true</code>.
- <br/><br/>
+ <br/>
  The <code>NumberAxis</code> class has a mechanism for automatically
  selecting a tick unit that is appropriate for the current axis range.  This
  mechanism is an adaptation of code suggested by Laurence Vanhelsuwe.</p>
@@ -708,7 +708,7 @@
  milliseconds since midnight, 1-Jan-1970.  When displaying tick labels, the
  millisecond values are converted back to dates using a
  <code>DateFormat</code> instance.
- <br/><br/>
+ <br/>
  You can also create a {@link org.jfree.chart.axis.Timeline} and supply in
  the constructor to create an axis that only contains certain domain values.
  For example, this allows you to create a date axis that only contains
