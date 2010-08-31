@@ -6,7 +6,7 @@
 <table class="doc-table">
 <tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
 <tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/renderer/xy/XYAreaRenderer2.html">org.jfree.chart.renderer.xy.XYAreaRenderer2</a></b></td></tr>
-<tr><td>legendArea</td><td>Shape</td><td>Sets the shape used as an area in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendArea</td><td>Shape</td><td>Sets the shape used as an area in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>outline</td><td>boolean</td><td>Sets a flag that controls whether or not outlines of the areas are drawn, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesFillPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series fill paint list is automatically populated when {@link #lookupSeriesFillPaint(int)} is called.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series outline paint list is automatically populated when {@link #lookupSeriesOutlinePaint(int)} is called.</td><td><code>false</code></td></tr>
@@ -19,29 +19,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Bar ==
 <p>A renderer that draws bars on an {@link XYPlot} (requires an {@link IntervalXYDataset}).  The example shown here is generated by the <code>XYBarChartDemo1.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/XYBarRendererSample.png</p>
@@ -52,9 +52,9 @@
 <tr><td>barPainter</td><td>XYBarPainter</td><td>Sets the bar painter and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SOLID</code></td></tr>
 <tr><td>base</td><td>double</td><td>Sets the base value for the bars and sends a {@link RendererChangeEvent} to all registered listeners.  The base value is not used if the dataset's y-interval is being used to determine the bar length.</td><td><code>0.0</code></td></tr>
 <tr><td>drawBarOutline</td><td>boolean</td><td>Sets the flag that controls whether or not bar outlines are drawn and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendBar</td><td>Shape</td><td>Sets the shape used to represent bars in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendBar</td><td>Shape</td><td>Sets the shape used to represent bars in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>margin</td><td>double</td><td>Sets the percentage amount by which the bars are trimmed and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
-<tr><td>shadowVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the renderer draws shadows for the bars, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>shadowVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the renderer draws shadows for the bars, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>shadowXOffset</td><td>double</td><td>Sets the x-offset for the bar shadow and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
 <tr><td>shadowYOffset</td><td>double</td><td>Sets the y-offset for the bar shadow and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
 <tr><td>useYInterval</td><td>boolean</td><td>Sets the flag that determines whether the y-interval from the dataset is used to calculate the length of each bar, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
@@ -69,29 +69,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Bubble ==
 <p></p>
@@ -109,29 +109,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Candlestick ==
 <p>A renderer that draws candlesticks on an {@link XYPlot} (requires a {@link OHLCDataset}).  The example shown here is generated by the <code>CandlestickChartDemo1.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/CandlestickRendererSample.png <br/> This renderer does not include code to calculate the crosshair point for the plot.</p>
@@ -159,29 +159,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Clustered Bar ==
 <p></p>
@@ -192,9 +192,9 @@
 <tr><td>barPainter</td><td>XYBarPainter</td><td>Sets the bar painter and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SOLID</code></td></tr>
 <tr><td>base</td><td>double</td><td>Sets the base value for the bars and sends a {@link RendererChangeEvent} to all registered listeners.  The base value is not used if the dataset's y-interval is being used to determine the bar length.</td><td><code>0.0</code></td></tr>
 <tr><td>drawBarOutline</td><td>boolean</td><td>Sets the flag that controls whether or not bar outlines are drawn and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendBar</td><td>Shape</td><td>Sets the shape used to represent bars in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendBar</td><td>Shape</td><td>Sets the shape used to represent bars in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>margin</td><td>double</td><td>Sets the percentage amount by which the bars are trimmed and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
-<tr><td>shadowVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the renderer draws shadows for the bars, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>shadowVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the renderer draws shadows for the bars, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>shadowXOffset</td><td>double</td><td>Sets the x-offset for the bar shadow and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
 <tr><td>shadowYOffset</td><td>double</td><td>Sets the y-offset for the bar shadow and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
 <tr><td>useYInterval</td><td>boolean</td><td>Sets the flag that determines whether the y-interval from the dataset is used to calculate the length of each bar, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
@@ -209,36 +209,36 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Difference ==
 <p>A renderer for an {@link XYPlot} that highlights the differences between two series.  The example shown here is generated by the <code>DifferenceChartDemo1.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/XYDifferenceRendererSample.png</p>
 <table class="doc-table">
 <tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
 <tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/renderer/xy/XYDifferenceRenderer.html">org.jfree.chart.renderer.xy.XYDifferenceRenderer</a></b></td></tr>
-<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>negativePaint</td><td>Paint</td><td>Sets the paint used to highlight negative differences.</td><td><code>#ff0000</code></td></tr>
 <tr><td>positivePaint</td><td>Paint</td><td>Sets the paint used to highlight positive differences and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#00ff00</code></td></tr>
 <tr><td>roundXCoordinates</td><td>boolean</td><td>Sets the flag that controls whether or not the x-coordinates (in Java2D space) are rounded to integer values, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
@@ -254,29 +254,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Dot ==
 <p>A renderer that draws a small dot at each data point for an {@link XYPlot}. The example shown here is generated by the <code>ScatterPlotDemo4.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/XYDotRendererSample.png</p>
@@ -296,29 +296,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Line ==
 <p></p>
@@ -330,10 +330,10 @@
 <tr><td>baseShapesVisible</td><td>boolean</td><td>Sets the base 'shapes visible' flag and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>drawOutlines</td><td>boolean</td><td>Sets the flag that controls whether outlines are drawn for shapes, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> In some cases, shapes look better if they do NOT have an outline, but this flag allows you to set your own preference.</td><td><code>true</code></td></tr>
 <tr><td>drawSeriesLineAsPath</td><td>boolean</td><td>Sets the flag that controls whether or not each series is drawn as a single path and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>useFillPaint</td><td>boolean</td><td>Sets the flag that controls whether the fill paint is used to fill shapes, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>useOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether the outline paint is used to draw shape outlines, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> Refer to <code>XYLineAndShapeRendererDemo2.java</code> to see the effect of this flag.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesFillPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series fill paint list is automatically populated when {@link #lookupSeriesFillPaint(int)} is called.</td><td><code>false</code></td></tr>
@@ -347,29 +347,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Line 3D ==
 <p>A XYLineAndShapeRenderer that adds a shadow line to the graph to emulate a 3D-effect.</p>
@@ -384,10 +384,10 @@
 <tr><td>baseShapesVisible</td><td>boolean</td><td>Sets the base 'shapes visible' flag and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>drawOutlines</td><td>boolean</td><td>Sets the flag that controls whether outlines are drawn for shapes, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> In some cases, shapes look better if they do NOT have an outline, but this flag allows you to set your own preference.</td><td><code>true</code></td></tr>
 <tr><td>drawSeriesLineAsPath</td><td>boolean</td><td>Sets the flag that controls whether or not each series is drawn as a single path and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>useFillPaint</td><td>boolean</td><td>Sets the flag that controls whether the fill paint is used to fill shapes, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>useOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether the outline paint is used to draw shape outlines, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> Refer to <code>XYLineAndShapeRendererDemo2.java</code> to see the effect of this flag.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesFillPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series fill paint list is automatically populated when {@link #lookupSeriesFillPaint(int)} is called.</td><td><code>false</code></td></tr>
@@ -401,29 +401,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Line And Shape ==
 <p>A renderer that connects data points with lines and/or draws shapes at each data point.  This renderer is designed for use with the {@link XYPlot} class.  The example shown here is generated by the <code>XYLineAndShapeRendererDemo2.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/XYLineAndShapeRendererSample.png</p>
@@ -435,10 +435,10 @@
 <tr><td>baseShapesVisible</td><td>boolean</td><td>Sets the base 'shapes visible' flag and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>drawOutlines</td><td>boolean</td><td>Sets the flag that controls whether outlines are drawn for shapes, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> In some cases, shapes look better if they do NOT have an outline, but this flag allows you to set your own preference.</td><td><code>true</code></td></tr>
 <tr><td>drawSeriesLineAsPath</td><td>boolean</td><td>Sets the flag that controls whether or not each series is drawn as a single path and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>useFillPaint</td><td>boolean</td><td>Sets the flag that controls whether the fill paint is used to fill shapes, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>useOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether the outline paint is used to draw shape outlines, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> Refer to <code>XYLineAndShapeRendererDemo2.java</code> to see the effect of this flag.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesFillPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series fill paint list is automatically populated when {@link #lookupSeriesFillPaint(int)} is called.</td><td><code>false</code></td></tr>
@@ -452,29 +452,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Spline ==
 <p>A renderer that connects data points with natural cubic splines and/or draws shapes at each data point.  This renderer is designed for use with the {@link XYPlot} class. The example shown here is generated by the <code>XYSplineRendererDemo1.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/XYSplineRendererSample.png</p>
@@ -487,10 +487,10 @@
 <tr><td>baseShapesVisible</td><td>boolean</td><td>Sets the base 'shapes visible' flag and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>drawOutlines</td><td>boolean</td><td>Sets the flag that controls whether outlines are drawn for shapes, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> In some cases, shapes look better if they do NOT have an outline, but this flag allows you to set your own preference.</td><td><code>true</code></td></tr>
 <tr><td>drawSeriesLineAsPath</td><td>boolean</td><td>Sets the flag that controls whether or not each series is drawn as a single path and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>useFillPaint</td><td>boolean</td><td>Sets the flag that controls whether the fill paint is used to fill shapes, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>useOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether the outline paint is used to draw shape outlines, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> Refer to <code>XYLineAndShapeRendererDemo2.java</code> to see the effect of this flag.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesFillPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series fill paint list is automatically populated when {@link #lookupSeriesFillPaint(int)} is called.</td><td><code>false</code></td></tr>
@@ -504,29 +504,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Stacked Area ==
 <p>A stacked area renderer for the {@link XYPlot} class. The example shown here is generated by the <code>StackedXYAreaChartDemo2.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/StackedXYAreaRenderer2Sample.png</p>
@@ -534,7 +534,7 @@
 <tr><th>Name</th><th>Type</th><th>Description</th><th>Default</th></tr>
 <tr><td colspan="4" align="center"><b><a href="http://www.jfree.org/jfreechart/api/javadoc/org/jfree/chart/renderer/xy/StackedXYAreaRenderer2.html">org.jfree.chart.renderer.xy.StackedXYAreaRenderer2</a></b></td></tr>
 <tr><td>roundXCoordinates</td><td>boolean</td><td>Sets the flag that controls whether or not the x-coordinates (in Java2D space) are rounded to integer values, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>legendArea</td><td>Shape</td><td>Sets the shape used as an area in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendArea</td><td>Shape</td><td>Sets the shape used as an area in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>outline</td><td>boolean</td><td>Sets a flag that controls whether or not outlines of the areas are drawn, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesFillPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series fill paint list is automatically populated when {@link #lookupSeriesFillPaint(int)} is called.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series outline paint list is automatically populated when {@link #lookupSeriesOutlinePaint(int)} is called.</td><td><code>false</code></td></tr>
@@ -547,29 +547,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Stacked Bar ==
 <p>A bar renderer that displays the series items stacked. The dataset used together with this renderer must be a {@link org.jfree.data.xy.IntervalXYDataset} and a {@link org.jfree.data.xy.TableXYDataset}. For example, the dataset class {@link org.jfree.data.xy.CategoryTableXYDataset} implements both interfaces. The example shown here is generated by the <code>StackedXYBarChartDemo2.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/StackedXYBarRendererSample.png</p>
@@ -581,9 +581,9 @@
 <tr><td>barPainter</td><td>XYBarPainter</td><td>Sets the bar painter and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SOLID</code></td></tr>
 <tr><td>base</td><td>double</td><td>Sets the base value for the bars and sends a {@link RendererChangeEvent} to all registered listeners.  The base value is not used if the dataset's y-interval is being used to determine the bar length.</td><td><code>0.0</code></td></tr>
 <tr><td>drawBarOutline</td><td>boolean</td><td>Sets the flag that controls whether or not bar outlines are drawn and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendBar</td><td>Shape</td><td>Sets the shape used to represent bars in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendBar</td><td>Shape</td><td>Sets the shape used to represent bars in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>margin</td><td>double</td><td>Sets the percentage amount by which the bars are trimmed and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>0.0</code></td></tr>
-<tr><td>shadowVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the renderer draws shadows for the bars, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>shadowVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the renderer draws shadows for the bars, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>shadowXOffset</td><td>double</td><td>Sets the x-offset for the bar shadow and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
 <tr><td>shadowYOffset</td><td>double</td><td>Sets the y-offset for the bar shadow and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
 <tr><td>useYInterval</td><td>boolean</td><td>Sets the flag that determines whether the y-interval from the dataset is used to calculate the length of each bar, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
@@ -598,29 +598,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Step ==
 <p>Line/Step item renderer for an {@link XYPlot}.  This class draws lines between data points, only allowing horizontal or vertical lines (steps). The example shown here is generated by the <code>XYStepRendererDemo1.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/XYStepRendererSample.png</p>
@@ -633,10 +633,10 @@
 <tr><td>baseShapesVisible</td><td>boolean</td><td>Sets the base 'shapes visible' flag and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>drawOutlines</td><td>boolean</td><td>Sets the flag that controls whether outlines are drawn for shapes, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> In some cases, shapes look better if they do NOT have an outline, but this flag allows you to set your own preference.</td><td><code>true</code></td></tr>
 <tr><td>drawSeriesLineAsPath</td><td>boolean</td><td>Sets the flag that controls whether or not each series is drawn as a single path and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>legendLine</td><td>Shape</td><td>Sets the shape used as a line in each legend item and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>linesVisible</td><td>Boolean</td><td>Sets a flag that controls whether or not lines are drawn between the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesFilled</td><td>Boolean</td><td>Sets the 'shapes filled' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>shapesVisible</td><td>Boolean</td><td>Sets the 'shapes visible' for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>useFillPaint</td><td>boolean</td><td>Sets the flag that controls whether the fill paint is used to fill shapes, and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>useOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether the outline paint is used to draw shape outlines, and sends a {@link RendererChangeEvent} to all registered listeners. <br/> Refer to <code>XYLineAndShapeRendererDemo2.java</code> to see the effect of this flag.</td><td><code>false</code></td></tr>
 <tr><td>autoPopulateSeriesFillPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the series fill paint list is automatically populated when {@link #lookupSeriesFillPaint(int)} is called.</td><td><code>false</code></td></tr>
@@ -650,29 +650,29 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
 == Step Area ==
 <p>A step chart renderer that fills the area between the step and the x-axis. The example shown here is generated by the <code>XYStepAreaRendererDemo1.java</code> program included in the JFreeChart demo collection: <br/><br/> http://chartmechanic.googlecode.com/svn/trunk/taglib/web/images/XYStepAreaRendererSample.png</p>
@@ -695,27 +695,27 @@
 <tr><td>baseItemLabelFont</td><td>Font</td><td>Sets the base item label font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>SansSerif-10</code></td></tr>
 <tr><td>baseItemLabelPaint</td><td>Paint</td><td>Sets the base item label paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
 <tr><td>baseItemLabelsVisible</td><td>Boolean</td><td>Sets the base setting for item label visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
-<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseLegendShape</td><td>Shape</td><td>Sets the default legend shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextFont</td><td>Font</td><td>Sets the default legend text font and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>baseLegendTextPaint</td><td>Paint</td><td>Sets the default legend text paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseOutlinePaint</td><td>Paint</td><td>Sets the base outline paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#808080</code></td></tr>
 <tr><td>baseOutlineStroke</td><td>Stroke</td><td>Sets the base outline stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
 <tr><td>basePaint</td><td>Paint</td><td>Sets the base paint and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>#0000ff</code></td></tr>
 <tr><td>baseSeriesVisible</td><td>boolean</td><td>Sets the base visibility and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>baseSeriesVisibleInLegend</td><td>boolean</td><td>Sets the base visibility in the legend and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
-<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>baseShape</td><td>Shape</td><td>Sets the base shape and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 <tr><td>baseStroke</td><td>Stroke</td><td>Sets the base stroke and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>line=1.0|dash=0</code></td></tr>
-<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>createEntities</td><td>Boolean</td><td>Sets the flag that controls whether or not chart entities are created for the items in ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  This flag overrides the per series and default settings - you must set it to <code>null</code> if you want the other settings to apply.</td><td><code></code></td></tr>
 <tr><td>dataBoundsIncludesVisibleSeriesOnly</td><td>boolean</td><td>Sets the flag that controls whether or not the data bounds reported by this renderer will exclude non-visible series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 <tr><td>defaultEntityRadius</td><td>int</td><td>Sets the radius of the circle used for the default entity area when no area is specified.</td><td><code>3</code></td></tr>
-<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
+<tr><td>fillPaint</td><td>Paint</td><td>Sets the fill paint for ALL series (optional).</td><td><code></code></td></tr>
 <tr><td>itemLabelAnchorOffset</td><td>double</td><td>Sets the item label anchor offset.</td><td><code>2.0</code></td></tr>
-<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
-<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>itemLabelFont</td><td>Font</td><td>Sets the item label font for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.  You can set this to <code>null</code> if you prefer to set the font on a per series basis.</td><td><code></code></td></tr>
+<tr><td>itemLabelPaint</td><td>Paint</td><td>Sets the item label paint for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>itemLabelsVisible</td><td>Boolean</td><td>Sets the visibility of the item labels for ALL series (optional).</td><td><code></code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the outline paint for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the outline stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>paint</td><td>Paint</td><td>Sets the paint to be used for ALL series, and sends a {@link RendererChangeEvent} to all registered listeners.  If this is <code>null</code>, the renderer will use the paint for the series.</td><td><code></code></td></tr>
+<tr><td>shape</td><td>Shape</td><td>Sets the shape for ALL series (optional) and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
+<tr><td>stroke</td><td>Stroke</td><td>Sets the stroke for ALL series and sends a {@link RendererChangeEvent} to all registered listeners.</td><td><code></code></td></tr>
 </table>
