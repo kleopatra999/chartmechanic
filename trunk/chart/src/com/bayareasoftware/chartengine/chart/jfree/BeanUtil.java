@@ -371,6 +371,11 @@ public class BeanUtil {
         if (s == null) {
             return null;
         }
+        
+        // none is a keyword for not set
+        if (s.length() == 0 || s.trim().equalsIgnoreCase("none"))
+            return null;
+
         Object ret = null;
         if (c == String.class) {
             ret = s;
@@ -391,7 +396,7 @@ public class BeanUtil {
             ret = f;
         } else if (c == java.awt.Image.class) {
             ret = loadImage(s);
-//            log.warn("from url=" + s + " loaded image=" + ret);
+            //log.warn("from url=" + s + " loaded image=" + ret);
         } else if (c == DateFormat.class || c == SimpleDateFormat.class) {
             //SimpleDateFormat sdf = new SimpleDateFormat(s);
             //ret = sdf;
