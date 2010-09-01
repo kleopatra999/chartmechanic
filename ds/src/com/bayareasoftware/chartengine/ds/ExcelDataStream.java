@@ -24,6 +24,7 @@ import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
 
 import static com.bayareasoftware.chartengine.model.DataType.*;
 
@@ -101,7 +102,7 @@ public class ExcelDataStream extends DataStream {
                 ret.add(new String[0]);
                 continue;
             }
-            Iterator<HSSFCell> iter = (Iterator<HSSFCell>)row.cellIterator();
+            Iterator<Cell> iter = (Iterator<Cell>)row.cellIterator();
             int count = row.getLastCellNum() - row.getFirstCellNum();
             String[] s = new String[count];
             int j = 0;
@@ -301,11 +302,11 @@ public class ExcelDataStream extends DataStream {
         return data;
     }
 
-    private String getCellString(HSSFCell cell) {
+    private String getCellString(Cell cell) {
         return ExcelInference.getCellString(cell, evaluator,dfmt);
     }
 
-    private Object getCellData(HSSFCell cell, int rowNum, int type, int index) {
+    private Object getCellData(Cell cell, int rowNum, int type, int index) {
         evaluator.evaluate(cell);
         if (cell == null || cell.getCellType() == HSSFCell.CELL_TYPE_BLANK || type == UNKNOWN) {
             return null;

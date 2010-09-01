@@ -37,6 +37,8 @@ import org.apache.poi.hssf.usermodel.HSSFFormulaEvaluator;
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
 
 import com.bayareasoftware.chartengine.ds.ExcelDataSource;
 import com.bayareasoftware.chartengine.model.DataType;
@@ -192,13 +194,13 @@ public class ExcelInference {
     }
     
     private int getDataRowNum() {
-        Iterator<HSSFRow> rows = sheet.rowIterator();
-        HSSFRow firstRow = null;
+        Iterator<Row> rows = sheet.rowIterator();
+        Row firstRow = null;
         int matched = 0;
         int i = 0;
         while (rows.hasNext()) {
-            HSSFRow row = rows.next();
-            eval.setCurrentRow(row); // Workaround for forumula evaluator bug
+            Row row = rows.next();
+            //eval.setCurrentRow(row); // Workaround for forumula evaluator bug
             //p("looking at row " + row.getRowNum());
             if (firstRow == null) {
                 if (hasNumericCell(row)/* && (md == null || hasMetadata(row, md))*/) {
@@ -218,7 +220,7 @@ public class ExcelInference {
 
     // Returns true iff specified rows match in terms of cell
     // positions and cell types.
-    private static boolean match(HSSFRow row1, HSSFRow row2) {
+    private static boolean match(Row row1, Row row2) {
         if (row1.getLastCellNum() != row2.getLastCellNum()
                 || row1.getFirstCellNum() != row2.getFirstCellNum()) {
             return false;
@@ -238,9 +240,9 @@ public class ExcelInference {
         return true;
     }
     
-    private boolean hasNumericCell(HSSFRow row) {
-        eval.setCurrentRow(row); // Workaround for forumula evaluator bug
-        Iterator<HSSFCell> ci = row.cellIterator();
+    private boolean hasNumericCell(Row row) {
+        //eval.setCurrentRow(row); // Workaround for forumula evaluator bug
+        Iterator<Cell> ci = row.cellIterator();
         while (ci.hasNext()) {
             switch (getType(ci.next())) {
             case INTEGER: case DOUBLE:
@@ -333,11 +335,12 @@ public class ExcelInference {
                 rawStrings.add(new String[0]);
                 continue;
             }
-            Iterator<HSSFCell> iter = row.cellIterator();
+            Iterator<Cell> iter = row.cellIterator();
             String[] s = new String[count];
             while (iter.hasNext()) {
-                HSSFCell cell = iter.next();
-                int col = cell.getCellNum();
+                Cell cell = iter.next();
+                //int col = cell.getCellNum();
+                int col = cell.getRowIndex();
                 if (col >= 0 && col < count) {
                     s[col] = getCellString(cell, eval, fmt);
                } else {
@@ -349,7 +352,7 @@ public class ExcelInference {
             rawStrings.add(s);
         }
     }
-    private int getType(HSSFCell cell) {
+    private int getType(Cell cell) {
         if (cell == null) {
             return UNKNOWN;
         }
@@ -383,11 +386,11 @@ public class ExcelInference {
         }
     }
     
-    private String getCellString(HSSFCell cell) {
+    private String getCellString(Cell cell) {
         return ExcelInference.getCellString(cell, eval,dfmt);
     }
     
-    public static String getCellString(HSSFCell cell, HSSFFormulaEvaluator eval, DateFormat dfmt) {
+    public static String getCellString(Cell cell, HSSFFormulaEvaluator eval, DateFormat dfmt) {
         if (cell == null) {
             return null;
         }
@@ -433,7 +436,7 @@ public class ExcelInference {
      * but POI doesn't recognize them as date formatted.  They have
      * format code 0xa5
      */
-    public static boolean isCellDateFormatted(HSSFCell cell) {
+    public static boolean isCellDateFormatted(Cell cell) {
         boolean ret = false;
         try {
             if (cell.getCellType() == HSSFCell.CELL_TYPE_NUMERIC) {
