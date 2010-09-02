@@ -33,6 +33,8 @@ public class ChartServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+        ChartController.get().configure(config);
+        this.log("initialized chart controller");
     }
 
     @Override

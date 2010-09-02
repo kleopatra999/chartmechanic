@@ -15,19 +15,15 @@
  */
 package com.bayareasoftware.tag;
 
-import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 import java.net.URL;
-import java.text.DateFormat;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.StandardChartTheme;
-import org.jfree.chart.axis.Axis;
+import javax.servlet.ServletConfig;
 
 import com.bayareasoftware.chartengine.chart.ChartDataUtil;
 import com.bayareasoftware.chartengine.chart.ChartDiskCache;
@@ -35,9 +31,7 @@ import com.bayareasoftware.chartengine.chart.ChartDiskResult;
 import com.bayareasoftware.chartengine.chart.ChartDriver;
 import com.bayareasoftware.chartengine.chart.ChartDriverManager;
 import com.bayareasoftware.chartengine.chart.ChartResult;
-import com.bayareasoftware.chartengine.ds.CSVDataSource;
 import com.bayareasoftware.chartengine.ds.DSFactory;
-import com.bayareasoftware.chartengine.ds.DataInference;
 import com.bayareasoftware.chartengine.ds.DataSource;
 import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.functions.InflationAdjust;
@@ -47,15 +41,32 @@ import com.bayareasoftware.chartengine.model.ChartConstants;
 import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.DataSourceInfo;
 import com.bayareasoftware.chartengine.model.DataType;
-import com.bayareasoftware.chartengine.model.InferredData;
 import com.bayareasoftware.chartengine.model.LogoInfo;
 import com.bayareasoftware.chartengine.model.Metadata;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.SimpleProps;
-import com.bayareasoftware.chartengine.util.DateUtil;
+import com.bayareasoftware.chartengine.model.StringUtil;
 
+/* configuration:
+ *  cacheLocation, cacheTTL
+ *  servletPrefix (relative to contextPath)
+ *  default JDBC stuff
+ *  default template
+ */
 public class ChartController {
 
+    /**
+     * Constants for configuration property names
+     */
+    public static final String CONFIG_CACHE_DIR = "cm.chartCacheDir";
+    public static final String CONFIG_CACHE_TTL = "cm.chartCacheTTL";
+    public static final String CONFIG_SERVLET_PREFIX = "cm.chartServletPrefix";
+    public static final String CONFIG_JDBC_DRIVER = "cm.jdbcDriver";
+    public static final String CONFIG_JDBC_URL = "cm.jdbcUrl";
+    public static final String CONFIG_JDBC_USERNAME = "cm.jdbcUsername";
+    public static final String CONFIG_JDBC_PASSWORD = "cm.jdbcPassword";
+    public static final String CONFIG_JDBC_JNDI_NAME = "cm.jdbcJndiName";
+    
     private SimpleProps templateChartProps = new SimpleProps();
     private ChartDriver fac;
     private File cacheRoot;
@@ -63,16 +74,35 @@ public class ChartController {
     private ChartDiskCache cache;
     private String servletPrefix;
     private String defaultJdbcDriver, defaultJdbcUrl,
-    defaultJdbcUsername, defaultJdbcPassword;
-    private boolean relativeURIs = false;
+    defaultJdbcUsername, defaultJdbcPassword, defaultJndiName;
+
+    private int defaultTtl;
     private ChartController() {
         fac = ChartDriverManager.getChartDriver(ChartDriverManager.JFREECHART);
-        // FIXME: config
-        cacheRoot = new File("/tmp/chart-cache");
+    }
+    
+    public void configure(ServletConfig sc) {
+        String cachePath = StringUtil.joinPaths(
+                System.getProperty("java.io.tmpdir"), "chart-cache");
+        cachePath = getConfig(sc, CONFIG_CACHE_DIR, cachePath);
+        // cache dir
+        cacheRoot = new File(cachePath);
         cacheRoot.mkdirs();
         cache = new ChartDiskCache(cacheRoot);
         cache.clear();
-        servletPrefix = "/chart-images";
+        // cache TTL
+        defaultTtl = Integer.parseInt(getConfig(sc, CONFIG_CACHE_TTL, "60"));
+        // URI prefix
+        servletPrefix = getConfig(sc, CONFIG_SERVLET_PREFIX, "/chart-images");
+        // ChartTag takes account of contextPath, don't do it here
+        /*servletPrefix = StringUtil.joinPaths(
+                sc.getServletContext().getContextPath(), servletPrefix);
+                */
+        defaultJdbcDriver = getConfig(sc, CONFIG_JDBC_DRIVER, null);
+        defaultJdbcUrl = getConfig(sc, CONFIG_JDBC_URL, null);
+        defaultJdbcUsername = getConfig(sc, CONFIG_JDBC_USERNAME, null);
+        defaultJdbcPassword = getConfig(sc, CONFIG_JDBC_PASSWORD, null);
+        defaultJndiName = getConfig(sc, CONFIG_JDBC_JNDI_NAME, null);
         initTheme();
         try {
             initData();
@@ -85,16 +115,25 @@ public class ChartController {
         }
     }
     
-    private static ChartController instance = new ChartController();
+    private static ChartController instance;
 
-    public static ChartController get() { return instance; }
+    public static ChartController get() {
+        // http://en.wikipedia.org/wiki/Singleton_pattern#Traditional_simple_way_using_synchronization
+        if (instance == null) {
+            synchronized (ChartController.class) {
+                if (instance == null) {
+                    instance = new ChartController();
+                }
+            }
+        }
+        return instance;
+    }
     
     public String getChartURI(ChartDiskResult cdr) {
         String rootPath = cacheRoot.getAbsolutePath();
         String path = cdr.getImagePath();
         int len = rootPath.length();
-        
-        return servletPrefix + "/" + path.substring(len + 1);
+        return StringUtil.joinPaths(servletPrefix,  path.substring(len + 1));
     }
     public File getCacheRoot() { return cacheRoot; }
 
@@ -178,9 +217,6 @@ public class ChartController {
         this.defaultJdbcUrl = defaultJdbcUrl;
     }
 
-    public boolean getRelativeURIs() { return relativeURIs; }
-    public void setRelativeURIs(boolean b) { relativeURIs = b; }
-    
     public String getDefaultJdbcUsername() {
         return defaultJdbcUsername;
     }
@@ -198,6 +234,22 @@ public class ChartController {
     }
     
     /* routines for initializing certain built-in datasets */
+
+    public int getDefaultTtl() {
+        return defaultTtl;
+    }
+
+    public void setDefaultTtl(int defaultTtl) {
+        this.defaultTtl = defaultTtl;
+    }
+
+    public String getDefaultJndiName() {
+        return defaultJndiName;
+    }
+
+    public void setDefaultJndiName(String defaultJndiName) {
+        this.defaultJndiName = defaultJndiName;
+    }
 
     private String readURLAsString(String url) throws IOException {
         URL u = getClass().getResource(url);
@@ -240,40 +292,16 @@ public class ChartController {
                 + "source: http://www.bls.gov/");
         return ret;
     }
-    /*
-    // data comes from http://www.nber.org/cycles/cyclesmain.html
-    private DataSourceInfo createUSRecessionData() throws Exception {
-        String data = readURLAsString("/data/us-recessions.csv");
-        DataSourceInfo ret = null;
-        StringBuilder sb;
-        {
-            DataSourceInfo info;
-            InferredData idata = DataInference.get().inferFromCSV(data);
-            info = idata.getDataSource();
-            DataStream ds = (new CSVDataSource(info)).getDataStream();
-            sb = new StringBuilder();
-            DateFormat fmt = DateUtil.createDateFormat("yyyy-MM-dd");
-            while (ds.next()) {
-                sb.append(fmt.format(ds.getDate(1))).append(',')
-                .append(fmt.format(ds.getDate(2))).append('\n');
+    
+    private static String getConfig(ServletConfig sc, String name, String defalt) {
+        String ret;
+        if ((ret = System.getProperty(name)) == null) {
+            if ((ret = sc.getInitParameter(name)) == null) {
+                ret = defalt;
             }
         }
-
-        ret = new DataSourceInfo(DataSourceInfo.CSV_TYPE);
-        ret.setDescription("Interval marker showing periods of recession (negative growth) in the United States economy.");
-        ret.setProperty(DataSourceInfo.CSV_DATA, sb.toString());
-        
-        Metadata md = new Metadata(2);
-        md.setColumnName(1,"start");
-        md.setColumnType(1, DataType.DATE);
-        md.setColumnName(2,"end");
-        md.setColumnType(2, DataType.DATE);
-        ret.setInputMetadata(md);
-
         return ret;
-        
-    } 
-    */   
+    }
     private static void p(String s) {
         System.out.println("[ChartControl] " + s);
     }

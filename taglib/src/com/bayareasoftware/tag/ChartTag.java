@@ -36,6 +36,7 @@ import com.bayareasoftware.chartengine.model.Metadata;
 import com.bayareasoftware.chartengine.model.PlotType;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.SimpleProps;
+import com.bayareasoftware.chartengine.model.StringUtil;
 import com.bayareasoftware.chartengine.model.TimeUtil;
 
 public class ChartTag extends TagSupport implements ITagDoc {
@@ -321,9 +322,9 @@ public class ChartTag extends TagSupport implements ITagDoc {
             //p("cache hit '" + title + "'");
         }
         HttpServletRequest req = (HttpServletRequest) pageContext.getRequest();
-        String uri = req.getContextPath() + cc.getChartURI(cdr);
-        if (cc.getRelativeURIs() && uri.length() > 0 && uri.charAt(0) == '/')
-            uri = uri.substring(1);
+        String uri = StringUtil.joinPaths(
+                req.getContextPath(), cc.getChartURI(cdr)
+                );
         //out.println("<p><b>Path: </b>" + cdr.getImagePath() + "<br/>");
         //out.println("   <b>servlet URL: </b>" + uri + "</p>");
         out.println("<img src=\"" + uri + "\" width=\""+ ci.getWidth() + "\""

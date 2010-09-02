@@ -212,16 +212,28 @@ implements DynamicAttributes, ITagDoc {
             DataSourceInfo ds;
             if ("sql".equals(type)) {
                 ds = new DataSourceInfo(DataSourceInfo.JDBC_TYPE);
+                // order of preference for data connect info:
+                // specific jndi, specific jdbc, default jndi, default jdbc
+                
                 if (jndiName != null) {
                     ds.setProperty(StandardProps.JDBC_JNDI_NAME, jndiName);
                 } else {
-                    checkJdbcSettings();
-                    ds.setProperty(StandardProps.JDBC_DRIVER, driver);
-                    ds.setProperty(StandardProps.JDBC_URL, url);
-                    if (username != null) 
-                        ds.setProperty(StandardProps.JDBC_USERNAME, username);
-                    if (password != null)
-                        ds.setProperty(StandardProps.JDBC_PASSWORD, password);
+                    ChartController cc = ChartController.get();
+                    if (driver == null &&
+                            cc.getDefaultJndiName() != null) {
+                        // no specific driver, try default jndi
+                        ds.setProperty(StandardProps.JDBC_JNDI_NAME, cc.getDefaultJndiName());
+                    } else {
+                        checkJdbcSettings();
+                        ds.setProperty(StandardProps.JDBC_DRIVER, driver);
+                        ds.setProperty(StandardProps.JDBC_URL, url);
+                        if (username != null)
+                            ds.setProperty(StandardProps.JDBC_USERNAME,
+                                    username);
+                        if (password != null)
+                            ds.setProperty(StandardProps.JDBC_PASSWORD,
+                                    password);
+                    }
                 }
                 //ds.setProperty(DataSourceInfo., value)
                 ds.setDataScript(body);
