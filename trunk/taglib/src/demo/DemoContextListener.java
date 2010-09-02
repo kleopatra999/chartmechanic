@@ -64,8 +64,6 @@ java.naming.factory.initial=org.mortbay.naming.InitialContextFactory
             close(conn);
         }
         p("initialized demo data");
-        ChartController.get().setRelativeURIs(true);
-        p("initialized chart controller");
     }
 
     private static void createTables(Connection conn) throws Exception {
