@@ -1,12 +1,12 @@
 #summary Chart Servlet and Tag Library Configuration
 
   Chart servlet configuration.  They may be specified in web.xml, as
-  init-param's to the ChartServlet, or else via java system
+  init-param's to the !ChartServlet, or else via java system
   properties by the same name.
 
   If you elect to do the configuration
   via init-param's as shown below, then you should also keep
-  the ChartServlet with a load-on-startup of greater than zero.
+  the !ChartServlet with a load-on-startup of greater than zero.
   Otherwise, the chart tag will run before the servlet is initialized,
   and you will get broken image links for the first time that the
   chart tag runs.
