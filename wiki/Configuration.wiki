@@ -4,6 +4,8 @@
   init-param's to the !ChartServlet, or else via java system
   properties by the same name.
 
+  In the case that both are specified, system properties will take precedence over init-param's in web.xml.
+
   If you elect to do the configuration
   via init-param's as shown below, then you should also keep
   the !ChartServlet with a load-on-startup of greater than zero.
