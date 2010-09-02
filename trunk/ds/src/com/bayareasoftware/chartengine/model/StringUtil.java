@@ -129,6 +129,31 @@ public class StringUtil {
     }
 
     /**
+     * Join path elements ensuring that all the results are separated
+     * by exactly one '/'
+     */
+    public static String joinPaths(String... paths) {
+        StringBuilder ret = new StringBuilder();
+        for (int i = 0; i < paths.length; i++) {
+            String path = paths[i];
+            // empty string, null -> not there
+            if (path == null) continue;
+            int len = path.length();
+            if (len == 0) continue;
+            if (path.charAt(0) == '/') {
+                path = path.substring(1);
+                if (--len == 0) continue;
+            }
+            if (ret.length() > 0 && ret.charAt(ret.length() - 1) != '/') {
+                // previous element may have ended with '/'
+                ret.append('/');
+            }
+            ret.append(path);
+        }
+        return ret.toString();
+    }
+    
+    /**
      * remove adjacent whitespace
      * collapses/converts any series of whitespace into a single character
      * 
