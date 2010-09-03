@@ -14,7 +14,7 @@
   <tag>
     <name>data</name>
     <tag-class>com.bayareasoftware.tag.DataTag</tag-class>
-    <body-content>tagdependent</body-content>
+    <body-content>JSP</body-content>
     <attribute>
         <name>id</name>
         <required>false</required>
