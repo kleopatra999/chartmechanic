@@ -140,7 +140,7 @@ public class StringUtil {
             if (path == null) continue;
             int len = path.length();
             if (len == 0) continue;
-            if (path.charAt(0) == '/') {
+            if (i > 0 && path.charAt(0) == '/') {
                 path = path.substring(1);
                 if (--len == 0) continue;
             }
