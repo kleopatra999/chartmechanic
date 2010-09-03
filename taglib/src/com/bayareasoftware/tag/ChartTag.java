@@ -15,6 +15,7 @@
  */
 package com.bayareasoftware.tag;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,6 +48,8 @@ public class ChartTag extends TagSupport implements ITagDoc {
     private boolean plotSet = false;
     private String template;
     private long tagStart;
+    private int ttl = -1;
+    private boolean ttlSet = false;
     public ChartTag() {
         release();
     }
@@ -65,6 +68,8 @@ public class ChartTag extends TagSupport implements ITagDoc {
         // don't let chart ID be random, prevents cache hits
         ci.setId("dummy");
         cb.setChartInfo(ci);
+        ttl = -1;
+        ttlSet = false;
     }
     
     public void addDataSource(DataSourceInfo dsi) {
@@ -194,6 +199,11 @@ public class ChartTag extends TagSupport implements ITagDoc {
     public void setGraphType(String gt) {
         setRenderType(gt);
     }
+    
+    public void setTtl(int ttl) {
+        this.ttl = ttl;
+        ttlSet = true;
+    }
     @Override
     public int doStartTag() throws JspException {
         tagStart = System.currentTimeMillis();
@@ -293,6 +303,30 @@ public class ChartTag extends TagSupport implements ITagDoc {
         // for xy plot, X column must all be NUMBER
         // for any plot, y column must be NUMBER
     }
+
+    private boolean isTtlExpired(ChartDiskResult res) {
+        boolean ret = false;
+        // note: shadowing member var
+        ChartController cc = ChartController.get();
+        int ttl = ttlSet ? this.ttl : cc.getDefaultTtl();
+        if (ttl == 0) {
+            // never use cache
+            ret = true;
+        } else if (ttl < 0) {
+            // always use cache if populated
+            ret = false;
+        } else {
+            File f = new File(res.getImagePath());
+            if (f.isFile()) {
+                long expiry = 1000 * ttl + f.lastModified();
+                ret = System.currentTimeMillis() > expiry;
+            } else {
+                //p("WARN: " + f.getAbsolutePath() + " not found");
+            }
+        }
+        return ret;
+    }
+    
     private void makeTag() throws Exception {
         JspWriter out = pageContext.getOut();
         List<String> errs = cb.validate();
@@ -310,12 +344,12 @@ public class ChartTag extends TagSupport implements ITagDoc {
         ChartController cc = ChartController.get();
         ChartDiskResult cdr;
         cdr = cc.getChart(cb, null);
-        String title = ci.getProperty("title.text");
-        if (cdr == null) {
+        //String title = ci.getProperty("title.text");
+
+        if (cdr == null || isTtlExpired(cdr)) {
             cdr = cc.prepChartResult(cb);
             cdr.setGenerateThumbnail(false);
             cdr.setGenerateImageMap(true);
-            //p("cache miss '" + title + "'");
             cdr = cc.createChart(cb, null, cdr);
             cc.putChart(cdr, cb, null);
         } else {
@@ -325,11 +359,8 @@ public class ChartTag extends TagSupport implements ITagDoc {
         String uri = StringUtil.joinPaths(
                 req.getContextPath(), cc.getChartURI(cdr)
                 );
-        //out.println("<p><b>Path: </b>" + cdr.getImagePath() + "<br/>");
-        //out.println("   <b>servlet URL: </b>" + uri + "</p>");
         out.println("<img src=\"" + uri + "\" width=\""+ ci.getWidth() + "\""
                 + " height=\"" + ci.getHeight() + "\"/>");
-        //p("img path: " + cdr.getImagePath());
         /* NOTE NOTE NOTE:
          * Container is too aggressive about re-using tags, we must
          * release/reset ourselves after end tag
@@ -364,6 +395,12 @@ public class ChartTag extends TagSupport implements ITagDoc {
         		" the default graphType.  See <a href=\"charts.jsp#graph-types\">" +
         		"graph types</a> section for a list of valid graph types.",
         		false, "renderType" },
+        { "ttl", "Specifies a time-to-live, in seconds, for the cache entry of " +
+        		"this chart.  Charts with cache entries younger than the TTL " +
+        		"will not be re-drawn.  A ttl of <code>0</code> will never " +
+        		"use the cache; a ttl of <code>1</code> will always use the " +
+        		"cache.  The default is <code>" + ChartController.DEFAULT_TTL + 
+        		"</code>.", false },
         { "title", "Sets the title text of the chart.  Shorthand for setting" +
         		" chart property <code>title.text</code>", false },
         { "template", "Provides a bag of pre-set chart properties (a " +

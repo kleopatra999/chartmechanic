@@ -71,7 +71,7 @@
      The default JDBC URL for SQL queries
     </description>
     <param-name>cm.jdbcUrl</param-name>
-    <param-value>jdbc:postgresql://localhost:5432/koam</param-value>
+    <param-value>jdbc:postgresql://localhost:5432/my_db</param-value>
   </init-param>
   <init-param>
     <description>

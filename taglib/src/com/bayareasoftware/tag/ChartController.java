@@ -66,6 +66,7 @@ public class ChartController {
     public static final String CONFIG_JDBC_USERNAME = "cm.jdbcUsername";
     public static final String CONFIG_JDBC_PASSWORD = "cm.jdbcPassword";
     public static final String CONFIG_JDBC_JNDI_NAME = "cm.jdbcJndiName";
+    public static final int DEFAULT_TTL = 120;
     
     private SimpleProps templateChartProps = new SimpleProps();
     private ChartDriver fac;
@@ -76,7 +77,8 @@ public class ChartController {
     private String defaultJdbcDriver, defaultJdbcUrl,
     defaultJdbcUsername, defaultJdbcPassword, defaultJndiName;
 
-    private int defaultTtl;
+    private int defaultTtl = DEFAULT_TTL;
+    
     private ChartController() {
         fac = ChartDriverManager.getChartDriver(ChartDriverManager.JFREECHART);
     }
@@ -91,7 +93,7 @@ public class ChartController {
         cache = new ChartDiskCache(cacheRoot);
         cache.clear();
         // cache TTL
-        defaultTtl = Integer.parseInt(getConfig(sc, CONFIG_CACHE_TTL, "60"));
+        defaultTtl = Integer.parseInt(getConfig(sc, CONFIG_CACHE_TTL, "" + DEFAULT_TTL));
         // URI prefix
         servletPrefix = getConfig(sc, CONFIG_SERVLET_PREFIX, "/chart-images");
         // ChartTag takes account of contextPath, don't do it here

@@ -63,6 +63,11 @@
         <required>false</required>
         <rtexprvalue>true</rtexprvalue>
     </attribute>
+    <attribute>
+        <name>ttl</name>
+        <required>false</required>
+        <rtexprvalue>true</rtexprvalue>
+    </attribute>
 
     <dynamic-attributes>false</dynamic-attributes> 
   </tag>
