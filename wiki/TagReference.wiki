@@ -26,6 +26,7 @@
 || `height` || The height of the chart, in pixels || no ||  ||
 || `plotType` || Specifies which kind of plot to use for the chart. Note that only certain data types for the X and Y axes are valid for a given type of plot; see [charts.jsp#plot-types the charts document] for compatibility. Valid values are` PLOT_XY PLOT_TIME PLOT_PIE PLOT_PIE3D PLOT_CATEGORY PLOT_RING PLOT_HISTOGRAM PLOT_GANTT`. If `plotType` is not set, the chart tag will try to infer your desired plot type, based on the [data.jsp#data-types data type] of the X columns of your series. || no ||  ||
 || `graphType` || Sets the default graph type (renderer) to be used for series of this chart (e.g., lines, bars, dots, etc). Individual `<series>` tags may override the default graphType. See [charts.jsp#graph-types graph types] section for a list of valid graph types. || no || `renderType` ||
+|| `ttl` || Specifies a time-to-live, in seconds, for the cache entry of this chart. Charts with cache entries younger than the TTL will not be re-drawn. A ttl of `0` will never use the cache; a ttl of `1` will always use the cache. The default is `120`. || no ||  ||
 || `title` || Sets the title text of the chart. Shorthand for setting chart property `title.text` || no ||  ||
 || `template` || Provides a bag of pre-set chart properties (a [charts.jsp#templates template]). If no template is set for a chart, then a template called `default` will be used, if oneis defined. || no ||  ||
 
