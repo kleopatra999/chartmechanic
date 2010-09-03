@@ -26,6 +26,7 @@
   <property name="test-out" value="test-out"/>
 -->
   <property name="dist" value="dist"/>
+  <property name="release.version" value="0.7"/>
   <property name="common.dir" value="${basedir}/../common"/>
   <!-- commonly used properties (e.g. common-lib, junit.classpath, etc. are set here) -->
   <import file="${common.dir}/common-imports.xml"/>
@@ -103,7 +104,7 @@
   <target name="package" depends="compile" description="bundle up re-distributable bits">
    <mkdir dir="${dist}"/>
    <!-- demo jar -->
-   <jar destfile="${dist}/chart-taglib-demo.jar">
+   <jar destfile="${dist}/chartmechanic-demo-${release.version}.jar">
     <manifest>
      <attribute name="Main-Class" value="demo.DemoServer" />
     </manifest>
@@ -130,7 +131,7 @@
     <zipgroupfileset dir="${ds.dir}/lib" includes="gdata*.jar,poi*.jar,jtidy.jar"/>
    </jar>
    <!-- same as above, minus jetty,h2 and demo web directory -->
-   <jar destfile="${dist}/chart-taglib.jar">
+   <jar destfile="${dist}/chartmechanic-taglib-${release.version}.jar">
     <fileset dir="${classes}"/>
     <zipgroupfileset dir="${ds.dir}/dist" includes="chartengine-ds.jar"/>
     <zipgroupfileset dir="${core.dir}/dist" includes="chartengine-core.jar,chartengine-jfree.jar"/>
