@@ -141,7 +141,7 @@ Properties are converted into <code>set(...) </code> calls in the <a href="http:
 <tr><td><b>AxisLocation</b></td>
 
  <td>Sets the location of an axis relative to a plot.</td>
- <td><code>BOTTOM_OR_LEFT BOTTOM_OR_RIGHT TOP_OR_LEFT TOP_OR_RIGHT</code></td>
+ <td><code>BOTTOM_OR_LEFT BOTTOM_OR_RIGHT TOP_OR_LEFT TOP_OR_RIGHT BOTTOM RIGHT TOP LEFT</code></td>
 </tr>
 <tr><td><b>java.text.DateFormat</b></td><td>Any format String supported by <code>SimpleDateFormat</code></td>
     <td><code>MMM-yy</code></td></tr>
@@ -335,43 +335,57 @@ See the <a href="tag-reference.jsp#series"> series tag reference</a> for how to 
 
 <a name="series-functions"></a><h2>Series Functions</h2>
 <p>
-<font color="#ff0000">Under construction</font>
+The following functions are available to generate a charting series that is derived from another series:
+</p>
+<p>
 
 
 <table class="doc-table">
  <tr><th>Function</th><th>Description</th><th>Argument(s)</th></tr>
 <tr><td><b>MOVING AVG</b></td>
  <td>Moving Average</td><td>
-<b>Series</b> (sid) - Apply to series<br/>
-<b>Window</b> (number) - Number of samples to take the moving average of<br/>
+<b>Series</b> (sid)  - Apply to series<br/>
+<b>Window</b> (number)  - Number of samples to take the moving average of<br/>
 </td></tr>
 <tr><td><b>SCALE</b></td>
  <td>Scale</td><td>
-<b>Series</b> (sid) - Apply to series<br/>
-<b>Scale Factor</b> (number) - Numeric value to multiply by original data<br/>
+<b>Series</b> (sid)  - Apply to series<br/>
+<b>Scale Factor</b> (number)  - Numeric value to multiply by original data<br/>
 </td></tr>
 <tr><td><b>INFLATION ADJUST</b></td>
  <td>Adjust for Inflation</td><td>
-<b>Series</b> (sid) - Apply to series<br/>
-<b>Base Year</b> (number) - Year for inflation normalization (between 1913 and present)<br/>
+<b>Series</b> (sid)  - Apply to series<br/>
+<b>Base Year</b> (number)  - Year for inflation normalization (between 1913 and present)<br/>
 </td></tr>
 <tr><td><b>TIME CHANGE</b></td>
  <td>Change over Time</td><td>
-<b>Series</b> (sid) - Apply to series<br/>
-<b>Time Interval</b> (timeinterval) - Earlier time period from which to compute change<br/>
-<b>Percentage</b> (boolean) - Express as Percentage<br/>
+<b>Series</b> (sid)  - Apply to series<br/>
+<b>Time Interval</b> (timeinterval)  - Earlier time period from which to compute change<br/>
+<b>Percentage</b> (boolean)  - Express as Percentage<br/>
 </td></tr>
 <tr><td><b>TIME JOIN</b></td>
  <td>Join Time Series</td><td>
-<b>Operand 1</b> (sid) - First Series<br/>
-<b>Operator</b> (math_operator) - Math Function<br/>
-<b>Operand 2</b> (sid) - Second Series<br/>
-<b>Join Tolerance</b> (timeinterval) - Tolerance interval for time join<br/>
+<b>Operand 1</b> (sid)  - First Series<br/>
+<b>Operator</b> (math_operator)  - Math Function<br/>
+<b>Operand 2</b> (sid)  - Second Series<br/>
+<b>Join Tolerance</b> (timeinterval)  - Tolerance interval for time join<br/>
 </td></tr>
 
 </table>  
 </p>
-
+<p>
+All of the series function operate on another series (in the case of TIMEJOIN, two other series).
+For example, given a daily time series <code>"stock price"</code>, the
+<code>series-function</code> tag:
+</p>
+<p>
+<code>
+&lt;c:series-function series="stock price" function="MVAVG" args="20" name="MA-20"/&gt;
+</code>
+</p>
+<p>
+will generate the 20 day moving average of the stock price series.
+</p>
 <a name="markers"></a><h2>Markers</h2>
 <p>
 A marker is a horizontal or vertical line across the plot area, tied to a point on an X or Y axis, with an optional descriptive label. You can specify a marker's value as a specific NUMBER or DATE value, or its value can be from a <a href="#marker-functions">FUNCTION</a> of a series. 
@@ -379,40 +393,39 @@ A marker is a horizontal or vertical line across the plot area, tied to a point 
 
 <a name="marker-functions"></a><h2>Marker Functions</h2>
 <p>
-<font color="#ff0000">Under construction</font>
 
 
 <table class="doc-table">
  <tr><th>Function</th><th>Description</th><th>Argument(s)</th></tr>
 <tr><td><b>AVG</b></td>
  <td>Average</td><td>
-<b>Apply to Series</b> (sid) - null<br/>
+<b>Apply to Series</b> (sid) <br/>
 </td></tr>
 <tr><td><b>MIN</b></td>
  <td>Minimum</td><td>
-<b>Apply to Series</b> (sid) - null<br/>
+<b>Apply to Series</b> (sid) <br/>
 </td></tr>
 <tr><td><b>MAX</b></td>
  <td>Maximum</td><td>
-<b>Apply to Series</b> (sid) - null<br/>
+<b>Apply to Series</b> (sid) <br/>
 </td></tr>
 <tr><td><b>COUNT</b></td>
  <td>Count</td><td>
-<b>Apply to Series</b> (sid) - null<br/>
+<b>Apply to Series</b> (sid) <br/>
 </td></tr>
 <tr><td><b>SUM</b></td>
  <td>Sum</td><td>
-<b>Apply to Series</b> (sid) - null<br/>
+<b>Apply to Series</b> (sid) <br/>
 </td></tr>
 <tr><td><b>STDEV</b></td>
  <td>Standard Deviation</td><td>
-<b>Apply to Series</b> (sid) - null<br/>
-<b>Multiplier</b> (number) - Numeric factor to multiply the standard deviation by<br/>
+<b>Apply to Series</b> (sid) <br/>
+<b>Multiplier</b> (number)  - Numeric factor to multiply the standard deviation by<br/>
 </td></tr>
 <tr><td><b>STDEVP</b></td>
  <td>Population Standard Deviation</td><td>
-<b>Apply to Series</b> (sid) - null<br/>
-<b>Multiplier</b> (number) - Numeric factor to multiply the standard deviation by<br/>
+<b>Apply to Series</b> (sid) <br/>
+<b>Multiplier</b> (number)  - Numeric factor to multiply the standard deviation by<br/>
 </td></tr>
 
 </table>  

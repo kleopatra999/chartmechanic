@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/olympics.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:data id=&quot;medals&quot; type=&quot;csv&quot;<br> &nbsp; url=&quot;/data/olympic-medals-vancouver.csv&quot;/&gt;<br>&lt;c:chart title=&quot;Winter Olympic Medals, Vancouver 2010&quot;<br> &nbsp; graphType=&quot;Stacked Bar 3D&quot;&gt;<br> &lt;c:props&gt;<br>plot.orientation=HORIZONTAL<br>chart.backgroundImage=NONE<br>legend.position=right<br>description=Top 15 countries winning medals at the 2010 winter olympic games<br>plot.foregroundAlpha=.9<br>domain-axis.axisLineVisible=false<br>domain-axis.tickMarksVisible=false<br> &lt;/c:props&gt;<br> &lt;c:series datasource=&quot;medals&quot; name=&quot;Gold&quot; x=&quot;2&quot; y=&quot;3&quot; paint=&quot;#ffdd70&quot;/&gt;<br> &lt;c:series datasource=&quot;medals&quot; name=&quot;Silver&quot; x=&quot;2&quot; y=&quot;4&quot; paint=&quot;#c0c0c0&quot;/&gt;<br> &lt;c:series datasource=&quot;medals&quot; name=&quot;Bronze&quot; x=&quot;2&quot; y=&quot;5&quot; paint=&quot;#CD7F32&quot;/&gt;<br>&lt;/c:chart&gt;<br>&lt;%--&lt;c:data-table datasource=&quot;medals&quot; length=&quot;25&quot;/&gt;--%&gt;<br></pre>
+
+</body>
+</html>

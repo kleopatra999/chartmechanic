@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/timeseries2.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:data type=&quot;SQL&quot; id=&quot;random walk&quot; driver=&quot;org.h2.Driver&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp;url=&quot;jdbc:h2:mem:demo;DB_CLOSE_DELAY=-1&quot; user=&quot;sa&quot; password=&quot;bogus&quot;&gt;<br> &nbsp;SELECT * FROM RANDOM_WALK<br>&lt;/c:data&gt;<br>&lt;c:chart plotType=&quot;time&quot; graphType=&quot;Line&quot; title=&quot;random walk&quot;&gt;<br> &lt;c:props&gt;<br>renderer.stroke=3.0<br>plot.foregroundAlpha=1.0<br> &lt;/c:props&gt;<br> &lt;c:series name=&quot;W&quot; datasource=&quot;random walk&quot; y=&quot;2&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series-function series=&quot;W&quot; function=&quot;MVAVG&quot; args=&quot;20&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name=&quot;W MA-20&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series-function series=&quot;W&quot; function=&quot;timechange&quot; args=&quot;month|false&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name=&quot;W MoM % change&quot; yaxis=&quot;1&quot;/&gt;<br> &lt;c:series name=&quot;X&quot; datasource=&quot;random walk&quot; y=&quot;3&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series name=&quot;Y&quot; datasource=&quot;random walk&quot; y=&quot;4&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series name=&quot;Z&quot; datasource=&quot;random walk&quot; y=&quot;5&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series-function series=&quot;Y&quot; function=&quot;timejoin&quot; name=&quot;Y+Z&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; args=&quot;+|Z|day&quot;/&gt;<br> &lt;c:marker xaxis=&quot;true&quot; color=&quot;red&quot;<br> &nbsp;date=&quot;2010-07-04&quot; name=&quot;Independence Day&quot;&gt;<br>stroke=3.0<br> &lt;/c:marker&gt;<br>&lt;/c:chart&gt;<br><br></pre>
+
+</body>
+</html>

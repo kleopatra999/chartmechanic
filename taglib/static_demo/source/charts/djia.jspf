@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/djia.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:data id=&quot;DJIA&quot; url=&quot;/data/DJIA-monthly.csv&quot;/&gt;<br>&lt;c:data id=&quot;recessions&quot; url=&quot;/data/us-recessions.csv&quot;/&gt;<br>&lt;c:chart title=&quot;Dow Jones Monthly (log axis)&quot;<br> &nbsp; plotType=&quot;time&quot; graphType=&quot;Line&quot;&gt;<br>&lt;c:series datasource=&quot;DJIA&quot; name=&quot;Dow&quot;/&gt;<br>&lt;c:series-function series=&quot;Dow&quot; function=&quot;inflation&quot; args=&quot;1990&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;name=&quot;Dow (inflation adjusted, 1990)&quot;/&gt;<br>&lt;c:marker name=&quot;Recession&quot; color=&quot;#c0c0c0&quot; xaxis=&quot;true&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; datasource=&quot;recessions&quot;&gt;<br>layer=foreground<br>alpha=0.5<br>&lt;/c:marker&gt;<br>&lt;c:props&gt;<br>chart.backgroundImage=none<br>renderer.stroke=2.0<br>plot.foregroundAlpha=1.0<br>range-axis-0.axisType=log<br>range-axis-0.axisLocation=right<br>description=Dow Jones Industrial Average,<br> nominal and inflation-adjusted<br>&lt;/c:props&gt;<br>&lt;/c:chart&gt;<br></pre>
+
+</body>
+</html>
