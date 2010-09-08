@@ -29,6 +29,7 @@
  <li><a href="#props"><code>&lt;props&gt;</code></a></li>
  <li><a href="#chart"><code>&lt;chart&gt;</code></a></li>
  <li><a href="#series"><code>&lt;series&gt;</code></a></li>
+ <li><a href="#series-function"><code>&lt;series-function&gt;</code></a></li>
  <li><a href="#marker"><code>&lt;marker&gt;</code></a></li>
  <li><a href="#data-table"><code>&lt;data-table&gt;</code></a></li>
 </ul>
@@ -105,6 +106,9 @@ no</td><td>
 no</td><td>
 <code>renderType</code><br/>
 </td></tr>
+<tr><td><code>ttl</code></td><td>Specifies a time-to-live, in seconds, for the cache entry of this chart.  Charts with cache entries younger than the TTL will not be re-drawn.  A ttl of <code>0</code> will never use the cache; a ttl of <code>1</code> will always use the cache.  The default is <code>120</code>.</td><td>
+no</td><td>
+</td></tr>
 <tr><td><code>title</code></td><td>Sets the title text of the chart.  Shorthand for setting chart property <code>title.text</code></td><td>
 no</td><td>
 </td></tr>
@@ -167,6 +171,56 @@ no</td><td>
 
 </p>
 
+<a name="series-function"></a><h2><code>series-function</code> tag</h2>
+<p>
+
+
+<table class="doc-table">
+ <tr><th>Attribute</th><th>Description</th><th>Required?</th><th>Aliases</th></tr>
+<tr><td><code>name</code></td><td>The name of this series as it will appear on the chart.</td><td>
+yes</td><td>
+</td></tr>
+<tr><td><code>graphType</code></td><td>Specifies the <a href="charts.jsp#graph-types">graph type</a> for this series.  This will override the default graph type set for the entire chart, if any.</td><td>
+no</td><td>
+<code>renderer</code><br/>
+<code>render</code><br/>
+<code>type</code><br/>
+<code>graph-type</code><br/>
+</td></tr>
+<tr><td><code>color</code></td><td>Sets the color (or gradient paint) for this series.</td><td>
+no</td><td>
+<code>paint</code><br/>
+</td></tr>
+<tr><td><code>timeperiod</code></td><td>Sets the time frequency of data points for this series, which in turn controls the "width" of each point for the series. Most relevant when using certain graphTypes (e.g., <code>bar</code>).</td><td>
+no</td><td>
+<code>time</code><br/>
+<code>period</code><br/>
+</td></tr>
+<tr><td><code>yaxis</code></td><td>Specifies the Y (or <code>range</code>) axis that this series will bind to.  Valid values are <code>0 1 2 3</code>.  Defaults to <code>0</code>.</td><td>
+no</td><td>
+</td></tr>
+<tr><td><code>visible</code></td><td><code>boolean</code> to toggle if this series is shown on the chart or not.</td><td>
+no</td><td>
+</td></tr>
+<tr><td><code>series</code></td><td>The series name (ID) that this functional series will operate on.</td><td>
+yes</td><td>
+</td></tr>
+<tr><td><code>function</code></td><td>Specifies the function that will be applied to another series.  Valid values are: <br/><code>MVAVG<br/>
+SCALE<br/>
+INFLATION<br/>
+TIMECHANGE<br/>
+TIMEJOIN<br/>
+</code></td><td>
+yes</td><td>
+</td></tr>
+<tr><td><code>args</code></td><td>Sets the arguments for <code>function</code>.  In general, you probably want to use the appropriate function-specific tags, rather than specifying the arguments here.<br/>Args must be separated by vertical bars, '|'</td><td>
+yes</td><td>
+</td></tr>
+
+</table>
+
+</p>
+
 <a name="marker"></a><h2><code>marker</code> tag</h2>
 <p>
 
@@ -182,6 +236,15 @@ no</td><td>
 <tr><td><code>color</code></td><td>The color or gradient paint of this marker.  Shorthand for the <code>paint</code> property</td><td>
 no</td><td>
 </td></tr>
+<tr><td><code>visible</code></td><td>boolean that toggles whether or not this marker is displayed.</td><td>
+no</td><td>
+</td></tr>
+<tr><td><code>template</code></td><td>Sets the name of a template property set that should be applied to this marker.</td><td>
+no</td><td>
+</td></tr>
+<tr><td><code>datasource</code></td><td>Datasource for interval/band marker values</td><td>
+no</td><td>
+</td></tr>
 <tr><td><code>value</code></td><td>Specifies the numeric value(s) for this marker, along a numeric axis. A line marker will be drawn for a single value, multiple values will produce an interval (band) marker.  Multiple valuesmust be separated by a vertical bar '|'</td><td>
 no</td><td>
 <code>bandValues</code><br/>
@@ -189,9 +252,6 @@ no</td><td>
 <tr><td><code>dateValues</code></td><td>Specifies the date value(s) for this marker, along a date/time axis.  Multiple values will produce an interval (band) marker. Multiple values must be separated by a vertical bar '|'.  The format of the dates must comply with one of <a href="data.jsp#date-formats">the valid date formats</a>for the <code>data</code> tag.</td><td>
 no</td><td>
 <code>date</code><br/>
-</td></tr>
-<tr><td><code>visible</code></td><td>boolean that toggles whether or not this marker is displayed.</td><td>
-no</td><td>
 </td></tr>
 <tr><td><code>xaxis</code></td><td>boolean that specifies if this marker should be on the X (domain) axis</td><td>
 no</td><td>

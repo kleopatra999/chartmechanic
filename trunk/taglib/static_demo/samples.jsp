@@ -54,7 +54,7 @@ Then start drawing charts:
  <div class="chart-div">
  
  
-<img src="chart-images/dummy/f30ef20b08f6fa030df8f9fffbfa0b01.png" width="500" height="400"/>
+<img src="chart-images/dummy/fb08f7faf109fcfb0af2fd07f4fc08f8.png" width="500" height="400"/>
 
 </div>
  
@@ -69,7 +69,7 @@ Then start drawing charts:
 <div class="chart-div">
  
  
-<img src="chart-images/dummy/fc0e0f0cfdfb010cf40b08fbf50d05fb.png" width="500" height="400"/>
+<img src="chart-images/dummy/0cf8f10803fe090601010a02fa0dfc04.png" width="500" height="400"/>
 
 </div>
  
@@ -86,7 +86,7 @@ Then start drawing charts:
  
 
 
-<img src="chart-images/dummy/f0070ffdf5050a07f30005f40e03faff.png" width="500" height="400"/>
+<img src="chart-images/dummy/fbf8fef3fe0df408f3fe0afefe090605.png" width="500" height="400"/>
 
 
 </div>
@@ -106,7 +106,7 @@ Then start drawing charts:
 
 
  
-<img src="chart-images/dummy/040306f30e020ef40403fa0bfe0b0807.png" width="500" height="400"/>
+<img src="chart-images/dummy/000905000df8f5030efbf6fb01f4fbf2.png" width="500" height="400"/>
 
 </div>
  
@@ -123,14 +123,16 @@ Then start drawing charts:
 
 
 
-<img src="chart-images/dummy/fd0f06f60bfa050bfaf8fbff0c0a0f06.png" width="500" height="400"/>
+
+
+<img src="chart-images/dummy/01f3f4f90c0807f3090103f905f4f7fe.png" width="500" height="400"/>
 
 
 </div>
  
  <div class="source-div"><div id="title"><a href="source/charts/xy1.jspf"><b>source</b></a></div>
   <div id="source-content"><code><pre>
-&lt;c:chart plotType=&quot;xy&quot;&gt;<br>&lt;c:data id=&quot;random&quot; type=&quot;SQL&quot; jndiName=&quot;jdbc/DemoDS&quot;&gt;<br>select x,y from random<br>&lt;/c:data&gt;<br>&lt;c:series name=&quot;random series&quot; datasource=&quot;random&quot; paint=&quot;orange&quot;/&gt;<br>&lt;c:props&gt;<br>renderer.shape=circle<br>chart.backgroundPaint=#a0a0a0<br>#plot.backgroundAlpha=1<br>&lt;/c:props&gt;<br>&lt;c:marker value=&quot;9|13&quot; name=&quot;a band marker&quot; yaxis=&quot;0&quot; template=&quot;y-marker&quot;&gt;<br>&lt;c:marker name=&quot;x axis band&quot; xaxis=&quot;true&quot; value=&quot;3|4&quot; color=&quot;blue&quot;/&gt;<br>paint=#e0e0e0<br>layer=background<br>labelVisible=true<br>#label=My Band<br>labelPaint=#000000<br>&lt;/c:marker&gt;<br>&lt;/c:chart&gt;<br><br></pre></code>
+&lt;c:chart plotType=&quot;xy&quot;&gt;<br>&lt;c:data id=&quot;random&quot; type=&quot;SQL&quot; jndiName=&quot;jdbc/DemoDS&quot;&gt;<br>select x,y from random<br>&lt;/c:data&gt;<br>&lt;c:series name=&quot;random series&quot; datasource=&quot;random&quot; paint=&quot;red&quot;/&gt;<br>&lt;c:props&gt;<br>renderer.shape=circle<br>renderer.stroke=2.0<br>chart.backgroundPaint=#a0a0a0<br>#plot.backgroundAlpha=1<br>&lt;/c:props&gt;<br>&lt;c:marker name=&quot;x-axis band&quot; xaxis=&quot;true&quot; value=&quot;3|4&quot; color=&quot;blue&quot;/&gt;<br>&lt;c:marker value=&quot;2|6&quot; name=&quot;y-axis band&quot; yaxis=&quot;0&quot; template=&quot;y-marker&quot;&gt;<br>paint=#e0e0e0<br>layer=background<br>labelVisible=true<br>#label=My Band<br>labelPaint=#000000<br>alpha=0.7<br>&lt;/c:marker&gt;<br>&lt;c:marker-function name=&quot;AVERAGE&quot; series=&quot;random series&quot; function=&quot;AVG&quot;&gt;<br>stroke=line=2.0|dash=1<br>paint=yellow<br>labelAnchor=CENTER<br>labelFont=Arial-bold-14<br>&lt;/c:marker-function&gt;<br>&lt;/c:chart&gt;<br><br></pre></code>
 </div>
  </div>
 </div>
@@ -139,7 +141,7 @@ Then start drawing charts:
  <div class="chart-div">
  
   
-<img src="chart-images/dummy/f607f6fbfdf90bfdf90b090f01fa0506.png" width="500" height="400"/>
+<img src="chart-images/dummy/ff02080df5f2f1f808f80001f4f50afb.png" width="500" height="400"/>
 </div>
  
  <div class="source-div"><div id="title"><a href="source/charts/stooge-multi.jspf"><b>source</b></a></div>
@@ -148,6 +150,69 @@ Then start drawing charts:
 </div>
  </div>
 </div>
+
+<div class="item-div">
+ <div class="chart-div">
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<img src="chart-images/dummy/0bf2fdf70e0e0f0ef408f501060e0fff.png" width="500" height="400"/>
+
+
+</div>
+ 
+ <div class="source-div"><div id="title"><a href="source/charts/timeseries2.jspf"><b>source</b></a></div>
+  <div id="source-content"><code><pre>
+&lt;c:data type=&quot;SQL&quot; id=&quot;random walk&quot; driver=&quot;org.h2.Driver&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp;url=&quot;jdbc:h2:mem:demo;DB_CLOSE_DELAY=-1&quot; user=&quot;sa&quot; password=&quot;bogus&quot;&gt;<br> &nbsp;SELECT * FROM RANDOM_WALK<br>&lt;/c:data&gt;<br>&lt;c:chart plotType=&quot;time&quot; graphType=&quot;Line&quot; title=&quot;random walk&quot;&gt;<br> &lt;c:props&gt;<br>renderer.stroke=3.0<br>plot.foregroundAlpha=1.0<br> &lt;/c:props&gt;<br> &lt;c:series name=&quot;W&quot; datasource=&quot;random walk&quot; y=&quot;2&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series-function series=&quot;W&quot; function=&quot;MVAVG&quot; args=&quot;20&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name=&quot;W MA-20&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series-function series=&quot;W&quot; function=&quot;timechange&quot; args=&quot;month|false&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; name=&quot;W MoM % change&quot; yaxis=&quot;1&quot;/&gt;<br> &lt;c:series name=&quot;X&quot; datasource=&quot;random walk&quot; y=&quot;3&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series name=&quot;Y&quot; datasource=&quot;random walk&quot; y=&quot;4&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series name=&quot;Z&quot; datasource=&quot;random walk&quot; y=&quot;5&quot; visible=&quot;false&quot;/&gt;<br> &lt;c:series-function series=&quot;Y&quot; function=&quot;timejoin&quot; name=&quot;Y+Z&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; args=&quot;+|Z|day&quot;/&gt;<br> &lt;c:marker xaxis=&quot;true&quot; color=&quot;red&quot;<br> &nbsp;date=&quot;2010-07-04&quot; name=&quot;Independence Day&quot;&gt;<br>stroke=3.0<br> &lt;/c:marker&gt;<br>&lt;/c:chart&gt;<br><br></pre></code>
+</div>
+ </div>
+</div>
+
+<div class="item-div">
+ <div class="chart-div">
+
+ 
+ 
+ 
+ 
+<img src="chart-images/dummy/010b04070a05f1fd0104fa0ffd0dfe04.png" width="500" height="400"/>
+
+
+</div>
+ 
+ <div class="source-div"><div id="title"><a href="source/charts/olympics.jspf"><b>source</b></a></div>
+  <div id="source-content"><code><pre>
+&lt;c:data id=&quot;medals&quot; type=&quot;csv&quot;<br> &nbsp; url=&quot;/data/olympic-medals-vancouver.csv&quot;/&gt;<br>&lt;c:chart title=&quot;Winter Olympic Medals, Vancouver 2010&quot;<br> &nbsp; graphType=&quot;Stacked Bar 3D&quot;&gt;<br> &lt;c:props&gt;<br>plot.orientation=HORIZONTAL<br>chart.backgroundImage=NONE<br>legend.position=right<br>description=Top 15 countries winning medals at the 2010 winter olympic games<br>plot.foregroundAlpha=.9<br>domain-axis.axisLineVisible=false<br>domain-axis.tickMarksVisible=false<br> &lt;/c:props&gt;<br> &lt;c:series datasource=&quot;medals&quot; name=&quot;Gold&quot; x=&quot;2&quot; y=&quot;3&quot; paint=&quot;#ffdd70&quot;/&gt;<br> &lt;c:series datasource=&quot;medals&quot; name=&quot;Silver&quot; x=&quot;2&quot; y=&quot;4&quot; paint=&quot;#c0c0c0&quot;/&gt;<br> &lt;c:series datasource=&quot;medals&quot; name=&quot;Bronze&quot; x=&quot;2&quot; y=&quot;5&quot; paint=&quot;#CD7F32&quot;/&gt;<br>&lt;/c:chart&gt;<br>&lt;%--&lt;c:data-table datasource=&quot;medals&quot; length=&quot;25&quot;/&gt;--%&gt;<br></pre></code>
+</div>
+ </div>
+</div>
+
+<div class="item-div">
+ <div class="chart-div">
+
+
+
+
+
+
+<img src="chart-images/dummy/f40a0c06ff0b0a03fb09fef0f30af307.png" width="500" height="400"/>
+
+</div>
+ 
+ <div class="source-div"><div id="title"><a href="source/charts/djia.jspf"><b>source</b></a></div>
+  <div id="source-content"><code><pre>
+&lt;c:data id=&quot;DJIA&quot; url=&quot;/data/DJIA-monthly.csv&quot;/&gt;<br>&lt;c:data id=&quot;recessions&quot; url=&quot;/data/us-recessions.csv&quot;/&gt;<br>&lt;c:chart title=&quot;Dow Jones Monthly (log axis)&quot;<br> &nbsp; plotType=&quot;time&quot; graphType=&quot;Line&quot;&gt;<br>&lt;c:series datasource=&quot;DJIA&quot; name=&quot;Dow&quot;/&gt;<br>&lt;c:series-function series=&quot;Dow&quot; function=&quot;inflation&quot; args=&quot;1990&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;name=&quot;Dow (inflation adjusted, 1990)&quot;/&gt;<br>&lt;c:marker name=&quot;Recession&quot; color=&quot;#c0c0c0&quot; xaxis=&quot;true&quot;<br> &nbsp; &nbsp; &nbsp; &nbsp; datasource=&quot;recessions&quot;&gt;<br>layer=foreground<br>alpha=0.5<br>&lt;/c:marker&gt;<br>&lt;c:props&gt;<br>chart.backgroundImage=none<br>renderer.stroke=2.0<br>plot.foregroundAlpha=1.0<br>range-axis-0.axisType=log<br>range-axis-0.axisLocation=right<br>description=Dow Jones Industrial Average,<br> nominal and inflation-adjusted<br>&lt;/c:props&gt;<br>&lt;/c:chart&gt;<br></pre></code>
+</div>
+ </div>
+</div>
+
 <p>
 <b>&lt;data-table&gt; tag example</b>
 <table><tr>
