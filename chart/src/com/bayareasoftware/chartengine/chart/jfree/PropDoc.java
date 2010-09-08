@@ -125,6 +125,7 @@ public class PropDoc {
         l = ts.getPlots();
         for (ChartBeanInfo c : l) {
             if (supportedPlots.get(c.getDisplayname()) != null) {
+                c = ts.getPlotInfo(c.getClassname()); // this gets superclass props as well
                 printMinorAnchor(c.getClassname(), c.getDisplayname());
                 printBean(c);
             }
@@ -166,7 +167,6 @@ public class PropDoc {
     }
     public static void main(String[] args) throws Exception {
         PrintStream out;
-        boolean wiki = false;
         if (args.length != 4) {
             System.err.println("usage: PropDoc <html-file> <chart-wiki-file> " +
             		"<xy-renderer-wiki-file> <cat-renderer-wiki-file>");
