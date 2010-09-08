@@ -229,6 +229,130 @@
  section colour is an instance of {@link java.awt.Color}.</td><td><code>false</code></td></tr>
 <tr><td>depthFactor</td><td>double</td><td>Sets the pie depth as a percentage of the height of the plot area, and
  sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.12</code></td></tr>
+<tr><td>autoPopulateSectionOutlinePaint</td><td>boolean</td><td>Sets the flag that controls whether or not the section outline paint is
+ auto-populated by the {@link #lookupSectionOutlinePaint(Comparable)}
+ method, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>autoPopulateSectionOutlineStroke</td><td>boolean</td><td>Sets the flag that controls whether or not the section outline stroke is
+ auto-populated by the {@link #lookupSectionOutlineStroke(Comparable)}
+ method, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>autoPopulateSectionPaint</td><td>boolean</td><td>Sets the flag that controls whether or not the section paint is
+ auto-populated by the {@link #lookupSectionPaint(Comparable)} method,
+ and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
+<tr><td>baseSectionOutlinePaint</td><td>Paint</td><td>Sets the base section paint.</td><td><code>#808080</code></td></tr>
+<tr><td>baseSectionOutlineStroke</td><td>Stroke</td><td>Sets the base section stroke.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>baseSectionPaint</td><td>Paint</td><td>Sets the base section paint and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>circular</td><td>boolean</td><td>A flag indicating whether the pie chart is circular, or stretched into
+ an elliptical shape.</td><td><code>true</code></td></tr>
+<tr><td>ignoreNullValues</td><td>boolean</td><td>Sets a flag that controls whether <code>null</code> values are ignored,
+ and sends a {@link PlotChangeEvent} to all registered listeners.  At
+ present, this only affects whether or not the key is presented in the
+ legend.</td><td><code>false</code></td></tr>
+<tr><td>ignoreZeroValues</td><td>boolean</td><td>Sets a flag that controls whether zero values are ignored,
+ and sends a {@link PlotChangeEvent} to all registered listeners.  This
+ only affects whether or not a label appears for the non-visible
+ pie section.</td><td><code>false</code></td></tr>
+<tr><td>interiorGap</td><td>double</td><td>Sets the interior gap and sends a {@link PlotChangeEvent} to all
+ registered listeners.  This controls the space between the edges of the
+ pie plot and the plot area itself (the region where the section labels
+ appear).</td><td><code>0.08</code></td></tr>
+<tr><td>labelBackgroundPaint</td><td>Paint</td><td>Sets the section label background paint and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffc0</code></td></tr>
+<tr><td>labelFont</td><td>Font</td><td>Sets the section label font and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>SansSerif-10</code></td></tr>
+<tr><td>labelGap</td><td>double</td><td>Sets the gap between the edge of the pie and the labels (expressed as a
+ percentage of the plot width) and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>0.025</code></td></tr>
+<tr><td>labelLinkMargin</td><td>double</td><td>Sets the link margin and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>0.025</code></td></tr>
+<tr><td>labelLinkPaint</td><td>Paint</td><td>Sets the paint used for the lines that connect pie sections to their
+ corresponding labels, and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>labelLinkStroke</td><td>Stroke</td><td>Sets the link stroke and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>labelLinksVisible</td><td>boolean</td><td>Sets the flag that controls whether or not label linking lines are
+ visible and sends a {@link PlotChangeEvent} to all registered listeners.
+ Please take care when hiding the linking lines - depending on the data
+ values, the labels can be displayed some distance away from the
+ corresponding pie section.</td><td><code>true</code></td></tr>
+<tr><td>labelOutlinePaint</td><td>Paint</td><td>Sets the section label outline paint and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>labelOutlineStroke</td><td>Stroke</td><td>Sets the section label outline stroke and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>labelPadding</td><td>RectangleInsets</td><td>Sets the padding between each label and its outline and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>2.0,2.0,2.0,2.0</code></td></tr>
+<tr><td>labelPaint</td><td>Paint</td><td>Sets the section label paint and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>labelShadowPaint</td><td>Paint</td><td>Sets the section label shadow paint and sends a {@link PlotChangeEvent}
+ to all registered listeners.</td><td><code>#979797</code></td></tr>
+<tr><td>legendItemShape</td><td>Shape</td><td>Sets the shape used for legend items and sends a {@link PlotChangeEvent}
+ to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>maximumLabelWidth</td><td>double</td><td>Sets the maximum label width as a percentage of the plot width and sends
+ a {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.14</code></td></tr>
+<tr><td>minimumArcAngleToDraw</td><td>double</td><td>Sets the minimum arc angle that will be drawn.  Pie sections for an
+ angle smaller than this are not drawn, to avoid a JDK bug.  See this
+ link for details:
+ <br><br>
+ <a href="http://www.jfree.org/phpBB2/viewtopic.php?t=2707">
+ http://www.jfree.org/phpBB2/viewtopic.php?t=2707</a>
+ <br><br>
+ ...and this bug report in the Java Bug Parade:
+ <br><br>
+ <a href=
+ "http://developer.java.sun.com/developer/bugParade/bugs/4836495.html">
+ http://developer.java.sun.com/developer/bugParade/bugs/4836495.html</a></td><td><code>1.0E-5</code></td></tr>
+<tr><td>pieIndex</td><td>int</td><td>Sets the pie index (this is used by the {@link MultiplePiePlot} class to
+ track subplots).</td><td><code>0</code></td></tr>
+<tr><td>sectionOutlinesVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the outline is drawn for
+ each pie section, and sends a {@link PlotChangeEvent} to all registered
+ listeners.</td><td><code>true</code></td></tr>
+<tr><td>shadowPaint</td><td>Paint</td><td>Sets the shadow paint and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>#808080</code></td></tr>
+<tr><td>shadowXOffset</td><td>double</td><td>Sets the x-offset for the shadow effect and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
+<tr><td>shadowYOffset</td><td>double</td><td>Sets the y-offset for the shadow effect and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>4.0</code></td></tr>
+<tr><td>simpleLabelOffset</td><td>RectangleInsets</td><td>Sets the offset for the simple labels and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>0.18,0.18,0.18,0.18,RELATIVE</code></td></tr>
+<tr><td>simpleLabels</td><td>boolean</td><td>Sets the flag that controls whether simple or extended labels are
+ displayed on the plot, and sends a {@link PlotChangeEvent} to all
+ registered listeners.</td><td><code>false</code></td></tr>
+<tr><td>startAngle</td><td>double</td><td>Sets the starting angle and sends a {@link PlotChangeEvent} to all
+ registered listeners.  The initial default value is 90 degrees, which
+ corresponds to 12 o'clock.  A value of zero corresponds to 3 o'clock...
+ this is the encoding used by Java's Arc2D class.</td><td><code>90.0</code></td></tr>
+<tr><td>backgroundAlpha</td><td>float</td><td>Sets the alpha transparency of the plot area background, and notifies
+ registered listeners that the plot has been modified.</td><td><code>1.0</code></td></tr>
+<tr><td>backgroundImage</td><td>Image</td><td>Sets the background image for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>backgroundImageAlignment</td><td>int</td><td>Sets the alignment for the background image and sends a
+ {@link PlotChangeEvent} to all registered listeners.  Alignment options
+ are defined by the {@link org.jfree.ui.Align} class in the JCommon
+ class library.</td><td><code>15</code></td></tr>
+<tr><td>backgroundImageAlpha</td><td>float</td><td>Sets the alpha transparency used when drawing the background image.</td><td><code>0.5</code></td></tr>
+<tr><td>backgroundPaint</td><td>Paint</td><td>Sets the background color of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>foregroundAlpha</td><td>float</td><td>Sets the alpha-transparency for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>insets</td><td>RectangleInsets</td><td>Sets the insets for the plot and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>4.0,8.0,4.0,8.0</code></td></tr>
+<tr><td>noDataMessage</td><td>String</td><td>Sets the message that is displayed when the dataset is empty or
+ <code>null</code>, and sends a {@link PlotChangeEvent} to all registered
+ listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>noDataMessageFont</td><td>Font</td><td>Sets the font used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>noDataMessagePaint</td><td>Paint</td><td>Sets the paint used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>notify</td><td>boolean</td><td>Sets a flag that controls whether or not listeners receive
+ {@link PlotChangeEvent} notifications.</td><td><code>true</code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the paint used to draw the outline of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.  If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>#808080</code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the stroke used to outline the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners. If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>outlineVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the plot's outline is
+ drawn, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 </table>
 <a name="org.jfree.chart.plot.CategoryPlot"></a><h2>CategoryPlot</h2>
  &nbsp;&nbsp;&nbsp;<a href="">top</a>
@@ -300,6 +424,38 @@
  all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>weight</td><td>int</td><td>Sets the weight for the plot and sends a {@link PlotChangeEvent} to all
  registered listeners.</td><td><code>0</code></td></tr>
+<tr><td>backgroundAlpha</td><td>float</td><td>Sets the alpha transparency of the plot area background, and notifies
+ registered listeners that the plot has been modified.</td><td><code>1.0</code></td></tr>
+<tr><td>backgroundImage</td><td>Image</td><td>Sets the background image for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>backgroundImageAlignment</td><td>int</td><td>Sets the alignment for the background image and sends a
+ {@link PlotChangeEvent} to all registered listeners.  Alignment options
+ are defined by the {@link org.jfree.ui.Align} class in the JCommon
+ class library.</td><td><code>15</code></td></tr>
+<tr><td>backgroundImageAlpha</td><td>float</td><td>Sets the alpha transparency used when drawing the background image.</td><td><code>0.5</code></td></tr>
+<tr><td>backgroundPaint</td><td>Paint</td><td>Sets the background color of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>foregroundAlpha</td><td>float</td><td>Sets the alpha-transparency for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>insets</td><td>RectangleInsets</td><td>Sets the insets for the plot and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>4.0,8.0,4.0,8.0</code></td></tr>
+<tr><td>noDataMessage</td><td>String</td><td>Sets the message that is displayed when the dataset is empty or
+ <code>null</code>, and sends a {@link PlotChangeEvent} to all registered
+ listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>noDataMessageFont</td><td>Font</td><td>Sets the font used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>noDataMessagePaint</td><td>Paint</td><td>Sets the paint used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>notify</td><td>boolean</td><td>Sets a flag that controls whether or not listeners receive
+ {@link PlotChangeEvent} notifications.</td><td><code>true</code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the paint used to draw the outline of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.  If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>#808080</code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the stroke used to outline the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners. If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>outlineVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the plot's outline is
+ drawn, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 </table>
 <a name="org.jfree.chart.plot.PiePlot"></a><h2>PiePlot</h2>
  &nbsp;&nbsp;&nbsp;<a href="">top</a>
@@ -414,6 +570,38 @@
  registered listeners.  The initial default value is 90 degrees, which
  corresponds to 12 o'clock.  A value of zero corresponds to 3 o'clock...
  this is the encoding used by Java's Arc2D class.</td><td><code>90.0</code></td></tr>
+<tr><td>backgroundAlpha</td><td>float</td><td>Sets the alpha transparency of the plot area background, and notifies
+ registered listeners that the plot has been modified.</td><td><code>1.0</code></td></tr>
+<tr><td>backgroundImage</td><td>Image</td><td>Sets the background image for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>backgroundImageAlignment</td><td>int</td><td>Sets the alignment for the background image and sends a
+ {@link PlotChangeEvent} to all registered listeners.  Alignment options
+ are defined by the {@link org.jfree.ui.Align} class in the JCommon
+ class library.</td><td><code>15</code></td></tr>
+<tr><td>backgroundImageAlpha</td><td>float</td><td>Sets the alpha transparency used when drawing the background image.</td><td><code>0.5</code></td></tr>
+<tr><td>backgroundPaint</td><td>Paint</td><td>Sets the background color of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>foregroundAlpha</td><td>float</td><td>Sets the alpha-transparency for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>insets</td><td>RectangleInsets</td><td>Sets the insets for the plot and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>4.0,8.0,4.0,8.0</code></td></tr>
+<tr><td>noDataMessage</td><td>String</td><td>Sets the message that is displayed when the dataset is empty or
+ <code>null</code>, and sends a {@link PlotChangeEvent} to all registered
+ listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>noDataMessageFont</td><td>Font</td><td>Sets the font used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>noDataMessagePaint</td><td>Paint</td><td>Sets the paint used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>notify</td><td>boolean</td><td>Sets a flag that controls whether or not listeners receive
+ {@link PlotChangeEvent} notifications.</td><td><code>true</code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the paint used to draw the outline of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.  If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>#808080</code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the stroke used to outline the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners. If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>outlineVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the plot's outline is
+ drawn, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 </table>
 <a name="org.jfree.chart.plot.XYPlot"></a><h2>XYPlot</h2>
  &nbsp;&nbsp;&nbsp;<a href="">top</a>
@@ -517,6 +705,38 @@
  all registered listeners.</td><td><code>false</code></td></tr>
 <tr><td>weight</td><td>int</td><td>Sets the weight for the plot and sends a {@link PlotChangeEvent} to all
  registered listeners.</td><td><code>1</code></td></tr>
+<tr><td>backgroundAlpha</td><td>float</td><td>Sets the alpha transparency of the plot area background, and notifies
+ registered listeners that the plot has been modified.</td><td><code>1.0</code></td></tr>
+<tr><td>backgroundImage</td><td>Image</td><td>Sets the background image for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>backgroundImageAlignment</td><td>int</td><td>Sets the alignment for the background image and sends a
+ {@link PlotChangeEvent} to all registered listeners.  Alignment options
+ are defined by the {@link org.jfree.ui.Align} class in the JCommon
+ class library.</td><td><code>15</code></td></tr>
+<tr><td>backgroundImageAlpha</td><td>float</td><td>Sets the alpha transparency used when drawing the background image.</td><td><code>0.5</code></td></tr>
+<tr><td>backgroundPaint</td><td>Paint</td><td>Sets the background color of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#ffffff</code></td></tr>
+<tr><td>foregroundAlpha</td><td>float</td><td>Sets the alpha-transparency for the plot and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>1.0</code></td></tr>
+<tr><td>insets</td><td>RectangleInsets</td><td>Sets the insets for the plot and sends a {@link PlotChangeEvent} to
+ all registered listeners.</td><td><code>4.0,8.0,4.0,8.0</code></td></tr>
+<tr><td>noDataMessage</td><td>String</td><td>Sets the message that is displayed when the dataset is empty or
+ <code>null</code>, and sends a {@link PlotChangeEvent} to all registered
+ listeners.</td><td><code>&nbsp;</code></td></tr>
+<tr><td>noDataMessageFont</td><td>Font</td><td>Sets the font used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>SansSerif-12</code></td></tr>
+<tr><td>noDataMessagePaint</td><td>Paint</td><td>Sets the paint used to display the 'no data' message and sends a
+ {@link PlotChangeEvent} to all registered listeners.</td><td><code>#000000</code></td></tr>
+<tr><td>notify</td><td>boolean</td><td>Sets a flag that controls whether or not listeners receive
+ {@link PlotChangeEvent} notifications.</td><td><code>true</code></td></tr>
+<tr><td>outlinePaint</td><td>Paint</td><td>Sets the paint used to draw the outline of the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners.  If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>#808080</code></td></tr>
+<tr><td>outlineStroke</td><td>Stroke</td><td>Sets the stroke used to outline the plot area and sends a
+ {@link PlotChangeEvent} to all registered listeners. If you set this
+ attribute to <code>null</code>, no outline will be drawn.</td><td><code>line=0.5|dash=0</code></td></tr>
+<tr><td>outlineVisible</td><td>boolean</td><td>Sets the flag that controls whether or not the plot's outline is
+ drawn, and sends a {@link PlotChangeEvent} to all registered listeners.</td><td><code>true</code></td></tr>
 </table>
 <a name="axis"></a><h1>Axis Types</h1>
 <a name="number"></a><h2>NumberAxis</h2>
