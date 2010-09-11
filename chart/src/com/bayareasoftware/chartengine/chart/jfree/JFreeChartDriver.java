@@ -114,6 +114,7 @@ import org.jfree.chart.title.CompositeTitle;
 import org.jfree.chart.title.ImageTitle;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.title.TextTitle;
+import org.jfree.chart.urls.CategoryURLGenerator;
 import org.jfree.chart.urls.PieURLGenerator;
 import org.jfree.chart.urls.XYURLGenerator;
 import org.jfree.data.Range;
@@ -1673,6 +1674,7 @@ public class JFreeChartDriver implements ChartDriver {
                     this.addMarker(ctxt,md,xyplot,ctxt.getMarkerValue(i));
                 }
             }
+            /*
             // try a pointer annotation
             if (false) {
                 int annoItem = 8;
@@ -1684,13 +1686,10 @@ public class JFreeChartDriver implements ChartDriver {
                             "Data Point Eight", x, y, 0);
                     pointer.setAngle(-1);
                     pointer.setLabelOffset(pointer.getLabelOffset() + 10);
-                    /*
-                     * Paint red = ChartUtil.decodeColor("purple");
-                     * pointer.setPaint(red); pointer.setArrowPaint(red);
-                     */
                     xyplot.addAnnotation(pointer);
                 }
-            }            
+            }
+            */
         } else if (plot instanceof CategoryPlot) {
             CategoryPlot cplot = (CategoryPlot) plot;
             cplot.setDatasetRenderingOrder(DatasetRenderingOrder.REVERSE);
@@ -1698,6 +1697,16 @@ public class JFreeChartDriver implements ChartDriver {
             if (defaultRenderType == null) {
                 defaultRenderType = DEFAULT_CATEGORY_RENDERER;
             }
+            CategoryURLGenerator urlGen = new CategoryURLGenerator() {
+                public String generateURL(CategoryDataset ds, int series, int item) {
+                    try {
+                        return ctxt.getItemURL(ds, series, item);
+                    } catch (RuntimeException re) {
+                        re.printStackTrace();
+                        throw re;
+                    }
+                }
+            };
             /* We create a dataset and renderer for each distinct (renderType,rangeAxis)
              * SeriesDescriptor tuple on the chart.  Each series is then mapped to a
              * series paint within the renderer.  We create a default renderer for each
@@ -1707,6 +1716,7 @@ public class JFreeChartDriver implements ChartDriver {
             for (int i = 0; i < ChartConstants.MAX_RANGE_AXES; i++) {
                 CategoryItemRenderer defaultCategoryRenderer = getCategoryRenderer(defaultRenderType);
                 //cplot.setRenderer(defaultCategoryRenderer);
+                defaultCategoryRenderer.setBaseItemURLGenerator(urlGen);
                 defaultRenderers.add(defaultCategoryRenderer);
             }
             
@@ -1724,6 +1734,8 @@ public class JFreeChartDriver implements ChartDriver {
                     // set its custom renderer properties
                     SimpleProps sp = ctxt.getRendererPropsForDataset(i);
                     BeanUtil.setProps(render,sp,"renderer.");
+                    // set url gen
+                    render.setBaseItemURLGenerator(urlGen);
                 } else {
                     int axis = ctxt.getRangeAxisForDataset(i);
                     render = (CategoryItemRenderer)defaultRenderers.get(axis);

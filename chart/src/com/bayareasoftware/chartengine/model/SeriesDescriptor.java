@@ -34,6 +34,7 @@ public class SeriesDescriptor extends BaseDescriptor implements ISeries {
     public static final String PROP_histogram_max = "histogramMax";
     public static final String PROP_timePeriod = "timePeriod";
     public static final String PROP_error = "seriesError";
+    public static final String PROP_link_expression = "linkExpression";
     
     private static final int DEFAULT_XCOLUMN = 1;
     private static final int DEFAULT_YCOLUMN = 2;
@@ -73,6 +74,7 @@ public class SeriesDescriptor extends BaseDescriptor implements ISeries {
     
     private String color;
     private String renderer;
+    private String linkExpression;
     
     // some kind of problem or error currently with the series
     private transient boolean hasError;
@@ -151,6 +153,9 @@ public class SeriesDescriptor extends BaseDescriptor implements ISeries {
         if (getHistogramMax() != DEFAULT_HISTOGRAM_MAX)
             sp.set(prefix,PROP_histogram_max,String.valueOf(getHistogramMax()));
 
+        if (getLinkExpression() != null)
+            sp.set(prefix,PROP_link_expression,String.valueOf(getLinkExpression()));
+        
         return sp;
     }
 
@@ -253,6 +258,13 @@ public class SeriesDescriptor extends BaseDescriptor implements ISeries {
             key = PROP_histogram_min;
             if (props.containsKey(key)) {
                 setHistogramMin(Double.parseDouble(props.get(key)));
+                props.remove(key);
+                ret = true;
+            }
+            
+            key = PROP_link_expression;
+            if (props.containsKey(key)) {
+                setLinkExpression(props.get(key));
                 props.remove(key);
                 ret = true;
             }
@@ -369,7 +381,7 @@ public class SeriesDescriptor extends BaseDescriptor implements ISeries {
     public int getZColumn() {
         return zColumn;
     }
-
+    
     public void setZColumn(int column) {
         int old = this.zColumn;
         zColumn = column;
@@ -429,6 +441,31 @@ public class SeriesDescriptor extends BaseDescriptor implements ISeries {
         int old = this.timePeriod;
         this.timePeriod = tp;
         fireChange(PROP_timePeriod, new Integer(old), new Integer(this.timePeriod));
+    }
+    
+    /**
+     * Sets an expression which will be used to generate URL links for this series
+     * in an HTML image map of the chart.  The expression may contain arbitrary
+     * text, and tokens that will be expanded at runtime.  The tokens can specify
+     * columns of data from the same row in a data set that generated each point of
+     * the series.  The series name may also be specified.  The tokens are surrounded
+     * by braces '{' and '}', and contain either the (1-based) index of a column, or
+     * else the name of the series, denoted by <code>{series}</code>.
+     * 
+     *  For example:
+     *  <pre>
+     *  linkExpression="http://server/my-page?user={series}&date={1}&param={3}"
+     *  </pre>
+     *  
+     */
+    public String getLinkExpression() {
+        return linkExpression;
+    }
+    
+    public void setLinkExpression(String expr) {
+        String old = linkExpression;
+        linkExpression = expr;
+        fireChange(PROP_link_expression, old, expr);
     }
     
     public boolean equals(Object o) {
