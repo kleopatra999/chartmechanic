@@ -85,6 +85,7 @@ import org.jfree.chart.entity.EntityCollection;
 import org.jfree.chart.entity.TitleEntity;
 import org.jfree.chart.imagemap.ImageMapUtilities;
 import org.jfree.chart.imagemap.StandardToolTipTagFragmentGenerator;
+import org.jfree.chart.imagemap.StandardURLTagFragmentGenerator;
 import org.jfree.chart.imagemap.ToolTipTagFragmentGenerator;
 import org.jfree.chart.imagemap.URLTagFragmentGenerator;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
@@ -114,6 +115,7 @@ import org.jfree.chart.title.ImageTitle;
 import org.jfree.chart.title.LegendTitle;
 import org.jfree.chart.title.TextTitle;
 import org.jfree.chart.urls.PieURLGenerator;
+import org.jfree.chart.urls.XYURLGenerator;
 import org.jfree.data.Range;
 import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.category.DefaultCategoryDataset;
@@ -1187,16 +1189,10 @@ public class JFreeChartDriver implements ChartDriver {
 
             // ====== Step 6: generate the imageMap (if necessary)
             if (diskResult.isGenerateImageMap()) {
-                URLTagFragmentGenerator utag = new URLTagFragmentGenerator() {
-                    public String generateURLFragment(String urlText) {
-                        //return "_myUrlFrag(" + urlText + ")";
-                        String[] pms = StringUtil.splitCompletely(urlText, '|', true);
-                        return " onmouseover=\"hilight_chart(\'" + pms[0] + "',"
-                        + pms[1] + "," + pms[2] + ")\"";
-                    }
-                };
+                URLTagFragmentGenerator utag = new StandardURLTagFragmentGenerator();
                 ToolTipTagFragmentGenerator ttgen = new StandardToolTipTagFragmentGenerator();
-                String imap = ImageMapUtilities.getImageMap(BaseInfo.lastIDPart(ci.getId(),""), cri, ttgen, utag);
+                String imapId = diskResult.getImageMapId();
+                String imap = ImageMapUtilities.getImageMap(imapId, cri, ttgen, utag);
                 if (diskResult.hasImageMapPath()) {
                      FileUtil.writeString(new File(diskResult.getImageMapPath()), imap);
                 } 
@@ -1393,7 +1389,7 @@ public class JFreeChartDriver implements ChartDriver {
      */
     private JFreeChart createChart(ChartInfo ci,
                                    SimpleProps templateProps,
-                                   ChartContext ctxt,
+                                   final ChartContext ctxt,
                                    Map<Integer,String> colorMap) {
         
         //Dataset dset = ctxt.getDefaultDataset();
@@ -1581,19 +1577,16 @@ public class JFreeChartDriver implements ChartDriver {
         List<Object> defaultRenderers = new ArrayList<Object>();
         
         if (plot instanceof XYPlot) {
-//            XYURLGenerator urlGen = new XYURLGenerator() {
-//                public String generateURL(XYDataset ds, int series, int item) {
-//                    String seriesName = (String) ds.getSeriesKey(series);
-//                    Number x = ds.getX(series, item);
-//                    Number y = ds.getY(series, item);
-//                    /*
-//                     * String base = "/myurl?"; String url = base + "series=" +
-//                     * seriesName + "&domain=" + ds.getXValue(series, item) +
-//                     * "&range=" + ds.getYValue(series, item); return url;
-//                     */
-//                    return seriesName + "|" + x + "|" + y;
-//                }
-//            };
+            XYURLGenerator urlGen = new XYURLGenerator() {
+                public String generateURL(XYDataset ds, int series, int item) {
+                    try {
+                        return ctxt.getItemURL(ds, series, item);
+                    } catch (RuntimeException re) {
+                        re.printStackTrace();
+                        throw re;
+                    }
+                }
+            };
             // TimeSeriesURLGenerator urlGen = new TimeSeriesURLGenerator();
             XYPlot xyplot = (XYPlot) plot;
             xyplot.setDatasetRenderingOrder(DatasetRenderingOrder.REVERSE);
@@ -1621,6 +1614,7 @@ public class JFreeChartDriver implements ChartDriver {
                 }
                 xyplot.setRenderer(i,render);
                 xyplot.setDataset(i, xyd);
+                render.setURLGenerator(urlGen);
                 int axis = ctxt.getRangeAxisForDataset(i);
                 xyplot.mapDatasetToRangeAxis(i, axis);
 

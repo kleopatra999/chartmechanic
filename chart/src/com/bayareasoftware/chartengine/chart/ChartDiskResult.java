@@ -17,6 +17,8 @@ package com.bayareasoftware.chartengine.chart;
 
 import java.io.Serializable;
 
+import com.bayareasoftware.chartengine.model.StringUtil;
+
 public class ChartDiskResult implements Serializable {
     // path to the files that contain the image, thumbnail, and image map (optional) 
     private String pngPath;
@@ -116,6 +118,14 @@ public class ChartDiskResult implements Serializable {
         this.imageMapPath = imageMapPath;
     }
     
+    public String getImageMapId() {
+        String ret = getImageMapPath();
+        if (ret != null) {
+            ret = StringUtil.basename(ret);
+            ret = StringUtil.beforeDot(ret);
+        }
+        return ret;
+    }
     public boolean hasImagePath() {
         return notEmpty(pngPath);
     }

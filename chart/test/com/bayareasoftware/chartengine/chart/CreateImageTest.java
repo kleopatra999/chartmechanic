@@ -60,6 +60,7 @@ import com.bayareasoftware.chartengine.model.PlotType;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.SimpleProps;
 import com.bayareasoftware.chartengine.model.StandardProps;
+import com.bayareasoftware.chartengine.model.StringUtil;
 import com.bayareasoftware.chartengine.model.TimeConstants;
 
 public class CreateImageTest {
@@ -73,6 +74,8 @@ public class CreateImageTest {
     private static SimpleProps templateChartProps = new SimpleProps();
     
     private static String user="TestUser";
+
+    private static String mathPNGName;
     
     @BeforeClass
     public static void setupClass() throws Exception {
@@ -1677,6 +1680,7 @@ public class CreateImageTest {
         dr.setGenerateImageMap(true);
         ChartDiskResult cr = createChart(cb,null, dr);
         cache.putChart(cr, cb, noParams);
+        mathPNGName = cr.getImageMapId();
         this.renameChart(cr, "math");
         p("created chart: " + cr);
     }
@@ -1934,7 +1938,7 @@ public class CreateImageTest {
             if (n.equals("math")) {
                 // for the math test case, we have an image map
                 out.write("<div id=\"chart_desc\"></div>");
-                out.write("<img src=\"" + n + ".png\" border=\"0\" usemap=\"#math\"/>\n");
+                out.write("<img src=\"" + n + ".png\" border=\"0\" usemap=\"#" + mathPNGName + "\"/>\n");
                 out.write("<img src=\"" + n + "_t.png\"/><br/>\n");
                 out.write(readContents(new File(cacheRoot, n + ".imap")));
             } else {
