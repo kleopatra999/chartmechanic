@@ -268,9 +268,7 @@ public class ChartContext {
             }
             r = sMap.get(sd.getSid());
             Metadata md = r.getMetadata();
-            String linkExpr = "/mylink?series={series}&x={" + sd.getXColumn() + "}&y={"
-                    + sd.getYColumn() + "}";
-            boolean haveLinks = true;
+            boolean haveLinks = sd.getLinkExpression() != null;
             List<String> links;
             if (haveLinks) {
                 links = new ArrayList<String>();
@@ -293,10 +291,8 @@ public class ChartContext {
                             r.reset();
                         while (r.next()) {
                             boolean ok = prod.populateSingle(d, sd, r);
-                            if (haveLinks) {
-                                links.add(translateLinkExpression(r, md,
-                                        sd, linkExpr));
-                            }
+                            if (haveLinks)
+                                links.add(translateLinkExpression(r, md, sd));
                         }
 
                         // ///////////////////
@@ -318,12 +314,15 @@ public class ChartContext {
     }
     
     private String translateLinkExpression(DataStream stream, Metadata md,
-            SeriesDescriptor sd, String link) throws Exception {
+            SeriesDescriptor sd) throws Exception {
+        String link = sd.getLinkExpression();
+        if (link == null) return "";
         if (link.contains("{series}") && sd.getName() != null)
             link = link.replace("{series}", sd.getName());
         for (int i = 1; i <= md.getColumnCount(); i++) {
             String rep = "{" + i + "}";
             if (link.contains(rep)) {
+                // FIXME: standardize, document date & number formatting...
                 Object o = stream.getObject(i);
                 String str = o == null ? "": o.toString();
                 link = link.replace(rep, str);

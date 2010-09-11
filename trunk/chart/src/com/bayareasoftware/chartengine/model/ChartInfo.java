@@ -263,7 +263,16 @@ public class ChartInfo extends BaseInfo {
             this.fireChange(PROP_MARKER_PROPERTIES, null, markers);
         }
     }
-    
+
+    /**
+     * See if any of this chart's series have imagemap links
+     * @return true if any of the series have imagemap links
+     */
+    public boolean haveImageMapLinks() {
+        for (SeriesDescriptor sd : series)
+            if (sd.getLinkExpression() != null) return true;
+        return false;
+    }
     public void clearAllSeriesDescriptors() {
     	series.clear();
     	this.fireChange(PROP_SERIES_PROPERTIES, null, series);
