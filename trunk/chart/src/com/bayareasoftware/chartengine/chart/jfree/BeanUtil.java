@@ -51,6 +51,7 @@ import org.jfree.chart.axis.CategoryLabelPositions;
 import org.jfree.chart.axis.DateTickMarkPosition;
 import org.jfree.chart.axis.DateTickUnit;
 import org.jfree.chart.axis.NumberTickUnit;
+import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.renderer.category.BarPainter;
 import org.jfree.chart.renderer.category.GradientBarPainter;
@@ -130,7 +131,7 @@ public class BeanUtil {
                     } catch (Exception cannotSet) {
                         // FIXME: preserve and report error
                         p("cannot convert '" + v + "' to " + pd.getPropertyType().getName()
-                                + " for property '" + pd.getName() + " of bean "
+                                + " for property '" + pd.getName() + "' of bean "
                                 + bean.getClass().getName() + ": " + cannotSet);
                     }
                 }
@@ -353,6 +354,8 @@ public class BeanUtil {
             ret = ChartUtil.encodeVerticalAlignment((VerticalAlignment)o);
         } else if (c == CategoryLabelPositions.class) {
             ret = ChartUtil.encodeCategoryLabelPositions((CategoryLabelPositions)o);
+        } else if (c == BlockBorder.class) {
+            ret = ChartUtil.encodeBlockBorder((BlockBorder)o);
         }
         return ret;
     }
@@ -463,6 +466,8 @@ public class BeanUtil {
             ret = ChartUtil.decodeVerticalAlignment(s);
         } else if (c == CategoryLabelPositions.class) {
             ret = ChartUtil.decodeCategoryLabelPositions(s);
+        } else if (c == BlockBorder.class) {
+            ret = ChartUtil.decodeBlockBorder(s);
         } else {
             log.warn("cannot convert to type " + c.getName());
             throw new RuntimeException("cannot convert type: " + c.getName());
@@ -480,7 +485,7 @@ public class BeanUtil {
         AxisLocation.class, TextAnchor.class, RectangleAnchor.class, Date.class,
         XYBarPainter.class, /*Category*/BarPainter.class, DateTickUnit.class,
         DateTickMarkPosition.class, RectangleEdge.class, VerticalAlignment.class,
-        CategoryLabelPositions.class
+        CategoryLabelPositions.class, BlockBorder.class
     };
     // map of supported types
     static final Map<String,Boolean> TYPE_MAP = new HashMap<String,Boolean>();
