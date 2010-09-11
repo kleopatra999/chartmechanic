@@ -18,6 +18,7 @@ package com.bayareasoftware.chartengine.util;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
@@ -90,6 +91,17 @@ public class FileUtil {
         }
     }
     
+    public static void writeFile(File f, Writer out) throws IOException {
+        Reader rdr = new FileReader(f);
+        char[] buf = new char[2048];
+        int r;
+        try {
+            while ((r = rdr.read(buf)) > 0)
+                out.write(buf, 0, r);
+        } finally {
+            rdr.close();
+        }
+    }
     public static String relativePath(File root, File sub) throws IOException {
         String ret = null;
         String rp = null, sp = null;
