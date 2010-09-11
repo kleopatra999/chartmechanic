@@ -19,7 +19,9 @@ import static com.bayareasoftware.chartengine.model.ChartConstants.CM_PROP_PREFI
 import static com.bayareasoftware.chartengine.model.ChartConstants.MAX_RANGE_AXES;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -55,6 +57,11 @@ public class ChartContext {
         String  axisType;
         AxisLocation location;
     } 
+    
+    // for URL generation, need to map dataset, series # to
+    // the corresponding series URLs
+    
+    private Map<Dataset,List<List<String>>> urlMap = new HashMap();
     
     private AxisInfo rangeaxes[];
     
@@ -100,6 +107,27 @@ public class ChartContext {
         }
     }
 
+    public static final String NULL_URL = "";
+    /* get the url for a given imagemap item */
+    public String getItemURL(Dataset ds, int series, int item) {
+        String ret = null;
+        List<List<String>> ll = urlMap.get(ds);
+        if (ll != null && series < ll.size()) {
+            List<String> l = ll.get(series);
+            if (item < l.size()) ret = l.get(item);
+        }
+        if (NULL_URL.equals(ret)) ret = null;
+        return ret;
+    }
+    
+    public void addItemURLs(Dataset ds, List<String> urls) {
+        List<List<String>> ll = urlMap.get(ds);
+        if (ll == null) {
+            ll = new ArrayList();
+            urlMap.put(ds, ll);
+        }
+        ll.add(urls);
+    }
     public MarkerValue getMarkerValue(int i) {
         return markerValues.get(i);
     }
@@ -238,41 +266,70 @@ public class ChartContext {
             if (!sd.isVisible()) {
                 continue;
             }
-                r = sMap.get(sd.getSid());
+            r = sMap.get(sd.getSid());
+            Metadata md = r.getMetadata();
+            String linkExpr = "/mylink?series={series}&x={" + sd.getXColumn() + "}&y={"
+                    + sd.getYColumn() + "}";
+            boolean haveLinks = true;
+            List<String> links;
+            if (haveLinks) {
+                links = new ArrayList<String>();
+            } else {
+                links = Collections.EMPTY_LIST;
+            }
+            if (r != null) {
+                try {
+                    Dataset d = dsm.getDatasetForSeries(sd);
+                    if (d != null) {
+                        // ///////////////////
+                        // processing done at the beginning of the datastream
+                        // ///////////////////
+                        prod.beginSeries(d, sd, r);
 
-                if (r != null) {
-                    try {
-                        Dataset d = dsm.getDatasetForSeries(sd);
-                        if (d != null) {
-                            /////////////////////
-                            // processing done at the beginning of the datastream
-                            /////////////////////
-                            prod.beginSeries(d,sd,r);
-
-                            /////////////////////
-                            // main loop, once per row in the datastream
-                            /////////////////////
-                            if (r.isResettable())
-                                r.reset();
-                            while (r.next()) {
-                                boolean ok = prod.populateSingle(d,sd,r);
+                        // ///////////////////
+                        // main loop, once per row in the datastream
+                        // ///////////////////
+                        if (r.isResettable())
+                            r.reset();
+                        while (r.next()) {
+                            boolean ok = prod.populateSingle(d, sd, r);
+                            if (haveLinks) {
+                                links.add(translateLinkExpression(r, md,
+                                        sd, linkExpr));
                             }
-
-                            /////////////////////
-                            // processing done at the end of the datastream
-                            /////////////////////
-                            d = prod.endSeries(d, sd);
-                            
-                            dsm.setDatasetForSeries(sd, d);
-                        } else {
-                            throw new RuntimeException("no dataset for series " + sd.getName());
                         }
-                    } finally {
-                        r.close();
+
+                        // ///////////////////
+                        // processing done at the end of the datastream
+                        // ///////////////////
+                        d = prod.endSeries(d, sd);
+                        this.addItemURLs(d, links);
+                        dsm.setDatasetForSeries(sd, d);
+                    } else {
+                        throw new RuntimeException("no dataset for series "
+                                + sd.getName());
                     }
+                } finally {
+                    r.close();
                 }
+            }
         }
         return dsm;
+    }
+    
+    private String translateLinkExpression(DataStream stream, Metadata md,
+            SeriesDescriptor sd, String link) throws Exception {
+        if (link.contains("{series}") && sd.getName() != null)
+            link = link.replace("{series}", sd.getName());
+        for (int i = 1; i <= md.getColumnCount(); i++) {
+            String rep = "{" + i + "}";
+            if (link.contains(rep)) {
+                Object o = stream.getObject(i);
+                String str = o == null ? "": o.toString();
+                link = link.replace(rep, str);
+            }
+        }
+        return link;
     }
     
     private List<MarkerValue> createMarkerValues(Map<Integer,DataStream> sMap)

@@ -42,7 +42,7 @@ class DSMap implements ChartConstants {
     private Map<SeriesKey, Dataset> series2ds = new HashMap<SeriesKey, Dataset>();
     private List<Dataset> dsList = new ArrayList<Dataset>();
     private List<SeriesKey> dsKeys = new ArrayList<SeriesKey>();
-        
+
     public DSMap(Producer prod, ChartInfo ci) {
         //this.ci = ci;
         int numSeries = ci.getSeriesCount();
@@ -67,9 +67,6 @@ class DSMap implements ChartConstants {
         }
         return true;
     }
-//    public Dataset getDefaultDataset() {
-//        return series2ds.get(new SeriesKey(null, 0, null));
-//    }
     
     public Dataset getDatasetForSeries(SeriesDescriptor sd) {
         Dataset ret = null;
