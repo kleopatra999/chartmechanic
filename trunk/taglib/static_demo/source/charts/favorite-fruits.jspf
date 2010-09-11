@@ -1,0 +1,15 @@
+
+
+
+<html>
+
+<head>
+
+ <title>Source of /charts/favorite-fruits.jspf</title>
+</head>
+<body>
+<pre>
+&lt;c:data id=&quot;fruits&quot;&gt;<br>name,votes,state<br>apple,1,CA<br>apple,2,NY<br>apple,3,MA<br>apple,5,AZ<br>apple,7,CA<br>banana,10,CA<br>banana,6,NY<br>banana,3,MA<br>banana,1,AZ<br>kiwi,1,CA<br>kiwi,2,NY<br>kiwi,4,MA<br>kiwi,1,AZ<br>kiwi,3,NY<br>cherry,10,CA<br>cherry,8,NY<br>cherry,1,MA<br>cherry,7,AZ<br>&lt;/c:data&gt;<br>&lt;c:chart title=&quot;Favorite Fruits by U.S. State&quot;&gt;<br>&lt;c:series name=&quot;fruits&quot; datasource=&quot;fruits&quot; <br> &nbsp;graphType=&quot;Stacked Bar 3D&quot; x=&quot;3&quot; y=&quot;2&quot;<br> &nbsp;dynamicNameColumn=&quot;1&quot;&gt;<br>renderer.drawBarOutline=true<br>renderer.outlineStroke=0.25<br>renderer.outlinePaint=#d0d0d0<br>&lt;/c:series&gt;<br>&lt;c:props&gt;<br>chart.backgroundPaint=gradient:#bbeaff,#cccccc,0,0,0,400,true<br>chart.backgroundImageAlpha=.05<br>plot.foregroundAlpha=0.9<br>legend.backgroundPaint=#ffffff00<br>legend.border=0<br>legend.position=right<br>range-axis-0.tickUnit=4<br>range-axis-0.axisLineVisible=false<br>range-axis-0.tickMarksVisible=false<br>domain-axis.axisLineVisible=false<br>domain-axis.tickMarksVisible=false<br>title.Paint=#606060<br>&lt;/c:props&gt;<br>&lt;/c:chart&gt;<br></pre>
+
+</body>
+</html>

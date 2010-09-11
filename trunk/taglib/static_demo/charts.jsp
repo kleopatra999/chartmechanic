@@ -200,6 +200,21 @@ NumberTickUnit</a></td><td><code>any positive number</code></td></tr>
 <td><code>BOTTOM LEFT RIGHT TOP</code></td></tr>
 <tr><td><b>CategoryLabelPositions</b></td><td>Orientation of the labels on a category axis</td>
 <td><code>STANDARD UP_45 UP_90 DOWN_45 DOWN_90</code></td></tr>
+<tr><td><b>BlockBorder</b></td>
+   <td>The width and color around a block region, such as the <code>legend</code>, <code>title</code>
+       or <code>description</code> blocks.  3 formats are supported:<br/><br/>
+<code>width</code><br/>
+<code>width,color</code><br/>
+<code>top,left,bottom,right,color</code><br/>
+   </td>
+<td>
+<code>
+1.5<br/>
+0.5,#ff00ff<br/>
+1.0,2.0,1.0,2.0,black<br/>
+</code>
+</td>
+</tr>
 <!--
 <tr><td><b></b></td><td></td><td></td></tr>
 -->
