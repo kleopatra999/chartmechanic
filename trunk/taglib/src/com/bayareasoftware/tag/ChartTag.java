@@ -24,6 +24,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
+import javax.servlet.jsp.tagext.DynamicAttributes;
 import javax.servlet.jsp.tagext.Tag;
 import javax.servlet.jsp.tagext.TagSupport;
 
@@ -41,8 +42,10 @@ import com.bayareasoftware.chartengine.model.StringUtil;
 import com.bayareasoftware.chartengine.model.TimeUtil;
 import com.bayareasoftware.chartengine.util.FileUtil;
 
-public class ChartTag extends TagSupport implements ITagDoc {
+public class ChartTag extends TagSupport implements ITagDoc, DynamicAttributes {
 
+    private static final Map<String,Boolean> VALID_IMG_ATTS = new HashMap();
+    
     private ChartBundle cb;
     private ChartInfo ci;
     private PageContext pc;
@@ -51,6 +54,8 @@ public class ChartTag extends TagSupport implements ITagDoc {
     private long tagStart;
     private int ttl = -1;
     private boolean ttlSet = false;
+    private Map<String,String> imgAtts;
+    
     public ChartTag() {
         release();
     }
@@ -71,6 +76,7 @@ public class ChartTag extends TagSupport implements ITagDoc {
         cb.setChartInfo(ci);
         ttl = -1;
         ttlSet = false;
+        imgAtts = new HashMap();
     }
     
     public void addDataSource(DataSourceInfo dsi) {
@@ -363,6 +369,9 @@ public class ChartTag extends TagSupport implements ITagDoc {
                 );
         out.print("<img src=\"" + uri + "\" width=\""+ ci.getWidth() + "\""
                 + " height=\"" + ci.getHeight() + "\"");
+        // pass through html img attributes
+        for (String att : imgAtts.keySet())
+            out.print(" " + att + "=\"" + imgAtts.get(att) + "\"");
         if (haveLinks)
             out.print(" usemap=\"#" + cdr.getImageMapId() + "\"");
         out.println("/>");
@@ -389,6 +398,13 @@ public class ChartTag extends TagSupport implements ITagDoc {
             sb.append(' ').append(pt.name());
         return sb.toString();
     }
+    static final String[] IMG_ATTS = {
+        "alt", "align", "border", "hspace", "longdesc", "vspace", "class", "dir", "id",
+        "lang", "style", "onabort", "onclick", "ondblclick", "onmousedown",
+        "onmousemove", "onmouseout", "onmouseover", "onmouseup", "onkeydown", "onkeypress",
+        "onkeyup"
+      };
+    
     private static Object[][] ATTS = {
         { "width", "The width of the chart, in pixels", false },
         { "height", "The height of the chart, in pixels", false },
@@ -421,9 +437,38 @@ public class ChartTag extends TagSupport implements ITagDoc {
         		").  If no template is set for a chart, then a template" +
         		" called <code>default</code> will be used, if one" +
         		"is defined.", false },
+        { "&lt;standard HTML img tag attributes&gt;", "All of the standard attributes" +
+        		" of the HTML <code>img</code> tag are passed through as-is" +
+        		" from the <code>chart</code> tag to the generated <code>img</code>" +
+        		" tag.  The supported attributes are: <code>" + getImgAtts()
+        		+ "</code>", false},
     };
     private static void p(String s) {
         System.out.println("[ChartTag] " + s);
     }
+
+    private static String getImgAtts() {
+        StringBuilder sb = new StringBuilder();
+        for (String a : IMG_ATTS) {
+            if (sb.length() > 0) sb.append(' ');
+            sb.append(a);
+        }
+        return sb.toString();
+    }
     
+    /* DynamicAttributes */
+    public void setDynamicAttribute(String uri, String name, Object obj)
+    throws JspException {
+        String val = obj == null ? "" : obj.toString();
+        if (VALID_IMG_ATTS.get(name.toLowerCase()) == null) {
+            throw new JspException(
+                    "'" + name + "' is not a valid attribute of the HTML <img> tag"
+                    );
+        }
+        imgAtts.put(name, val);
+    }
+    static {
+        for (String att : IMG_ATTS)
+            VALID_IMG_ATTS.put(att, Boolean.TRUE);
+    }
 }
