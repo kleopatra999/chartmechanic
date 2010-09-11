@@ -54,7 +54,7 @@ Then start drawing charts:
  <div class="chart-div">
  
  
-<img src="chart-images/dummy/fb08f7faf109fcfb0af2fd07f4fc08f8.png" width="500" height="400"/>
+<img src="chart-images/web-cache/fdf4090efdfe0700f10d0ff90804f109.png" width="500" height="400"/>
 
 </div>
  
@@ -69,7 +69,7 @@ Then start drawing charts:
 <div class="chart-div">
  
  
-<img src="chart-images/dummy/0cf8f10803fe090601010a02fa0dfc04.png" width="500" height="400"/>
+<img src="chart-images/web-cache/0df6f0090ef507030a0cfe05f1fb03fb.png" width="500" height="400"/>
 
 </div>
  
@@ -86,7 +86,7 @@ Then start drawing charts:
  
 
 
-<img src="chart-images/dummy/fbf8fef3fe0df408f3fe0afefe090605.png" width="500" height="400"/>
+<img src="chart-images/web-cache/f3f60206f00cf5f10b04060200f003fa.png" width="500" height="400"/>
 
 
 </div>
@@ -99,6 +99,22 @@ Then start drawing charts:
 </div>
 
 <div class="item-div">
+<div class="chart-div">
+
+
+
+<img src="chart-images/web-cache/fb090800f3ff030d02f20c08f5f806fb.png" width="500" height="400"/>
+
+</div>
+ 
+ <div class="source-div"><div id="title"><a href="source/charts/favorite-fruits.jspf"><b>source</b></a></div>
+  <div id="source-content"><code><pre>
+&lt;c:data id=&quot;fruits&quot;&gt;<br>name,votes,state<br>apple,1,CA<br>apple,2,NY<br>apple,3,MA<br>apple,5,AZ<br>apple,7,CA<br>banana,10,CA<br>banana,6,NY<br>banana,3,MA<br>banana,1,AZ<br>kiwi,1,CA<br>kiwi,2,NY<br>kiwi,4,MA<br>kiwi,1,AZ<br>kiwi,3,NY<br>cherry,10,CA<br>cherry,8,NY<br>cherry,1,MA<br>cherry,7,AZ<br>&lt;/c:data&gt;<br>&lt;c:chart title=&quot;Favorite Fruits by U.S. State&quot;&gt;<br>&lt;c:series name=&quot;fruits&quot; datasource=&quot;fruits&quot; <br> &nbsp;graphType=&quot;Stacked Bar 3D&quot; x=&quot;3&quot; y=&quot;2&quot;<br> &nbsp;dynamicNameColumn=&quot;1&quot;&gt;<br>renderer.drawBarOutline=true<br>renderer.outlineStroke=0.25<br>renderer.outlinePaint=#d0d0d0<br>&lt;/c:series&gt;<br>&lt;c:props&gt;<br>chart.backgroundPaint=gradient:#bbeaff,#cccccc,0,0,0,400,true<br>chart.backgroundImageAlpha=.05<br>plot.foregroundAlpha=0.9<br>legend.backgroundPaint=#ffffff00<br>legend.border=0<br>legend.position=right<br>range-axis-0.tickUnit=4<br>range-axis-0.axisLineVisible=false<br>range-axis-0.tickMarksVisible=false<br>domain-axis.axisLineVisible=false<br>domain-axis.tickMarksVisible=false<br>title.Paint=#606060<br>&lt;/c:props&gt;<br>&lt;/c:chart&gt;<br></pre></code>
+</div>
+ </div>
+</div>
+
+<div class="item-div">
  <div class="chart-div">
 
 
@@ -106,7 +122,7 @@ Then start drawing charts:
 
 
  
-<img src="chart-images/dummy/000905000df8f5030efbf6fb01f4fbf2.png" width="500" height="400"/>
+<img src="chart-images/web-cache/fe030f080503f6f103f0010e02f0f6f2.png" width="500" height="400"/>
 
 </div>
  
@@ -125,7 +141,7 @@ Then start drawing charts:
 
 
 
-<img src="chart-images/dummy/01f3f4f90c0807f3090103f905f4f7fe.png" width="500" height="400"/>
+<img src="chart-images/web-cache/0bf4020408f505fdfdf50f0bf10dfc03.png" width="500" height="400"/>
 
 
 </div>
@@ -141,7 +157,7 @@ Then start drawing charts:
  <div class="chart-div">
  
   
-<img src="chart-images/dummy/ff02080df5f2f1f808f80001f4f50afb.png" width="500" height="400"/>
+<img src="chart-images/web-cache/0c02f5040dfe04f60b0bfd0d0a07000b.png" width="500" height="400"/>
 </div>
  
  <div class="source-div"><div id="title"><a href="source/charts/stooge-multi.jspf"><b>source</b></a></div>
@@ -163,7 +179,7 @@ Then start drawing charts:
  
  
  
-<img src="chart-images/dummy/0bf2fdf70e0e0f0ef408f501060e0fff.png" width="500" height="400"/>
+<img src="chart-images/web-cache/f3fafef0f60cfdf70bf107f200f4f8f8.png" width="500" height="400"/>
 
 
 </div>
@@ -182,7 +198,7 @@ Then start drawing charts:
  
  
  
-<img src="chart-images/dummy/010b04070a05f1fd0104fa0ffd0dfe04.png" width="500" height="400"/>
+<img src="chart-images/web-cache/0d0a06f7f60f0905faf80ff80002fff5.png" width="500" height="400"/>
 
 
 </div>
@@ -202,7 +218,7 @@ Then start drawing charts:
 
 
 
-<img src="chart-images/dummy/f40a0c06ff0b0a03fb09fef0f30af307.png" width="500" height="400"/>
+<img src="chart-images/web-cache/f406f408fe04f204fbf6f2f60ff70407.png" width="500" height="400"/>
 
 </div>
  

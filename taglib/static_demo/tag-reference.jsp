@@ -151,6 +151,12 @@ no</td><td>
 <tr><td><code>visible</code></td><td><code>boolean</code> to toggle if this series is shown on the chart or not.</td><td>
 no</td><td>
 </td></tr>
+<tr><td><code>linkExpression</code></td><td>Sets an expression which will be used to generate URL links for this series in an HTML image map of the chart.  The expression may contain arbitrarytext, and tokens that will be expanded at runtime.  The tokens can specifycolumns of data from the same row in a data set that generated each point ofthe series.  The series name may also be specified.  The tokens are surroundedby braces '{' and '}', and contain either the (1-based) index of a column, orelse the name of the series, denoted by <code>{series}</code>.For example:
+<pre>
+linkExpression="http://server/my-page?user={series}&date={1}&param={3}"
+</pre></td><td>
+no</td><td>
+</td></tr>
 <tr><td><code>datasource</code></td><td>The datasource ID that this series will pull data from.</td><td>
 yes</td><td>
 </td></tr>
@@ -200,6 +206,12 @@ no</td><td>
 no</td><td>
 </td></tr>
 <tr><td><code>visible</code></td><td><code>boolean</code> to toggle if this series is shown on the chart or not.</td><td>
+no</td><td>
+</td></tr>
+<tr><td><code>linkExpression</code></td><td>Sets an expression which will be used to generate URL links for this series in an HTML image map of the chart.  The expression may contain arbitrarytext, and tokens that will be expanded at runtime.  The tokens can specifycolumns of data from the same row in a data set that generated each point ofthe series.  The series name may also be specified.  The tokens are surroundedby braces '{' and '}', and contain either the (1-based) index of a column, orelse the name of the series, denoted by <code>{series}</code>.For example:
+<pre>
+linkExpression="http://server/my-page?user={series}&date={1}&param={3}"
+</pre></td><td>
 no</td><td>
 </td></tr>
 <tr><td><code>series</code></td><td>The series name (ID) that this functional series will operate on.</td><td>
