@@ -36,6 +36,7 @@ import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.NumberAxis3D;
 import org.jfree.chart.axis.PeriodAxis;
 import org.jfree.chart.axis.ValueAxis;
+import org.jfree.chart.block.BlockBorder;
 import org.jfree.chart.renderer.category.BarPainter;
 import org.jfree.chart.renderer.category.GradientBarPainter;
 import org.jfree.chart.renderer.category.StandardBarPainter;
@@ -347,6 +348,7 @@ public class ChartUtil implements ChartConstants {
         }
         return d;
     }
+    
     /*
      * line=<float>,dash=<dash-type-int>
      */
@@ -643,6 +645,52 @@ public class ChartUtil implements ChartConstants {
         } else if ("DOWN_90".equals(spec)) {
             ret = CategoryLabelPositions.DOWN_90;
         }
+        return ret;
+    }
+    /*
+     * 3 formats:
+     * <width>
+     * <width>,paint
+     * top,left,bottom,right,paint
+     */
+    public static BlockBorder decodeBlockBorder(String str) {
+        BlockBorder ret = null;
+        double top = 0.5, left = 0.5, bottom = 0.5, right = 0.5;
+        Paint p = Color.black;
+        try {
+            String[] sa = StringUtil.splitCompletely(str, ',');
+            if (sa.length == 1) {
+                top = Double.parseDouble(sa[0].trim());
+                left = bottom = right = top;
+            } else if (sa.length == 2) {
+                top = Double.parseDouble(sa[0].trim());
+                left = bottom = right = top;
+                p = decodeColor(sa[1].trim());
+            } else if (sa.length == 5) {
+                top = Double.parseDouble(sa[0].trim());
+                top = Double.parseDouble(sa[1].trim());
+                top = Double.parseDouble(sa[2].trim());
+                top = Double.parseDouble(sa[3].trim());
+                p = decodeColor(sa[4].trim());
+            }
+            if (p == null)
+                p = Color.black;
+        } catch (NumberFormatException nfe) {
+            log.error("cannot convert '" + str + "' to block border", nfe);
+        }
+        ret = new BlockBorder(top, left, bottom, right, p);
+        //ret = new BlockBorder(0,0,0,0,Color.red);
+        return ret;
+    }
+    
+    public static String encodeBlockBorder(BlockBorder bb) {
+        if (bb == null) return null;
+        RectangleInsets ri = bb.getInsets();
+        Paint p = bb.getPaint();
+        String ret = ri.getTop() + "," + ri.getLeft() + "," + ri.getBottom()
+        + "," + ri.getRight();
+        if (p != null && p instanceof Color)
+            ret += ("," + encodeColor((Color)p));
         return ret;
     }
     private static Map<String,String> nvPairs(String s, char delim) {
