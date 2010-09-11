@@ -271,6 +271,11 @@ public class StringUtil {
         return ret;
     }
     
+    // everything after final '/'
+    public static String basename(String path) {
+        return afterSlash(path);
+    }
+    
     public static String beforeDot(String input) {
         String ret = input;
         if (input != null) {
