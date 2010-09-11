@@ -1,0 +1,44 @@
+<c:data id="fruits">
+name,votes,state
+apple,1,CA
+apple,2,NY
+apple,3,MA
+apple,5,AZ
+apple,7,CA
+banana,10,CA
+banana,6,NY
+banana,3,MA
+banana,1,AZ
+kiwi,1,CA
+kiwi,2,NY
+kiwi,4,MA
+kiwi,1,AZ
+kiwi,3,NY
+cherry,10,CA
+cherry,8,NY
+cherry,1,MA
+cherry,7,AZ
+</c:data>
+<c:chart title="Favorite Fruits by U.S. State">
+<c:series name="fruits" datasource="fruits" 
+  graphType="Stacked Bar 3D" x="3" y="2"
+  dynamicNameColumn="1">
+renderer.drawBarOutline=true
+renderer.outlineStroke=0.25
+renderer.outlinePaint=#d0d0d0
+</c:series>
+<c:props>
+chart.backgroundPaint=gradient:#bbeaff,#cccccc,0,0,0,400,true
+chart.backgroundImageAlpha=.05
+plot.foregroundAlpha=1.0
+legend.backgroundPaint=#ffffff00
+legend.border=0,0,0,0
+legend.position=right
+range-axis-0.tickUnit=4
+range-axis-0.axisLineVisible=false
+range-axis-0.tickMarksVisible=false
+domain-axis.axisLineVisible=false
+domain-axis.tickMarksVisible=false
+title.Paint=#808080
+</c:props>
+</c:chart>

@@ -39,6 +39,7 @@ import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.SimpleProps;
 import com.bayareasoftware.chartengine.model.StringUtil;
 import com.bayareasoftware.chartengine.model.TimeUtil;
+import com.bayareasoftware.chartengine.util.FileUtil;
 
 public class ChartTag extends TagSupport implements ITagDoc {
 
@@ -66,7 +67,7 @@ public class ChartTag extends TagSupport implements ITagDoc {
         //ci.setWidth(400);
         //ci.setHeight(400);
         // don't let chart ID be random, prevents cache hits
-        ci.setId("dummy");
+        ci.setId("web-cache");
         cb.setChartInfo(ci);
         ttl = -1;
         ttlSet = false;
@@ -346,10 +347,11 @@ public class ChartTag extends TagSupport implements ITagDoc {
         cdr = cc.getChart(cb, null);
         //String title = ci.getProperty("title.text");
 
+        boolean haveLinks = ci.haveImageMapLinks();
         if (cdr == null || isTtlExpired(cdr)) {
             cdr = cc.prepChartResult(cb);
             cdr.setGenerateThumbnail(false);
-            cdr.setGenerateImageMap(true);
+            cdr.setGenerateImageMap(haveLinks);
             cdr = cc.createChart(cb, null, cdr);
             cc.putChart(cdr, cb, null);
         } else {
@@ -359,8 +361,19 @@ public class ChartTag extends TagSupport implements ITagDoc {
         String uri = StringUtil.joinPaths(
                 req.getContextPath(), cc.getChartURI(cdr)
                 );
-        out.println("<img src=\"" + uri + "\" width=\""+ ci.getWidth() + "\""
-                + " height=\"" + ci.getHeight() + "\"/>");
+        out.print("<img src=\"" + uri + "\" width=\""+ ci.getWidth() + "\""
+                + " height=\"" + ci.getHeight() + "\"");
+        if (haveLinks)
+            out.print(" usemap=\"#" + cdr.getImageMapId() + "\"");
+        out.println("/>");
+        if (haveLinks) {
+            File f = new File(cdr.getImageMapPath());
+            if (f.exists())
+                FileUtil.writeFile(f, out);
+            else
+                throw new RuntimeException("expected imagemap file "
+                        + f.getAbsolutePath() + " not found");
+        }
         /* NOTE NOTE NOTE:
          * Container is too aggressive about re-using tags, we must
          * release/reset ourselves after end tag

@@ -32,6 +32,11 @@ Then start drawing charts:
 </div>
 
 <div class="item-div">
+<div class="chart-div"><%@ include file="charts/favorite-fruits.jspf" %></div>
+ <d:source-div file="charts/favorite-fruits.jspf"/>
+</div>
+
+<div class="item-div">
  <div class="chart-div"><%@ include file="charts/weblog.jspf" %></div>
  <d:source-div file="charts/weblog.jspf"/>
 </div>

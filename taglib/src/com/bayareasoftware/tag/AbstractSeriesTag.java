@@ -60,7 +60,10 @@ implements DynamicAttributes {
     }    
 
     public void setVisible(boolean v) {sd.setVisible(v); }
-    
+
+    public void setLinkExpression(String expr) {
+        sd.setLinkExpression(expr);
+    }
     protected boolean setDynamicAttribute(String name, String val) throws JspException {
         String nl = name.toLowerCase();
         if ("renderer".equals(nl) || "render".equals(nl)
@@ -121,6 +124,18 @@ implements DynamicAttributes {
             false },
         {"visible", "<code>boolean</code> to toggle if this series is shown on the" +
                         " chart or not.", false },
+        { "linkExpression",
+            "Sets an expression which will be used to generate URL links for this series" +
+            " in an HTML image map of the chart.  The expression may contain arbitrary" +
+            "text, and tokens that will be expanded at runtime.  The tokens can specify" +
+            "columns of data from the same row in a data set that generated each point of" +
+            "the series.  The series name may also be specified.  The tokens are surrounded" +
+            "by braces '{' and '}', and contain either the (1-based) index of a column, or" +
+            "else the name of the series, denoted by <code>{series}</code>." +
+            "For example:\n" +
+            "<pre>\n" +
+            "linkExpression=\"http://server/my-page?user={series}&date={1}&param={3}\"\n" +
+            "</pre>", false },
     };    
 
 }
