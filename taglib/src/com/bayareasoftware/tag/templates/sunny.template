@@ -1,0 +1,16 @@
+chart.backgroundImage=/com/bayareasoftware/tag/templates/bg-sunny.png
+chart.backgroundImageAlignment=5
+chart.backgroundPaint=gradient:#ffe3bb,#ddeaff,0,0,395,395,false
+domain-axis.labelAngle=0
+domain-axis.labelFont=Arial-12
+domain-axis.tickLabelFont=Arial-10
+legend._cm_backgroundAlpha=0
+legend.itemFont=Arial-10
+plot.backgroundAlpha=0
+plot.outlineVisible=false
+range-axis-0.labelAngle=0
+range-axis-0.labelFont=Arial-12
+range-axis-0.tickLabelFont=Arial-10
+range-axis-1.tickLabelFont=Arial-12
+range-axis-2.tickLabelFont=Arial-12
+range-axis-3.tickLabelFont=Arial-12

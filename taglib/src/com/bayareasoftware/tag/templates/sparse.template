@@ -1,0 +1,16 @@
+chart.backgroundPaint=#ffffff
+domain-axis.axisLineVisible=false
+domain-axis.tickLabelFont=Arial-12
+domain-axis.tickMarksVisible=false
+legend.itemFont=Arial-10
+legend.visible=false
+plot.backgroundAlpha=0
+plot.domainGridlinesVisible=false
+plot.outlineVisible=false
+plot.rangeGridlinesVisible=false
+range-axis-0.axisLineVisible=false
+range-axis-0.tickLabelFont=Arial-12
+range-axis-0.tickMarksVisible=false
+range-axis-1.tickLabelFont=Arial-12
+range-axis-2.tickLabelFont=Arial-12
+range-axis-3.tickLabelFont=Arial-12

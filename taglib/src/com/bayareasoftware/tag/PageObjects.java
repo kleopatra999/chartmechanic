@@ -48,7 +48,10 @@ public class PageObjects {
     public SimpleProps getTemplate(String name) {
         if (name == null)
             name = "default";
-        return templates.get(name);
+        SimpleProps sp = templates.get(name);
+        if (sp == null)
+            sp = ChartController.get().getBuiltinTemplate(name);
+        return sp;
     }
     
     public void storeTemplate(String name, SimpleProps template) {

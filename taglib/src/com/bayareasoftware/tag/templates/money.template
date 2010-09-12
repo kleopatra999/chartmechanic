@@ -1,0 +1,13 @@
+chart.backgroundImage=/com/bayareasoftware/tag/templates/bg-money.jpg
+chart.backgroundImageAlpha=0.24000000000000002
+chart.backgroundPaint=#ffffff
+domain-axis.tickLabelFont=Arial Black-11
+legend._cm_backgroundAlpha=1
+legend.itemFont=Arial-10
+plot.backgroundAlpha=0
+plot.outlineVisible=false
+range-axis-0.numberFormatOverride=$###,###
+range-axis-0.tickLabelFont=Arial Black-11
+range-axis-1.tickLabelFont=Arial-12
+range-axis-2.tickLabelFont=Arial-12
+range-axis-3.tickLabelFont=Arial-12
