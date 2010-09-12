@@ -1,6 +1,6 @@
 #summary Samples of the chart templates built in to chartmechanic tag library
 
-Below are samples of the templates that are built in to the ChartMechanic tag library.  Just use `template="name"` in your chart tag to use these templates.
+Below are samples of the templates that are built in to the !ChartMechanic tag library.  Just use `template="name"` in your chart tag to use these templates.
 
 <wiki:toc max_depth="2" />
 
