@@ -22,6 +22,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.Reader;
 import java.io.Writer;
@@ -89,6 +90,20 @@ public class FileUtil {
         } finally {
             close(fis);
         }
+    }
+    
+    public static String readStreamAsString(InputStream is) throws IOException {
+        StringBuilder ret = new StringBuilder();
+        Reader rdr = new InputStreamReader(is);
+        try {
+            char[] buf = new char[2048];
+            int r;
+            while ((r = rdr.read(buf)) > 0)
+                ret.append(buf, 0, r);
+        } finally {
+            rdr.close();
+        }
+        return ret.toString();
     }
     
     public static void writeFile(File f, Writer out) throws IOException {
