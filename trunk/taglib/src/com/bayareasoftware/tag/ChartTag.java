@@ -68,9 +68,9 @@ public class ChartTag extends TagSupport implements ITagDoc, DynamicAttributes {
         plotSet = false;
         cb = new ChartBundle();
         ci = new ChartInfo();
-        // default dimensions of 400px if undeclared otherwise
-        //ci.setWidth(400);
-        //ci.setHeight(400);
+        // default dimensions if undeclared otherwise
+        ci.setWidth(500);
+        ci.setHeight(400);
         // don't let chart ID be random, prevents cache hits
         ci.setId("web-cache");
         cb.setChartInfo(ci);
@@ -217,7 +217,7 @@ public class ChartTag extends TagSupport implements ITagDoc, DynamicAttributes {
         // apply template here, early, so it can be overridden later
         SimpleProps sp;
         if (template != null) {
-                        sp = PageObjects.get(pc).getTemplate(template);
+            sp = PageObjects.get(pc).getTemplate(template);
             if (sp == null) {
                 throw new IllegalArgumentException(
                         "template '" + template + "' not found"

@@ -46,6 +46,7 @@ import com.bayareasoftware.chartengine.model.Metadata;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.SimpleProps;
 import com.bayareasoftware.chartengine.model.StringUtil;
+import com.bayareasoftware.chartengine.util.FileUtil;
 
 /* configuration:
  *  cacheLocation, cacheTTL
@@ -68,7 +69,7 @@ public class ChartController {
     public static final String CONFIG_JDBC_JNDI_NAME = "cm.jdbcJndiName";
     public static final int DEFAULT_TTL = 120;
     
-    private SimpleProps templateChartProps = new SimpleProps();
+    private SimpleProps templateChartProps = null; //new SimpleProps();
     private ChartDriver fac;
     private File cacheRoot;
     //static ChartCache cache;
@@ -76,7 +77,7 @@ public class ChartController {
     private String servletPrefix;
     private String defaultJdbcDriver, defaultJdbcUrl,
     defaultJdbcUsername, defaultJdbcPassword, defaultJndiName;
-
+    private Map<String,SimpleProps> builtinTemplates = new HashMap();
     private int defaultTtl = DEFAULT_TTL;
     
     private ChartController() {
@@ -106,6 +107,7 @@ public class ChartController {
         defaultJdbcPassword = getConfig(sc, CONFIG_JDBC_PASSWORD, null);
         defaultJndiName = getConfig(sc, CONFIG_JDBC_JNDI_NAME, null);
         initTheme();
+        initBuiltinTemplates();
         try {
             initData();
         } catch (RuntimeException re) {
@@ -188,6 +190,33 @@ public class ChartController {
         
     }    
 
+    private String getResourceText(String res) {
+        try {
+            URL u = getClass().getResource(res);
+            if (u == null)
+                throw new RuntimeException("resource '" + res + "' not found");
+            return FileUtil.readStreamAsString(u.openStream());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    
+    public SimpleProps getBuiltinTemplate(String name) {
+        return builtinTemplates.get(name.toLowerCase());
+    }
+    private void initBuiltinTemplates() {
+        final String resPrefix = "/com/bayareasoftware/tag/templates/";
+        String templates = getResourceText(resPrefix + "templates.list");
+        p("loaded template list");
+        String[] list = StringUtil.splitCompletely(templates, '\n');
+        for (String t : list) {
+            t = t.trim();
+            if (t.length() == 0) continue;
+            String data = getResourceText(resPrefix + t + ".template");
+            builtinTemplates.put(t, new SimpleProps(data));
+            p("loaded template " + t);
+        }
+    }
     private void initTheme() {
         /*
         StandardChartTheme theme;

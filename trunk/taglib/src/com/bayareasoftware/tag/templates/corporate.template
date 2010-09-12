@@ -1,0 +1,12 @@
+chart.backgroundPaint=#dddddd
+domain-axis.labelAngle=0
+domain-axis.labelFont=Arial-12
+domain-axis.tickLabelFont=Arial-10
+legend.itemFont=Arial-10
+plot.backgroundAlpha=1
+range-axis-0.labelAngle=0
+range-axis-0.labelFont=Arial-12
+range-axis-0.tickLabelFont=Arial-10
+range-axis-1.tickLabelFont=Arial-12
+range-axis-2.tickLabelFont=Arial-12
+range-axis-3.tickLabelFont=Arial-12
