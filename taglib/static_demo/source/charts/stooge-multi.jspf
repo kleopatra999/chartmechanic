@@ -9,7 +9,7 @@
 </head>
 <body>
 <pre>
-&lt;c:chart plotType=&quot;time&quot; title=&quot;Stooge Sales by Month&quot;&gt;<br> &lt;c:series datasource=&quot;all stooge sales&quot; <br> &nbsp;y=&quot;3&quot; name=&quot;multi&quot; dynamicNameColumn=&quot;2&quot;<br> &nbsp;render=&quot;Stacked Bar&quot; timeperiod=&quot;month&quot;/&gt;<br> &nbsp;&lt;c:props&gt;<br>chart.backgroundImage=/demo/images/smiley-600.png &nbsp;<br> &nbsp;&lt;/c:props&gt;<br>&lt;/c:chart&gt;</pre>
+&lt;c:chart plotType=&quot;time&quot; title=&quot;Stooge Sales by Month (click me!)&quot; border=&quot;0&quot;&gt;<br> &lt;c:series datasource=&quot;all stooge sales&quot; <br> &nbsp;y=&quot;3&quot; name=&quot;multi&quot; dynamicNameColumn=&quot;2&quot;<br> &nbsp;render=&quot;Stacked Bar&quot; timeperiod=&quot;month&quot;<br> &nbsp;linkExpression=&quot;javascript:alert('{2} sold {3} in {1}');&quot;/&gt;<br> &nbsp;&lt;c:props&gt;<br>chart.backgroundImage=none<br>range-axis-0.tickUnit=5<br> &nbsp;&lt;/c:props&gt;<br>&lt;c:marker value=&quot;25&quot; name=&quot;QUOTA TARGET = 25&quot; yaxis=&quot;0&quot; template=&quot;y-marker&quot;&gt;<br>paint=#808080<br>stroke=line=3.0|dash=1<br>labelPaint=black<br>labelAnchor=TOP_LEFT<br>labelTextAnchor=HALF_ASCENT_LEFT<br>&lt;/c:marker&gt;<br>&lt;/c:chart&gt;</pre>
 
 </body>
 </html>

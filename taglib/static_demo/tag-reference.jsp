@@ -115,6 +115,9 @@ no</td><td>
 <tr><td><code>template</code></td><td>Provides a bag of pre-set chart properties (a <a href="charts.jsp#templates">template</a>).  If no template is set for a chart, then a template called <code>default</code> will be used, if oneis defined.</td><td>
 no</td><td>
 </td></tr>
+<tr><td><code>&lt;standard HTML img tag attributes&gt;</code></td><td>All of the standard attributes of the HTML <code>img</code> tag are passed through as-is from the <code>chart</code> tag to the generated <code>img</code> tag.  The supported attributes are: <code>alt align border hspace longdesc vspace class dir id lang style onabort onclick ondblclick onmousedown onmousemove onmouseout onmouseover onmouseup onkeydown onkeypress onkeyup</code></td><td>
+no</td><td>
+</td></tr>
 
 </table>
 
