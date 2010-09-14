@@ -1,8 +1,17 @@
-<c:chart plotType="time" title="Stooge Sales by Month">
+<c:chart plotType="time" title="Stooge Sales by Month (click me!)" border="0">
  <c:series datasource="all stooge sales" 
   y="3" name="multi" dynamicNameColumn="2"
-  render="Stacked Bar" timeperiod="month"/>
+  render="Stacked Bar" timeperiod="month"
+  linkExpression="javascript:alert('{2} sold {3} in {1}');"/>
   <c:props>
-chart.backgroundImage=/demo/images/smiley-600.png  
+chart.backgroundImage=none
+range-axis-0.tickUnit=5
   </c:props>
+<c:marker value="25" name="QUOTA TARGET = 25" yaxis="0" template="y-marker">
+paint=#808080
+stroke=line=3.0|dash=1
+labelPaint=black
+labelAnchor=TOP_LEFT
+labelTextAnchor=HALF_ASCENT_LEFT
+</c:marker>
 </c:chart>

@@ -1,4 +1,4 @@
-<c:chart plotType="pie3d">
+<c:chart plotType="pie3d" template="sky">
  <c:series name="Stooges" datasource="d1" x="3"/>
  <c:props>
 title.text=Stooge Preferences (Pie)

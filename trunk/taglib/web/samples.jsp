@@ -17,8 +17,19 @@ Then start drawing charts:
 </p>
 
 <div class="item-div">
+<div class="chart-div"><%@ include file="charts/favorite-fruits.jspf" %></div>
+ <d:source-div file="charts/favorite-fruits.jspf"/>
+</div>
+
+
+<div class="item-div">
  <div class="chart-div"><%@ include file="charts/stooge-category.jspf" %></div>
  <d:source-div file="charts/stooge-category.jspf"/>
+</div>
+
+<div class="item-div">
+ <div class="chart-div"><%@ include file="charts/djia.jspf" %></div>
+ <d:source-div file="charts/djia.jspf"/>
 </div>
 
 <div class="item-div">
@@ -32,9 +43,10 @@ Then start drawing charts:
 </div>
 
 <div class="item-div">
-<div class="chart-div"><%@ include file="charts/favorite-fruits.jspf" %></div>
- <d:source-div file="charts/favorite-fruits.jspf"/>
+ <div class="chart-div"><%@ include file="charts/olympics.jspf" %></div>
+ <d:source-div file="charts/olympics.jspf"/>
 </div>
+
 
 <div class="item-div">
  <div class="chart-div"><%@ include file="charts/weblog.jspf" %></div>
@@ -54,16 +66,6 @@ Then start drawing charts:
 <div class="item-div">
  <div class="chart-div"><%@ include file="charts/timeseries2.jspf" %></div>
  <d:source-div file="charts/timeseries2.jspf"/>
-</div>
-
-<div class="item-div">
- <div class="chart-div"><%@ include file="charts/olympics.jspf" %></div>
- <d:source-div file="charts/olympics.jspf"/>
-</div>
-
-<div class="item-div">
- <div class="chart-div"><%@ include file="charts/djia.jspf" %></div>
- <d:source-div file="charts/djia.jspf"/>
 </div>
 
 <p>

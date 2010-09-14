@@ -1,4 +1,4 @@
-<c:chart renderType="Bar">
+<c:chart renderType="Bar" template="shadow">
  <c:series name="My Values" datasource="d1"
     x="1" y="2" timeperiod="year" color="dark_green"/>
  <c:props>

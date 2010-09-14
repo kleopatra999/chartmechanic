@@ -1,4 +1,4 @@
-<c:chart>
+<c:chart template="sunny">
 <c:data id="log stats" type="CSV">
 2010-07-01,413,9.27187315E2
 2010-07-02,117,7.28394634E2
@@ -34,15 +34,17 @@ renderer.fillPaint=orange
 </c:series>
 <c:series name="Bandwidth" datasource="log stats" x="1" y="3"
           yaxis="1" render="Area" color="gray"/>
-<c:marker value="600" name="SIX" yaxis="0" template="y-marker">
+<c:marker value="600" name="SIX HUNDRED" yaxis="0" template="y-marker">
 paint=light_blue
 </c:marker>
-<c:marker bandValues="50|100|150|200" name="pink band" yaxis="0" template="y-marker">
-paint=pink
+<c:marker bandValues="150|200|700|775" name="yellow band" yaxis="0" template="y-marker">
+paint=yellow
+layer=background
+alpha=0.5
 </c:marker>
  <c:props>
 title.text=Web Log Summary (July '10)
-legend.position=right
+legend.position=bottom
 legend.verticalAlignment=bottom
 legend.visible=true
  </c:props>
