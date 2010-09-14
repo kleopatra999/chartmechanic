@@ -47,7 +47,7 @@ import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.TimeConstants;
 
-public class TimeProducer implements Producer, TimeConstants {
+public class TimeProducer extends Producer implements TimeConstants {
     private Log log = LogFactory.getLog(TimeProducer.class);
 
     private int chartPeriodType = -1;
@@ -122,7 +122,8 @@ public class TimeProducer implements Producer, TimeConstants {
         
     }
     
-    private boolean populateSingleOHLC(Dataset ds, DataStream rs) throws Exception {
+    private boolean populateSingleOHLC(Dataset ds, SeriesDescriptor sd, DataStream rs)
+    throws Exception {
         boolean res = false;
         
         /* date,open,high,low,close,volume */
@@ -135,6 +136,11 @@ public class TimeProducer implements Producer, TimeConstants {
         if (d != null && o != null && h != null && l != null
                 && c != null && v != null) {
             ohlcVals.add(new OHLCDataItem(d,o,h,l,c,v));
+            if (sd.getLinkExpression() != null) {
+                String url = ChartContext.translateLinkExpression(rs, rs.getMetadata(),
+                        sd.getName(), sd.getLinkExpression());
+                recordImgMapUrl(ds, sd.getName(), (double)d.getTime(), o, url);
+            }
             res = true;
         } else {
             /* FIXME: issue warning that will be visible to user */
@@ -158,6 +164,12 @@ public class TimeProducer implements Producer, TimeConstants {
             vals[1] = yval;
             vals[2] = zval;
             bubbleVals.add(vals);
+            if (currentSD.getLinkExpression() != null) {
+                String url = ChartContext.translateLinkExpression(rs, rs.getMetadata(),
+                        currentSD.getName(), currentSD.getLinkExpression());
+                recordImgMapUrl(d, currentSD.getName(), (double)date.getTime(), yval, url);
+            }
+            
             res = true;
         }
         return res;
@@ -241,16 +253,23 @@ public class TimeProducer implements Producer, TimeConstants {
         }
         stMap.put(seriesName, t);
     }
-    public boolean populateSingle(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception
+    public String populateSingle(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception
     {
+        String ret = null;
         boolean res = false;
-        
         if (bubbleRender) {
-            res = populateSingleXYZ(d, currentSD, rs);
+            if (res = populateSingleXYZ(d, currentSD, rs)) {
+                ret = currentSD.getName();
+            }
+            
         } else if (ohlcRender) {
-            res = populateSingleOHLC(d, rs);
+            if (res = populateSingleOHLC(d, currentSD, rs)) {
+                ret = currentSD.getName();
+            }
         } else if (isStacked) {
-            res = populateSingleStacked(d, currentSD, rs);
+            if (res = populateSingleStacked(d, currentSD, rs)) {
+                ret = currentSD.getName();
+            }
         } else {
             String seriesName = currentSD.getName();
             boolean dynamicSeriesName = false;
@@ -302,6 +321,14 @@ public class TimeProducer implements Producer, TimeConstants {
                         if (period != null) {
                             ts.addOrUpdate(period, y);
                             res = true;
+                            ret = seriesName;
+                            if (currentSD.getLinkExpression() != null) {
+                                String url = ChartContext.translateLinkExpression(rs, rs.getMetadata(),
+                                        currentSD.getName(), currentSD.getLinkExpression());
+                                double x = (double)period.getMiddleMillisecond();
+                                recordImgMapUrl(tsc, currentSD.getName(), x, y, url);
+                            }
+                            
                         } else {
                             log.warn("Failed to make time period for ptype: " + ptype + " date: " + date);
                         }
@@ -312,7 +339,7 @@ public class TimeProducer implements Producer, TimeConstants {
                 }
             }
         }
-        return res;
+        return ret;
     }
     
     private boolean populateSingleStacked(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception {
@@ -347,6 +374,10 @@ public class TimeProducer implements Producer, TimeConstants {
             if (seriesName != null && addToSeries) {
                 ttd.remove(period, seriesName);
                 ttd.add(period, y, seriesName);
+                String url = ChartContext.translateLinkExpression(rs, rs.getMetadata(),
+                        currentSD.getName(), currentSD.getLinkExpression());
+                double x = (double)period.getFirstMillisecond();
+                recordImgMapUrl(d, seriesName, x, y, url);
             }
             res = true;
         } 

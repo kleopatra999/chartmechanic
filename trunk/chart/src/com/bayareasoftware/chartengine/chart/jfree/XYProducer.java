@@ -26,7 +26,7 @@ import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 
-public class XYProducer implements Producer {
+public class XYProducer extends Producer {
     public XYProducer() {
         super();
     }
@@ -64,7 +64,7 @@ public class XYProducer implements Producer {
     }
 
 
-    public boolean populateSingle(Dataset d, SeriesDescriptor sd, DataStream rs)
+    public String populateSingle(Dataset d, SeriesDescriptor sd, DataStream rs)
             throws Exception {
         DefaultTableXYDataset xyd = (DefaultTableXYDataset) d;
         XYSeries series = null;
@@ -82,10 +82,16 @@ public class XYProducer implements Producer {
         Double x = rs.getDouble(sd.getXColumn());
         Double y = rs.getDouble(sd.getYColumn());
         if (x == null || y == null) {
-            return false;
+            return null;
         }
         series.addOrUpdate(x, y);
-        return true;
+        if (sd.getLinkExpression() != null) {
+            String url = ChartContext.translateLinkExpression(rs, rs.getMetadata(),
+                    seriesName, sd.getLinkExpression());
+            recordImgMapUrl(d, seriesName, x, y, url);
+        }
+        
+        return seriesName;
     }
 
     public void beginSeries(Dataset d, SeriesDescriptor sd, DataStream r) {

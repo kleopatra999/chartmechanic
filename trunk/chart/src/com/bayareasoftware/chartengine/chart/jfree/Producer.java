@@ -15,8 +15,11 @@
  */
 package com.bayareasoftware.chartengine.chart.jfree;
 
+import java.util.Map;
+
 import org.jfree.data.general.Dataset;
 
+import com.bayareasoftware.chartengine.chart.jfree.ChartContext.DSValueKey;
 import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
@@ -24,8 +27,9 @@ import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 /**
  * interface for the various kinds of JFreeChart DataSet producers
  */
-public interface Producer {
+public abstract class Producer {
     
+    protected Map<DSValueKey,String> mapMap;
     /**
      * Limit number of dynamic series created to this number
      */
@@ -44,7 +48,7 @@ public interface Producer {
      * @param sd
      * @return
      */
-    public Dataset createDataset(ChartInfo ci, SeriesDescriptor sd);
+    public abstract Dataset createDataset(ChartInfo ci, SeriesDescriptor sd);
     
     /**
      * populate the dataset for a given row in the DataStream
@@ -52,24 +56,36 @@ public interface Producer {
      * @param d                   - the currentDataset
      * @param sd                  - the SeriesDescriptor  
      * @param rs                  - the stream of raw data
-     * @return                    - return true if a row of the raw data was used to populate
-     *                              the dataset.  return false if the row was skipped or not used
+     * @param ctx                 - the chart context
+     * @return                    - return the name of the series that was populated in
+     *                              the dataset.  return null if the row was skipped or not used
      *                              (e.g. because it was outside the start/end time range)
      * @throws Exception
      */
-    public boolean populateSingle(Dataset d, SeriesDescriptor sd, DataStream rs) throws Exception;
+    public abstract String populateSingle(Dataset d, SeriesDescriptor sd, DataStream rs) throws Exception;
     
     /** 
      * called at the end of processing a series
      * @param d
      * @param sd
      */
-    public Dataset endSeries(Dataset d, SeriesDescriptor sd);
+    public abstract Dataset endSeries(Dataset d, SeriesDescriptor sd);
 
     
     /**
      * called at the beginning of processing a series
      * allows concrete producers to intercept/maintain state at the beginning of a series */
-    public void beginSeries(Dataset d, SeriesDescriptor sd, DataStream r);
+    public abstract void beginSeries(Dataset d, SeriesDescriptor sd, DataStream r);
     
+    void setUrlMap(Map<DSValueKey,String> map) {
+        this.mapMap = map;
+    }
+    
+    protected void recordImgMapUrl(Dataset ds, String seriesName, Comparable xValue,
+            double value, String url) {
+        DSValueKey vkey = ChartContext.vkey(ds, seriesName, xValue, value);
+        if (url == null) url = "";
+        mapMap.put(vkey, url);
+    }
+        
 }

@@ -22,7 +22,7 @@ import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 
-public class PieProducer implements Producer {
+public class PieProducer extends Producer {
 
     public PieProducer() {
         super();
@@ -33,17 +33,18 @@ public class PieProducer implements Producer {
         return ds;
     }
 
-    public boolean populateSingle(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception {
+    public String populateSingle(Dataset d, SeriesDescriptor currentSD, DataStream rs) throws Exception {
         DefaultPieDataset pd = (DefaultPieDataset) d;
         String catName = rs.getString(currentSD.getXColumn());
+        String ret = null;
         if (catName != null) {
             Double v = rs.getDouble(currentSD.getYColumn());
             if (v != null) {
                 pd.setValue(catName, v.doubleValue());
-                return true;
+                ret = currentSD.getName();
             }
         } 
-        return false;
+        return ret;
     }
 
     public void beginSeries(Dataset d, SeriesDescriptor sd, DataStream r) {

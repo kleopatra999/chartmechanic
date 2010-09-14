@@ -25,7 +25,7 @@ import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 
-public class HistogramProducer implements Producer {
+public class HistogramProducer extends Producer {
     
     private double minValue, maxValue, binSize;
     
@@ -48,8 +48,7 @@ public class HistogramProducer implements Producer {
         return ret;
     }
 
-    public boolean populateSingle(Dataset d, SeriesDescriptor sd, DataStream rs) throws Exception {
-        boolean res = false;
+    public String populateSingle(Dataset d, SeriesDescriptor sd, DataStream rs) throws Exception {
         SimpleHistogramDataset shd = (SimpleHistogramDataset) d;
         int valueIndex = sd.getYColumn();
         Double val = rs.getDouble(valueIndex);
@@ -58,12 +57,12 @@ public class HistogramProducer implements Producer {
           //      + valueIndex + " '" + rs.getMetadata().getColumnName(valueIndex) + "'");
             if (val >= minValue && val < maxValue && binSize > 0) {
                 shd.addObservation(val);
-                res = true;
             } else {
                 //p("skipping out of range observation: " + val + " min/max=" + minValue + "/" + maxValue);
+                return null;
             }
         }
-        return res;
+        return sd.getName();
     }
 
     private void addBins(SimpleHistogramDataset dset) {
