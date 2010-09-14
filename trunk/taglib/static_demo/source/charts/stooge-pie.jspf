@@ -9,7 +9,7 @@
 </head>
 <body>
 <pre>
-&lt;c:chart plotType=&quot;pie3d&quot;&gt;<br> &lt;c:series name=&quot;Stooges&quot; datasource=&quot;d1&quot; x=&quot;3&quot;/&gt;<br> &lt;c:props&gt;<br>title.text=Stooge Preferences (Pie)<br> &lt;/c:props&gt;<br>&lt;/c:chart&gt;<br></pre>
+&lt;c:chart plotType=&quot;pie3d&quot; template=&quot;sky&quot;&gt;<br> &lt;c:series name=&quot;Stooges&quot; datasource=&quot;d1&quot; x=&quot;3&quot;/&gt;<br> &lt;c:props&gt;<br>title.text=Stooge Preferences (Pie)<br> &lt;/c:props&gt;<br>&lt;/c:chart&gt;<br></pre>
 
 </body>
 </html>
