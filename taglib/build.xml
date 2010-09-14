@@ -26,7 +26,7 @@
   <property name="test-out" value="test-out"/>
 -->
   <property name="dist" value="dist"/>
-  <property name="release.version" value="0.7"/>
+  <property name="release.version" value="0.9"/>
   <property name="common.dir" value="${basedir}/../common"/>
   <!-- commonly used properties (e.g. common-lib, junit.classpath, etc. are set here) -->
   <import file="${common.dir}/common-imports.xml"/>

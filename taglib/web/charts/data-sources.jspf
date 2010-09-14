@@ -4,8 +4,8 @@
  2010,14,Larry
  2009,10,Moe
  2008,17,Curly
- 2007,5,Shemp
- 2006,20,Joe
+ 2007,8,Shemp
+ 2006,2,Joe
 </c:data>
 <c:data id="stooge sales" type="CSV">
 Date,#Sales,Quota,Actual

@@ -1,6 +1,9 @@
 <c:chart>
- <c:series name="Stooge Count" datasource="d1" x="3"/>
+ <c:series name="Favorite Stooge Votes" datasource="d1" x="3"/>
  <c:props>
 title.text=Stooge Preferences (Category Plot)
+renderer.shadowVisible=false
+renderer.drawBarOutline=true
+plot.foregroundAlpha=.8
  </c:props>
 </c:chart>

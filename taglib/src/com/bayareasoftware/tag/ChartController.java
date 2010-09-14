@@ -207,14 +207,14 @@ public class ChartController {
     private void initBuiltinTemplates() {
         final String resPrefix = "/com/bayareasoftware/tag/templates/";
         String templates = getResourceText(resPrefix + "templates.list");
-        p("loaded template list");
+        //p("loaded template list");
         String[] list = StringUtil.splitCompletely(templates, '\n');
         for (String t : list) {
             t = t.trim();
             if (t.length() == 0) continue;
             String data = getResourceText(resPrefix + t + ".template");
             builtinTemplates.put(t, new SimpleProps(data));
-            p("loaded template " + t);
+            //p("loaded template " + t);
         }
     }
     private void initTheme() {

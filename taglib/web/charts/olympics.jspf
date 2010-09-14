@@ -1,7 +1,7 @@
 <c:data id="medals" type="csv"
    url="/data/olympic-medals-vancouver.csv"/>
-<c:chart title="Winter Olympic Medals, Vancouver 2010"
-   graphType="Stacked Bar 3D">
+<c:chart title="Winter Olympic Medals, Vancouver 2010 (click me!)"
+   graphType="Stacked Bar 3D" border="0">
  <c:props>
 plot.orientation=HORIZONTAL
 chart.backgroundImage=NONE
@@ -11,8 +11,11 @@ plot.foregroundAlpha=.9
 domain-axis.axisLineVisible=false
 domain-axis.tickMarksVisible=false
  </c:props>
- <c:series datasource="medals" name="Gold" x="2" y="3" paint="#ffdd70"/>
- <c:series datasource="medals" name="Silver" x="2" y="4" paint="#c0c0c0"/>
- <c:series datasource="medals" name="Bronze" x="2" y="5" paint="#CD7F32"/>
+ <c:series datasource="medals" name="Gold" x="2" y="3" paint="#ffdd70"
+    linkExpression="javascript:alert('{2} won {3} {series} medals');"/>
+ <c:series datasource="medals" name="Silver" x="2" y="4" paint="#c0c0c0"
+    linkExpression="javascript:alert('{2} won {4} {series} medals');"/>
+ <c:series datasource="medals" name="Bronze" x="2" y="5" paint="#CD7F32"
+    linkExpression="javascript:alert('{2} won {5} {series} medals');"/>
 </c:chart>
 <%--<c:data-table datasource="medals" length="25"/>--%>

@@ -1,6 +1,5 @@
 <c:data id="fruits">
 name,votes,state
-apple,1,CA
 apple,2,NY
 apple,3,MA
 apple,5,AZ
@@ -19,10 +18,11 @@ cherry,8,NY
 cherry,1,MA
 cherry,7,AZ
 </c:data>
-<c:chart title="Favorite Fruits by U.S. State">
+<c:chart title="Favorite Fruits by U.S. State" border="0">
 <c:series name="fruits" datasource="fruits" 
   graphType="Stacked Bar 3D" x="3" y="2"
-  dynamicNameColumn="1">
+  dynamicNameColumn="1"
+  linkExpression="javascript:alert('{2} votes for {series} in {3}');">
 renderer.drawBarOutline=true
 renderer.outlineStroke=0.25
 renderer.outlinePaint=#d0d0d0
