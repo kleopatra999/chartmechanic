@@ -18,6 +18,8 @@ package com.bayareasoftware.chartengine.chart.jfree;
 import static com.bayareasoftware.chartengine.model.ChartConstants.CM_PROP_PREFIX;
 import static com.bayareasoftware.chartengine.model.ChartConstants.MAX_RANGE_AXES;
 
+import java.net.URLEncoder;
+import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -28,7 +30,9 @@ import java.util.Map;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.jfree.chart.axis.AxisLocation;
+import org.jfree.data.category.CategoryDataset;
 import org.jfree.data.general.Dataset;
+import org.jfree.data.xy.XYDataset;
 
 import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.model.ChartInfo;
@@ -39,6 +43,7 @@ import com.bayareasoftware.chartengine.model.Metadata;
 import com.bayareasoftware.chartengine.model.PlotType;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 import com.bayareasoftware.chartengine.model.SimpleProps;
+import com.bayareasoftware.chartengine.util.DateUtil;
 
 /**
  * ChartContext contains state related to chart creation.  It holds all the actual data, mapping of series to data, etc. that
@@ -58,10 +63,59 @@ public class ChartContext {
         AxisLocation location;
     } 
     
-    // for URL generation, need to map dataset, series # to
-    // the corresponding series URLs
+    protected static class DSValueKey {
+        final int dsHash;
+        final String seriesName;
+        final double value;
+        final Comparable xValue;
+        public DSValueKey(Dataset ds, String sname, Comparable xValue, double value) {
+            if (xValue == null)
+                throw new IllegalArgumentException(
+                        "null xValue"
+                        );
+            dsHash = System.identityHashCode(ds);
+            seriesName = sname;
+            this.xValue = xValue;
+            this.value = value;
+        }
+        
+        @Override
+        public int hashCode() {
+            int ret = dsHash;
+            if (seriesName != null) ret ^= seriesName.hashCode();
+            ret ^= (int) value;
+            ret ^= xValue.hashCode();
+            return ret;
+        }
+        
+        @Override
+        public boolean equals(Object o) {
+            DSValueKey other = (DSValueKey) o;
+            if (other.dsHash != dsHash) return false;
+            if (other.value != value) return false;
+            if (!xValue.equals(other.xValue)) return false;
+            if (other.seriesName == null) return seriesName == null;
+            return seriesName.equals(other.seriesName);
+        }
+    }
+        
+    protected static DSValueKey vkey(Dataset ds, String series, Comparable xValue, double value) {
+        return new DSValueKey(ds, series, xValue, value);
+    }
+
+    public static final String NULL_URL = "";
+
+    /** get the url for a given imagemap item */
+    public String getImageMapUrl(Dataset ds, String seriesName, Comparable xValue,
+            double value) {
+        DSValueKey vkey = vkey(ds, seriesName, xValue, value);
+        String ret = mapMap.get(vkey);
+        if (NULL_URL.equals(ret))
+            ret = null;
+        return ret;
+    }
     
-    private Map<Dataset,List<List<String>>> urlMap = new HashMap();
+    protected Map<DSValueKey,String> mapMap;
     
     private AxisInfo rangeaxes[];
     
@@ -78,6 +132,7 @@ public class ChartContext {
      */
     public ChartContext(ChartInfo ci, Map<Integer,DataStream> sMap) throws Exception {
         this.ci = ci;
+        mapMap = new HashMap();
         this.dsmap = createDatasets(sMap);
         this.markerValues = createMarkerValues(sMap);
         
@@ -107,27 +162,6 @@ public class ChartContext {
         }
     }
 
-    public static final String NULL_URL = "";
-    /* get the url for a given imagemap item */
-    public String getItemURL(Dataset ds, int series, int item) {
-        String ret = null;
-        List<List<String>> ll = urlMap.get(ds);
-        if (ll != null && series < ll.size()) {
-            List<String> l = ll.get(series);
-            if (item < l.size()) ret = l.get(item);
-        }
-        if (NULL_URL.equals(ret)) ret = null;
-        return ret;
-    }
-    
-    public void addItemURLs(Dataset ds, List<String> urls) {
-        List<List<String>> ll = urlMap.get(ds);
-        if (ll == null) {
-            ll = new ArrayList();
-            urlMap.put(ds, ll);
-        }
-        ll.add(urls);
-    }
     public MarkerValue getMarkerValue(int i) {
         return markerValues.get(i);
     }
@@ -259,6 +293,8 @@ public class ChartContext {
             break;
         }
         
+        prod.setUrlMap(mapMap);
+        
         DSMap dsm = new DSMap(prod, ci);
         
         for (SeriesDescriptor sd : ci.getSeriesDescriptors()) {
@@ -268,13 +304,6 @@ public class ChartContext {
             }
             r = sMap.get(sd.getSid());
             Metadata md = r.getMetadata();
-            boolean haveLinks = sd.getLinkExpression() != null;
-            List<String> links;
-            if (haveLinks) {
-                links = new ArrayList<String>();
-            } else {
-                links = Collections.EMPTY_LIST;
-            }
             if (r != null) {
                 try {
                     Dataset d = dsm.getDatasetForSeries(sd);
@@ -289,17 +318,15 @@ public class ChartContext {
                         // ///////////////////
                         if (r.isResettable())
                             r.reset();
+                        
                         while (r.next()) {
-                            boolean ok = prod.populateSingle(d, sd, r);
-                            if (haveLinks)
-                                links.add(translateLinkExpression(r, md, sd));
+                            String seriesName = prod.populateSingle(d, sd, r);
                         }
 
                         // ///////////////////
                         // processing done at the end of the datastream
                         // ///////////////////
                         d = prod.endSeries(d, sd);
-                        this.addItemURLs(d, links);
                         dsm.setDatasetForSeries(sd, d);
                     } else {
                         throw new RuntimeException("no dataset for series "
@@ -313,18 +340,31 @@ public class ChartContext {
         return dsm;
     }
     
-    private String translateLinkExpression(DataStream stream, Metadata md,
-            SeriesDescriptor sd) throws Exception {
-        String link = sd.getLinkExpression();
+    protected static String translateLinkExpression(DataStream stream, Metadata md,
+            String sname, String link) throws Exception {
         if (link == null) return "";
-        if (link.contains("{series}") && sd.getName() != null)
-            link = link.replace("{series}", sd.getName());
+        if (link.contains("{series}")) {
+            if (sname == null) sname = "";
+            sname = URLEncoder.encode(sname);
+            link = link.replace("{series}", sname);
+        }
+        DateFormat df = null;
         for (int i = 1; i <= md.getColumnCount(); i++) {
             String rep = "{" + i + "}";
             if (link.contains(rep)) {
+                int type = md.getColumnType(i);
+                String str;
                 // FIXME: standardize, document date & number formatting...
-                Object o = stream.getObject(i);
-                String str = o == null ? "": o.toString();
+                if (type == DataType.DATE) {
+                    // FIXME: could use original dateformat for this column here too...
+                    if (df == null) df = DateUtil.createDateFormat("yyyy-MM-dd HH:mm:ss");
+                    Date d = stream.getDate(i);
+                    str = d != null ? df.format(d) : "";
+                } else {
+                    Object o = stream.getObject(i);
+                    str = o == null ? "": o.toString();
+                }
+                str = URLEncoder.encode(str);
                 link = link.replace(rep, str);
             }
         }

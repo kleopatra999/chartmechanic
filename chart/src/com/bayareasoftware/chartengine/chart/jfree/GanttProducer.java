@@ -27,7 +27,7 @@ import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.model.ChartInfo;
 import com.bayareasoftware.chartengine.model.SeriesDescriptor;
 
-public class GanttProducer implements Producer{
+public class GanttProducer extends Producer {
     private HashMap<String,TaskSeries> taskSeriesMap;
     
     public GanttProducer() {
@@ -54,9 +54,8 @@ public class GanttProducer implements Producer{
         return d;
     }
 
-    public boolean populateSingle(Dataset d, SeriesDescriptor currentSD, DataStream rs)
+    public String populateSingle(Dataset d, SeriesDescriptor currentSD, DataStream rs)
             throws Exception {
-        boolean res = false;
         String seriesName = currentSD.getName();
         if (currentSD.getSeriesNameFromData() != -1) {
             seriesName = rs.getString(currentSD.getSeriesNameFromData());
@@ -72,10 +71,9 @@ public class GanttProducer implements Producer{
             Date endDate = rs.getDate(currentSD.getZColumn());
             if (taskName != null && startDate != null && endDate != null) {
                 ts.add(new Task(taskName,startDate,endDate));
-                res = true;
             }
         }
-        return res;
+        return seriesName;
     }
 
 }

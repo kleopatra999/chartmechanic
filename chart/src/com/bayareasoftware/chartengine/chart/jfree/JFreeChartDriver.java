@@ -1581,7 +1581,11 @@ public class JFreeChartDriver implements ChartDriver {
             XYURLGenerator urlGen = new XYURLGenerator() {
                 public String generateURL(XYDataset ds, int series, int item) {
                     try {
-                        return ctxt.getItemURL(ds, series, item);
+                        String seriesName = (String)ds.getSeriesKey(series);
+                        double x = ds.getXValue(series, item);
+                        double y = ds.getYValue(series, item);
+                        String ret = ctxt.getImageMapUrl(ds, seriesName, x, y);
+                        return ret;
                     } catch (RuntimeException re) {
                         re.printStackTrace();
                         throw re;
@@ -1699,8 +1703,17 @@ public class JFreeChartDriver implements ChartDriver {
             }
             CategoryURLGenerator urlGen = new CategoryURLGenerator() {
                 public String generateURL(CategoryDataset ds, int series, int item) {
+                    // reminder: rows are series, columns are categories
                     try {
-                        return ctxt.getItemURL(ds, series, item);
+                        String sname = (String) ds.getRowKey(series);
+                        Comparable xValue = ds.getColumnKey(item);
+                        Number value = ds.getValue(series, item);
+                        String ret = null;
+                        if (value != null) 
+                            ret = ctxt.getImageMapUrl(ds, sname, xValue, value.doubleValue());
+                        //p("caturl: series=" + series + "/" + sname + " item=" + item + "/" + ret);
+                        return ret;
+                        //return ctxt.getItemURL(ds, series, item);
                     } catch (RuntimeException re) {
                         re.printStackTrace();
                         throw re;
