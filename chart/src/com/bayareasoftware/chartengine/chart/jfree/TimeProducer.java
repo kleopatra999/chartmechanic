@@ -79,7 +79,6 @@ public class TimeProducer extends Producer implements TimeConstants {
     public TimeProducer(int periodType) {
         super();
         this.chartPeriodType = periodType;
-//        this.params = params;
     }
 
     public Dataset createDataset(ChartInfo ci, SeriesDescriptor sd) {
@@ -103,9 +102,6 @@ public class TimeProducer extends Producer implements TimeConstants {
     }
 
     public void beginSeries(Dataset d, SeriesDescriptor sd, DataStream r) {
-//        if (params != null) {
-//            parseDates(r,sd);
-//        }
 
         /* reset stateful booleans to defaults */
         isStacked = bubbleRender = ohlcRender = false;
@@ -178,9 +174,6 @@ public class TimeProducer extends Producer implements TimeConstants {
     public Dataset endSeries(Dataset d, SeriesDescriptor sd) {
         if (bubbleRender) {
             DefaultXYZDataset dset = (DefaultXYZDataset) d;
-            // have to invert array
-            //double[][] vals = new double[bubbleVals.size()][];
-            //bubbleVals.toArray(vals);
             double[][] vals = new double[3][bubbleVals.size()];
             for (int i = 0; i < bubbleVals.size(); i++) {
                 double[] row = bubbleVals.get(i);
@@ -197,14 +190,6 @@ public class TimeProducer extends Producer implements TimeConstants {
             dset = new DefaultOHLCDataset(sd.getName(), items);
             return dset;
         } else if (isStacked) {
-//            TimeTableXYDataset ds = (TimeTableXYDataset) d;
-//            if (ds.getSeriesCount() == 2) {
-//                for (int i = 0; i < 2; i++) {
-//                    String key = (String) ds.getSeriesKey(i);
-//                    //p("series[" + i + "]='" + key + "' "
-//                      //      + ds.getItemCount(i) + " items");
-//                }
-//            }
         } else {
             TimeSeries ts = getTimeSeries(sd);
             if (ts != null && ts.getItemCount() == 0) {
@@ -384,106 +369,6 @@ public class TimeProducer extends Producer implements TimeConstants {
         return res;
     }
 
-//    /**
-//     * determine the start and end dates
-//     * at the end of this method, this.startDate and and this.endDate are set
-//     * @param r
-//     * @param sd
-//     */
-//    private void parseDates(DataStream r, SeriesDescriptor sd) {
-//        String sstr = params.get(ChartConstants.PARAM_START_DATE);
-//        String estr = params.get(ChartConstants.PARAM_END_DATE);
-//        if (sstr != null || estr != null) {
-//            DateRecognizer dr = new DateRecognizer();
-//            if (estr != null) {
-//                dr.reset();
-//                dr.parse(estr);
-//                if (!dr.failed()) {
-//                    try {
-//                        endDate = dr.getSimpleDateFormat().parse(estr);
-//                    } catch (ParseException pe) { }
-//                }
-//            }
-//
-//            if (sstr != null) {
-//                if (isIntervalDate(sstr)) {
-//                    if (endDate == null) {
-//                        // if no endDate is specified, then attempt to determine the endDate from reading the stream 
-//                        // if the stream is resettable.
-//                        // functionally correct, but not very efficient.
-//                        if (r.isResettable()) {
-//                            r.reset();
-//                            int xColumn = sd.getXColumn();
-//                            try {
-//                                while (r.next()) {
-//                                    Date d = r.getDate(xColumn);
-//                                    if (d != null) {
-//                                        if (endDate == null || d.after(endDate)) {
-//                                            endDate = d;
-//                                        } 
-//                                    }
-//                                }
-//                            } catch (Exception e) {
-//                                e.printStackTrace();
-//                            }
-//                            r.reset();
-////                            log.warn("************** calculated endDate of : " + endDate);
-//                        }
-//                    }
-//                    
-//                    // hardcode some specify date handling for date ranges that are offsets from the end-date, if any
-//                    // understands formats like -<n>{m|d|y}
-//                    if (endDate != null) {
-//                        Calendar cal = Calendar.getInstance();
-//                        cal.setTime(endDate);
-//                        int field = -1;
-//                        
-//                        if (sstr.endsWith("d")) {
-//                            field = Calendar.DAY_OF_YEAR;
-//                        } else if (sstr.endsWith("m")) {
-//                            field = Calendar.MONTH;
-//                        } else if (sstr.endsWith("y")) {
-//                            field = Calendar.YEAR;
-//                        }    
-//                    
-//                        int val = Integer.parseInt(sstr.substring(0,sstr.length()-1));
-//                        cal.add(field,val);
-//                        startDate = cal.getTime();
-//                        
-////                        log.warn("************** given an endDate of : " + endDate + " and a sstr of " + sstr + " startDate = " + startDate);
-//                    }
-//                }
-//                dr.parse(sstr);
-//                if (!dr.failed()) {
-//                    try {
-//                        startDate = dr.getSimpleDateFormat().parse(sstr);
-//                    } catch (ParseException pe) { }
-//                }
-//            }
-//        }
-//    }
-    
-    private boolean isIntervalDate(String s) {
-        return s.startsWith("-") && (s.endsWith("d") || s.endsWith("m") || s.endsWith("y"));
-    }
-    
-//    /**
-//     * is the supplied date within the interval (startDate, endDate)? 
-//     * @param d
-//     * @return
-//     */
-//    private boolean dateInRange(Date d) {
-//        boolean ret = true;
-//        if (d != null) {
-//            if (startDate != null && d.before(startDate)) {
-//                ret = false;
-//            } else if (endDate != null && d.after(endDate)) {
-//                ret = false;
-//            }
-//        }
-//        return ret;
-//    }
-    
     private RegularTimePeriod makePeriod(int ptype, Date d) {
         RegularTimePeriod ret = null;
         try {

@@ -42,6 +42,12 @@ public class PieProducer extends Producer {
             if (v != null) {
                 pd.setValue(catName, v.doubleValue());
                 ret = currentSD.getName();
+                if (currentSD.getLinkExpression() != null) {
+                    String url = ChartContext.translateLinkExpression(
+                            rs, rs.getMetadata(), ret, currentSD.getLinkExpression()
+                            );
+                    this.recordImgMapUrl(d, ret, catName, v, url);
+                }
             }
         } 
         return ret;
