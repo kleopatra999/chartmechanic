@@ -1570,7 +1570,6 @@ public class JFreeChartDriver implements ChartDriver {
         */
 
         Plot plot = ret.getPlot();
-
         // there can be up to 4 default renderers, one per axis
         // if the user didn't specify per-series renderers but he chose to put the series
         // on different axes
@@ -1790,7 +1789,6 @@ public class JFreeChartDriver implements ChartDriver {
                 
                 CategoryDataset cd = (CategoryDataset) ctxt.getDatasetForSeries(sd);
                 int dsIndex = ctxt.getIndexOfDataset(cd);
-                //p("category color(" + i + ")->" + color + " paint=" + seriesPaint + " on dsIndex=" + dsIndex);
                 CategoryItemRenderer renderer = cplot.getRenderer(dsIndex);
                 renderer.setSeriesPaint(seriesCounts[dsIndex]++, seriesPaint);
             }
@@ -1825,10 +1823,16 @@ public class JFreeChartDriver implements ChartDriver {
                     log.warn("unexpected null data set for pie plot");
                 } else {
                     pplot.setDataset((PieDataset) ds);
+                    final String sname = ctxt.getSeries(0).getName();
                     PieURLGenerator purl = new PieURLGenerator() {
                         public String generateURL(PieDataset pds, Comparable comp,
                                 int pieIndex) {
-                            return comp + "|" + pieIndex + "|0";
+                                
+                            String url = null;
+                            Number value = pds.getValue(comp);
+                            if (value != null)
+                                url = ctxt.getImageMapUrl(pds, sname, comp, value.doubleValue());
+                            return url;
                         }
                     };
                     pplot.setURLGenerator(purl);
@@ -2392,25 +2396,21 @@ public class JFreeChartDriver implements ChartDriver {
             double upper = rng.getUpperBound();
             if (va instanceof NumberAxis) {
                 NumberAxis na = (NumberAxis) va;
-                    double tick = na.getTickUnit().getSize();
-                    if (na.isAutoTickUnitSelection()) {
-                        if ( tick != 1.0d) {
-                            // give the default tick size, which is 1
-                            na.setTickUnit(new NumberTickUnit(1));
-                        }
-                    } else {
+                double tick = na.getTickUnit().getSize();
+                if (na.isAutoTickUnitSelection()) {
+                    if (tick != 1.0d) {
+                        // give the default tick size, which is 1
+                        na.setTickUnit(new NumberTickUnit(1));
+                    }
+                } else {
                     double width = Math.abs(upper - lower);
-                    double nticks = width  / tick;
-//                    p("NUM AXIS: autoTick=" + na.isAutoTickUnitSelection() + " tick=" + tick
-//                            + " nticks=" + nticks + " width=" + width);
-                    if (!na.isAutoTickUnitSelection() && tick != 1.0 && nticks > 50.0) {
+                    double nticks = width / tick;
+                    if (!na.isAutoTickUnitSelection() && tick != 1.0
+                            && nticks > 50.0) {
                         double newtick = width / 20;
-//                        p("numAxis converting tick size from " + tick + " to " + newtick);
                         na.setTickUnit(new NumberTickUnit(newtick));
-                        //p("changing range axis nticks from " + nticks + " to " + width / 100.0);
-                        //p("changing range axis tick size from " + tick + " to " + width / 20);
                     }
-                    }
+                }
             }
         }
         
