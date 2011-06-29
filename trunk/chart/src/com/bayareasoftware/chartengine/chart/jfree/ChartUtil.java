@@ -21,6 +21,7 @@ import java.awt.GradientPaint;
 import java.awt.Paint;
 import java.awt.Stroke;
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,6 +38,8 @@ import org.jfree.chart.axis.NumberAxis3D;
 import org.jfree.chart.axis.PeriodAxis;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.renderer.category.BarPainter;
 import org.jfree.chart.renderer.category.GradientBarPainter;
 import org.jfree.chart.renderer.category.StandardBarPainter;
@@ -693,6 +696,14 @@ public class ChartUtil implements ChartConstants {
             ret += ("," + encodeColor((Color)p));
         return ret;
     }
+    
+    public static ItemLabelAnchor decodeItemLabelAnchor(String s) {
+        if (s == null) {
+            return ItemLabelAnchor.CENTER;
+        }
+        ItemLabelAnchor ret = str2ItemAnchor.get(s.toUpperCase());
+        return ret != null ? ret : ItemLabelAnchor.CENTER;
+    }
     private static Map<String,String> nvPairs(String s, char delim) {
         Map<String,String> ret = new HashMap<String,String>();
         String[] nv1 = StringUtil.splitCompletely(s, delim, true);
@@ -734,6 +745,35 @@ public class ChartUtil implements ChartConstants {
         str2textAnchor.put("BOTTOM_CENTER", TextAnchor.BOTTOM_CENTER);
         str2textAnchor.put("BOTTOM_RIGHT", TextAnchor.BOTTOM_RIGHT);        
     }
+    private static final Map<String,ItemLabelAnchor> str2ItemAnchor = new HashMap();
+    static {
+        str2ItemAnchor.put("CENTER", ItemLabelAnchor.CENTER);
+        str2ItemAnchor.put("INSIDE1", ItemLabelAnchor.INSIDE1);
+        str2ItemAnchor.put("INSIDE2", ItemLabelAnchor.INSIDE2);
+        str2ItemAnchor.put("INSIDE3", ItemLabelAnchor.INSIDE3);
+        str2ItemAnchor.put("INSIDE4", ItemLabelAnchor.INSIDE4);
+        str2ItemAnchor.put("INSIDE5", ItemLabelAnchor.INSIDE5);
+        str2ItemAnchor.put("INSIDE6", ItemLabelAnchor.INSIDE6);
+        str2ItemAnchor.put("INSIDE7", ItemLabelAnchor.INSIDE7);
+        str2ItemAnchor.put("INSIDE8", ItemLabelAnchor.INSIDE8);
+        str2ItemAnchor.put("INSIDE9", ItemLabelAnchor.INSIDE9);
+        str2ItemAnchor.put("INSIDE10", ItemLabelAnchor.INSIDE10);
+        str2ItemAnchor.put("INSIDE11", ItemLabelAnchor.INSIDE11);
+        str2ItemAnchor.put("INSIDE12", ItemLabelAnchor.INSIDE12);
+        str2ItemAnchor.put("OUTSIDE1", ItemLabelAnchor.OUTSIDE1);
+        str2ItemAnchor.put("OUTSIDE2", ItemLabelAnchor.OUTSIDE2);
+        str2ItemAnchor.put("OUTSIDE3", ItemLabelAnchor.OUTSIDE3);
+        str2ItemAnchor.put("OUTSIDE4", ItemLabelAnchor.OUTSIDE4);
+        str2ItemAnchor.put("OUTSIDE5", ItemLabelAnchor.OUTSIDE5);
+        str2ItemAnchor.put("OUTSIDE6", ItemLabelAnchor.OUTSIDE6);
+        str2ItemAnchor.put("OUTSIDE7", ItemLabelAnchor.OUTSIDE7);
+        str2ItemAnchor.put("OUTSIDE8", ItemLabelAnchor.OUTSIDE8);
+        str2ItemAnchor.put("OUTSIDE9", ItemLabelAnchor.OUTSIDE9);
+        str2ItemAnchor.put("OUTSIDE10", ItemLabelAnchor.OUTSIDE10);
+        str2ItemAnchor.put("OUTSIDE11", ItemLabelAnchor.OUTSIDE11);
+        str2ItemAnchor.put("OUTSIDE12", ItemLabelAnchor.OUTSIDE12);
+        
+    }
     private static void p(String s) {
         System.err.println("[ChartUtil] " + s);
     }
@@ -743,27 +783,44 @@ public class ChartUtil implements ChartConstants {
         //Color c = decodeColor(s);
         //System.err.println(s + "->" + c.getRed() + " (" + c.getRGB() + ")");
         //printTextAnchors();
-        String s = "#FFff807f";
-        Color c = decodeHexColor(s, null);
-        p("'" + s + "'->'" + c + "'");
+        //String s = "#FFff807f";
+        //Color c = decodeHexColor(s, null);
+        //p("'" + s + "'->'" + c + "'");
+        printItemLabelAnchors();
     }
     private static void printTextAnchors() {
         for (String s : str2textAnchor.keySet()) {
             System.out.println("ret.addItem(\"" + s + "\");");
         }
     }
+    
+    private static void printItemLabelAnchors() throws Exception {
+      Class c = ItemLabelAnchor.class;
+      Field[] fields = c.getFields();
+      System.out.println(fields.length + " fields");
+      for (Field f : fields) {
+          int mods = f.getModifiers();
+          if (f.getType() == ItemLabelAnchor.class && 
+                  (mods & Modifier.STATIC) != 0 &&
+                  (mods & Modifier.PUBLIC) != 0) {
+              String n  = f.getName();
+              System.out.println("str2ItemAnchor.put(\"" + n + "\", ItemLabelAnchor." + n + ");");
+          }
+      }
+        
+    }
 //    private static void printRectangleAnchors() throws Exception {
-//        Class c = RectangleAnchor.class;
-//        Field[] fields = c.getFields();
-//        for (Field f : fields) {
-//            int mods = f.getModifiers();
-//            if (f.getType() == RectangleAnchor.class && 
-//                    (mods & Modifier.STATIC) != 0 &&
-//                    (mods & Modifier.PUBLIC) != 0) {
-//                String n  = f.getName();
-//                System.out.println("str2rectAnchor.put(\"" + n + "\", RectangleAnchor." + n + ");");
-//            }
-//        }
+//  Class c = RectangleAnchor.class;
+//  Field[] fields = c.getFields();
+//  for (Field f : fields) {
+//      int mods = f.getModifiers();
+//      if (f.getType() == RectangleAnchor.class && 
+//              (mods & Modifier.STATIC) != 0 &&
+//              (mods & Modifier.PUBLIC) != 0) {
+//          String n  = f.getName();
+//          System.out.println("str2rectAnchor.put(\"" + n + "\", RectangleAnchor." + n + ");");
+//      }
+//  }
 //    }
 //    private static void printTextAnchorsCode() throws Exception {
 //        Class c = TextAnchor.class;
