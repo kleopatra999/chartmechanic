@@ -441,6 +441,76 @@ public class CreateImageTest {
 
     }
 
+    static final String MAISY_DATA =
+        "Date,Weight,Length\n" +
+        "6/21/2010,7.05,22.00\n" +
+        "7/21/2010,8.01,22.00\n" +
+        "8/18/2010,11.13,23.00\n" +
+        "10/20/2010,15.01,25.00\n" +
+        "12/22/2010,16.05,25.50\n" +
+        "3/23/2011,17.13,27.50\n" +
+        "6/22/2011,19.10,29.25";        
+    @Test
+    public void testMaisyGrowth() throws Exception {
+        ChartBundle cb = new ChartBundle();
+        DataSourceInfo ds = new DataSourceInfo(DataSourceInfo.CSV_TYPE);
+        ds.setProperty(DataSourceInfo.CSV_DATA, MAISY_DATA);
+        
+        Metadata md = new Metadata(3);
+        md.setColumnName(1,"Date");
+        md.setColumnType(1,DataType.DATE);
+        md.setColumnName(2,"Weight");
+        md.setColumnType(2,DataType.DOUBLE);
+        md.setColumnName(3,"Height");
+        md.setColumnType(3,DataType.DOUBLE);
+        
+        ds.setInputMetadata(md);
+        ChartInfo ci = new ChartInfo();
+        ci.setDescription("Maisy Growth\n=props=\n"
+                + "labels=true\n"
+                + "label.0.paint=#ff0000\n"
+                + "label.1.paint=#000000\n"
+                + "label.itemAnchor=OUTSIDE12\n"
+                + "label.textAnchor=BOTTOM_CENTER\n");
+        ci.setProperty("renderer.shadowVisible", "false");
+        
+        SeriesDescriptor sd = new SeriesDescriptor();
+        sd.setName("Weight");
+        sd.setSource(ds.getId());
+        sd.setXColumn(1);
+        sd.setYColumn(2);
+        sd.setVisible(true);
+        ci.addSeriesDescriptor(sd);
+
+        sd = new SeriesDescriptor();
+        sd.setName("Height");
+        sd.setSource(ds.getId());
+        sd.setXColumn(1);
+        sd.setYColumn(3);
+        sd.setRenderer("Bar");
+        sd.setTimePeriod(TimeConstants.TIME_MONTH);
+        {
+            SimpleProps sp = new SimpleProps();
+            //sp.put("shadowVisible", "false");
+            sp.put("renderer.shadowVisible", "false");
+            sd.setRendererProps(sp);
+        }
+        ci.addSeriesDescriptor(sd);
+        
+        ci.setWidth(400);
+        ci.setHeight(400);
+        ci.setPlotType(PlotType.PLOT_TIME);
+        ci.setProperty("title.text", "Maisy");
+        cb.setChartInfo(ci);
+        cb.addDataSource(ds);
+
+        long t = System.currentTimeMillis();
+        ChartDiskResult cr = createChart(cb);
+        System.err.println("Maisy chart create took: " + (System.currentTimeMillis() - t) + " msecs");
+        cache.putChart(cr,cb,null);
+        this.renameChart(cr, "Maisy");
+        
+    }
     @Test
     public void testGantt() throws Exception {
         ChartBundle cb = new ChartBundle();
@@ -515,7 +585,7 @@ public class CreateImageTest {
         ci.setHeight(400);
         ci.setPlotType(PlotType.PLOT_GANTT);
         ci.setRenderType("Gantt"); 
-        ci.setProperty("title.text", "Gantt Chart");
+        ci.setProperty("title.text", "Gantt Chart XXX");
         cb.setChartInfo(ci);
         cb.addDataSource(ds);
 

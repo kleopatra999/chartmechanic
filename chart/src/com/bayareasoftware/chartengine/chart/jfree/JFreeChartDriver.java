@@ -88,7 +88,10 @@ import org.jfree.chart.imagemap.StandardToolTipTagFragmentGenerator;
 import org.jfree.chart.imagemap.StandardURLTagFragmentGenerator;
 import org.jfree.chart.imagemap.ToolTipTagFragmentGenerator;
 import org.jfree.chart.imagemap.URLTagFragmentGenerator;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardXYItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.DatasetRenderingOrder;
 import org.jfree.chart.plot.DrawingSupplier;
@@ -141,12 +144,14 @@ import org.jfree.ui.HorizontalAlignment;
 import org.jfree.ui.Layer;
 import org.jfree.ui.RectangleEdge;
 import org.jfree.ui.RectangleInsets;
+import org.jfree.ui.TextAnchor;
 import org.jfree.ui.VerticalAlignment;
 
 import com.bayareasoftware.chartengine.chart.ChartDiskResult;
 import com.bayareasoftware.chartengine.chart.ChartDriver;
 import com.bayareasoftware.chartengine.chart.ChartResult;
 import com.bayareasoftware.chartengine.chart.ShapeUtil;
+import com.bayareasoftware.chartengine.chart.jfree.JFreeNoodle.MyXYLabeler;
 import com.bayareasoftware.chartengine.ds.DataStream;
 import com.bayareasoftware.chartengine.ds.JoinTimeStream;
 import com.bayareasoftware.chartengine.ds.StringDataStream;
@@ -351,6 +356,13 @@ public class JFreeChartDriver implements ChartDriver {
         }
         
         String subTitleText = StringUtil.trim(ci.getDescription());
+        
+        if (subTitleText != null) {
+            int ind = subTitleText.lastIndexOf("\n=props=\n");
+            if (ind != -1) {
+                subTitleText = subTitleText.substring(0, ind);
+            }
+        }
         
         // make sure that the subTitleText fits within the maxWidth;
         // if there's not enough room, don't show the subTitleText, leave the logo
@@ -1380,6 +1392,18 @@ public class JFreeChartDriver implements ChartDriver {
 //        }
     }
 
+    private SimpleProps getExtraProps(ChartInfo ci) {
+        SimpleProps ret = new SimpleProps();
+        String desc = ci.getDescription();
+        if (desc != null) {
+            int ind = desc.lastIndexOf("\n=props=\n");
+            if (ind != -1) {
+                ret.load(desc.substring(ind + 9));
+                //ci.setDescription(desc.substring(0, ind));
+            }
+        }
+        return ret;
+    }
     /**
      * create the actual JFreeChart object
      * @param ci               - ChartInfo chart specification
@@ -1401,6 +1425,7 @@ public class JFreeChartDriver implements ChartDriver {
         
         String defaultChartTitle = "";
         
+        SimpleProps extras = getExtraProps(ci);
         PlotType ptype = ci.getPlotType();
         if (ptype == null) {
             throw new RuntimeException("Unexpected null plot type");
@@ -1670,6 +1695,30 @@ public class JFreeChartDriver implements ChartDriver {
                     }
                     */
                 }
+                // String prop(String defalt, SimpleProps props, String...names) {
+                String lfix = "label." + i;
+                if ("true".equals(extras.get("labels"))
+                        && !"false".equals(extras.get(lfix))) {
+                    
+                    String paintStr = prop("#ffffff", extras, lfix + ".paint", "label.paint");
+                    String fontStr = prop("Arial-10", extras, lfix + ".font", "label.font");
+                    String textAnchorStr = prop("CENTER", extras, lfix + ".textAnchor", "label.textAnchor");
+                    String itemAnchorStr = prop("CENTER", extras, lfix + ".itemAnchor", "label.itemAnchor");
+                    
+                    render.setBaseItemLabelGenerator(new StandardXYItemLabelGenerator());
+                    render.setBaseItemLabelsVisible(true);
+                    render.setBaseItemLabelPaint(ChartUtil.decodePaint(paintStr));
+                    Font f = Font.decode(fontStr);
+                    p("using label: " + f);
+                    render.setBaseItemLabelFont(f);
+                    
+                    ItemLabelPosition pos = new ItemLabelPosition(
+                            ChartUtil.decodeItemLabelAnchor(itemAnchorStr),
+                            ChartUtil.decodeTextAnchor(textAnchorStr)
+                            );
+                    render.setBasePositiveItemLabelPosition(pos);                    
+                }
+                
             }
             for (int i = 0; i <ci.getMarkerCount() ;i++ ) {
                 MarkerDescriptor md = ci.getMarker(i);
@@ -1987,6 +2036,13 @@ public class JFreeChartDriver implements ChartDriver {
         return ret;
     }
 
+    private static String prop(String defalt, SimpleProps props, String...names) {
+        for (String name : names) {
+            String val = props.get(name);
+            if (val != null) return val;
+        }
+        return defalt;
+    }
     
     private HashMap<String,StandardPieSectionLabelGenerator> pieLabelGeneratorsMap = new HashMap<String,StandardPieSectionLabelGenerator>();
     

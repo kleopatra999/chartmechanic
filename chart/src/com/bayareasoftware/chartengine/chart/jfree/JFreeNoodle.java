@@ -53,6 +53,8 @@ import org.jfree.chart.axis.LogarithmicAxis;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.PeriodAxis;
 import org.jfree.chart.block.BlockBorder;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
 import org.jfree.chart.labels.StandardXYItemLabelGenerator;
 import org.jfree.chart.labels.XYItemLabelGenerator;
 import org.jfree.chart.plot.CategoryPlot;
@@ -100,6 +102,7 @@ import org.jfree.ui.LengthAdjustmentType;
 import org.jfree.ui.RectangleAnchor;
 import org.jfree.ui.RectangleEdge;
 import org.jfree.ui.RectangleInsets;
+import org.jfree.ui.TextAnchor;
 
 import com.bayareasoftware.chartengine.chart.ShapeUtil;
 
@@ -118,7 +121,9 @@ public class JFreeNoodle {
     public static void main(String[] args) {
         JFrame frame;
         JFreeChart[] charts = new JFreeChart[] {
-        chart1(), chart2(), chart3(),
+        chart1(), 
+        chart2(),
+        chart3(),
         chart4(), chart5(), chart6(),
         chart7(), chart8(),
         chart9(), chart10(),
@@ -962,9 +967,9 @@ public class JFreeNoodle {
      */
     private static JFreeChart chart2() {
         TimeTableXYDataset ttxy0 = new TimeTableXYDataset();
-        addSeriesToSet(ttxy0, 60, 5, "S1");
+        addSeriesToSet(ttxy0, 10, 5, "S1");
         TimeTableXYDataset ttxy1 = new TimeTableXYDataset();        
-        addSeriesToSet(ttxy1, 60, 15, "S2");
+        addSeriesToSet(ttxy1, 10, 15, "S2");
         JFreeChart ret = null;
         ret = ChartFactory.createTimeSeriesChart(
                 "My Time Series", "time", "value",
@@ -986,14 +991,17 @@ public class JFreeNoodle {
         
         XYItemRenderer br;
         br = new XYBarRenderer();
-        br.setBaseItemLabelsVisible(true);
-        //br = new StandardXYItemRenderer();
-        br.setBaseItemLabelGenerator(new MyXYLabeler());
-        //br.setBaseItemLabelGenerator(new StandardXYItemLabelGenerator());
-        br.setBaseItemLabelPaint(ChartUtil.decodePaint("#ffffff"));
-        Font f = Font.decode("Arial-10");
-        p("using label font: " + f);
-        br.setBaseItemLabelFont(f);
+        {
+            br.setBaseItemLabelsVisible(true);
+            br.setBaseItemLabelGenerator(new MyXYLabeler());
+            br.setBaseItemLabelPaint(ChartUtil.decodePaint("#ffffff"));
+            Font f = Font.decode("Arial-10");
+            p("using label font: " + f);
+            br.setBaseItemLabelFont(f);
+            ItemLabelPosition pos = new ItemLabelPosition(ItemLabelAnchor.CENTER, TextAnchor.CENTER);
+            br.setBasePositiveItemLabelPosition(pos);
+        }
+        
 
         br.setPaint(paint1());
         plot.setRenderer(0, br);
