@@ -1709,7 +1709,6 @@ public class JFreeChartDriver implements ChartDriver {
                     render.setBaseItemLabelsVisible(true);
                     render.setBaseItemLabelPaint(ChartUtil.decodePaint(paintStr));
                     Font f = Font.decode(fontStr);
-                    p("using label: " + f);
                     render.setBaseItemLabelFont(f);
                     
                     ItemLabelPosition pos = new ItemLabelPosition(
